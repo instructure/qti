@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentTest xmlns="http://www.imsglobal.org/xsd/imsqti_v2p2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p2  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p2.xsd"
+    identifier="RTEST-COMPLETE" title="Complete Example Test">
+    <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float"
+        interpretation="The
+        Test Score"
+        longInterpretation="http://www.google.com/search?q=interpreting+test+scores"
+        normalMaximum="100.0">
+        <defaultValue interpretation="Zero">
+            <value>0.0</value>
+        </defaultValue>
+    </outcomeDeclaration>
+    <timeLimits maxTime="3600" minTime="600"/>
+    <testPart identifier="RTEST-COMPLETE-PTI" navigationMode="linear" submissionMode="individual">
+        <itemSessionControl allowReview="false" maxAttempts="1" showFeedback="true"
+            showSolution="false"/>
+        <timeLimits maxTime="3600"/>
+        <assessmentSection identifier="main" title="Main Section" visible="false">
+            <assessmentItemRef identifier="switch" href="switch.xml"/>
+            <assessmentSection identifier="SA" title="Section A" visible="true">
+                <preCondition>
+                    <match>
+                        <variable identifier="switch.RESPONSE"/>
+                        <baseValue baseType="identifier">A</baseValue>
+                    </match>
+                </preCondition>
+                <assessmentItemRef identifier="A1" href="a1.xml"/>
+            </assessmentSection>
+        </assessmentSection>
+    </testPart>
+</assessmentTest>

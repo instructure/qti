@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assessmentTest xmlns="http://www.imsglobal.org/xsd/imsqti_v2p2"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:m="http://www.w3.org/1998/Math/MathML"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    toolVersion="0.1" toolName="Spectatus" title="Simple Feedback Test"
+    identifier="SPECTATUS-GENERATED-TEST"
+    xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p2 http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p2.xsd">
+    <outcomeDeclaration baseType="float" cardinality="single" identifier="TEST_total">
+        <defaultValue>
+            <value>0.0</value>
+        </defaultValue>
+    </outcomeDeclaration>
+    <outcomeDeclaration baseType="float" cardinality="single" identifier="SECTION_1_total">
+        <defaultValue>
+            <value>0.0</value>
+        </defaultValue>
+    </outcomeDeclaration>
+    <outcomeDeclaration baseType="identifier" cardinality="single" identifier="s1FB"/>
+    <outcomeDeclaration baseType="identifier" cardinality="multiple" identifier="TEST_FEEDBACK"/>
+    <testPart submissionMode="simultaneous" navigationMode="nonlinear" identifier="TP">
+        <assessmentSection identifier="S1" visible="true" title="Section 1">
+            <rubricBlock view="candidate">
+                <div>Four examples of feedback, no randomisation</div>
+            </rubricBlock>
+            <assessmentItemRef identifier="multiple-answer"
+                href="multiple-answer/multiple-answer.xml"/>
+            <assessmentItemRef identifier="multiple-choice"
+                href="multiple-choice/multiple-choice.xml"/>
+            <assessmentItemRef identifier="text-entry"
+                href="text-entry/text-entry.xml"/>
+            <assessmentItemRef identifier="true-false"
+                href="true-false/true-false.xml"/>
+        </assessmentSection>
+    </testPart>
+    <outcomeProcessing>
+        <setOutcomeValue identifier="SECTION_1_total">
+            <sum>
+                <testVariables sectionIdentifier="S1" baseType="float" variableIdentifier="SCORE"/>
+            </sum>
+        </setOutcomeValue>
+        <outcomeCondition>
+            <outcomeIf>
+                <not>
+                    <lt>
+                        <variable identifier="SECTION_1_total"/>
+                        <baseValue baseType="float">40.0</baseValue>
+                    </lt>
+                </not>
+                <setOutcomeValue identifier="s1FB">
+                    <baseValue baseType="identifier">S1-FB-AllOK</baseValue>
+                </setOutcomeValue>
+            </outcomeIf>
+        </outcomeCondition>
+        <setOutcomeValue identifier="TEST_total">
+            <sum>
+                <testVariables baseType="float" variableIdentifier="SCORE"/>
+            </sum>
+        </setOutcomeValue>
+        <setOutcomeValue identifier="TEST_FEEDBACK">
+            <multiple>
+                <baseValue baseType="identifier">S1_END_FB</baseValue>
+                <baseValue baseType="identifier">TEST_FB</baseValue>
+            </multiple>
+        </setOutcomeValue>
+    </outcomeProcessing>
+    <testFeedback identifier="TEST_FB" showHide="show" outcomeIdentifier="TEST_FEEDBACK"
+        access="atEnd">
+        <div>You have reached the end of the test.</div>
+        <div>Section 1 score: <printedVariable format="%.1f" identifier="SECTION_1_total"/> (from a
+            maximum of 40.0) <feedbackInline outcomeIdentifier="s1FB" identifier="S1-FB-AllOK"
+                showHide="show"> All the questions in section 1 were answered
+                correctly.</feedbackInline>
+        </div>
+        <div>Total score: <printedVariable format="%.1f" identifier="TEST_total"/> (from a maximum
+            of 40.0)</div>
+    </testFeedback>
+</assessmentTest>

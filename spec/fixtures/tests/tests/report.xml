@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentResult xmlns="http://www.imsglobal.org/xsd/imsqti_result_v2p2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_result_v2p2 http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_result_v2p2.xsd">
+    <context sourcedId="johnsmith1">
+        <sessionIdentifier sourceID="htp://www.imsglobal.org/" identifier="EXAMPLE"/>
+    </context>
+    <testResult identifier="SAMPLE" datestamp="2005-12-02T15:19:20">
+        <responseVariable identifier="duration" cardinality="single" baseType="duration">
+            <candidateResponse>
+                <value>300</value>
+            </candidateResponse>
+        </responseVariable>
+        <responseVariable identifier="S01.duration" cardinality="single" baseType="duration">
+            <candidateResponse>
+                <value>10</value>
+            </candidateResponse>
+        </responseVariable>
+        <outcomeVariable identifier="SCORE" masteryValue="56" cardinality="single"
+            baseType="float">
+            <value>100</value>
+        </outcomeVariable>
+    </testResult>
+    <itemResult identifier="Q01" sequenceIndex="1" datestamp="2005-12-02T15:19:20"
+        sessionStatus="final">
+        <responseVariable identifier="numAttempts" cardinality="single" baseType="integer">
+            <candidateResponse>
+                <value>1</value>
+            </candidateResponse>
+        </responseVariable>
+        <responseVariable identifier="RESPONSE" cardinality="single" baseType="identifier"
+            choiceSequence="D B C A">
+            <correctResponse>
+                <value>A</value>
+            </correctResponse>
+            <candidateResponse>
+                <value>A</value>
+            </candidateResponse>
+        </responseVariable>
+        <outcomeVariable identifier="completionStatus" cardinality="single" baseType="identifier">
+            <value>unknown</value>
+        </outcomeVariable>
+        <outcomeVariable identifier="SCORE" cardinality="single" baseType="float">
+            <value>100</value>
+        </outcomeVariable>
+    </itemResult>
+    <itemResult identifier="Q01" sequenceIndex="1" datestamp="2005-12-02T15:36:45"
+        sessionStatus="final">
+        <responseVariable identifier="numAttempts" cardinality="single" baseType="integer">
+            <candidateResponse>
+                <value>2</value>
+            </candidateResponse>
+        </responseVariable>
+        <responseVariable identifier="RESPONSE" cardinality="single" baseType="identifier"
+            choiceSequence="D B C A">
+            <correctResponse>
+                <value>A</value>
+            </correctResponse>
+            <candidateResponse>
+                <value>B</value>
+            </candidateResponse>
+        </responseVariable>
+        <outcomeVariable identifier="completionStatus" cardinality="single" baseType="identifier">
+            <value>unknown</value>
+        </outcomeVariable>
+        <outcomeVariable identifier="SCORE" cardinality="single" baseType="float">
+            <value>50</value>
+        </outcomeVariable>
+    </itemResult>
+</assessmentResult>

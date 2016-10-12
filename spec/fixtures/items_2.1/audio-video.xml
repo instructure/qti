@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p2  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p2.xsd"
+	identifier="choice" title="Favorite Color" adaptive="false" timeDependent="false">
+  <responseDeclaration identifier="RESPONSE" cardinality="single" baseType="identifier">
+    <correctResponse>
+      <value>ChoiceA</value>
+    </correctResponse>
+  </responseDeclaration>
+  <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <itemBody id="theWholeItem">
+    <p id="p1"><span id="a">Ms. Smith’s class contains 24 students.</span> <span id="b">Each student voted for his or her favorite color.</span> <span id="c">Watch the video to learn about the result of the class vote.</span></p>
+    <video width="320" height="240" controls>
+      <source src="movie.mp4" type="video/mp4">
+      <source src="movie.ogg" type="video/ogg">
+      <track kind="captions" src="../captions/movie.vtt" srclang="en" label="Captions" default />
+      <track kind="subtitles" label="SpanishSubtitles" src="subtitles_sp.vtt" srclang="sp"></track>
+      Your browser does not support the video tag. </video>
+    <choiceInteraction responseIdentifier="RESPONSE" shuffle="false"
+maxChoices="5">
+      <prompt id="o">Indicate which of the following statements are accurate.</prompt>
+      <simpleChoice identifier="choice1" fixed="true">
+        <p id="p">The majority of students voted for Red.</p>
+      </simpleChoice>
+      <simpleChoice identifier="choice2" fixed="true">
+        <p id="q">Twice as many students voted for Red than voted for Blue.</p>
+      </simpleChoice>
+      <simpleChoice identifier="choice3" fixed="true">
+        <p id="r">Two percent of students voted for Yellow.</p>
+      </simpleChoice>
+      <simpleChoice identifier="choice4" fixed="true">
+        <p id="s">Red received  more votes than any other color.</p>
+      </simpleChoice>
+      <simpleChoice identifier="choice5" fixed="true">
+        <p id="t">Twenty-five percent of students voted for Green.</p>
+      </simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+  <responseProcessing
+		template="http://www.imsglobal.org/question/qti_v2p2/rptemplates/match_correct"/>
+</assessmentItem>
