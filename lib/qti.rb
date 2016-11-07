@@ -2,26 +2,47 @@ require 'find'
 
 module Qti
   class Importer
-    attr_reader :errored_files
-
-    def initialize(path, qti_import = nil)
+    def initialize(path)
       Find.find(path) do |subdir|
         @path = subdir if subdir =~ /imsmanifest.xml/
       end
-      @qti_import = qti_import
-      @errored_files = []
     end
 
-    def self.import!(path, quiz = nil, qti_import = nil)
-      importer = new(path, qti_import)
-      importer.import(quiz: quiz)
+    def import_manifest
+      @manifest = Qti::Models::Manifest.from_path!(@path)
+      raise 'Unsupported QTI version' if @manifest.assessment_test_href.nil?
+      @manifest.assessment_test_href
     end
 
-    def import(quiz: nil)
+    def test_object
+      version_agnostic_test_object(import_manifest)
     end
 
-    private
+    def version_agnostic_test_object(assessment_test_file)
+      if @manifest.qti_1_href
+        Qti::V1::Models::Assessment.from_path!(assessment_test_file)
+      else
+        Qti::V2::Models::AssessmentTest.from_path!(assessment_test_file)
+      end
+    end
 
+    def assessment_item_refs
+      @assessment_item_refs ||= begin
+        if @manifest.qti_1_href
+          test_object.assessment_items
+        else
+          test_object.assessment_item_reference_hrefs
+        end
+      end
+    end
+
+    def create_assessment_item(assessment_item_ref)
+      if @manifest.qti_1_href
+        Qti::V1::Models::AssessmentItem.new(assessment_item_ref)
+      else
+        Qti::V2::Models::AssessmentItem.from_path!(assessment_item_ref)
+      end
+    end
   end
 end
 
