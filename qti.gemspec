@@ -4,10 +4,10 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "qti"
-  spec.version       = '0.0.1'
+  spec.version       = '0.0.2'
   spec.authors       = ["Hannah Bottalla"]
   spec.email         = ["hannah@instructure.com", "eng@instructure.com"]
-  spec.summary       = %q{QTI 1.2 and 2.1 importer}
+  spec.summary       = %q{QTI 1.2 and 2.1 import models}
 
   spec.files         = Dir.glob("{lib,spec}/**/*") + %w(README.md Rakefile)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }

@@ -17,12 +17,10 @@ module Qti
           end
         end
 
-        # Not used yet
         def test_parts
           @test_parts ||= @doc.xpath('//xmlns:testPart')
         end
 
-        # Not used yet
         def assessment_sections
           @assessment_sections ||= test_parts.first.xpath('//xmlns:assessmentSection')
         end
