@@ -1,0 +1,6 @@
+project: qti # gerrit project name
+parent_content_id: "119636078" # page id for the base readme.
+space: QUIZ # confluence space key
+patterns:
+  - "README.md"
+  - "**/*.md"
