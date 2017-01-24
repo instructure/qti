@@ -1,4 +1,5 @@
-require 'qti/v1/models/interactions/logical_identifier_interaction'
+require 'qti/v1/models/base'
+require 'qti/v1/models/interactions'
 
 module Qti
   module V1
@@ -37,7 +38,9 @@ module Qti
         end
 
         def interaction_model
-          @interaction_model ||= V1::Models::Interactions::LogicalIdentifierInteraction.new(@doc)
+          @interaction_model ||= begin
+            V1::Models::Interactions.interaction_model(@doc)
+          end
         end
 
         def scoring_data_structs

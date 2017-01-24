@@ -53,7 +53,6 @@ require 'qti/v1/models/base'
 require 'qti/v1/models/assessment'
 require 'qti/v1/models/assessment_item'
 require 'qti/v1/models/choices/logical_identifier_choice'
-require 'qti/v1/models/interactions/logical_identifier_interaction'
 
 require 'qti/v2/models/base'
 require 'qti/v2/models/choices/simple_choice'
