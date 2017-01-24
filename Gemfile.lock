@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    qti (0.0.1)
+    qti (0.1.0)
 
 GEM
   remote: https://rubygems.org/
