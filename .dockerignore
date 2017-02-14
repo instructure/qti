@@ -1,4 +1,5 @@
 /coverage
 /docker-compose.yml
+/docker-compose.test.yml
 /Dockerfile
 /**/*.gem

@@ -11,13 +11,13 @@ ENV LANG C.UTF-8
 WORKDIR /app
 
 COPY Gemfile qti.gemspec Gemfile.lock /app/
+COPY . /app
 RUN chown -R docker:docker /app
 
 USER docker
 RUN bundle install --jobs 8
 USER root
 
-COPY . /app
 RUN mkdir -p /app/coverage && chown -R docker:docker /app
 
 USER docker

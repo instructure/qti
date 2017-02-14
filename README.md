@@ -34,7 +34,6 @@ Returns the version appropriate href from the manifest.xml
 
 Returns the version appropriate Assessment/AssessmentTest model
 
-
   - `create_assessment_item(assessment_item_ref)`
 
 Returns the version appropriate AssessmentItem model
@@ -57,6 +56,10 @@ Returns the version appropriate AssessmentItem model
   - ` interaction_model` (ie Choice Interaction)
   - `scoring_data_structs`
 
+## Running Tests
+You can run tests with code coverage using the following command:
+  `docker-compose run --rm -e RAILS_ENV=test -e COVERAGE=1 testrunner bundle exec rspec spec`
+  
 ## Development
 
 Want to contribute? Submit a pull request!

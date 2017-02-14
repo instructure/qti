@@ -1,8 +1,10 @@
 require 'bundler/setup'
 require 'byebug'
-Bundler.setup
+require 'simplecov'
 
-require 'qti'
+SimpleCov.start do
+  add_filter '/spec/'
+end
 
 Dir[File.expand_path(File.join(File.dirname(__FILE__),'support','**','*.rb'))].each {|f| require f}
 
@@ -11,3 +13,5 @@ RSpec.configure do |config|
     expectations.syntax = :expect
   end
 end
+
+require 'qti'
