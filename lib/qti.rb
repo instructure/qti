@@ -46,6 +46,8 @@ module Qti
   end
 end
 
+require 'active_support/core_ext/string'
+
 require 'qti/models/manifest'
 require 'qti/models/base'
 
@@ -59,3 +61,11 @@ require 'qti/v2/models/choices/simple_choice'
 require 'qti/v2/models/interactions/choice_interaction'
 require 'qti/v2/models/assessment_item'
 require 'qti/v2/models/assessment_test'
+
+require 'zip'
+require 'qti/exporter'
+
+require 'qti/content_packaging'
+require 'qti/assessment_item_exporter'
+
+require 'null_logger'

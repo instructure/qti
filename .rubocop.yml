@@ -1,0 +1,74 @@
+AllCops:
+  TargetRubyVersion: 2.3
+
+Metrics/ClassLength:
+  Max: 200 # Default: 100
+
+Metrics/LineLength:
+  Max: 120 # Default: 80
+
+Metrics/MethodLength:
+  Max: 20 # Default: 10
+
+Metrics/BlockLength:
+  Max: 30
+  Exclude:
+    - 'spec/**/*.rb'
+
+Style/AlignParameters:
+  # Alignment of parameters in multi-line method calls.
+  #
+  # The `with_fixed_indentation` style aligns the following lines with one
+  # level of indentation relative to the start of the line with the method call.
+  #
+  #     method_call(a,
+  #       b)
+  EnforcedStyle: with_fixed_indentation
+
+Style/ClassAndModuleChildren:
+  # Checks the style of children definitions at classes and modules.
+  #
+  # Basically there are two different styles:
+  #
+  # `nested` - have each child on a separate line
+  #   class Foo
+  #     class Bar
+  #     end
+  #   end
+  #
+  # `compact` - combine definitions as much as possible
+  #   class Foo::Bar
+  #   end
+  #
+  # The compact style is only forced, for classes / modules with one child.
+  EnforcedStyle: nested
+  Enabled: false
+
+Style/Documentation:
+  # This cop checks for missing top-level documentation of classes and modules.
+  # Classes with no body and namespace modules are exempt from the check.
+  # Namespace modules are modules that have nothing in their bodies except
+  # classes or other modules.
+  Enabled: false
+
+Lint/EndAlignment:
+  AlignWith: variable
+
+Style/CaseIndentation:
+  IndentWhenRelativeTo: end
+
+Style/FrozenStringLiteralComment:
+  # `when_needed` will add the frozen string literal comment to files
+  # only when the `TargetRubyVersion` is set to 2.3+.
+  # `always` will always add the frozen string literal comment to a file
+  # regardless of the Ruby version or if `freeze` or `<<` are called on a
+  # string literal. If you run code against multiple versions of Ruby, it is
+  # possible that this will create errors in Ruby 2.3.0+.
+  #
+  # See: https://wyeworks.com/blog/2015/12/1/immutable-strings-in-ruby-2-dot-3
+  EnforcedStyle: when_needed
+  Enabled: false
+
+Style/NumericPredicate:
+  Exclude:
+    - 'spec/**/*'
