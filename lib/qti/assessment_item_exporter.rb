@@ -1,15 +1,14 @@
 module Qti
   class AssessmentItemExporter
-    attr_reader :index, :assessment_item, :package_root_path, :exported_file_path
+    attr_reader :assessment_item, :package_root_path, :exported_file_path
 
-    def initialize(index, assessment_item, args = {})
-      @index = index
+    def initialize(assessment_item, args = {})
       @assessment_item = assessment_item
       @package_root_path = args[:package_root_path] || '.'
     end
 
     def exported_file_path
-      @exported_file_path ||= File.join(package_root_path, "item-#{index + 1}.xml")
+      @exported_file_path ||= File.join(package_root_path, "#{assessment_item.identifier}.xml")
     end
 
     def export

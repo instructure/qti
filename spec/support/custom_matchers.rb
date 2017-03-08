@@ -6,6 +6,15 @@ RSpec::Matchers.define :have_file_content do |expected|
   end
 end
 
+RSpec::Matchers.define :contain_zip_entry do |entry|
+  match do |file_path|
+    zip_entry = Zip::File.open(file_path) do |zip_file|
+      zip_file.glob(entry).first
+    end
+    expect(zip_entry).to be_present
+  end
+end
+
 RSpec::Matchers.define :have_zip_entry do |entry|
   match do |file_path|
     expect(file_content_in_zip_file(file_path, entry)).to eq(@expected_content)

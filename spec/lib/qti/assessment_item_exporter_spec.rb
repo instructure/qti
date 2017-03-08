@@ -21,7 +21,7 @@ describe Qti::AssessmentItemExporter do
   describe '#export' do
     it 'generates the xml for an item' do
       dir = Dir.mktmpdir
-      exporter = Qti::AssessmentItemExporter.new(1, assessment_item, package_root_path: dir)
+      exporter = Qti::AssessmentItemExporter.new(assessment_item, package_root_path: dir)
       exporter.export
 
       expect(exporter.exported_file_path).to have_file_content(

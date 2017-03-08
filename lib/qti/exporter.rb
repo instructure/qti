@@ -58,11 +58,10 @@ module Qti
     end
 
     def xml_assessment_section(xml)
-      unless assessment_test.items.empty?
-        xml.assessmentSection('identifier' => 'S1', 'visible' => 'true', 'title' => 'Section 1') do
-          assessment_test.items.each_with_index do |item, index|
-            xml.assessmentItemRef('identifier' => item.identifier, 'href' => "item-#{index + 1}.xml")
-          end
+      return if assessment_test.items.empty?
+      xml.assessmentSection('identifier' => 'S1', 'visible' => 'true', 'title' => 'Section 1') do
+        assessment_test.items.each do |item|
+          xml.assessmentItemRef('identifier' => item.identifier, 'href' => "#{item.identifier}.xml")
         end
       end
     end
@@ -127,8 +126,8 @@ module Qti
     end
 
     def export_items
-      assessment_test.items.each_with_index do |assessment_item, index|
-        Qti::AssessmentItemExporter.new(index, assessment_item, package_root_path: package_root_path).export
+      assessment_test.items.each do |assessment_item|
+        Qti::AssessmentItemExporter.new(assessment_item, package_root_path: package_root_path).export
       end
     end
 
