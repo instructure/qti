@@ -9,7 +9,7 @@ describe Qti::V2::Models::AssessmentItem do
     it 'loads an AssessmentItem XML file' do
       expect do
         described_class.from_path!(file_path)
-      end.to_not raise_error(Qti::ParseError)
+      end.to_not raise_error
     end
 
     it 'has the title' do

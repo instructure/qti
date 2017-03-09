@@ -9,8 +9,8 @@ describe Qti::V1::Models::AssessmentItem do
 
     it 'loads an AssessmentItem ref' do
       expect do
-        described_class.new(assessment_item_ref)
-      end.to_not raise_error(Qti::ParseError)
+        described_class.new(assessment_item_refs)
+      end.to_not raise_error
     end
 
     it 'has the title' do

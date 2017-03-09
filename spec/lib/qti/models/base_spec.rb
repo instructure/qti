@@ -20,7 +20,7 @@ describe Qti::Models::Base do
       it 'raises if node count is more than 1' do
         expect do
           loaded_class.xpath_with_single_check(bad_xpath)
-        end.to raise_error
+        end.to raise_error(Qti::ParseError)
       end
 
       it 'doesn\'t raise with a single node count' do
@@ -34,7 +34,7 @@ describe Qti::Models::Base do
       it 'raises if node count is more than 1' do
         expect do
           loaded_class.css_with_single_check(bad_css_path)
-        end.to raise_error
+        end.to raise_error(Qti::ParseError)
       end
 
       it 'doesn\'t raise with a single node count' do

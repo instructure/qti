@@ -6,10 +6,10 @@ module Qti
     module Models
       module Interactions
         class LogicalIdentifierInteraction < Qti::V1::Models::Base
-          NODE_NAME = 'response_lid'.freeze
+          @node_name = 'response_lid'.freeze
           # This will know if a class matches
           def self.matches(node)
-            matches = node.children.children.select { |n| n.name == NODE_NAME }
+            matches = node.children.children.select { |n| n.name == @node_name }
             return false if matches.empty?
 
             raise Qti::UnsupportedSchema if matches.size > 1

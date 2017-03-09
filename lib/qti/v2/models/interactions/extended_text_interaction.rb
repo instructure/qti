@@ -3,10 +3,10 @@ module Qti
     module Models
       module Interactions
         class ExtendedTextInteraction < Qti::V2::Models::Base
-          NODE_NAME = 'extendedTextInteraction'.freeze
+          @node_name = 'extendedTextInteraction'.freeze
           # This will know if a class matches
           def self.matches(node)
-            matches = node.children.filter(INTERACTION_ELEMENTS_CSS).select { |n| n.name == NODE_NAME }
+            matches = node.children.filter(INTERACTION_ELEMENTS_CSS).select { |n| n.name == @node_name }
             return false if matches.empty?
 
             raise Qti::UnsupportedSchema if matches.size > 1
