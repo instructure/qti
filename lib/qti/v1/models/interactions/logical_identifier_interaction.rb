@@ -1,6 +1,3 @@
-require 'qti/v1/models/base'
-require 'qti/v1/models/choices/logical_identifier_choice'
-
 module Qti
   module V1
     module Models
