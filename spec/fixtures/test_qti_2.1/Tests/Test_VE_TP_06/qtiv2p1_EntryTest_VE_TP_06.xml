@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentTest identifier="VE-TP-06"
+  title="QTI v2.1 Entry Profile Single Test/TestPart Instance with Single Section with 5 Items"
+  xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1 http://www.imsglobal.org/xsd/qti/qtiv2p1/imsqti_v2p1p2.xsd">
+  <outcomeDeclaration baseType="integer" cardinality="single" identifier="TOTAL_SCORE">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="float" cardinality="single" identifier="TOTAL_MAXSCORE">
+    <defaultValue>
+      <value>1</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="float" cardinality="single" identifier="TOTAL_MINSCORE">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="integer" cardinality="single" identifier="TOTAL_NUMBERINCORRECT">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="integer" cardinality="single" identifier="TOTAL_NUMBERCORRECT">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="integer" cardinality="single" identifier="TOTAL_NUMBERPRESENTED">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="integer" cardinality="single" identifier="SECTION_NUMBERSELECTED">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="integer" cardinality="single" identifier="TOTAL_NUMBERRESPONDED">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="integer" cardinality="single" identifier="SECTION_SCORE">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="float" cardinality="single" identifier="SECTION_MAXSCORE">
+    <defaultValue>
+      <value>1</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="float" cardinality="single" identifier="SECTION_MINSCORE">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="integer" cardinality="single" identifier="SECTION_NUMBERINCORRECT">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="integer" cardinality="single" identifier="SECTION_NUMBERCORRECT">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="integer" cardinality="single" identifier="SECTION_NUMBERPRESENTED">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="integer" cardinality="single" identifier="TOTAL_NUMBERSELECTED">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <outcomeDeclaration baseType="integer" cardinality="single" identifier="SECTION_NUMBERRESPONDED">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <testPart identifier="VE-TP-06-TPRT-01" navigationMode="linear" submissionMode="individual">
+    <assessmentSection fixed="false" identifier="VE-SP-06"
+      keepTogether="true" required="false"
+      title="QTI v2.1 Entry Profile Single Section Instance with Multiple Items" visible="true">
+      <assessmentItemRef fixed="true"
+        href="../../Items/Item_VE_IP_01/qtiv2p1_EntryTest_VE_IP_01.xml"
+        identifier="VE-IP-01" required="true"/>
+      <assessmentItemRef fixed="true"
+        href="../../Items/Item_VE_IP_02/qtiv2p1_EntryTest_VE_IP_02.xml"
+        identifier="VE-IP-02" required="true"/>
+      <assessmentItemRef fixed="true"
+        href="../../Items/Item_VE_IP_03/qtiv2p1_EntryTest_VE_IP_03.xml"
+        identifier="VE-IP-03" required="true"/>
+      <assessmentItemRef fixed="true"
+        href="../../Items/Item_VE_IP_04/qtiv2p1_EntryTest_VE_IP_04.xml"
+        identifier="VE-IP-04" required="true"/>
+      <assessmentItemRef fixed="true"
+        href="../../Items/Item_VE_IP_05/qtiv2p1_EntryTest_VE_IP_05.xml"
+        identifier="VE-IP-05" required="true"/>
+    </assessmentSection>
+  </testPart>
+  <outcomeProcessing>
+    <setOutcomeValue identifier="TOTAL_SCORE">
+      <sum>
+        <testVariables variableIdentifier="SCORE"/>
+      </sum>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="TOTAL_MAXSCORE">
+      <sum>
+        <outcomeMaximum outcomeIdentifier="SCORE"/>
+      </sum>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="TOTAL_MINSCORE">
+      <sum>
+        <outcomeMinimum outcomeIdentifier="SCORE"/>
+      </sum>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="TOTAL_NUMBERINCORRECT">
+      <numberIncorrect/>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="TOTAL_NUMBERCORRECT">
+      <numberCorrect/>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="TOTAL_NUMBERRESPONDED">
+      <numberResponded/>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="TOTAL_NUMBERSELECTED">
+      <numberSelected/>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="TOTAL_NUMBERPRESENTED">
+      <numberPresented/>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="SECTION_SCORE">
+      <sum>
+        <testVariables sectionIdentifier="VE-SP-06" variableIdentifier="SCORE"/>
+      </sum>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="SECTION_MAXSCORE">
+      <sum>
+        <outcomeMaximum outcomeIdentifier="SCORE" sectionIdentifier="VE-SP-06"/>
+      </sum>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="SECTION_MINSCORE">
+      <sum>
+        <outcomeMinimum outcomeIdentifier="SCORE" sectionIdentifier="VE-SP-06"/>
+      </sum>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="SECTION_NUMBERINCORRECT">
+      <numberIncorrect sectionIdentifier="VE-SP-06"/>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="SECTION_NUMBERCORRECT">
+      <numberCorrect sectionIdentifier="VE-SP-06"/>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="SECTION_NUMBERRESPONDED">
+      <numberResponded sectionIdentifier="VE-SP-06"/>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="SECTION_NUMBERSELECTED">
+      <numberSelected sectionIdentifier="VE-SP-06"/>
+    </setOutcomeValue>
+    <setOutcomeValue identifier="SECTION_NUMBERPRESENTED">
+      <numberPresented sectionIdentifier="VE-SP-06"/>
+    </setOutcomeValue>
+  </outcomeProcessing>
+</assessmentTest>
+<!-- ************************************************************************************************** -->
+<!--                                                                                                    -->
+<!-- Authors:       Colin Smythe    (IMS Global, UK)                                                    -->
+<!-- Version:       1.0                                                                                 -->
+<!-- Date:          28th March, 2014                                                                    -->
+<!--                                                                                                    -->
+<!-- Description:   Test File (Valid) for the QTIv2.1 Level Profile.                                    -->
+<!--                This is the single APIP Test/TestPart/Section with reference to the five questions. -->
+<!--                All compliant systems should import this QTI Test XML.                              -->
+<!--                                                                                                    -->
+<!-- History:       First formal release.                                                               -->
+<!--                                                                                                    -->
+<!-- Copyright:     2014 (c) IMS Global Learning Consortium 1999-2014. All Rights Reserved.             -->
+<!--                                                                                                    -->
+<!--                Use of this example to develop products or services is governed by the license with -->
+<!--                IMS found on the IMS website: http://www.imsglobal.org/license.html.                -->
+<!--                                                                                                    -->
+<!--                Permission is granted to all parties to use excerpts from this document as needed   -->
+<!--                in producing requests for proposals.                                                -->
+<!--                                                                                                    -->
+<!--                The limited permissions granted above are perpetual and will not be revoked by IMS  -->
+<!--                or its successors or assigns.                                                       -->
+<!--                                                                                                    -->
+<!--                THIS EXAMPLE IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR,   -->
+<!--                ANY WARRANTY OF NONINFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS SPECIFICA- -->
+<!--                TION SHALL BE MADE ENTIRELY AT THE IMPLEMENTERS OWN RISK, AND NEITHER THE CONSORTI- -->
+<!--                UM NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY -->
+<!--                IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR    -->
+<!--                INDIRECTLY, ARISING FROM THE USE OF THIS SPECIFICATION.                             -->
+<!--                                                                                                    -->
+<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->

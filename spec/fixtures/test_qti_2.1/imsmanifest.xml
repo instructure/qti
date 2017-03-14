@@ -1,211 +1,264 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<manifest xmlns="http://www.imsglobal.org/xsd/imscp_v1p1"
-    xmlns:imsmd="http://ltsc.ieee.org/xsd/LOM"
-    xmlns:imsqti="http://www.imsglobal.org/xsd/imsqti_v2p2"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1 http://www.imsglobal.org/xsd/qti/qtiv2p2/qtiv2p2_imscpv1p2_v1p0.xsd
-                        http://ltsc.ieee.org/xsd/LOM http://www.imsglobal.org/xsd/imsmd_loose_v1p3p2.xsd 
-                        http://www.imsglobal.org/xsd/imsqti_metadata_v2p2 http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_metadata_v2p2.xsd" 
-    identifier="kjhlkh5646">
-    <metadata>
-        <schema>QTIv2.2 Package</schema>
-        <schemaversion>1.0.0</schemaversion>
-        <imsmd:lom>
-            <imsmd:general>
-                <imsmd:identifier><imsmd:entry>FB-02</imsmd:entry></imsmd:identifier>
-                <imsmd:title>
-                    <imsmd:string language="en">Simple Feedback Test</imsmd:string>
-                </imsmd:title>
-                <imsmd:language>en</imsmd:language>
-                <imsmd:description>
-                    <imsmd:string language="en">Feedback examples which don't use template processing. We still have modal, feedbackBlack, feedbackInline and adaptive with interactions in feedbackBlocks</imsmd:string>
-                </imsmd:description>
-                <imsmd:keyword>
-                    <imsmd:string language="en">feedback</imsmd:string>
-                </imsmd:keyword>
-                <imsmd:keyword>
-                    <imsmd:string language="en">modal</imsmd:string>
-                </imsmd:keyword>
-                <imsmd:keyword>
-                    <imsmd:string language="en">test</imsmd:string>
-                </imsmd:keyword>
-                <imsmd:keyword>
-                    <imsmd:string language="en">inline</imsmd:string>
-                </imsmd:keyword>
-                <imsmd:keyword>
-                    <imsmd:string language="en">block</imsmd:string>
-                </imsmd:keyword>
-            </imsmd:general>
-            <imsmd:lifeCycle>
-                <imsmd:contribute>
-                    <imsmd:role>
-                        <imsmd:source>LOMv1.0</imsmd:source>
-                        <imsmd:value>Creator</imsmd:value>
-                    </imsmd:role>
-                    <imsmd:entity>
-                        BEGIN:VCARD FN:Sue Milne   END:VCARD
-                    </imsmd:entity>
-                    <imsmd:date>
-                        <imsmd:dateTime>2012-05-18</imsmd:dateTime>
-                        <imsmd:description>
-                            <imsmd:string language="en"/>
-                        </imsmd:description>
-                    </imsmd:date>
-                </imsmd:contribute>
-                <imsmd:contribute>
-                    <imsmd:role>
-                        <imsmd:source>LOMv1.0</imsmd:source>
-                        <imsmd:value>Editor</imsmd:value>
-                    </imsmd:role>
-                    <imsmd:entity>
-                        BEGIN:VCARD FN:FETLAR END:VCARD
-                    </imsmd:entity>
-                    <imsmd:date>
-                        <imsmd:dateTime>2012-05-18</imsmd:dateTime>
-                        <imsmd:description>
-                            <imsmd:string language="en"/>
-                        </imsmd:description>
-                    </imsmd:date>
-                </imsmd:contribute>
-            </imsmd:lifeCycle>
-            <imsmd:metaMetadata>
-                <imsmd:identifier><imsmd:entry>urn:www.fetlar.ac.uk:dbf602fa-6357-4f11-8c9c-29181f4d2934</imsmd:entry></imsmd:identifier>
-                <imsmd:contribute>
-                    <imsmd:role>
-                        <imsmd:source>LOMv1.0</imsmd:source>
-                        <imsmd:value>Creator</imsmd:value>
-                    </imsmd:role>
-                    <imsmd:entity>
-                        BEGIN:VCARD FN:FETLAR END:VCARD
-                    </imsmd:entity>
-                </imsmd:contribute>
-                <imsmd:metadataschema>LOMv1.0</imsmd:metadataschema>
-                <imsmd:metadataschema>JORUMv1.0</imsmd:metadataschema>
-                <imsmd:language>en</imsmd:language>
-            </imsmd:metaMetadata>
-            <imsmd:technical>
-                <imsmd:format>text/x-imsqti-test-xml</imsmd:format>
-                <imsmd:size>34311</imsmd:size>
-                <imsmd:location/>
-                <imsmd:otherPlatformRequirements>
-                    <imsmd:string language="en">QTIv2.2</imsmd:string>
-                </imsmd:otherPlatformRequirements>
-            </imsmd:technical>
-            <imsmd:educational>
-                <imsmd:learningResourceType>
-                    <imsmd:source>RDNLTSNType</imsmd:source>
-                    <imsmd:value>ExaminationTest</imsmd:value>
-                </imsmd:learningResourceType>
-                <imsmd:context>
-                    <imsmd:source>LOMv1.0</imsmd:source>
-                    <imsmd:value>higher education</imsmd:value>
-                </imsmd:context>
-                <imsmd:description>
-                    <imsmd:string>A test</imsmd:string>
-                </imsmd:description>
-                <imsmd:language>en</imsmd:language>
-            </imsmd:educational>
-            <imsmd:rights>
-                <imsmd:copyrightAndOtherRestrictions>
-                    <imsmd:source>LOMv1.0</imsmd:source>
-                    <imsmd:value>yes</imsmd:value>
-                </imsmd:copyrightAndOtherRestrictions>
-                <imsmd:description>
-                    <imsmd:string language="en">{{CC-URL}}</imsmd:string>
-                </imsmd:description>
-            </imsmd:rights>
-            <imsmd:classification>
-                <imsmd:purpose>
-                    <imsmd:source>LOMv1.0</imsmd:source>
-                    <imsmd:value>Discipline</imsmd:value>
-                </imsmd:purpose>
-                <imsmd:taxonPath>
-                    <imsmd:source><imsmd:string>jacs</imsmd:string></imsmd:source>
-                    <imsmd:taxon>
-                        <imsmd:id>G1</imsmd:id>
-                        <imsmd:entry>
-                            <imsmd:string language="en">Mathematics</imsmd:string>
-                        </imsmd:entry>
-                    </imsmd:taxon>
-                </imsmd:taxonPath>
-            </imsmd:classification>
-            <imsmd:classification>
-                <imsmd:purpose>
-                    <imsmd:source>LOMv1.0</imsmd:source>
-                    <imsmd:value>Educational Level</imsmd:value>
-                </imsmd:purpose>
-                <imsmd:taxonPath>
-                    <imsmd:source><imsmd:string>UKEL</imsmd:string></imsmd:source>
-                    <imsmd:taxon>
-                        <imsmd:id>ukel10</imsmd:id>
-                        <imsmd:entry>
-                            <imsmd:string language="en">UK Educational Level 10</imsmd:string>
-                        </imsmd:entry>
-                    </imsmd:taxon>
-                </imsmd:taxonPath>
-            </imsmd:classification>
-        </imsmd:lom>
-    </metadata>
-    <organizations />
-    <resources>
-        <resource href="assessment.xml" type="imsqti_test_xmlv2p2" identifier="TEST">
-            <file href="assessment.xml"/>
-            <dependency identifierref="id-53a79b001624"/>
-            <dependency identifierref="id-b0dd9e732083"/>
-            <dependency identifierref="id-a360e0fa63e6"/>
-            <dependency identifierref="id-692fc07cc3e2"/>
-        </resource>
-        <resource href="id-53a79b001624/Example01-modalFeedback.xml" type="imsqti_item_xmlv2p2"
-            identifier="id-53a79b001624">
-            <metadata>
-                <imsmd:lom>
-                    <imsmd:general>
-                        <imsmd:description>
-                            <imsmd:string language="en">This question is an XML file imported into Spectatus.</imsmd:string>
-                        </imsmd:description>
-                    </imsmd:general>
-                </imsmd:lom>
-            </metadata>
-            <file href="id-53a79b001624/Example01-modalFeedback.xml"/>
-        </resource>
-        <resource href="id-b0dd9e732083/Example02-feedbackInline.xml" type="imsqti_item_xmlv2p2"
-            identifier="id-b0dd9e732083">
-            <metadata>
-                <imsmd:lom>
-                    <imsmd:general>
-                        <imsmd:description>
-                            <imsmd:string language="en">This question is an XML file imported into Spectatus.</imsmd:string>
-                        </imsmd:description>
-                    </imsmd:general>
-                </imsmd:lom>
-            </metadata>
-            <file href="id-b0dd9e732083/Example02-feedbackInline.xml"/>
-        </resource>
-        <resource href="id-a360e0fa63e6/Example03-feedbackBlock-solution.xml"
-            type="imsqti_item_xmlv2p2" identifier="id-a360e0fa63e6">
-            <metadata>
-                <imsmd:lom>
-                    <imsmd:general>
-                        <imsmd:description>
-                            <imsmd:string language="en">This question is an XML file imported into Spectatus.</imsmd:string>
-                        </imsmd:description>
-                    </imsmd:general>
-                </imsmd:lom>
-            </metadata>
-            <file href="id-a360e0fa63e6/Example03-feedbackBlock-solution.xml"/>
-        </resource>
-        <resource href="id-692fc07cc3e2/Example05-feedbackBlock-adaptive.xml"
-            type="imsqti_item_xmlv2p2" identifier="id-692fc07cc3e2">
-            <metadata>
-                <imsmd:lom>
-                    <imsmd:general>
-                        <imsmd:description>
-                            <imsmd:string language="en">This question is an XML file imported into Spectatus.</imsmd:string>
-                        </imsmd:description>
-                    </imsmd:general>
-                </imsmd:lom>
-            </metadata>
-            <file href="id-692fc07cc3e2/Example05-feedbackBlock-adaptive.xml"/>
-        </resource>
-    </resources>
+<?xml version="1.0" encoding="utf-8"?>
+<manifest identifier="Manifest_qtiv2p1_EntryTest_VE_TP_06"
+  xmlns="http://www.imsglobal.org/xsd/imscp_v1p1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM http://www.imsglobal.org/xsd/imsmd_loose_v1p3p2.xsd http://www.imsglobal.org/xsd/imsqti_metadata_v2p1 http://www.imsglobal.org/xsd/qti/qtiv2p1/imsqti_metadata_v2p1p1.xsd http://www.imsglobal.org/xsd/imscp_v1p1 http://www.imsglobal.org/xsd/qti/qtiv2p1/qtiv2p1_imscpv1p2_v1p0.xsd">
+  <metadata>
+    <schema>QTIv2.1 Package</schema>
+    <schemaversion>1.0.0</schemaversion>
+    <lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+      <educational>
+        <learningResourceType>
+          <source>QTIv2.1</source>
+          <value>QTI Package</value>
+        </learningResourceType>
+      </educational>
+      <general>
+        <identifier>
+          <entry>Manifest_qtiv2p1_EntryTest_VE_TP_06</entry>
+        </identifier>
+        <title>
+          <string>QTI 2.1 Entry Level Compliance Test: VE_TP_06</string>
+        </title>
+      </general>
+      <lifeCycle>
+        <contribute/>
+        <version>
+          <string>Final 1.0</string>
+        </version>
+      </lifeCycle>
+      <rights>
+        <copyrightAndOtherRestrictions>
+          <source>LOMv1.0</source>
+          <value>yes</value>
+        </copyrightAndOtherRestrictions>
+        <description>
+          <string>2013 IMS Global Learning Consortium Inc.</string>
+        </description>
+      </rights>
+    </lom>
+  </metadata>
+  <organizations/>
+  <resources>
+    <resource href="Tests/Test_VE_TP_06/qtiv2p1_EntryTest_VE_TP_06.xml"
+      identifier="ResourceTest" type="imsqti_test_xmlv2p1">
+      <metadata>
+        <lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+          <general>
+            <identifier>
+              <entry>VE_TP_06</entry>
+            </identifier>
+            <title/>
+          </general>
+          <lifeCycle>
+            <contribute/>
+            <version>
+              <string>Final 1.0</string>
+            </version>
+          </lifeCycle>
+          <educational>
+            <description>
+              <string>Test containing a single Section with five Items: T/F, MC/SR, MC/MR, FIB and Essay questions</string>
+            </description>
+          </educational>
+          <qtiMetadata xmlns="http://www.imsglobal.org/xsd/imsqti_metadata_v2p1">
+            <interactionType>choiceInteraction</interactionType>
+            <interactionType>textEntryInteraction</interactionType>
+            <interactionType>extendedTextInteraction</interactionType>
+            <feedbackType>none</feedbackType>
+            <solutionAvailable>false</solutionAvailable>
+          </qtiMetadata>
+        </lom>
+      </metadata>
+      <file href="Tests/Test_VE_TP_06/qtiv2p1_EntryTest_VE_TP_06.xml"/>
+    </resource>
+    <resource href="Items/Item_VE_IP_01/qtiv2p1_EntryTest_VE_IP_01.xml"
+      identifier="ResourceItem01" type="imsqti_item_xmlv2p1">
+      <metadata>
+        <lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+          <general>
+            <identifier>
+              <entry>VE_IP_01</entry>
+            </identifier>
+            <title/>
+          </general>
+          <lifeCycle>
+            <contribute/>
+            <version>
+              <string>Final 1.0</string>
+            </version>
+          </lifeCycle>
+          <educational>
+            <description>
+              <string>The T/F Question.</string>
+            </description>
+          </educational>
+          <qtiMetadata xmlns="http://www.imsglobal.org/xsd/imsqti_metadata_v2p1">
+            <interactionType>choiceInteraction</interactionType>
+            <feedbackType>none</feedbackType>
+            <solutionAvailable>false</solutionAvailable>
+          </qtiMetadata>
+        </lom>
+      </metadata>
+      <file href="Items/Item_VE_IP_01/qtiv2p1_EntryTest_VE_IP_01.xml"/>
+    </resource>
+    <resource href="Items/Item_VE_IP_02/qtiv2p1_EntryTest_VE_IP_02.xml"
+      identifier="ResourceItem02" type="imsqti_item_xmlv2p1">
+      <metadata>
+        <lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+          <general>
+            <identifier>
+              <entry>VE_IP_02</entry>
+            </identifier>
+            <title/>
+          </general>
+          <lifeCycle>
+            <contribute/>
+            <version>
+              <string>Final 1.0</string>
+            </version>
+          </lifeCycle>
+          <educational>
+            <description>
+              <string>The MC/SR Question.</string>
+            </description>
+          </educational>
+          <qtiMetadata xmlns="http://www.imsglobal.org/xsd/imsqti_metadata_v2p1">
+            <interactionType>choiceInteraction</interactionType>
+            <feedbackType>none</feedbackType>
+            <solutionAvailable>false</solutionAvailable>
+          </qtiMetadata>
+        </lom>
+      </metadata>
+      <file href="Items/Item_VE_IP_02/qtiv2p1_EntryTest_VE_IP_02.xml"/>
+      <file href="Items/Item_VE_IP_02/apip_VE_IP_02.css"/>
+      <file href="Items/Item_VE_IP_02/apip_VE_IP_02.svg"/>
+    </resource>
+    <resource href="Items/Item_VE_IP_03/qtiv2p1_EntryTest_VE_IP_03.xml"
+      identifier="ResourceItem03" type="imsqti_item_xmlv2p1">
+      <metadata>
+        <lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+          <general>
+            <identifier>
+              <entry>VE_IP_03</entry>
+            </identifier>
+            <title/>
+          </general>
+          <lifeCycle>
+            <contribute/>
+            <version>
+              <string>Final 1.0</string>
+            </version>
+          </lifeCycle>
+          <educational>
+            <description>
+              <string>The MC/MR Question.</string>
+            </description>
+          </educational>
+          <qtiMetadata xmlns="http://www.imsglobal.org/xsd/imsqti_metadata_v2p1">
+            <interactionType>choiceInteraction</interactionType>
+            <feedbackType>none</feedbackType>
+            <solutionAvailable>false</solutionAvailable>
+          </qtiMetadata>
+        </lom>
+      </metadata>
+      <file href="Items/Item_VE_IP_03/qtiv2p1_EntryTest_VE_IP_03.xml"/>
+    </resource>
+    <resource href="Items/Item_VE_IP_04/qtiv2p1_EntryTest_VE_IP_04.xml"
+      identifier="ResourceItem04" type="imsqti_item_xmlv2p1">
+      <metadata>
+        <lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+          <general>
+            <identifier>
+              <entry>VE_IP_04</entry>
+            </identifier>
+            <title/>
+          </general>
+          <lifeCycle>
+            <contribute/>
+            <version>
+              <string>Final 1.0</string>
+            </version>
+          </lifeCycle>
+          <educational>
+            <description>
+              <string>The FIB Question.</string>
+            </description>
+          </educational>
+          <qtiMetadata xmlns="http://www.imsglobal.org/xsd/imsqti_metadata_v2p1">
+            <interactionType>textEntryInteraction</interactionType>
+            <feedbackType>none</feedbackType>
+            <solutionAvailable>false</solutionAvailable>
+          </qtiMetadata>
+        </lom>
+      </metadata>
+      <file href="Items/Item_VE_IP_04/qtiv2p1_EntryTest_VE_IP_04.xml"/>
+    </resource>
+    <resource href="Items/Item_VE_IP_05/qtiv2p1_EntryTest_VE_IP_05.xml"
+      identifier="ResourceItem05" type="imsqti_item_xmlv2p1">
+      <metadata>
+        <lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+          <general>
+            <identifier>
+              <entry>VE_IP_05</entry>
+            </identifier>
+            <title/>
+          </general>
+          <lifeCycle>
+            <contribute/>
+            <version>
+              <string>Final 1.0</string>
+            </version>
+          </lifeCycle>
+          <educational>
+            <description>
+              <string>The Essay Question.</string>
+            </description>
+          </educational>
+          <qtiMetadata xmlns="http://www.imsglobal.org/xsd/imsqti_metadata_v2p1">
+            <interactionType>extendedTextInteraction</interactionType>
+            <feedbackType>none</feedbackType>
+            <solutionAvailable>false</solutionAvailable>
+          </qtiMetadata>
+        </lom>
+      </metadata>
+      <file href="Items/Item_VE_IP_05/qtiv2p1_EntryTest_VE_IP_05.xml"/>
+      <file href="Items/Item_VE_IP_05/apip_VE_IP_05_croc.png"/>
+      <file href="Items/Item_VE_IP_05/apip_VE_IP_05_title.png"/>
+      <file href="Items/Item_VE_IP_05/apip_VE_IP_05_flamingos.png"/>
+    </resource>
+  </resources>
 </manifest>
+<!-- ************************************************************************************************** -->
+<!--                                                                                                    -->
+<!-- Authors:       Tom Hoffmann    (Measured Progress, USA)                                            -->
+<!--                Zach Pierce     (Measured progress, USA)                                            -->
+<!--                Colin Smythe    (IMS Global, UK)                                                    -->
+<!--                Wilbert Kraan   (CETIS, UK)                                                         -->
+<!-- Version:       1.0                                                                                 -->
+<!-- Date:          28 March, 2014                                                                      -->
+<!--                                                                                                    -->
+<!-- Description:   Manifest for the Test File (Valid) for the QTIv2.1 Entry Level Profile              -->
+<!--                Manifest for the 'VE-TP-06' test example.                                           -->
+<!--                All compliant systems should import this manifest.                                  -->
+<!--                                                                                                    -->
+<!-- History:       First formal release.                                                               -->
+<!--                                                                                                    -->
+<!-- Copyright:     2014 (c) IMS Global Learning Consortium 1999-2014. All Rights Reserved.             -->
+<!--                                                                                                    -->
+<!--                Use of this example to develop products or services is governed by the license with -->
+<!--                IMS found on the IMS website: http://www.imsglobal.org/license.html.                -->
+<!--                                                                                                    -->
+<!--                Permission is granted to all parties to use excerpts from this document as needed   -->
+<!--                in producing requests for proposals.                                                -->
+<!--                                                                                                    -->
+<!--                The limited permissions granted above are perpetual and will not be revoked by IMS  -->
+<!--                or its successors or assigns.                                                       -->
+<!--                                                                                                    -->
+<!--                THIS EXAMPLE IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR,   -->
+<!--                ANY WARRANTY OF NONINFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS SPECIFICA- -->
+<!--                TION SHALL BE MADE ENTIRELY AT THE IMPLEMENTERS OWN RISK, AND NEITHER THE CONSORTI- -->
+<!--                UM NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY -->
+<!--                IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR    -->
+<!--                INDIRECTLY, ARISING FROM THE USE OF THIS SPECIFICATION.                             -->
+<!--                                                                                                    -->
+<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->

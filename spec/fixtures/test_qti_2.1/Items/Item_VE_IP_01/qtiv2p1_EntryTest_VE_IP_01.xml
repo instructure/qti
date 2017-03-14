@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<assessmentItem adaptive="false" identifier="VE-IP-01"
+  timeDependent="false"
+  title="QTI v2.1 Entry Profile Single T/F Item Test Instance"
+  xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1 http://www.imsglobal.org/xsd/qti/qtiv2p1/imsqti_v2p1p2.xsd">
+  <responseDeclaration baseType="identifier" cardinality="single" identifier="RESPONSE">
+    <correctResponse>
+      <value>true</value>
+    </correctResponse>
+  </responseDeclaration>
+  <outcomeDeclaration baseType="float" cardinality="single"
+    identifier="SCORE" normalMaximum="1" normalMinimum="0">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <itemBody id="content5">
+    <p id="content2">Answer the following question.</p>
+    <choiceInteraction id="content1" maxChoices="1" minChoices="0"
+      responseIdentifier="RESPONSE" shuffle="false">
+      <prompt id="content6">Sigmund Freud and Carl Jung both belong to the psychoanalytic school of psychology.</prompt>
+      <simpleChoice fixed="true" id="content8" identifier="true" showHide="show">
+        <p id="content7">True</p>
+      </simpleChoice>
+      <simpleChoice fixed="true" id="content4" identifier="false" showHide="show">
+        <p id="content3">False</p>
+      </simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+  <responseProcessing template="http://www.imsglobal.org/question/qti_v2p1/rptemplates/match_correct"/>
+</assessmentItem>
+<!-- ************************************************************************************************** -->
+<!--                                                                                                    -->
+<!-- Authors:       Tom Hoffmann    (Measured Progress, USA)                                            -->
+<!--                Zach Pierce     (Measured progress, USA)                                            -->
+<!--                Colin Smythe    (IMS Global, UK)                                                    -->
+<!--                Wilbert Kraan   (CETIS, UK)                                                         -->
+<!-- Version:       1.0                                                                                 -->
+<!-- Date:          28 March, 2013                                                                      -->
+<!--                                                                                                    -->
+<!-- Description:   Test File (Valid) for the QTIv2.1 Entry Level Profile (QTI only data).              -->
+<!--                This is the single QTI Item with a Choice Interaction to create a T/F question      -->
+<!--                with embedded response processing.                                                  -->
+<!--                All compliant systems should import this QTI Item XML.                              -->
+<!--                                                                                                    -->
+<!-- History:       First formal release.                                                               -->
+<!--                                                                                                    -->
+<!-- Copyright:     2014 (c) IMS Global Learning Consortium 1999-2014. All Rights Reserved.             -->
+<!--                                                                                                    -->
+<!--                Use of this example to develop products or services is governed by the license with -->
+<!--                IMS found on the IMS website: http://www.imsglobal.org/license.html.                -->
+<!--                                                                                                    -->
+<!--                Permission is granted to all parties to use excerpts from this document as needed   -->
+<!--                in producing requests for proposals.                                                -->
+<!--                                                                                                    -->
+<!--                The limited permissions granted above are perpetual and will not be revoked by IMS  -->
+<!--                or its successors or assigns.                                                       -->
+<!--                                                                                                    -->
+<!--                THIS EXAMPLE IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR,   -->
+<!--                ANY WARRANTY OF NONINFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS SPECIFICA- -->
+<!--                TION SHALL BE MADE ENTIRELY AT THE IMPLEMENTERS OWN RISK, AND NEITHER THE CONSORTI- -->
+<!--                UM NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY -->
+<!--                IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR    -->
+<!--                INDIRECTLY, ARISING FROM THE USE OF THIS SPECIFICATION.                             -->
+<!--                                                                                                    -->
+<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->

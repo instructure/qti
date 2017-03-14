@@ -3,8 +3,8 @@ require 'spec_helper'
 fixtures_path = File.join('spec', 'fixtures')
 
 describe Qti::V2::Models::AssessmentTest do
-  context 'test_qti_2.1' do
-    let(:path) { File.join(fixtures_path, 'test_qti_2.1', 'assessment.xml') }
+  context 'test_qti_2.2' do
+    let(:path) { File.join(fixtures_path, 'test_qti_2.2', 'assessment.xml') }
     let(:loaded_class) { described_class.from_path!(path) }
 
     it 'loads an AssessmentTest XML file' do

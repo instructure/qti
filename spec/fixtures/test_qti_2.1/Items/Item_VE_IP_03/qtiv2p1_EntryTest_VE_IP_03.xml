@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<assessmentItem adaptive="false" identifier="VE-IP-03"
+  timeDependent="false"
+  title="QTI v2.1 Entry Profile Single MC/MR Item Test Instance"
+  xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1 http://www.imsglobal.org/xsd/qti/qtiv2p1/imsqti_v2p1p2.xsd">
+  <responseDeclaration baseType="identifier" cardinality="multiple" identifier="RESPONSE">
+    <correctResponse>
+      <value>option1</value>
+      <value>option2</value>
+      <value>option4</value>
+    </correctResponse>
+    <mapping defaultValue="-2" lowerBound="0" upperBound="3">
+      <mapEntry mapKey="option1" mappedValue="1"/>
+      <mapEntry mapKey="option2" mappedValue="1"/>
+      <mapEntry mapKey="option3" mappedValue="-1"/>
+      <mapEntry mapKey="option4" mappedValue="1"/>
+      <mapEntry mapKey="option5" mappedValue="-1"/>
+    </mapping>
+  </responseDeclaration>
+  <outcomeDeclaration baseType="float" cardinality="single" identifier="SCORE"/>
+  <itemBody id="theWholeItem">
+    <p id="p1">
+      <span id="a">Ms. Smith's class contains 24 students. </span>
+      <span id="b">Each student voted for his or her favorite color. </span>
+      <span id="c">The result of the class vote is shown </span>
+      <span id="z">in the table below.</span>
+    </p>
+    <table id="table001">
+      <caption id="d">Results of the Class Vote</caption>
+      <tbody>
+        <tr id="columnheadings">
+          <td id="th001">
+            <span id="e">Color</span>
+          </td>
+          <td id="th002">
+            <span id="f">Number of Students</span>
+          </td>
+        </tr>
+        <tr id="u">
+          <td id="td001">
+            <span id="g">Red</span>
+          </td>
+          <td id="td002">
+            <span id="h">12</span>
+          </td>
+        </tr>
+        <tr id="v">
+          <td id="td003">
+            <span id="i">Blue</span>
+          </td>
+          <td id="td004">
+            <span id="j">6</span>
+          </td>
+        </tr>
+        <tr id="w">
+          <td id="td005">
+            <span id="k">Green</span>
+          </td>
+          <td id="td006">
+            <span id="l">4</span>
+          </td>
+        </tr>
+        <tr id="x">
+          <td id="td007">
+            <span id="m">Yellow</span>
+          </td>
+          <td id="td008">
+            <span id="n">2</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <choiceInteraction maxChoices="5" responseIdentifier="RESPONSE" shuffle="false">
+      <prompt id="o">Indicate which of the following statements are accurate.</prompt>
+      <simpleChoice fixed="true" identifier="option1">
+        <p id="p">The majority of students voted for Red.</p>
+      </simpleChoice>
+      <simpleChoice fixed="true" identifier="option2">
+        <p id="q">Twice as many students voted for Red a voted for Blue.</p>
+      </simpleChoice>
+      <simpleChoice fixed="true" identifier="option3">
+        <p id="r">Two percent of students voted for Yellow.</p>
+      </simpleChoice>
+      <simpleChoice fixed="true" identifier="option4">
+        <p id="s">Red received more votes than any other color.</p>
+      </simpleChoice>
+      <simpleChoice fixed="true" identifier="option5">
+        <p id="t">Twenty-five percent of students voted for Green.</p>
+      </simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+  <responseProcessing template="http://www.imsglobal.org/question/qti_v2p1/rptemplates/map_response"/>
+</assessmentItem>
+<!-- ************************************************************************************************** -->
+<!--                                                                                                    -->
+<!-- Authors:       Tom Hoffmann    (Measured Progress, USA)                                            -->
+<!--                Zach Pierce     (Measured progress, USA)                                            -->
+<!--                Colin Smythe    (IMS Global, UK)                                                    -->
+<!--                Wilbert Kraan   (CETIS, UK)                                                         -->
+<!-- Version:       1.0                                                                                 -->
+<!-- Date:          28 March, 2014                                                                      -->
+<!--                                                                                                    -->
+<!-- Description:   Test File (Valid) for the QTIv2.1 Entry Level Profile                               -->
+<!--                This is the single QTI Item with a Choice Interaction to create a MC/MR question    -->
+<!--                with embedded response processing.                                                  -->
+<!--                All compliant systems should import this QTI Item XML.                              -->
+<!--                                                                                                    -->
+<!-- History:       First formal release.                                                               -->
+<!--                                                                                                    -->
+<!-- Copyright:     2014 (c) IMS Global Learning Consortium 1999-2014. All Rights Reserved.             -->
+<!--                                                                                                    -->
+<!--                Use of this example to develop products or services is governed by the license with -->
+<!--                IMS found on the IMS website: http://www.imsglobal.org/license.html.                -->
+<!--                                                                                                    -->
+<!--                Permission is granted to all parties to use excerpts from this document as needed   -->
+<!--                in producing requests for proposals.                                                -->
+<!--                                                                                                    -->
+<!--                The limited permissions granted above are perpetual and will not be revoked by IMS  -->
+<!--                or its successors or assigns.                                                       -->
+<!--                                                                                                    -->
+<!--                THIS EXAMPLE IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR,   -->
+<!--                ANY WARRANTY OF NONINFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS SPECIFICA- -->
+<!--                TION SHALL BE MADE ENTIRELY AT THE IMPLEMENTERS OWN RISK, AND NEITHER THE CONSORTI- -->
+<!--                UM NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY -->
+<!--                IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR    -->
+<!--                INDIRECTLY, ARISING FROM THE USE OF THIS SPECIFICATION.                             -->
+<!--                                                                                                    -->
+<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<assessmentItem adaptive="false" identifier="VE-IP-05"
+  timeDependent="false"
+  title="QTI v2.1 Entry Profile Single Essay Item Test Instance"
+  xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1 http://www.imsglobal.org/xsd/qti/qtiv2p1/imsqti_v2p1p2.xsd">
+  <responseDeclaration baseType="string" cardinality="single" identifier="RESPONSE"/>
+  <outcomeDeclaration baseType="float" cardinality="single"
+    identifier="SCORE" normalMaximum="0.1" normalMinimum="0">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <itemBody>
+    <div>
+      <img
+        alt="Picture of a door opening to a hallway. A person's shadow is cast on the door and hallway."
+        height="210" id="content4" src="apip_VE_IP_05_title.png" width="400"/>
+    </div>
+    <p class="passageTitle" id="content18">
+      <strong id="content11">An Unbelievable Night</strong>
+    </p>
+    <p class="authorLine" id="content20">by Franz Hohler</p>
+    <p id="content6">Anina was ten years old, so even half asleep she could find her way from
+            her room to the bathroom. The door to her room was usually open a crack, and the
+            nightlight in the hallway made it light enough to get to the bathroom past the telephone
+            stand.</p>
+    <p id="content17">One night, as she passed the telephone stand on her way to the bathroom,
+            Anina heard something that sounded like a quiet hissing. But, because she was half
+            asleep, she didn’t really pay any attention to it. Anyway, it came from pretty far away.
+            Not until she was on her way back to her room did she see where it came from. Under the
+            telephone stand there was a large pile of old newspapers and magazines, and this pile
+            now began to move. That was where the noise was coming from. All of a sudden the pile
+            started to fall over — right, left, forwards, backwards — then there were newspapers and
+            magazines all over the floor.</p>
+    <p id="content21">Anina could not believe her eyes as she watched a grunting and snorting
+            crocodile come out from under the telephone stand.</p>
+    <p id="content1">Anina was frozen to the spot. Her eyes wide as saucers, she watched the
+            crocodile crawl completely out of the newspapers and slowly look around the apartment.
+            It seemed to have just come out of the water because its whole body was dripping wet.
+            Wherever the crocodile stepped, the carpet under it became drenched.</p>
+    <div>
+      <img
+        alt="Picture of a crocodile with mouth open in a wet hallway. Magazines are strewn over the floor."
+        height="364" id="content9" src="apip_VE_IP_05_croc.png" width="400"/>
+    </div>
+    <p id="content5">The crocodile moved its head back and forth letting out a loud hissing
+            sound. Anina swallowed hard, looking at the crocodile’s snout with its terribly long row
+            of teeth. It swung its tail slowly back and forth. Anina had read about that in “Animal
+            Magazine”— how the crocodile whips the water with its tail to chase away or attack its
+            enemies.</p>
+    <p id="content13">Her gaze fell on the last issue of “Animal Magazine,” which had fallen
+            from the pile and was lying at her feet. She got another shock. The cover of the
+            magazine used to have a picture of a big crocodile on a river bank. The river bank was
+            now empty!</p>
+    <p id="content3">Anina bent down and picked up the magazine. At that moment the crocodile
+            whipped his tail so hard that he cracked the big vase of sunflowers on the floor and the
+            sunflowers scattered everywhere. With a quick jump Anina was in her bedroom. She slammed
+            the door shut, grabbed her bed and pushed it up against the door. She had built a
+            barricade that would keep her safe from the crocodile. Relieved, she let her breath out.
+            But then she hesitated. What if the beast was simply hungry? Maybe to make the crocodile
+            go away you had to give it something to eat?</p>
+    <p id="content2">Anina looked again at the animal magazine. If the crocodile could crawl out
+            of a picture then perhaps other animals could too. Anina hastily flipped through the
+            magazine and stopped at a swarm of flamingos in a jungle swamp. Just right, she thought.
+            They look like a birthday cake for crocodiles.</p>
+    <p id="content10">Suddenly there was a loud crack and the tip of the crocodile’s tail pushed
+            through the splintered door. Quickly, Anina held the picture of the flamingos up to the
+            hole in the door and called as loud as she could, “Get out of the swamp! Shoo! Shoo!”
+            Then she threw the magazine through the hole into the hallway, clapped her hands and
+            yelled and screamed.</p>
+    <p id="content12">She could hardly believe what happened next. The entire hallway was
+            suddenly filled with screeching flamingos wildly flapping their wings and running around
+            all over the place on their long, skinny legs. Anina saw one bird with a sunflower in
+            its beak and another grabbing her mother’s hat from its hook. She also saw a flamingo
+            disappear into the croc0dile’s mouth. With two quick bites he swallowed the flamingo and
+            quickly followed it with another, the one with the sunflower in its beak.</p>
+    <div>
+      <img
+        alt="Four flamingos are walking out of an open magazine photograph."
+        height="252" id="content16" src="apip_VE_IP_05_flamingos.png" width="300"/>
+    </div>
+    <p id="content15">After two portions of flamingo the crocodile seemed to have had enough and
+            lay down contentedly in the middle of the hallway. When he had closed his eyes and no
+            longer moved, Anina quietly opened her door and slipped through it into the hallway. She
+            placed the empty magazine cover in front of the crocodile's nose. “Please,” she
+            whispered, “please go back home.” She crept back into the bedroom and looked through the
+            hole in the door. She saw the crocodile back on the cover of the magazine.</p>
+    <p id="content14">She now went cautiously into the living room where the flamingos were
+            crowded around the sofa and standing on the television. Anina opened the magazine to the
+            page with the empty picture. “Thank you,” she said, “thank you very much. You may now go
+            back to your swamp.”</p>
+    <p id="content8">In the morning, it was very difficult for her to explain the giant wet spot
+            on the floor and the broken door to her parents. They weren’t convinced about the
+            crocodile even though her mother’s hat was nowhere to be found.</p>
+    <p class="passageCredit" id="content19">Adapted from Eine Wilde Nacht in Der Große Zwerg und
+            Andere Geschichten by Franz Hohler. Published 2003 by Deutscher Taschenbuch Verlag,
+            Munchen, Germany. Illustrations by Thomas Hoffmann.</p>
+    <extendedTextInteraction expectedLength="300" expectedLines="4"
+      format="plain" id="eti1" responseIdentifier="RESPONSE">
+      <prompt id="prompt">Why did Anina call the flamingos?</prompt>
+    </extendedTextInteraction>
+  </itemBody>
+</assessmentItem>
+<!-- ************************************************************************************************** -->
+<!--                                                                                                    -->
+<!-- Authors:       Tom Hoffmann    (Measured Progress, USA)                                            -->
+<!--                Zach Pierce     (Measured progress, USA)                                            -->
+<!--                Colin Smythe    (IMS Global, UK)                                                    -->
+<!--                Wilbert Kraan   (CETIS, UK)                                                         -->
+<!-- Version:       1.0                                                                                 -->
+<!-- Date:          28 March, 2014                                                                      -->
+<!--                                                                                                    -->
+<!-- Description:   Test File (Valid) for the QTIv2.1 Entry Level Profile                               -->
+<!--                This is the single QTI Item with an Extended Text Interaction to create an essay    -->
+<!--                question with external scoring.                                                     -->
+<!--                All compliant systems should import this QTI Item XML.                              -->
+<!--                                                                                                    -->
+<!-- History:       First formal release.                                                               -->
+<!--                                                                                                    -->
+<!-- Copyright:     2014 (c) IMS Global Learning Consortium 1999-2014. All Rights Reserved.             -->
+<!--                                                                                                    -->
+<!--                Use of this example to develop products or services is governed by the license with -->
+<!--                IMS found on the IMS website: http://www.imsglobal.org/license.html.                -->
+<!--                                                                                                    -->
+<!--                Permission is granted to all parties to use excerpts from this document as needed   -->
+<!--                in producing requests for proposals.                                                -->
+<!--                                                                                                    -->
+<!--                The limited permissions granted above are perpetual and will not be revoked by IMS  -->
+<!--                or its successors or assigns.                                                       -->
+<!--                                                                                                    -->
+<!--                THIS EXAMPLE IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR,   -->
+<!--                ANY WARRANTY OF NONINFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS SPECIFICA- -->
+<!--                TION SHALL BE MADE ENTIRELY AT THE IMPLEMENTERS OWN RISK, AND NEITHER THE CONSORTI- -->
+<!--                UM NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY -->
+<!--                IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR    -->
+<!--                INDIRECTLY, ARISING FROM THE USE OF THIS SPECIFICATION.                             -->
+<!--                                                                                                    -->
+<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->

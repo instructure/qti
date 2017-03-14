@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<assessmentItem adaptive="false" identifier="VE-IP-04"
+  timeDependent="false"
+  title="QTI v2.1 Entry Profile Single FIB Item Test Instance"
+  xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1 http://www.imsglobal.org/xsd/qti/qtiv2p1/imsqti_v2p1p2.xsd">
+  <responseDeclaration baseType="string" cardinality="single" identifier="RESPONSE">
+    <correctResponse>
+      <value>Lake Michigan</value>
+    </correctResponse>
+    <mapping defaultValue="0">
+      <mapEntry mapKey="Lake Michigan" mappedValue="1"/>
+      <mapEntry mapKey="lake michigan" mappedValue="1"/>
+      <mapEntry mapKey="lake Michigan" mappedValue="1"/>
+      <mapEntry mapKey="Lake michigan" mappedValue="1"/>
+      <mapEntry mapKey="Michigan" mappedValue="0.5"/>
+      <mapEntry mapKey="michigan" mappedValue="0.5"/>
+    </mapping>
+  </responseDeclaration>
+  <outcomeDeclaration baseType="float" cardinality="single"
+    identifier="SCORE" normalMaximum="1" normalMinimum="0">
+    <defaultValue>
+      <value>0.0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <itemBody>
+    <p id="stem_1">Canada and the United States share 4 out of the 5 Great Lakes in central North America.</p>
+    <p id="prompt_1">Which lake is entirely within the boundaries of the United States?</p>
+    <p id="response_1">Type your answer here: <textEntryInteraction
+        expectedLength="15" responseIdentifier="RESPONSE"/>
+    </p>
+  </itemBody>
+  <responseProcessing template="http://www.imsglobal.org/question/qti_v2p1/rptemplates/map_response"/>
+</assessmentItem>
+<!-- ************************************************************************************************** -->
+<!--                                                                                                    -->
+<!-- Authors:       Tom Hoffmann    (Measured Progress, USA)                                            -->
+<!--                Zach Pierce     (Measured progress, USA)                                            -->
+<!--                Colin Smythe    (IMS Global, UK)                                                    -->
+<!--                Wilbert Kraan   (CETIS, UK)                                                         -->
+<!-- Version:       1.0                                                                                 -->
+<!-- Date:          28 March, 2013                                                                      -->
+<!--                                                                                                    -->
+<!-- Description:   Test File (Valid) for the QTIv2.1 Entry Level Profile                               -->
+<!--                This is the single QTI Item with a Text Entry Interaction to create a FIB question  -->
+<!--                with embedded response processing.                                                  -->
+<!--                All compliant systems should import this QTI Item XML.                              -->
+<!--                                                                                                    -->
+<!-- History:       First formal release.                                                               -->
+<!--                                                                                                    -->
+<!-- Copyright:     2014 (c) IMS Global Learning Consortium 1999-2014. All Rights Reserved.             -->
+<!--                                                                                                    -->
+<!--                Use of this example to develop products or services is governed by the license with -->
+<!--                IMS found on the IMS website: http://www.imsglobal.org/license.html.                -->
+<!--                                                                                                    -->
+<!--                Permission is granted to all parties to use excerpts from this document as needed   -->
+<!--                in producing requests for proposals.                                                -->
+<!--                                                                                                    -->
+<!--                The limited permissions granted above are perpetual and will not be revoked by IMS  -->
+<!--                or its successors or assigns.                                                       -->
+<!--                                                                                                    -->
+<!--                THIS EXAMPLE IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR,   -->
+<!--                ANY WARRANTY OF NONINFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS SPECIFICA- -->
+<!--                TION SHALL BE MADE ENTIRELY AT THE IMPLEMENTERS OWN RISK, AND NEITHER THE CONSORTI- -->
+<!--                UM NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY -->
+<!--                IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR    -->
+<!--                INDIRECTLY, ARISING FROM THE USE OF THIS SPECIFICATION.                             -->
+<!--                                                                                                    -->
+<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->

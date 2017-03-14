@@ -1,0 +1,38 @@
+#div1 { position:relative; height:170px; } 
+#labelA { 	
+     font-size: 16pt;
+     font-family:Verdana, Geneva, sans-serif;
+     font-style:italic;
+     position:absolute;
+     left:44px;
+     top:144px;
+     z-index:2;
+} 
+#labelB { 	
+     font-size: 16pt;
+     font-family:Verdana, Geneva, sans-serif; 
+     font-style:italic;
+     position:absolute;
+     left:44px;
+     top:4px;
+     z-index:3;
+} 
+#labelC {
+     font-size: 16pt;
+     font-family:Verdana, Geneva, sans-serif;
+     font-style:italic;
+     position:absolute;
+     left:268px;
+     top:4px;
+     z-index:4;
+} 
+#labelD {
+     font-size: 16pt;
+     font-family:Verdana, Geneva, sans-serif; 
+     font-style:italic;
+     position:absolute;
+     left:268px;
+     top:144px;
+     z-index:5;
+} 
+#figure1 { position:absolute; left:40px; z-index:1; }

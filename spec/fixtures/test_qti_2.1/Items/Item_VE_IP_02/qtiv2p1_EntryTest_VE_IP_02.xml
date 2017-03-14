@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<assessmentItem adaptive="false" identifier="VE-IP-02"
+  timeDependent="false"
+  title="QTI v2.1 Entry Profile Single MC/SR Item Test Instance"
+  xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1998/Math/MathML http://www.w3.org/Math/XMLSchema/mathml2/mathml2.xsd http://www.imsglobal.org/xsd/imsqti_v2p1 http://www.imsglobal.org/xsd/qti/qtiv2p1/imsqti_v2p1p2.xsd">
+  <responseDeclaration baseType="identifier" cardinality="single" identifier="RESPONSE">
+    <correctResponse>
+      <value>D</value>
+    </correctResponse>
+  </responseDeclaration>
+  <outcomeDeclaration baseType="float" cardinality="single"
+    identifier="SCORE" normalMaximum="1" normalMinimum="0">
+    <defaultValue>
+      <value>0</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <stylesheet href="apip_VE_IP_02.css" type="text/css"/>
+  <itemBody>
+    <div id="div1">
+      <img
+        alt="Figure showing Rectangle ABCD divided into 12 equal boxes. 4 of the boxes are shaded."
+        height="165" id="figure1" src="apip_VE_IP_02.svg" width="250"/>
+      <span id="labelA">A</span>
+      <span id="labelB">B</span>
+      <span id="labelC">C</span>
+      <span id="labelD">D</span>
+    </div>
+    <choiceInteraction id="choicereduction" maxChoices="1"
+      responseIdentifier="RESPONSE" shuffle="false">
+      <prompt id="prompt">In the figure above, what fraction of the rectangle <em>ABCD</em> is
+                shaded?</prompt>
+      <simpleChoice fixed="true" identifier="A">
+        <p id="p2">
+          <math id="r1" xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+              <mn>1</mn>
+              <mn>6</mn>
+            </mfrac>
+          </math>
+        </p>
+      </simpleChoice>
+      <simpleChoice fixed="true" identifier="B">
+        <p id="p3">
+          <math id="r2" xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+              <mn>1</mn>
+              <mn>5</mn>
+            </mfrac>
+          </math>
+        </p>
+      </simpleChoice>
+      <simpleChoice fixed="true" identifier="C">
+        <p id="p4">
+          <math id="r3" xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+              <mn>1</mn>
+              <mn>4</mn>
+            </mfrac>
+          </math>
+        </p>
+      </simpleChoice>
+      <simpleChoice fixed="true" identifier="D">
+        <p id="p5">
+          <math id="r4" xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+              <mn>1</mn>
+              <mn>3</mn>
+            </mfrac>
+          </math>
+        </p>
+      </simpleChoice>
+      <simpleChoice fixed="true" identifier="E">
+        <p id="p6">
+          <math id="r5" xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+              <mn>1</mn>
+              <mn>2</mn>
+            </mfrac>
+          </math>
+        </p>
+      </simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+  <responseProcessing template="http://www.imsglobal.org/question/qti_v2p1/rptemplates/match_correct"/>
+</assessmentItem>
+<!-- ************************************************************************************************** -->
+<!--                                                                                                    -->
+<!-- Authors:       Tom Hoffmann    (Measured Progress, USA)                                            -->
+<!--                Zach Pierce     (Measured progress, USA)                                            -->
+<!--                Colin Smythe    (IMS Global, UK)                                                    -->
+<!--                Wilbert Kraan   (CETIS, UK)                                                         -->
+<!-- Version:       1.0                                                                                 -->
+<!-- Date:          28 March, 2014                                                                      -->
+<!--                                                                                                    -->
+<!-- Description:   Test File (Valid) for the QTIv2.1 Entry Level Profile                               -->
+<!--                This is the single QTI Item with a Choice Interaction to create a MC/SR question    -->
+<!--                with embedded response processing.                                                  -->
+<!--                All compliant systems should import this QTI Item XML.                              -->
+<!--                                                                                                    -->
+<!-- History:       First formal release.                                                               -->
+<!--                                                                                                    -->
+<!-- Copyright:     2014 (c) IMS Global Learning Consortium 1999-2014. All Rights Reserved.             -->
+<!--                                                                                                    -->
+<!--                Use of this example to develop products or services is governed by the license with -->
+<!--                IMS found on the IMS website: http://www.imsglobal.org/license.html.                -->
+<!--                                                                                                    -->
+<!--                Permission is granted to all parties to use excerpts from this document as needed   -->
+<!--                in producing requests for proposals.                                                -->
+<!--                                                                                                    -->
+<!--                The limited permissions granted above are perpetual and will not be revoked by IMS  -->
+<!--                or its successors or assigns.                                                       -->
+<!--                                                                                                    -->
+<!--                THIS EXAMPLE IS BEING OFFERED WITHOUT ANY WARRANTY WHATSOEVER, AND IN PARTICULAR,   -->
+<!--                ANY WARRANTY OF NONINFRINGEMENT IS EXPRESSLY DISCLAIMED. ANY USE OF THIS SPECIFICA- -->
+<!--                TION SHALL BE MADE ENTIRELY AT THE IMPLEMENTERS OWN RISK, AND NEITHER THE CONSORTI- -->
+<!--                UM NOR ANY OF ITS MEMBERS OR SUBMITTERS, SHALL HAVE ANY LIABILITY WHATSOEVER TO ANY -->
+<!--                IMPLEMENTER OR THIRD PARTY FOR ANY DAMAGES OF ANY NATURE WHATSOEVER, DIRECTLY OR    -->
+<!--                INDIRECTLY, ARISING FROM THE USE OF THIS SPECIFICATION.                             -->
+<!--                                                                                                    -->
+<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->

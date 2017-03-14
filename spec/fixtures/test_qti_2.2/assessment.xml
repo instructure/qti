@@ -30,6 +30,8 @@
                 href="text-entry/text-entry.xml"/>
             <assessmentItemRef identifier="true-false"
                 href="true-false/true-false.xml"/>
+            <assessmentItemRef identifier="essay"
+                href="essay/essay.xml"/>
         </assessmentSection>
     </testPart>
     <outcomeProcessing>

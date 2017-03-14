@@ -29,7 +29,7 @@ describe Qti::Importer do
   end
 
   context 'QTI 2.1' do
-    let(:file_path) { File.join(fixtures_path, 'test_qti_2.1') }
+    let(:file_path) { File.join(fixtures_path, 'test_qti_2.2') }
     let(:assessment_model) { Qti::V1::Models::AssessmentTest }
 
     include_examples 'initialize'

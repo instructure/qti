@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Qti::Models::Base do
   let(:loaded_class) do
-    path = File.join('spec', 'fixtures', 'test_qti_2.1', 'assessment.xml')
+    path = File.join('spec', 'fixtures', 'test_qti_2.2', 'assessment.xml')
     described_class.from_path!(path)
   end
 
