@@ -1,0 +1,85 @@
+<?xml version = "1.0" encoding = "UTF-8" standalone = "no"?>
+<!DOCTYPE questestinterop SYSTEM "ims_qtiasiv1p2.dtd" [
+<!-- This is an IMS test extension for OBJECT rendering.	-->
+<!ELEMENT ims_render_object (flow_label+)>
+<!ATTLIST ims_render_object
+		shuffle (Yes|No) 'No'
+		orientation (Row|Column) #REQUIRED >
+]>
+
+<!-- Author:	Colin Smythe	     					-->
+
+<!-- Date:	22nd January, 2002     					-->
+
+<!-- Version 1.2 Compliant Example: BasicExample009b	-->
+
+<!-- Basic Example with response processing.			-->
+<questestinterop>
+	<qticomment>This is a standard ordering of a list of words. Ordered response processing is demonstrated.</qticomment>  
+	<item title = "Standard Object Ordering of text Item" ident = "IMS_V01_I_BasicExample009b">    
+		<presentation label = "BasicExample009b">
+			<flow>
+				<material>        
+					<mattext>What is the correct order for the days of the week ?</mattext>      
+				</material>
+				<response_lid ident = "OB01" rcardinality = "Ordered" rtiming = "No"> 
+					<render_extension>       
+						<ims_render_object shuffle = "No" orientation = "Row">
+							<flow_label>
+								<response_label ident = "A"> 
+									<material>
+										<mattext>Monday</mattext>
+									</material>        
+								</response_label>
+								<response_label ident = "B"> 
+									<material>
+										<mattext>Tuesday</mattext>
+									</material>        
+								</response_label>
+								<response_label ident = "C"> 
+									<material>
+										<mattext>Friday</mattext>
+									</material>        
+								</response_label>
+								<response_label ident = "D"> 
+									<material>
+										<mattext>Thursday</mattext>
+									</material>        
+								</response_label>
+								<response_label ident = "E"> 
+									<material>
+										<mattext>Wednesday</mattext>
+									</material>        
+								</response_label>
+							</flow_label>                                        
+						</ims_render_object>
+					</render_extension>
+				</response_lid>
+			</flow>            
+		</presentation>
+		<resprocessing>
+			<outcomes>
+				<decvar varname = "ORDERSCORE" vartype = "Integer" defaultval = "1"/>
+			</outcomes>
+			<respcondition>
+				<qticomment>Scoring for the correct answer where the order is important.</qticomment>
+				<conditionvar>
+					<varequal respident = "OB01">A</varequal>
+					<varequal respident = "OB01">B</varequal>
+					<varequal respident = "OB01">E</varequal>
+					<varequal respident = "OB01">D</varequal>
+					<varequal respident = "OB01">C</varequal>
+				</conditionvar>
+				<setvar action = "Add" varname = "SCORE1"> 5 </setvar>
+				<displayfeedback feedbacktype = "Response" linkrefid = "Correct"/>
+			</respcondition>
+		</resprocessing>
+		<itemfeedback ident = "Correct" view = "Candidate">
+			<flow_mat>
+				<material>
+					<mattext>Yes, the correct order.</mattext>
+				</material>
+			</flow_mat>
+		</itemfeedback>
+	</item>
+</questestinterop>

@@ -26,10 +26,20 @@ describe Qti::V1::Models::AssessmentItem do
       expect(loaded_class.points_possible).to eq '0'
     end
 
-    it 'grabs the rcardinality and scoring data value' do
-      struct = loaded_class.send(:scoring_data_structs)
-      expect(struct.first.values).to eq 'QUE_1005_A1'
-      expect(struct.first.rcardinality).to eq 'Single'
+    describe '#scoring_data_structs' do
+      it 'grabs the rcardinality and scoring data value' do
+        struct = loaded_class.send(:scoring_data_structs)
+        expect(struct.first.values).to eq 'QUE_1005_A1'
+        expect(struct.first.rcardinality).to eq 'Single'
+      end
+
+      it 'grabs scoring data value for ordering questions' do
+        doc = Nokogiri.XML(File.read('spec/fixtures/items_1.2/ordering.xml'), &:noblanks)
+        item = doc.at_xpath('//item')
+
+        assessment_item = described_class.new(item)
+        expect(assessment_item.scoring_data_structs.count).to eq 5
+      end
     end
 
     it 'has the identifier used to identify it in manifest/test files' do

@@ -3,14 +3,11 @@ module Qti
     module Models
       module Interactions
         class LogicalIdentifierInteraction < Qti::V1::Models::Base
-          @node_name = 'response_lid'.freeze
           # This will know if a class matches
           def self.matches(node)
-            matches = node.children.children.select { |n| n.name == @node_name }
-            return false if matches.empty?
-
-            raise Qti::UnsupportedSchema if matches.size > 1
-            new(matches.first)
+            match = node.at_xpath('//response_lid')
+            return false unless match.present?
+            new(match)
           end
 
           def initialize(node)

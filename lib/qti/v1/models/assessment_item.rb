@@ -5,6 +5,8 @@ module Qti
   module V1
     module Models
       class AssessmentItem < Qti::V1::Models::Base
+        attr_reader :doc
+
         ScoringData = Struct.new(:values, :rcardinality)
 
         def initialize(item)
@@ -14,7 +16,8 @@ module Qti
         def item_body
           @item_body ||= begin
             node = @doc.dup
-            prompt = node.at_xpath('./presentation/material/mattext').content
+            presentation = node.at_xpath('./presentation')
+            prompt = presentation.at_xpath('//material/mattext').content
             sanitize_content!(prompt)
           end
         end
@@ -44,17 +47,26 @@ module Qti
         end
 
         def scoring_data_structs
-          @scoring_data_structs ||= begin
-            rcardinality = @doc.at_xpath('//response_lid/@rcardinality').value
-
-            choice_nodes = @doc.xpath('.//respcondition')
-            value_nodes = []
-            # We need to find an action of Set or Add greater than 0 bc there is no correct answer tag
-            choice_nodes.each do |choice_node|
-              value_nodes << choice_node if choice_node.at_xpath('.//setvar').content.to_f.positive?
+          @scoring_data_structs ||=
+            if ordering?
+              scoring_data_structs_for_ordering
+            else
+              choice_nodes = doc.xpath('//respcondition')
+              choice_nodes.select { |choice_node| choice_node.at_xpath('.//setvar').content.to_f.positive? }
+                          .map { |value_node| ScoringData.new(value_node.at_xpath('//varequal').content, rcardinality) }
             end
-            value_nodes.map { |value_node| ScoringData.new(value_node.at_xpath('//varequal').content, rcardinality) }
+        end
+
+        private
+
+        def scoring_data_structs_for_ordering
+          @doc.xpath('//conditionvar/varequal').map do |value_node|
+            ScoringData.new(value_node.content, rcardinality)
           end
+        end
+
+        def ordering?
+          rcardinality == 'Ordered'
         end
       end
     end
