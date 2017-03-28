@@ -51,13 +51,17 @@ module Qti
             if ordering?
               scoring_data_structs_for_ordering
             else
-              choice_nodes = doc.xpath('//respcondition')
-              choice_nodes.select { |choice_node| choice_node.at_xpath('.//setvar').content.to_f.positive? }
-                          .map { |value_node| ScoringData.new(value_node.at_xpath('//varequal').content, rcardinality) }
+              default_scoring_data_structs
             end
         end
 
         private
+
+        def default_scoring_data_structs
+          choice_nodes = doc.xpath('.//respcondition')
+          choice_nodes.select { |choice_node| choice_node.at_xpath('.//setvar').content.to_f.positive? }
+                      .map { |value_node| ScoringData.new(value_node.at_xpath('.//varequal').content, rcardinality) }
+        end
 
         def scoring_data_structs_for_ordering
           @doc.xpath('//conditionvar/varequal').map do |value_node|

@@ -15,7 +15,7 @@ module Qti
             result << match if match
           end
 
-          raise V1::UnsupportedSchema if matches.size > 1
+          raise UnsupportedSchema if matches.size > 1
 
           matches.first
         end

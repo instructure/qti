@@ -5,7 +5,7 @@ module Qti
         class LogicalIdentifierInteraction < Qti::V1::Models::Base
           # This will know if a class matches
           def self.matches(node)
-            match = node.at_xpath('//response_lid')
+            match = node.at_xpath('.//response_lid')
             return false unless match.present?
             new(match)
           end

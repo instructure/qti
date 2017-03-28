@@ -29,7 +29,7 @@ describe Qti::V1::Models::AssessmentItem do
     describe '#scoring_data_structs' do
       it 'grabs the rcardinality and scoring data value' do
         struct = loaded_class.send(:scoring_data_structs)
-        expect(struct.first.values).to eq 'QUE_1005_A1'
+        expect(struct.first.values).to eq 'QUE_1006_A2'
         expect(struct.first.rcardinality).to eq 'Single'
       end
 

@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Qti::Importer do
-
   let(:fixtures_path) { File.join('spec', 'fixtures') }
   let(:importer) { Qti::Importer.new(file_path) }
   let(:manifest_path) { File.join(file_path, 'imsmanifest.xml') }
@@ -26,6 +25,16 @@ describe Qti::Importer do
 
     include_examples 'initialize'
     include_examples 'unsupported QTI version'
+
+    describe '#create_assessment_item' do
+      it 'create items with correct scoring structs' do
+        assessment = importer.test_object
+        assessment_items = importer.assessment_item_refs.map{ |ref| importer.create_assessment_item(ref) }
+        expect(assessment_items.count).to eq 3
+        answer_arity = assessment_items.map{|item| item.scoring_data_structs.count }
+        expect(answer_arity).to eq [1, 1, 4]
+      end
+    end
   end
 
   context 'QTI 2.1' do
