@@ -26,7 +26,7 @@
 		</organization>
 	</organizations>
 	<resources>
-		<resource identifier="RESOURCE1" type="imsqti_xmlv1p1" href="quiz.xml">
+		<resource identifier="RESOURCE1" type="imsqti_xmlv1p2" href="quiz.xml">
 			<file href="quiz.xml" />
 			<file href="contact info.png" />
 			<file href="image.png" />
