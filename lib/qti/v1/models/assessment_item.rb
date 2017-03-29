@@ -64,9 +64,8 @@ module Qti
         end
 
         def scoring_data_structs_for_ordering
-          @doc.xpath('//conditionvar/varequal').map do |value_node|
-            ScoringData.new(value_node.content, rcardinality)
-          end
+          correct_order = @doc.xpath('.//conditionvar/varequal').map{|node| node.content }
+          [ScoringData.new(correct_order, rcardinality)]
         end
 
         def ordering?

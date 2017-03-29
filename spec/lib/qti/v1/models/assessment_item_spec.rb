@@ -34,11 +34,10 @@ describe Qti::V1::Models::AssessmentItem do
       end
 
       it 'grabs scoring data value for ordering questions' do
-        doc = Nokogiri.XML(File.read('spec/fixtures/items_1.2/ordering.xml'), &:noblanks)
-        item = doc.at_xpath('//item')
-
-        assessment_item = described_class.new(item)
-        expect(assessment_item.scoring_data_structs.count).to eq 5
+        assessment = Qti::V1::Models::Assessment.from_path! 'spec/fixtures/items_1.2/ordering.xml'
+        assessment_item = described_class.new(assessment.assessment_items.first)
+        expect(assessment_item.scoring_data_structs.count).to eq 1
+        expect(assessment_item.scoring_data_structs.first.values).to eq ['A', 'B', 'E', 'D', 'C']
       end
     end
 
