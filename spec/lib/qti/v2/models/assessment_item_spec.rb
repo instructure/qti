@@ -64,4 +64,28 @@ describe Qti::V2::Models::AssessmentItem do
       end
     end
   end
+
+  describe '#scoring_data_structs' do
+    it 'grabs scoring data value for matching questions' do
+      assessment_item = Qti::V2::Models::AssessmentItem.from_path! 'spec/fixtures/items_2.1/match.xml'
+      expect(assessment_item.interaction_model).to be_instance_of Qti::V2::Models::Interactions::MatchInteraction
+      expect(assessment_item.scoring_data_structs.first.values).to eq(
+        'C' => 'Romeo and Juliet',
+        'D' => "A Midsummer-Night's Dream",
+        'L' => "A Midsummer-Night's Dream",
+        'P' => 'The Tempest'
+      )
+      expect(assessment_item.interaction_model.questions).to eq(
+        [{ id: 'C', question_body: 'Capulet' },
+         { id: 'D', question_body: 'Demetrius' },
+         { id: 'L', question_body: 'Lysander' },
+         { id: 'P', question_body: 'Prospero' }]
+      )
+      expect(assessment_item.interaction_model.answers.map(&:item_body)).to eq(
+        ["A Midsummer-Night's Dream",
+         'Romeo and Juliet',
+         'The Tempest']
+      )
+    end
+  end
 end

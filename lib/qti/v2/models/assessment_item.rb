@@ -39,16 +39,12 @@ module Qti
 
         def interaction_model
           @interaction_model ||= begin
-            V2::Models::Interactions.interaction_model(item_body_node)
+            V2::Models::Interactions.interaction_model(@doc)
           end
         end
 
         def scoring_data_structs
-          @scoring_data_structs ||= begin
-            type = xpath_with_single_check('//xmlns:responseDeclaration/@baseType').content
-            value_nodes = @doc.xpath('//xmlns:responseDeclaration/xmlns:correctResponse/xmlns:value')
-            value_nodes.map { |value_node| ScoringData.new(value_node.content, type) }
-          end
+          @scoring_data_structs ||= interaction_model.scoring_data_structs
         end
 
         private

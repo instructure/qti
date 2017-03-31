@@ -2,7 +2,7 @@ module Qti
   module V2
     module Models
       module Interactions
-        class ExtendedTextInteraction < Qti::V2::Models::Base
+        class ExtendedTextInteraction < BaseInteraction
           @node_name = 'extendedTextInteraction'.freeze
           # This will know if a class matches
           def self.matches(node)
@@ -11,10 +11,6 @@ module Qti
 
             raise Qti::UnsupportedSchema if matches.size > 1
             new(matches.first)
-          end
-
-          def initialize(node)
-            @node = node
           end
 
           # not used yet

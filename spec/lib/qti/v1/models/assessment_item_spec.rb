@@ -37,7 +37,25 @@ describe Qti::V1::Models::AssessmentItem do
         assessment = Qti::V1::Models::Assessment.from_path! 'spec/fixtures/items_1.2/ordering.xml'
         assessment_item = described_class.new(assessment.assessment_items.first)
         expect(assessment_item.scoring_data_structs.count).to eq 1
-        expect(assessment_item.scoring_data_structs.first.values).to eq ['A', 'B', 'E', 'D', 'C']
+        expect(assessment_item.scoring_data_structs.first.values).to eq %w(A B E D C)
+      end
+
+      it 'grabs scoring data value for matching questions' do
+        assessment = Qti::V1::Models::Assessment.from_path! 'spec/fixtures/items_1.2/matching.xml'
+        assessment_item = described_class.new(assessment.assessment_items.first)
+        expect(assessment_item.interaction_model.questions).to eq(
+          [{ id: 'question_1', question_body: 'Light Microscope' },
+           { id: 'question_2', question_body: 'Electron Microscopes' }]
+        )
+        expect(assessment_item.scoring_data_structs.first.values).to eq(
+          'question_1' => 'Magnify up to about 400 times. Sometimes requires colored staining of cells.',
+          'question_2' => "Uses a beam of electrons. Can provide details of cells' internal structure."
+        )
+        expect(assessment_item.interaction_model.answers.map(&:item_body)).to eq(
+          ['Magnify up to about 400 times. Sometimes requires colored staining of cells.',
+           "Uses a beam of electrons. Can provide details of cells' internal structure.",
+           'A distractor answer.']
+        )
       end
     end
 
@@ -51,7 +69,7 @@ describe Qti::V1::Models::AssessmentItem do
 
     it 'loads the correct interaction model' do
       expect(loaded_class.interaction_model).to be_an_instance_of(
-        Qti::V1::Models::Interactions::LogicalIdentifierInteraction
+        Qti::V1::Models::Interactions::ChoiceInteraction
       )
     end
   end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Qti::V1::Models::Interactions::LogicalIdentifierInteraction do
+describe Qti::V1::Models::Interactions::ChoiceInteraction do
   context 'quiz.xml' do
     let(:fixtures_path) { File.join('spec', 'fixtures') }
     let(:file_path) { File.join(fixtures_path, 'test_qti_1.2', 'quiz.xml') }

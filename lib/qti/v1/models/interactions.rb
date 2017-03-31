@@ -14,9 +14,7 @@ module Qti
             match = interaction_class.matches(node)
             result << match if match
           end
-
-          raise UnsupportedSchema if matches.size > 1
-
+          raise UnsupportedSchema if matches.size != 1
           matches.first
         end
       end

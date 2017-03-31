@@ -7,8 +7,6 @@ module Qti
       class AssessmentItem < Qti::V1::Models::Base
         attr_reader :doc
 
-        ScoringData = Struct.new(:values, :rcardinality)
-
         def initialize(item)
           @doc = item
         end
@@ -47,29 +45,7 @@ module Qti
         end
 
         def scoring_data_structs
-          @scoring_data_structs ||=
-            if ordering?
-              scoring_data_structs_for_ordering
-            else
-              default_scoring_data_structs
-            end
-        end
-
-        private
-
-        def default_scoring_data_structs
-          choice_nodes = doc.xpath('.//respcondition')
-          choice_nodes.select { |choice_node| choice_node.at_xpath('.//setvar').content.to_f.positive? }
-                      .map { |value_node| ScoringData.new(value_node.at_xpath('.//varequal').content, rcardinality) }
-        end
-
-        def scoring_data_structs_for_ordering
-          correct_order = @doc.xpath('.//conditionvar/varequal').map{|node| node.content }
-          [ScoringData.new(correct_order, rcardinality)]
-        end
-
-        def ordering?
-          rcardinality == 'Ordered'
+          @scoring_data_structs ||= interaction_model.scoring_data_structs
         end
       end
     end
