@@ -6,7 +6,7 @@ module Qti
           attr_reader :node
 
           def self.matches(node)
-            matches = node.xpath('.//response_lid')
+            matches = node.xpath('.//xmlns:response_lid')
             return false if matches.count <= 1
             new(node)
           end
@@ -22,14 +22,14 @@ module Qti
           end
 
           def questions
-            node.xpath('.//response_lid').map do |lid_node|
-              question_body = lid_node.xpath('child::material//mattext').map(&:content).join '\n'
+            node.xpath('.//xmlns:response_lid').map do |lid_node|
+              question_body = lid_node.at_xpath('.//xmlns:mattext').text
               { id: lid_node.attributes['ident'].value, question_body: question_body }
             end
           end
 
           def scoring_data_structs
-            matches = node.xpath('.//conditionvar/varequal').map do |node|
+            matches = node.xpath('.//xmlns:varequal').map do |node|
               [node.attributes['respident'].value, answers_map[node.content]]
             end
             [Models::ScoringData.new(Hash[matches], rcardinality)]
@@ -46,7 +46,7 @@ module Qti
           def answer_nodes
             responses = []
             response_ids = {}
-            node.xpath('.//response_label').each do |answer_node|
+            node.xpath('.//xmlns:response_label').each do |answer_node|
               ident = answer_node.attributes['ident'].value
               responses << answer_node unless response_ids.key? ident
               response_ids[ident] = 1

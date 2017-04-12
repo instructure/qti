@@ -14,7 +14,7 @@ module Qti
           end
 
           def shuffled?
-            @node.at_xpath('.//render_choice/@shuffle')&.value == 'Yes'
+            @node.at_xpath('.//xmlns:render_choice/@shuffle')&.value == 'Yes'
           end
 
           def scoring_data_structs
@@ -24,7 +24,7 @@ module Qti
           private
 
           def rcardinality
-            @rcardinality ||= @node.at_xpath('.//response_lid/@rcardinality').value
+            @rcardinality ||= @node.at_xpath('.//xmlns:response_lid/@rcardinality').value
           end
         end
       end

@@ -14,8 +14,8 @@ module Qti
         def item_body
           @item_body ||= begin
             node = @doc.dup
-            presentation = node.at_xpath('./presentation')
-            prompt = presentation.at_xpath('//material/mattext').content
+            presentation = node.at_xpath('.//xmlns:presentation')
+            prompt = presentation.at_xpath('.//xmlns:mattext').content
             sanitize_content!(prompt)
           end
         end
@@ -30,12 +30,12 @@ module Qti
 
         def points_possible
           @points_possible ||= begin
-            @doc.at_xpath('.//decvar/@maxvalue')&.value || @doc.at_xpath('.//decvar/@defaultval')&.value
+            @doc.at_xpath('.//xmlns:decvar/@maxvalue')&.value || @doc.at_xpath('.//xmlns:decvar/@defaultval')&.value
           end
         end
 
         def rcardinality
-          @rcardinality ||= @doc.at_xpath('.//response_lid/@rcardinality').value
+          @rcardinality ||= @doc.at_xpath('.//xmlns:response_lid/@rcardinality').value
         end
 
         def interaction_model

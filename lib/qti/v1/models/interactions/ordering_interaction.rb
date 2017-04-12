@@ -5,14 +5,15 @@ module Qti
         class OrderingInteraction < ChoiceInteraction
           # This will know if a class matches
           def self.matches(node)
-            matches = node.xpath('.//response_lid')
-            rcardinality = matches.first.attributes['rcardinality'].value
-            return false if matches.count > 1 || rcardinality != 'Ordered'
+            matches = node.xpath('.//xmlns:response_lid')
+            return false if matches.count > 1  || matches.empty?
+            rcardinality = matches.first.attributes['rcardinality']&.value || 'Single'
+            return false if rcardinality != 'Ordered'
             new(node)
           end
 
           def scoring_data_structs
-            correct_order = node.xpath('.//conditionvar/varequal').map(&:content)
+            correct_order = node.xpath('.//xmlns:varequal').map(&:content)
             [ScoringData.new(correct_order, rcardinality)]
           end
         end

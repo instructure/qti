@@ -14,48 +14,48 @@
 <!-- Version 1.2 Compliant Example: BasicExample009b	-->
 
 <!-- Basic Example with response processing.			-->
-<questestinterop>
-	<qticomment>This is a standard ordering of a list of words. Ordered response processing is demonstrated.</qticomment>  
-	<item title = "Standard Object Ordering of text Item" ident = "IMS_V01_I_BasicExample009b">    
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+	<qticomment>This is a standard ordering of a list of words. Ordered response processing is demonstrated.</qticomment>
+	<item title = "Standard Object Ordering of text Item" ident = "IMS_V01_I_BasicExample009b">
 		<presentation label = "BasicExample009b">
 			<flow>
-				<material>        
-					<mattext>What is the correct order for the days of the week ?</mattext>      
+				<material>
+					<mattext>What is the correct order for the days of the week ?</mattext>
 				</material>
-				<response_lid ident = "OB01" rcardinality = "Ordered" rtiming = "No"> 
-					<render_extension>       
+				<response_lid ident = "OB01" rcardinality = "Ordered" rtiming = "No">
+					<render_extension>
 						<ims_render_object shuffle = "No" orientation = "Row">
 							<flow_label>
-								<response_label ident = "A"> 
+								<response_label ident = "A">
 									<material>
 										<mattext>Monday</mattext>
-									</material>        
+									</material>
 								</response_label>
-								<response_label ident = "B"> 
+								<response_label ident = "B">
 									<material>
 										<mattext>Tuesday</mattext>
-									</material>        
+									</material>
 								</response_label>
-								<response_label ident = "C"> 
+								<response_label ident = "C">
 									<material>
 										<mattext>Friday</mattext>
-									</material>        
+									</material>
 								</response_label>
-								<response_label ident = "D"> 
+								<response_label ident = "D">
 									<material>
 										<mattext>Thursday</mattext>
-									</material>        
+									</material>
 								</response_label>
-								<response_label ident = "E"> 
+								<response_label ident = "E">
 									<material>
 										<mattext>Wednesday</mattext>
-									</material>        
+									</material>
 								</response_label>
-							</flow_label>                                        
+							</flow_label>
 						</ims_render_object>
 					</render_extension>
 				</response_lid>
-			</flow>            
+			</flow>
 		</presentation>
 		<resprocessing>
 			<outcomes>

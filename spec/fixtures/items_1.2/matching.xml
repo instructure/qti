@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<questestinterop>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
   <item title="" ident="4772">
     <itemmetadata>
       <qtimetadata>
