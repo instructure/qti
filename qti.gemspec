@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'qti'
-  spec.version       = '0.2.14'
+  spec.version       = '0.2.15'
   spec.authors       = ['Hannah Bottalla', 'Robinson Rodríguez']
   spec.email         = ['hannah@instructure.com', 'rrodriguez-bd@instructure.com', 'quizzes@instructure.com']
   spec.summary       = %q(QTI 1.2 and 2.1 import and export models)

@@ -19,7 +19,7 @@
 		<p>
 			<img src="images/sign.png" alt="NEVER LEAVE LUGGAGE UNATTENDED"/>
 		</p>
-		<choiceInteraction responseIdentifier="RESPONSE" shuffle="false" maxChoices="1">
+		<choiceInteraction responseIdentifier="RESPONSE" shuffle="TRUE" maxChoices="1">
 			<prompt>What does it say?</prompt>
 			<simpleChoice identifier="ChoiceA">You must stay with your luggage at all times.</simpleChoice>
 			<simpleChoice identifier="ChoiceB">Do not let someone else look after your luggage.</simpleChoice>

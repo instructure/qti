@@ -8,7 +8,7 @@ describe Qti::V2::Models::Interactions::ChoiceInteraction do
     let(:loaded_class) { described_class.new(node) }
 
     it 'returns shuffle setting' do
-      expect(loaded_class.shuffled?).to eq false
+      expect(loaded_class.shuffled?).to eq true
     end
 
     it 'returns the max choices count' do

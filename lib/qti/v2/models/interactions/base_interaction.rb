@@ -14,7 +14,7 @@ module Qti
           end
 
           def shuffled?
-            @node.at_xpath('.//render_choice/@shuffle')&.value == 'Yes'
+            @node.attributes['shuffle']&.value.try(:downcase) == 'true'
           end
 
           def scoring_data_structs

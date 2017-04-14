@@ -7,6 +7,10 @@ describe Qti::V2::Models::Interactions::ExtendedTextInteraction do
 
     let(:loaded_class) { described_class.new(node) }
 
+    it 'returns shuffle setting' do
+      expect(loaded_class.shuffled?).to eq false
+    end
+
     it 'returns the expected lines' do
       expect(loaded_class.expected_lines).to eq 0
     end

@@ -16,10 +16,6 @@ module Qti
             @node = node
           end
 
-          def shuffled?
-            node.at_xpath('.//xmlns:render_choice/@shuffle')&.value == 'Yes'
-          end
-
           def answers
             @answers ||= answer_nodes.map do |node|
               V1::Models::Choices::LogicalIdentifierChoice.new(node)
