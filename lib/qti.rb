@@ -54,9 +54,11 @@ require 'qti/models/base'
 require 'qti/v1/models/base'
 require 'qti/v1/models/interactions/base_interaction'
 require 'qti/v1/models/interactions/choice_interaction'
+
 require 'qti/v1/models/assessment'
 require 'qti/v1/models/assessment_item'
 require 'qti/v1/models/choices/logical_identifier_choice'
+require 'qti/v1/models/choices/fill_blank_choice'
 require 'qti/v1/models/scoring_data'
 
 require 'qti/v2/models/base'

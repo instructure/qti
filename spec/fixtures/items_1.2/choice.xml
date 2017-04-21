@@ -204,52 +204,6 @@
           </respcondition>
         </resprocessing>
       </item>
-      <item ident="i25e12fe33ac9d91ff208923796f83d0a" title="Question">
-        <presentation>
-          <material>
-            <mattext texttype="text/html">First color of the rainbow?</mattext>
-          </material>
-          <response_str ident="response1" rcardinality="Single">
-            <render_fib>
-              <response_label ident="answer1" rshuffle="No"/>
-            </render_fib>
-          </response_str>
-        </presentation>
-        <resprocessing>
-          <outcomes>
-            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
-          </outcomes>
-          <respcondition continue="No">
-            <conditionvar>
-              <varequal respident="response1">Red</varequal>
-            </conditionvar>
-            <setvar action="Set" varname="SCORE">100</setvar>
-          </respcondition>
-        </resprocessing>
-      </item>
-      <item ident="i8c4f92444b901b000087b00d84c3e36c" title="FIB Numeric (Decimal)">
-        <presentation>
-          <material>
-            <mattext texttype="text/html">Give the value of PI to three decimal places and round up.</mattext>
-          </material>
-          <response_num ident="response1" rcardinality="Single">
-            <render_fib>
-              <response_label ident="answer1" rshuffle="No"/>
-            </render_fib>
-          </response_num>
-        </presentation>
-        <resprocessing>
-          <outcomes>
-            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
-          </outcomes>
-          <respcondition continue="No">
-            <conditionvar>
-              <varequal respident="response1">3.142</varequal>
-            </conditionvar>
-            <setvar action="Set" varname="SCORE">100</setvar>
-          </respcondition>
-        </resprocessing>
-      </item>
     </section>
   </assessment>
 </questestinterop>

@@ -30,9 +30,9 @@ describe Qti::Importer do
       it 'create items with correct scoring structs' do
         assessment = importer.test_object
         assessment_items = importer.assessment_item_refs.map{ |ref| importer.create_assessment_item(ref) }
-        expect(assessment_items.count).to eq 3
+        expect(assessment_items.count).to eq 5
         answer_arity = assessment_items.map{|item| item.scoring_data_structs.count }
-        expect(answer_arity).to eq [1, 1, 4]
+        expect(answer_arity).to eq [1, 1, 4, 1, 1]
       end
     end
   end

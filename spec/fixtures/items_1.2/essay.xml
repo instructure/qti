@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <item ident="if15fb877c2cde9a14437aa7429360ac6" title="First Essay">
+    <presentation>
+      <material>
+        <mattext texttype="text/html">Here is an essay question</mattext>
+      </material>
+      <response_str ident="response1" rcardinality="Single">
+        <render_fib>
+          <response_label ident="answer1" rshuffle="No"/>
+        </render_fib>
+      </response_str>
+    </presentation>
+    <resprocessing>
+      <outcomes>
+        <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+      </outcomes>
+      <respcondition continue="No">
+        <conditionvar>
+          <other/>
+        </conditionvar>
+      </respcondition>
+    </resprocessing>
+  </item>
+</questestinterop>
