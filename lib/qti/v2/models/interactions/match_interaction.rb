@@ -5,9 +5,7 @@ module Qti
         class MatchInteraction < BaseInteraction
           def self.matches(node)
             matches = node.xpath('//xmlns:matchInteraction')
-            return false if matches.empty?
-
-            raise Qti::UnsupportedSchema if matches.size > 1
+            return false if matches.count != 1
             new(node)
           end
 
@@ -15,6 +13,10 @@ module Qti
             node.xpath('.//xmlns:correctResponse//xmlns:value')
                 .map { |value| value.content.split.first }
                 .map { |id| { id: id, question_body: choices_by_identifier[id].content } }
+          end
+
+          def shuffled?
+            node.at_xpath('.//xmlns:matchInteraction').attributes['shuffle']&.value.try(:downcase) == 'true'
           end
 
           def answers
