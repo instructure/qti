@@ -1,7 +1,3 @@
----
-content_id: "121077930"
-title: Qti
----
 # Qti Gem
 
 The Qti gem supports QTI 1.2 and 2.1. It currently supports the following interaction types:
@@ -55,7 +51,7 @@ Returns the version appropriate AssessmentItem model
   - `title`
   - `points_possible`
   - `rcardinality` (QTI 1.2)
-  - ` interaction_model` (ie Choice Interaction)
+  - `interaction_model` (ie Choice Interaction)
   - `scoring_data_structs`
 
 ## Running Tests
@@ -64,7 +60,7 @@ You can run tests with code coverage using the following command:
   
 ## Development
 
-Want to contribute? Submit a pull request!
+Want to contribute? Please submit a pull request!
 
 ## To Do
   - More interaction models!
