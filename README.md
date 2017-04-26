@@ -19,8 +19,10 @@ $ bundle install qti
 
 ## Usage
 
-`require 'qti'`
-`@gem = Qti::Importer.new(path_of_quiz)`
+```rb
+require 'qti'
+@gem = Qti::Importer.new(path_of_quiz)
+```
 
 You can use the gem to access the manifest, the assessments, and the assessment items and use it in your own code!
 
