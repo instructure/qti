@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'qti'
-  spec.version       = '0.4.16'
+  spec.version       = '0.5.16'
   spec.authors       = ['Hannah Bottalla', 'Robinson Rodríguez']
   spec.email         = ['hannah@instructure.com', 'rrodriguez-bd@instructure.com', 'quizzes@instructure.com']
   spec.summary       = %q(QTI 1.2 and 2.1 import and export models)
@@ -26,5 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'nokogiri', '1.6.8'
   spec.add_development_dependency 'sanitize', '~> 4.2.0'
   spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'simplecov'
 end

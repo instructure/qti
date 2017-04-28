@@ -62,7 +62,6 @@ require 'qti/v1/models/choices/fill_blank_choice'
 require 'qti/v1/models/scoring_data'
 
 require 'qti/v2/models/base'
-require 'qti/v2/models/interactions/base_interaction'
 require 'qti/v2/models/choices/simple_choice'
 require 'qti/v2/models/choices/simple_associable_choice'
 require 'qti/v2/models/choices/gap_match_choice'

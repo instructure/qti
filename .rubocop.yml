@@ -52,10 +52,10 @@ Style/Documentation:
   Enabled: false
 
 Lint/EndAlignment:
-  AlignWith: variable
+  EnforcedStyleAlignWith: variable
 
 Style/CaseIndentation:
-  IndentWhenRelativeTo: end
+  EnforcedStyle: end
 
 Style/FrozenStringLiteralComment:
   # `when_needed` will add the frozen string literal comment to files

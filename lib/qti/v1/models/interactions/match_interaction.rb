@@ -3,16 +3,10 @@ module Qti
     module Models
       module Interactions
         class MatchInteraction < BaseInteraction
-          attr_reader :node
-
           def self.matches(node)
             matches = node.xpath('.//xmlns:response_lid')
             return false if matches.count <= 1
             new(node)
-          end
-
-          def initialize(node)
-            @node = node
           end
 
           def answers

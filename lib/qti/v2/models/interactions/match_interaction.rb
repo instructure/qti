@@ -1,51 +1,48 @@
+require_relative 'match_item_tag_processors/match_interaction_tag_processor'
+require_relative 'match_item_tag_processors/associate_interaction_tag_processor'
+
 module Qti
   module V2
     module Models
       module Interactions
         class MatchInteraction < BaseInteraction
-          def self.matches(node)
-            matches = node.xpath('//xmlns:matchInteraction')
-            return false if matches.count != 1
-            new(node)
+          extend Forwardable
+
+          attr_reader :implementation
+
+          def initialize(node, implementation)
+            super(node)
+            @implementation = implementation.new(node)
           end
 
-          def questions
-            node.xpath('.//xmlns:correctResponse//xmlns:value')
-                .map { |value| value.content.split.first }
-                .map { |id| { id: id, question_body: choices_by_identifier[id].content } }
-          end
-
-          def shuffled?
-            node.at_xpath('.//xmlns:matchInteraction').attributes['shuffle']&.value.try(:downcase) == 'true'
-          end
-
-          def answers
-            answer_nodes.map { |node| Choices::SimpleAssociableChoice.new(node) }
-          end
+          def_delegators :@implementation, :answers, :questions, :shuffled?
 
           def scoring_data_structs
-            question_response_pairs = node.xpath('.//xmlns:correctResponse//xmlns:value').map do |value|
-              value.content.split
-            end
-            question_response_id_mapping = Hash[question_response_pairs]
-            data = question_response_id_mapping.reduce({}) do |acc, pair|
-              question_id, answer_id = pair
-              acc.update question_id => choices_by_identifier[answer_id].content
-            end
-            [ScoringData.new(data, 'directedPair')]
+            implementation.scoring_data_structs
           end
 
-          private
+          def self.matches(node)
+            implementation =
+              if use_associate_interaction_implementation?(node)
+                MatchItemTagProcesssors::AssociateInteractionTagProcessor
+              elsif use_match_interaction_implementation?(node)
+                MatchItemTagProcesssors::MatchInteractionTagProcessor
+              end
 
-          def choices_by_identifier
-            choices = node.xpath('.//xmlns:simpleAssociableChoice')
-            @choices_by_identifier ||= choices.reduce({}) do |acc, choice|
-              acc.update choice.attributes['identifier'].value => choice
-            end
+            return false unless implementation.present?
+            new(node, implementation)
           end
 
-          def answer_nodes
-            node.xpath('.//xmlns:matchInteraction//xmlns:simpleMatchSet[2]//xmlns:simpleAssociableChoice')
+          def self.use_associate_interaction_implementation?(node)
+            MatchItemTagProcesssors::AssociateInteractionTagProcessor.associate_interaction_tag?(node) &&
+              MatchItemTagProcesssors::AssociateInteractionTagProcessor.number_of_questions_per_answer(node)
+                                                                       .all? { |n| n == 1 }
+          end
+
+          def self.use_match_interaction_implementation?(node)
+            MatchItemTagProcesssors::MatchInteractionTagProcessor.match_interaction_tag?(node) &&
+              MatchItemTagProcesssors::MatchInteractionTagProcessor.number_of_questions_per_answer(node)
+                                                                   .all? { |n| n == 1 }
           end
         end
       end
