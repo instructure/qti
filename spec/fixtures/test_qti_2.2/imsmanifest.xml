@@ -155,6 +155,7 @@
             <file href="multiple-choice/multiple-choice.xml"/>
             <file href="text-entry/text-entry.xml"/>
             <file href="true-false/true-false.xml"/>
+            <file href="fib/fib.xml"/>
             <file href="images/sign.png"/>
         </resource>
     </resources>

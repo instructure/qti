@@ -13,7 +13,7 @@
       <mapEntry mapKey="Su G2" mappedValue="2"/>
     </mapping>
   </responseDeclaration>
-  <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float"/>
+  <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float" normalMaximum="2.0"/>
   <itemBody>
     <gapMatchInteraction responseIdentifier="RESPONSE" shuffle="false">
       <prompt>Identify the missing words in this famous quote from Shakespeare's Richard III.</prompt>
