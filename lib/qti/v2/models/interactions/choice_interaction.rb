@@ -28,7 +28,7 @@ module Qti
           private
 
           def answer_nodes
-            @node.children.filter('simpleChoice')
+            @node.xpath('.//xmlns:simpleChoice')
           end
         end
       end

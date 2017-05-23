@@ -32,31 +32,6 @@ describe Qti::V1::Models::AssessmentItem do
         expect(struct.first.values).to eq 'QUE_1006_A2'
         expect(struct.first.rcardinality).to eq 'Single'
       end
-
-      it 'grabs scoring data value for ordering questions' do
-        assessment = Qti::V1::Models::Assessment.from_path! 'spec/fixtures/items_1.2/ordering.xml'
-        assessment_item = described_class.new(assessment.assessment_items.first)
-        expect(assessment_item.scoring_data_structs.count).to eq 1
-        expect(assessment_item.scoring_data_structs.first.values).to eq %w(A B E D C)
-      end
-
-      it 'grabs scoring data value for matching questions' do
-        assessment = Qti::V1::Models::Assessment.from_path! 'spec/fixtures/items_1.2/matching.xml'
-        assessment_item = described_class.new(assessment.assessment_items.first)
-        expect(assessment_item.interaction_model.questions).to eq(
-          [{ id: 'question_1', question_body: 'Light Microscope' },
-           { id: 'question_2', question_body: 'Electron Microscopes' }]
-        )
-        expect(assessment_item.scoring_data_structs.first.values).to eq(
-          'question_1' => 'Magnify up to about 400 times. Sometimes requires colored staining of cells.',
-          'question_2' => "Uses a beam of electrons. Can provide details of cells' internal structure."
-        )
-        expect(assessment_item.interaction_model.answers.map(&:item_body)).to eq(
-          ['Magnify up to about 400 times. Sometimes requires colored staining of cells.',
-           "Uses a beam of electrons. Can provide details of cells' internal structure.",
-           'A distractor answer.']
-        )
-      end
     end
 
     it 'has the identifier used to identify it in manifest/test files' do

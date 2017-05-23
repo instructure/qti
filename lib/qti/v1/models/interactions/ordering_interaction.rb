@@ -14,7 +14,7 @@ module Qti
 
           def scoring_data_structs
             correct_order = node.xpath('.//xmlns:varequal').map(&:content)
-            [ScoringData.new(correct_order, rcardinality)]
+            correct_order.map { |id| ScoringData.new(id, rcardinality) }
           end
         end
       end

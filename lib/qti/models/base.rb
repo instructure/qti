@@ -8,6 +8,8 @@ module Qti
 
   module Models
     class Base
+      attr_reader :doc
+
       ELEMENTS_REMAP = {
         'prompt' => 'div',
         'simpleBlock' => 'div',
