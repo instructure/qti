@@ -30,12 +30,6 @@ module Qti
             raise Qti::ParseError, 'Too many matches' if node_list.count > 1
             node_list.first
           end
-
-          private
-
-          def rcardinality
-            @rcardinality ||= @node.at_xpath('.//response_lid/@rcardinality').value
-          end
         end
       end
     end
