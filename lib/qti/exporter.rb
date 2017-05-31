@@ -121,6 +121,9 @@ module Qti
       xml.resources do
         xml.resource('href' => 'assessment.xml', 'type' => 'imsqti_test_xmlv2p2', 'identifier' => 'TEST') do
           xml.file('href' => 'assessment.xml')
+          assessment_test.items.each do |item|
+            xml.file('href' => "#{item.identifier}.xml")
+          end
         end
       end
     end
