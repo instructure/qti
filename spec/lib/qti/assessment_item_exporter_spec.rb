@@ -27,7 +27,7 @@ describe Qti::AssessmentItemExporter do
       expect(exporter.exported_file_path).to have_file_content(
         <<-XML.strip_heredoc
           <?xml version="1.0" encoding="UTF-8"?>
-          <assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p2" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p2 http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p2.xsd">
+          <assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p2" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p2 http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p2.xsd" timeDependent="false" identifier="Item-1" title="Question 1">
             <responseDeclaration identifier="RESPONSE" cardinality="single" baseType="identifier">
               <correctResponse>
                 <value>true</value>

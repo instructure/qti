@@ -25,7 +25,7 @@ module Qti
     end
 
     def file_timestamp
-      Time.now.utc.strftime('%Y%m%d%H%M%S')
+      Time.now.utc.strftime('%Y%m%d%H%M%S%L')
     end
 
     def create_assessment_xml
@@ -36,9 +36,9 @@ module Qti
 
     def assessment_xml_string
       Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
-        xml.assessmentTest(assesment_test_attributes(title: assessment_test.title)) do
+        xml.assessmentTest(assesment_test_attributes) do
           outcome_declarations(xml, assessment_test)
-          xml.testPart do
+          xml.testPart(identifier: 'Main', navigationMode: 'linear', submissionMode: 'individual') do
             xml_assessment_section(xml)
           end
         end
@@ -70,6 +70,7 @@ module Qti
       builder = Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
         xml.manifest(imsmanifest_attributes) do
           manifest_metadata(xml)
+          xml.organizations
           manifest_resources(xml)
         end
       end
@@ -87,29 +88,29 @@ module Qti
       end
     end
 
+    # rubocop:disable Metrics/AbcSize
     def learning_object_metadata(xml)
-      imsmd_ns = xml['imsmd']
-
-      imsmd_ns.lom do
-        imsmd_ns.general do
-          imsmd_ns.identifier do
-            imsmd_ns.entry 'FB-02'
+      xml['imsmd'].lom do
+        xml['imsmd'].general do
+          xml['imsmd'].identifier do
+            xml['imsmd'].entry 'FB-02'
           end
-          imsmd_ns.title do
-            imsmd_ns.string(assessment_test.title, 'language' => 'en')
+          xml['imsmd'].title do
+            xml['imsmd'].string(assessment_test.title, 'language' => 'en')
           end
-          imsmd_ns.language 'en'
-          imsmd_ns.description do
-            imsmd_ns.string('Instructure QTI package.' \
+          xml['imsmd'].language 'en'
+          xml['imsmd'].description do
+            xml['imsmd'].string('Instructure QTI package.' \
             'Feedback XML used as an example of unprocessable entity', 'language' => 'en')
           end
+          keywords(xml)
         end
-        keywords(xml)
       end
     end
+    # rubocop:enable Metrics/AbcSize
 
     def keywords(xml)
-      keywords = %w(feedback modal test inline block)
+      keywords = %w[feedback modal test inline block]
       keywords.each do |keyword|
         xml['imsmd'].keyword do
           xml['imsmd'].string(keyword, 'language' => 'en')
@@ -134,21 +135,25 @@ module Qti
       end
     end
 
-    def assesment_test_attributes(args = {})
-      { 'xmlns' => 'http://www.imsglobal.org/xsd/imsqti_v2p2', 'xmlns:xi' => 'http://www.w3.org/2001/XInclude',
+    def assesment_test_attributes
+      { 'xmlns' => 'http://www.imsglobal.org/xsd/imsqti_v2p2p1', 'xmlns:xi' => 'http://www.w3.org/2001/XInclude',
         'xmlns:m' => 'http://www.w3.org/1998/Math/MathML', 'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
         'xsi:schemaLocation' => 'http://www.imsglobal.org/xsd/imsqti_v2p2 ' \
-        'http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p2.xsd' }.merge(args)
+                                'http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p2.xsd',
+        'title' => assessment_test.title }
     end
 
     def imsmanifest_attributes
-      { 'xmlns' => 'http://www.imsglobal.org/xsd/imscp_v1p1', 'xmlns:imsmd' => 'http://ltsc.ieee.org/xsd/LOM',
-        'xmlns:imsqti' => 'http://www.imsglobal.org/xsd/imsqti_v2p2', 'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
-        'xsi:schemaLocation' => 'http://www.imsglobal.org/xsd/imscp_v1p1 ' \
-                                'http://www.imsglobal.org/xsd/qti/qtiv2p2/qtiv2p2_imscpv1p2_v1p0.xsd' \
+      { 'xmlns' => 'http://www.imsglobal.org/xsd/imscp_v1p1',
+        'xmlns:imsmd' => 'http://ltsc.ieee.org/xsd/LOM',
+        'xmlns:imsqti' => 'http://www.imsglobal.org/xsd/imsqti_v2p2',
+        'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
+        'xsi:schemaLocation' => 'http://www.imsglobal.org/xsd/imsqti_v2p2 ' \
+                                'http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p2.xsd ' \
                                 'http://ltsc.ieee.org/xsd/LOM http://www.imsglobal.org/xsd/imsmd_loose_v1p3p2.xsd' \
-                                'http://www.imsglobal.org/xsd/imsqti_metadata_v2p2' \
-                                'http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_metadata_v2p2.xsd' }
+                                'http://www.imsglobal.org/xsd/imscp_v1p1 ' \
+                                'http://www.imsglobal.org/xsd/qti/qtiv2p2/qtiv2p2_imscpv1p2_v1p0.xsd',
+        'identifier' => assessment_test.identifier }
     end
 
     def compress_package

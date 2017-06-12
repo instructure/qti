@@ -63,7 +63,9 @@ module Qti
       { 'xmlns' => 'http://www.imsglobal.org/xsd/imsqti_v2p2', 'xmlns:xi' => 'http://www.w3.org/2001/XInclude',
         'xmlns:m' => 'http://www.w3.org/1998/Math/MathML', 'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
         'xsi:schemaLocation' => 'http://www.imsglobal.org/xsd/imsqti_v2p2 ' \
-                                'http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p2.xsd' }
+                                'http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p2.xsd',
+        'timeDependent' => 'false', 'identifier' => "Item-#{assessment_item.identifier}",
+        'title' => assessment_item.title }
     end
   end
 end
