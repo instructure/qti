@@ -30,9 +30,9 @@ describe Qti::V2::Models::Interactions::MatchInteraction do
     describe '#questions' do
       it 'returns the questions' do
         expect(subject.questions).to eq(
-          [{ id: 'A', question_body: 'Antonio' },
-           { id: 'C', question_body: 'Capulet' },
-           { id: 'D', question_body: 'Demetrius' }]
+          [{ id: 'A', itemBody: 'Antonio' },
+           { id: 'C', itemBody: 'Capulet' },
+           { id: 'D', itemBody: 'Demetrius' }]
         )
       end
     end
@@ -53,7 +53,7 @@ describe Qti::V2::Models::Interactions::MatchInteraction do
         expect(subject.scoring_data_structs).to eq [
           Qti::V2::Models::ScoringData.new('Dresden', 'Pair', id: 'Match2675678', question_id: 'Match28433682'),
           Qti::V2::Models::ScoringData.new('Leipzig', 'Pair', id: 'Match9372581', question_id: 'Match7191791'),
-          Qti::V2::Models::ScoringData.new('Halle'  , 'Pair', id: 'Match22744006', question_id: 'Match20473010'),
+          Qti::V2::Models::ScoringData.new('Halle', 'Pair', id: 'Match22744006', question_id: 'Match20473010'),
           Qti::V2::Models::ScoringData.new('Bautzen', 'Pair', id: 'Match17943221', question_id: 'Match6429655')
         ]
       end
@@ -68,10 +68,10 @@ describe Qti::V2::Models::Interactions::MatchInteraction do
     describe '#questions' do
       it 'returns the questions' do
         expect(subject.questions).to eq(
-          [{ id: 'Match28433682', question_body: 'Weißeritz' },
-           { id: 'Match7191791', question_body: 'Mulde' },
-           { id: 'Match20473010', question_body: 'Saale' },
-           { id: 'Match6429655', question_body: 'Spree' }]
+          [{ id: 'Match28433682', itemBody: 'Weißeritz' },
+           { id: 'Match7191791', itemBody: 'Mulde' },
+           { id: 'Match20473010', itemBody: 'Saale' },
+           { id: 'Match6429655', itemBody: 'Spree' }]
         )
       end
     end

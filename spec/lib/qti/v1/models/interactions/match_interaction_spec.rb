@@ -36,8 +36,8 @@ describe Qti::V1::Models::Interactions::MatchInteraction do
   describe '#questions' do
     it 'returns the questions' do
       expect(subject.questions).to eq(
-        [{ id: 'question_1', question_body: 'Light Microscope' },
-         { id: 'question_2', question_body: 'Electron Microscopes' }]
+        [{ id: 'question_1', itemBody: 'Light Microscope' },
+         { id: 'question_2', itemBody: 'Electron Microscopes' }]
       )
     end
   end

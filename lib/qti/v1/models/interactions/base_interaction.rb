@@ -21,10 +21,8 @@ module Qti
             raise NotImplementedError
           end
 
-          private
-
           def rcardinality
-            @rcardinality ||= @node.at_xpath('.//xmlns:response_lid/@rcardinality').value
+            @rcardinality ||= @node.at_xpath('.//xmlns:response_lid/@rcardinality')&.value || 'Single'
           end
         end
       end

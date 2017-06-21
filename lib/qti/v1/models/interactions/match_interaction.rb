@@ -17,8 +17,8 @@ module Qti
 
           def questions
             node.xpath('.//xmlns:response_lid').map do |lid_node|
-              question_body = lid_node.at_xpath('.//xmlns:mattext').text
-              { id: lid_node.attributes['ident'].value, question_body: question_body }
+              item_body = lid_node.at_xpath('.//xmlns:mattext').text
+              { id: lid_node.attributes['ident'].value, itemBody: item_body }
             end
           end
 

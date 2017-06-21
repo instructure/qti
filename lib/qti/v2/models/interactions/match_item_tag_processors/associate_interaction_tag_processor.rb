@@ -24,7 +24,7 @@ module Qti
             end
 
             def questions
-              questions_ids.map { |id| { id: id, question_body: choices_by_identifier[id].content } }
+              questions_ids.map { |id| { id: id, itemBody: choices_by_identifier[id].content } }
             end
 
             def answers

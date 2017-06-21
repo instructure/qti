@@ -1,83 +1,78 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-
 <questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
-
-<assessment title="1.2 Import Quiz" ident="A1001">
-<section title="Main" ident="S1002">
-
-<item title="How much time each week?" ident="QUE_1007">
-<presentation>
-<material>
-<mattext texttype="text/html"><![CDATA[How much time should you spend working on your online course each week in order to earn credit? <img align="bottom" alt="image.png" src="$IMS_CC_FILE_BASE$org1/images/image.png" border="0"/>]]></mattext>
-</material>
-<response_lid ident="QUE_1008_RL" rcardinality="Single" rtiming="No">
-<render_choice>
-<response_label ident="QUE_1009_A1">
-<material>
-<mattext texttype="text/html"><![CDATA[However long it takes]]></mattext>
-</material>
-</response_label>
-<response_label ident="QUE_1010_A2">
-<material>
-<mattext texttype="text/html"><![CDATA[30 - 90 minutes]]></mattext>
-</material>
-</response_label>
-<response_label ident="QUE_1011_A3">
-<material>
-<mattext texttype="text/html"><![CDATA[1 - 2 hours]]></mattext>
-</material>
-</response_label>
-<response_label ident="QUE_1012_A4">
-<material>
-<mattext texttype="text/html"><![CDATA[At least 3 hours]]></mattext>
-</material>
-</response_label>
-<response_label ident="QUE_1013_A5">
-<material>
-<mattext texttype="text/html"><![CDATA[6 or more hours]]></mattext>
-</material>
-</response_label>
-</render_choice>
-</response_lid>
-</presentation>
-<resprocessing>
-<outcomes>
-  <decvar vartype="Decimal" defaultval="0" varname="que_score"/>
-</outcomes>
-<respcondition>
-<conditionvar>
-  <varequal respident="QUE_1008_RL">QUE_1009_A1</varequal>
-</conditionvar>
-<setvar varname="que_score" action="Add">0</setvar>
-</respcondition>
-<respcondition>
-<conditionvar>
-  <varequal respident="QUE_1008_RL">QUE_1010_A2</varequal>
-</conditionvar>
-<setvar varname="que_score" action="Add">0</setvar>
-</respcondition>
-<respcondition>
-<conditionvar>
-  <varequal respident="QUE_1008_RL">QUE_1011_A3</varequal>
-</conditionvar>
-<setvar varname="que_score" action="Add">0</setvar>
-</respcondition>
-<respcondition>
-<conditionvar>
-  <varequal respident="QUE_1008_RL">QUE_1012_A4</varequal>
-</conditionvar>
-<setvar varname="que_score" action="Set">10.00</setvar>
-</respcondition>
-<respcondition>
-<conditionvar>
-  <varequal respident="QUE_1008_RL">QUE_1013_A5</varequal>
-</conditionvar>
-<setvar varname="que_score" action="Add">0</setvar>
-</respcondition>
-</resprocessing>
-</item>
-
-</section>
-</assessment>
-
+  <assessment title="1.2 Import Quiz" ident="A1001">
+    <section title="Main" ident="S1002">
+      <item title="How much time each week?" ident="QUE_1007">
+        <presentation>
+          <material>
+            <mattext texttype="text/html"><![CDATA[How much time should you spend working on your online course each week in order to earn credit? <img align="bottom" alt="image.png" src="$IMS_CC_FILE_BASE$org1/images/image.png" border="0"/>]]></mattext>
+          </material>
+          <response_lid ident="QUE_1008_RL" rcardinality="Single" rtiming="No">
+            <render_choice>
+              <response_label ident="QUE_1009_A1">
+                <material>
+                  <mattext texttype="text/html"><![CDATA[However long it takes]]></mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1010_A2">
+                <material>
+                  <mattext texttype="text/html"><![CDATA[30 - 90 minutes]]></mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1011_A3">
+                <material>
+                  <mattext texttype="text/html"><![CDATA[1 - 2 hours]]></mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1012_A4">
+                <material>
+                  <mattext texttype="text/html"><![CDATA[At least 3 hours]]></mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1013_A5">
+                <material>
+                  <mattext texttype="text/html"><![CDATA[6 or more hours]]></mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar vartype="Decimal" defaultval="0" varname="que_score"/>
+          </outcomes>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="QUE_1008_RL">QUE_1009_A1</varequal>
+            </conditionvar>
+            <setvar varname="que_score" action="Add">0</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="QUE_1008_RL">QUE_1010_A2</varequal>
+            </conditionvar>
+            <setvar varname="que_score" action="Add">0</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="QUE_1008_RL">QUE_1011_A3</varequal>
+            </conditionvar>
+            <setvar varname="que_score" action="Add">0</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="QUE_1008_RL">QUE_1012_A4</varequal>
+            </conditionvar>
+            <setvar varname="que_score" action="Set">10.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="QUE_1008_RL">QUE_1013_A5</varequal>
+            </conditionvar>
+            <setvar varname="que_score" action="Add">0</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+    </section>
+  </assessment>
 </questestinterop>
