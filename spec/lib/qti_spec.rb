@@ -12,7 +12,6 @@ describe Qti::Importer do
   end
 
   shared_examples_for 'unsupported QTI version' do
-
     it 'raises an error' do
       allow_any_instance_of(Qti::Models::Manifest).to receive(:assessment_test_href).and_return(nil)
       expect { importer.import_manifest }.to raise_error('Unsupported QTI version')
@@ -28,11 +27,20 @@ describe Qti::Importer do
 
     describe '#create_assessment_item' do
       it 'create items with correct scoring structs' do
-        assessment = importer.test_object
-        assessment_items = importer.assessment_item_refs.map{ |ref| importer.create_assessment_item(ref) }
+        importer.test_object
+        assessment_items = importer.assessment_item_refs.map { |ref| importer.create_assessment_item(ref) }
         expect(assessment_items.count).to eq 5
-        answer_arity = assessment_items.map{|item| item.scoring_data_structs.count }
+        answer_arity = assessment_items.map { |item| item.scoring_data_structs.count }
         expect(answer_arity).to eq [1, 1, 4, 1, 1]
+      end
+    end
+
+    context 'canvas generated' do
+      let(:file_path) { File.join(fixtures_path, 'test_qti_1.2_canvas') }
+
+      it 'imports a canvas generated quiz' do
+        importer.test_object
+        expect(importer.assessment_item_refs.count).to eq 4
       end
     end
   end
