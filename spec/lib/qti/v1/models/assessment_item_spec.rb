@@ -48,4 +48,19 @@ describe Qti::V1::Models::AssessmentItem do
       )
     end
   end
+
+  context 'multiple_answer_canvas.xml' do
+    let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'multiple_answer_canvas.xml') }
+    let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
+    let(:assessment_item_refs) { test_object.assessment_items }
+    let(:loaded_class) { described_class.new(assessment_item_refs) }
+
+    describe '#scoring_data_structs' do
+      it 'collects all the correct answers' do
+        struct = loaded_class.scoring_data_structs
+        expect(struct.size).to eq 3
+        expect(struct.map(&:values)).to eq ["4155", "6991", "1939"]
+      end
+    end
+  end
 end

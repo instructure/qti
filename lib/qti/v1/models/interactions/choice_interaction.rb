@@ -24,8 +24,14 @@ module Qti
 
           def scoring_data_structs
             choice_nodes = node.xpath('.//xmlns:respcondition')
-            set_var_nodes = choice_nodes.select { |choice_node| choice_node.at_xpath('.//xmlns:setvar').content.to_f.positive? }
-            set_var_nodes.map { |value_node| ScoringData.new(value_node.at_xpath('.//xmlns:varequal').content, rcardinality) }
+            if choice_nodes.at_xpath('.//xmlns:and').present?
+              answer_choices = choice_nodes.at_xpath('.//xmlns:and')
+              answer_choices.children.filter('not').each(&:remove)
+              answer_choices.children.map { |value_node| ScoringData.new(value_node.content, rcardinality) }
+            else
+              set_var_nodes = choice_nodes.select { |choice_node| choice_node.at_xpath('.//xmlns:setvar').content.to_f.positive? }
+              set_var_nodes.map { |value_node| ScoringData.new(value_node.at_xpath('.//xmlns:varequal').content, rcardinality) }
+            end
           end
 
           private

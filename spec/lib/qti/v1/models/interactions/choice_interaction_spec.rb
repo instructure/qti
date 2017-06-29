@@ -14,7 +14,7 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
 
   shared_examples_for 'answers' do
     it 'returns the answers' do
-      expect(loaded_class.answers.count).to eq answer_count
+      expect(loaded_class.answers.count).to eq answer_choices_count
       expect(loaded_class.answers.first).to be_an_instance_of(Qti::V1::Models::Choices::LogicalIdentifierChoice)
     end
   end
@@ -22,7 +22,7 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
   context 'multiple_choice.xml' do
     let(:file_path) { File.join(fixtures_path, 'multiple_choice.xml') }
     let(:shuffle_value) { false }
-    let(:answer_count) { 5 }
+    let(:answer_choices_count) { 5 }
 
     include_examples 'shuffled?'
     include_examples 'answers'
@@ -31,18 +31,24 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
   context 'true_false.xml' do
     let(:file_path) { File.join(fixtures_path, 'true_false.xml') }
     let(:shuffle_value) { true }
-    let(:answer_count) { 2 }
+    let(:answer_choices_count) { 2 }
 
     include_examples 'shuffled?'
     include_examples 'answers'
   end
 
-  context 'true_false.xml' do
+  context 'multiple_answer.xml' do
     let(:file_path) { File.join(fixtures_path, 'multiple_answer.xml') }
     let(:shuffle_value) { false }
-    let(:answer_count) { 7 }
 
     include_examples 'shuffled?'
-    include_examples 'answers'
+  end
+
+  context 'multiple_answer_canvas.xml' do
+    let(:file_path) { File.join(fixtures_path, 'multiple_answer_canvas.xml') }
+    let(:shuffle_value) { false }
+    let(:answer_choices_count) { 4 }
+
+    include_examples 'shuffled?'
   end
 end
