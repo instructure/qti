@@ -28,9 +28,27 @@ module Qti
           @title ||= @doc.attribute('title').value
         end
 
+        def qti_metadata_children
+          @doc.at_xpath('.//xmlns:qtimetadata')&.children
+        end
+
+        def has_points_possible_qti_metadata?
+          if @doc.at_xpath('.//xmlns:qtimetadata').present?
+            points_possible_label = qti_metadata_children.children.find {|node| node.text == "points_possible"}
+            points_possible_label.present?
+          else
+            false
+          end
+        end
+
         def points_possible
           @points_possible ||= begin
-            @doc.at_xpath('.//xmlns:decvar/@maxvalue')&.value || @doc.at_xpath('.//xmlns:decvar/@defaultval')&.value
+            if has_points_possible_qti_metadata?
+              points_possible_label = qti_metadata_children.children.find {|node| node.text == "points_possible"}
+              points_possible_node = points_possible_label.next.text
+            else
+              @doc.at_xpath('.//xmlns:decvar/@maxvalue')&.value || @doc.at_xpath('.//xmlns:decvar/@defaultval')&.value
+            end
           end
         end
 

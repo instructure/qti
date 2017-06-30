@@ -62,5 +62,9 @@ describe Qti::V1::Models::AssessmentItem do
         expect(struct.map(&:values)).to eq ["4155", "6991", "1939"]
       end
     end
+
+    it 'sets the points possible from qtimetadata' do
+      expect(loaded_class.points_possible).to eq '1.0'
+    end
   end
 end
