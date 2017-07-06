@@ -47,9 +47,14 @@ module Qti
               points_possible_label = qti_metadata_children.children.find {|node| node.text == "points_possible"}
               points_possible_node = points_possible_label.next.text
             else
-              @doc.at_xpath('.//xmlns:decvar/@maxvalue')&.value || @doc.at_xpath('.//xmlns:decvar/@defaultval')&.value
+              decvar_maxvalue
             end
           end
+        end
+
+        def decvar_maxvalue
+          @doc.at_xpath('.//xmlns:decvar/@maxvalue')&.value&.to_i ||
+            @doc.at_xpath('.//xmlns:decvar/@defaultval')&.value&.to_i || 0
         end
 
         def rcardinality

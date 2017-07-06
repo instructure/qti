@@ -1,105 +1,100 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-
 <questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
-
-<assessment title="Quiz" ident="A1001">
-<section title="Main" ident="S1002">
-
-<item title="Discussion - content." ident="QUE_1022">
-<presentation>
-<material>
-<mattext texttype="text/html"><![CDATA[A good discussion posting includes which of the following (select all that apply):]]></mattext>
-</material>
-<response_lid ident="QUE_1023_RL" rcardinality="Multiple" rtiming="No">
-<render_choice>
-<response_label ident="QUE_1024_A1">
-<material>
-<mattext texttype="text/html"><![CDATA[Poses a question or invites additional comment from others]]></mattext>
-</material>
-</response_label>
-<response_label ident="QUE_1025_A2">
-<material>
-<mattext texttype="text/html"><![CDATA[Attacks another's post to generate controversy]]></mattext>
-</material>
-</response_label>
-<response_label ident="QUE_1026_A3">
-<material>
-<mattext texttype="text/html"><![CDATA[Expresses an opinion which may be controversial so that others can agree or disagree]]></mattext>
-</material>
-</response_label>
-<response_label ident="QUE_1027_A4">
-<material>
-<mattext texttype="text/html"><![CDATA[Adds information, ideas or suggestions that expand everyone's thinking about the topic]]></mattext>
-</material>
-</response_label>
-<response_label ident="QUE_1028_A5">
-<material>
-<mattext texttype="text/html"><![CDATA[Reiterates the consensus or restates the ideas of others without adding independent thought]]></mattext>
-</material>
-</response_label>
-<response_label ident="QUE_1029_A6">
-<material>
-<mattext texttype="text/html"><![CDATA[Provides non-specific praise for fellow learners like "good job" or "I loved your idea"]]></mattext>
-</material>
-</response_label>
-<response_label ident="QUE_1030_A7">
-<material>
-<mattext texttype="text/html"><![CDATA[Responds positively to a person's comment and includes their name or quote from the original posting that supports your expanded idea]]></mattext>
-</material>
-</response_label>
-</render_choice>
-</response_lid>
-</presentation>
-<resprocessing>
-<outcomes>
-  <decvar vartype="Decimal" defaultval="0" varname="que_score" maxvalue="10.00" minvalue="0"/>
-</outcomes>
-<respcondition>
-<conditionvar>
-  <varequal respident="QUE_1023_RL">QUE_1024_A1</varequal>
-</conditionvar>
-<setvar varname="que_score" action="Add">25.00</setvar>
-</respcondition>
-<respcondition>
-<conditionvar>
-  <varequal respident="QUE_1023_RL">QUE_1025_A2</varequal>
-</conditionvar>
-<setvar varname="que_score" action="Add">-10.00</setvar>
-</respcondition>
-<respcondition>
-<conditionvar>
-  <varequal respident="QUE_1023_RL">QUE_1026_A3</varequal>
-</conditionvar>
-<setvar varname="que_score" action="Add">25.00</setvar>
-</respcondition>
-<respcondition>
-<conditionvar>
-  <varequal respident="QUE_1023_RL">QUE_1027_A4</varequal>
-</conditionvar>
-<setvar varname="que_score" action="Add">25.00</setvar>
-</respcondition>
-<respcondition>
-<conditionvar>
-  <varequal respident="QUE_1023_RL">QUE_1028_A5</varequal>
-</conditionvar>
-<setvar varname="que_score" action="Add">-10.00</setvar>
-</respcondition>
-<respcondition>
-<conditionvar>
-  <varequal respident="QUE_1023_RL">QUE_1029_A6</varequal>
-</conditionvar>
-<setvar varname="que_score" action="Add">-10.00</setvar>
-</respcondition>
-<respcondition>
-<conditionvar>
-  <varequal respident="QUE_1023_RL">QUE_1030_A7</varequal>
-</conditionvar>
-<setvar varname="que_score" action="Add">25.00</setvar>
-</respcondition>
-</resprocessing>
-</item>
-
-</section>
-</assessment>
-
+  <assessment title="Quiz" ident="A1001">
+    <section title="Main" ident="S1002">
+      <item title="Discussion - content." ident="QUE_1022">
+        <presentation>
+          <material>
+            <mattext texttype="text/html"><![CDATA[A good discussion posting includes which of the following (select all that apply):]]></mattext>
+          </material>
+          <response_lid ident="QUE_1023_RL" rcardinality="Multiple" rtiming="No">
+            <render_choice>
+              <response_label ident="QUE_1024_A1">
+                <material>
+                  <mattext texttype="text/html"><![CDATA[Poses a question or invites additional comment from others]]></mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1025_A2">
+                <material>
+                  <mattext texttype="text/html"><![CDATA[Attacks another's post to generate controversy]]></mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1026_A3">
+                <material>
+                  <mattext texttype="text/html"><![CDATA[Expresses an opinion which may be controversial so that others can agree or disagree]]></mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1027_A4">
+                <material>
+                  <mattext texttype="text/html"><![CDATA[Adds information, ideas or suggestions that expand everyone's thinking about the topic]]></mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1028_A5">
+                <material>
+                  <mattext texttype="text/html"><![CDATA[Reiterates the consensus or restates the ideas of others without adding independent thought]]></mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1029_A6">
+                <material>
+                  <mattext texttype="text/html"><![CDATA[Provides non-specific praise for fellow learners like "good job" or "I loved your idea"]]></mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1030_A7">
+                <material>
+                  <mattext texttype="text/html"><![CDATA[Responds positively to a person's comment and includes their name or quote from the original posting that supports your expanded idea]]></mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar vartype="Decimal" defaultval="0" varname="que_score" minvalue="0"/>
+          </outcomes>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="QUE_1023_RL">QUE_1024_A1</varequal>
+            </conditionvar>
+            <setvar varname="que_score" action="Add">25.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="QUE_1023_RL">QUE_1025_A2</varequal>
+            </conditionvar>
+            <setvar varname="que_score" action="Add">-10.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="QUE_1023_RL">QUE_1026_A3</varequal>
+            </conditionvar>
+            <setvar varname="que_score" action="Add">25.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="QUE_1023_RL">QUE_1027_A4</varequal>
+            </conditionvar>
+            <setvar varname="que_score" action="Add">25.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="QUE_1023_RL">QUE_1028_A5</varequal>
+            </conditionvar>
+            <setvar varname="que_score" action="Add">-10.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="QUE_1023_RL">QUE_1029_A6</varequal>
+            </conditionvar>
+            <setvar varname="que_score" action="Add">-10.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="QUE_1023_RL">QUE_1030_A7</varequal>
+            </conditionvar>
+            <setvar varname="que_score" action="Add">25.00</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+    </section>
+  </assessment>
 </questestinterop>

@@ -1,50 +1,45 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-
 <questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
-
-<assessment title="1.2 Import Quiz" ident="A1001">
-<section title="Main" ident="S1002">
-
-<item title="Grading - specific - 3 pt score" ident="QUE_1003">
-<presentation>
-<material>
-<mattext texttype="text/html"><![CDATA[If I get a 3, I must have done something wrong. <img align="bottom" alt="image.png" src="org0/images/image.png" border="0"/>]]></mattext>
-</material>
-<response_lid ident="QUE_1004_RL" rcardinality="Single" rtiming="No">
-<render_choice shuffle= "Yes">
-<response_label ident="QUE_1005_A1">
-<material>
-<mattext texttype="text/html"><![CDATA[True]]></mattext>
-</material>
-</response_label>
-<response_label ident="QUE_1006_A2">
-<material>
-<mattext texttype="text/html"><![CDATA[False]]></mattext>
-</material>
-</response_label>
-</render_choice>
-</response_lid>
-</presentation>
-<resprocessing>
-<outcomes>
-  <decvar vartype="Decimal" defaultval="0" varname="que_score"/>
-</outcomes>
-<respcondition>
-<conditionvar>
-  <varequal respident="QUE_1004_RL">QUE_1005_A1</varequal>
-</conditionvar>
-<setvar varname="que_score" action="Add">0</setvar>
-</respcondition>
-<respcondition>
-<conditionvar>
-  <varequal respident="QUE_1004_RL">QUE_1006_A2</varequal>
-</conditionvar>
-<setvar varname="que_score" action="Set">10.00</setvar>
-</respcondition>
-</resprocessing>
-</item>
-
-</section>
-</assessment>
-
+  <assessment title="1.2 Import Quiz" ident="A1001">
+    <section title="Main" ident="S1002">
+      <item title="Grading - specific - 3 pt score" ident="QUE_1003">
+        <presentation>
+          <material>
+            <mattext texttype="text/html"><![CDATA[If I get a 3, I must have done something wrong. <img align="bottom" alt="image.png" src="org0/images/image.png" border="0"/>]]></mattext>
+          </material>
+          <response_lid ident="QUE_1004_RL" rcardinality="Single" rtiming="No">
+            <render_choice shuffle="Yes">
+              <response_label ident="QUE_1005_A1">
+                <material>
+                  <mattext texttype="text/html"><![CDATA[True]]></mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1006_A2">
+                <material>
+                  <mattext texttype="text/html"><![CDATA[False]]></mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar vartype="Decimal" defaultval="0" varname="que_score"/>
+          </outcomes>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="QUE_1004_RL">QUE_1005_A1</varequal>
+            </conditionvar>
+            <setvar varname="que_score" action="Add">0</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="QUE_1004_RL">QUE_1006_A2</varequal>
+            </conditionvar>
+            <setvar varname="que_score" action="Set">10.00</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+    </section>
+  </assessment>
 </questestinterop>

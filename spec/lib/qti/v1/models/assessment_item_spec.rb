@@ -22,8 +22,25 @@ describe Qti::V1::Models::AssessmentItem do
       expect(loaded_class.item_body).to include 'If I get a 3, I must have done something wrong.'
     end
 
-    it 'grabs the points possible' do
-      expect(loaded_class.points_possible).to eq '0'
+    describe '#points_possible' do
+      it 'grabs the points possible' do
+        expect(loaded_class.points_possible).to eq 0
+      end
+
+      it 'returns 0 by default' do
+        doc =
+          <<-XML.strip_heredoc
+						<?xml version="1.0" encoding="ISO-8859-1"?>
+						<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+							<outcomes>
+								<decvar vartype="Decimal" varname="que_score"/>
+							</outcomes>
+						</questestinterop>
+					XML
+        node = Nokogiri.XML(doc, &:noblanks)
+        assessment_item = described_class.new(node)
+        expect(assessment_item.points_possible). to eq 0
+      end
     end
 
     describe '#scoring_data_structs' do
@@ -59,7 +76,7 @@ describe Qti::V1::Models::AssessmentItem do
       it 'collects all the correct answers' do
         struct = loaded_class.scoring_data_structs
         expect(struct.size).to eq 3
-        expect(struct.map(&:values)).to eq ["4155", "6991", "1939"]
+        expect(struct.map(&:values)).to eq %w[4155 6991 1939]
       end
     end
 
