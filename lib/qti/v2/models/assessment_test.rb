@@ -5,7 +5,7 @@ module Qti
     module Models
       class AssessmentTest < Qti::V2::Models::Base
         def title
-          @title ||= xpath_with_single_check('//xmlns:assessmentTest/@title').content
+          @title ||= xpath_with_single_check('//xmlns:assessmentTest/@title')&.content || File.basename(@path, ".xml")
         end
 
         def assessment_item_reference_hrefs

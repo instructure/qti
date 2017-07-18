@@ -5,7 +5,7 @@ module Qti
     module Models
       class Assessment < Qti::V1::Models::Base
         def title
-          @title ||= xpath_with_single_check('.//xmlns:assessment/@title')&.content
+          @title ||= xpath_with_single_check('.//xmlns:assessment/@title')&.content || File.basename(@path, '.xml')
         end
 
         def assessment_items
