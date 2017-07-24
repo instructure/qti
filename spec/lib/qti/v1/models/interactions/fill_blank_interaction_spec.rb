@@ -61,4 +61,16 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     include_examples 'scoring_data_structs'
     include_examples 'stem_items'
   end
+
+  describe '#scoring_data_structs' do
+    let(:nodexml) { double }
+    subject { described_class.new(nodexml) }
+
+    it "returns 'no' as case default value" do
+      allow(nodexml).to receive(:at_xpath)
+      node = double(content: 'content', attributes: { 'respident' => double(value: 'a') })
+      allow(subject).to receive(:answer_nodes).and_return([node])
+      expect(subject.scoring_data_structs.first.case).to eq 'no'
+    end
+  end
 end

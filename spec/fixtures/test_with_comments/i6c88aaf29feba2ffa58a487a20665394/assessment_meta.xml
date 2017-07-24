@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz identifier="i6c88aaf29feba2ffa58a487a20665394" xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 http://canvas.instructure.com/xsd/cccv1p0.xsd">
+  <title>Canvas Quiz with 1 Comment</title>
+  <description>&lt;p&gt;Canvas Quiz with 1 Comment&lt;/p&gt;</description>
+  <shuffle_answers>false</shuffle_answers>
+  <scoring_policy>keep_highest</scoring_policy>
+  <quiz_type>assignment</quiz_type>
+  <points_possible>4.0</points_possible>
+  <require_lockdown_browser>false</require_lockdown_browser>
+  <require_lockdown_browser_for_results>false</require_lockdown_browser_for_results>
+  <require_lockdown_browser_monitor>false</require_lockdown_browser_monitor>
+  <lockdown_browser_monitor_data/>
+  <show_correct_answers>true</show_correct_answers>
+  <anonymous_submissions>false</anonymous_submissions>
+  <could_be_locked>false</could_be_locked>
+  <allowed_attempts>1</allowed_attempts>
+  <one_question_at_a_time>false</one_question_at_a_time>
+  <cant_go_back>false</cant_go_back>
+  <available>true</available>
+  <one_time_results>false</one_time_results>
+  <show_correct_answers_last_attempt>false</show_correct_answers_last_attempt>
+  <only_visible_to_overrides>false</only_visible_to_overrides>
+  <module_locked>false</module_locked>
+  <assignment identifier="i586a23c8b847a4d66d640c9a6bff1a20">
+    <title>Canvas Quiz with 1 Comment</title>
+    <due_at/>
+    <lock_at/>
+    <unlock_at/>
+    <module_locked>false</module_locked>
+    <workflow_state>published</workflow_state>
+    <assignment_overrides>
+    </assignment_overrides>
+    <quiz_identifierref>i6c88aaf29feba2ffa58a487a20665394</quiz_identifierref>
+    <has_group_category>false</has_group_category>
+    <points_possible>4.0</points_possible>
+    <grading_type>points</grading_type>
+    <all_day>false</all_day>
+    <submission_types>online_quiz</submission_types>
+    <position>6</position>
+    <turnitin_enabled>false</turnitin_enabled>
+    <vericite_enabled>false</vericite_enabled>
+    <peer_review_count>0</peer_review_count>
+    <peer_reviews>false</peer_reviews>
+    <automatic_peer_reviews>false</automatic_peer_reviews>
+    <moderated_grading>false</moderated_grading>
+    <anonymous_peer_reviews>false</anonymous_peer_reviews>
+    <grade_group_students_individually>false</grade_group_students_individually>
+    <freeze_on_copy>false</freeze_on_copy>
+    <muted>false</muted>
+    <omit_from_final_grade>false</omit_from_final_grade>
+    <intra_group_peer_reviews>false</intra_group_peer_reviews>
+    <only_visible_to_overrides>false</only_visible_to_overrides>
+  </assignment>
+  <assignment_group_identifierref>i3e19faa4291bd43ebb8783c9f176b0ae</assignment_group_identifierref>
+  <assignment_overrides>
+  </assignment_overrides>
+</quiz>

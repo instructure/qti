@@ -54,7 +54,7 @@ module Qti
                 rcardinality,
                 {
                   id: value_node.attributes['respident']&.value,
-                  case: value_node.attributes['case']&.value
+                  case: value_node.attributes['case']&.value || 'no'
                 }
               )
             }
