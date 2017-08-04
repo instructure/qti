@@ -5,7 +5,7 @@ module Qti
     class Manifest < Qti::Models::Base
       def assessment_test_href
         href = qti_1_href.nil? ? qti_2_x_href : qti_1_href
-        remap_href_path(href, @path)
+        remap_href_path(href)
       end
 
       def qti_1_href

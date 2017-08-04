@@ -45,26 +45,47 @@ describe Qti::Models::Base do
     end
 
     describe '#remap_href_path' do
-      let(:href) { 'hi.xml' }
-      let(:base_path) { 'hello/bob.xml' }
-      let(:remapped_path) { File.join(File.dirname(base_path), href) }
-      let(:subject) { loaded_class.remap_href_path(href, base_path) }
-
-      it 'passes the original path if it exists' do
-        allow(File).to receive(:exist?).with(href).and_return(true)
-        expect(subject).to eq href
+      it 'constructs a path relative to the basename of the source' do
+        expect(loaded_class.remap_href_path('hi.xml')).to eq 'spec/fixtures/test_qti_2.2/hi.xml'
       end
 
-      it 'passes the original path when the remapped path doesn\'t exist' do
-        allow(File).to receive(:exist?).with(href).and_return(false)
-        allow(File).to receive(:exist?).with(remapped_path).and_return(false)
-        expect(subject).to eq href
+      it 'is not fooled by an absolute href' do
+        expect(loaded_class.remap_href_path('/etc/shadow')).to eq 'spec/fixtures/test_qti_2.2/etc/shadow'
       end
 
-      it 'passes the remapped path if it exists' do
-        allow(File).to receive(:exist?).with(href).and_return(false)
-        allow(File).to receive(:exist?).with(remapped_path).and_return(true)
-        expect(subject).to eq remapped_path
+      it 'uses an implicit package root' do
+        expect {
+          loaded_class.remap_href_path('../sneaky.txt')
+        }.to raise_error(Qti::ParseError)
+      end
+
+      context "with explicit package root" do
+        let(:package_root) { File.join('spec', 'fixtures', 'test_qti_2.2') }
+        let(:item_path) { File.join(package_root, 'true-false', 'true-false.xml') }
+        let(:item) { described_class.from_path!(item_path, package_root) }
+
+        it 'allows safe .. hrefs' do
+          expect {
+            item.remap_href_path('../okay.txt')
+          }.not_to raise_error
+        end
+
+        it 'rejects attempts to escape the package' do
+          expect {
+            item.remap_href_path('../../bad.txt')
+          }.to raise_error(Qti::ParseError)
+        end
+      end
+
+      context "with nil package root" do
+        let(:item_path) { File.join('spec', 'fixtures', 'test_qti_2.2', 'true-false', 'true-false.xml') }
+        let(:item) { described_class.from_path!(item_path, nil) }
+
+        it 'rejects .. hrefs' do
+          expect {
+            item.remap_href_path('../no_longer_okay.txt')
+          }.to raise_error(Qti::ParseError)
+        end
       end
     end
   end

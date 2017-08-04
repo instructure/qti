@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    qti (0.7.8)
+    qti (0.7.9)
       activesupport (~> 4.2.6)
       dry-struct (~> 0.2.1)
       rubyzip (~> 1.2.0)

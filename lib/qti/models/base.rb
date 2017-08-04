@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'sanitize'
+require 'pathname'
 
 module Qti
   class ParseError < StandardError; end
@@ -8,7 +9,7 @@ module Qti
 
   module Models
     class Base
-      attr_reader :doc
+      attr_reader :doc, :path, :package_root
 
       ELEMENTS_REMAP = {
         'prompt' => 'div',
@@ -40,12 +41,13 @@ module Qti
         Sanitize::Config::RELAXED.merge transformers: remap_unknown_tags_transformer
       end
 
-      def self.from_path!(path)
-        new(path: path)
+      def self.from_path!(path, package_root = nil)
+        new(path: path, package_root: package_root)
       end
 
-      def initialize(path: nil)
+      def initialize(path:, package_root: nil)
         @path = path
+        set_package_root(package_root || File.dirname(path))
         @doc = parse_xml(File.read(path))
         raise ArgumentError unless @doc
       end
@@ -63,19 +65,26 @@ module Qti
       end
 
       def parse_xml(xml_string)
-        Nokogiri.XML(xml_string, &:noblanks)
+        Nokogiri.XML(xml_string, @path.to_s, &:noblanks)
       end
 
-      def remap_href_path(href, source_path)
-        return href unless href
-        # Attempts to map to a file path relative href if href doesn't exist
-        # Returns original href if that file doesn't exist
-        if File.exist?(href)
-          href
+      def remap_href_path(href)
+        return nil unless href
+        path = File.join(File.dirname(@path), href)
+        if @package_root.nil?
+          raise Qti::ParseError, "Potentially unsafe href '#{href}'" if href.split('/').include?('..')
         else
-          new_path = File.join(File.dirname(source_path), href)
-          File.exist?(new_path) ? new_path : href
+          raise Qti::ParseError, "Unsafe href '#{href}'" unless Pathname.new(path).cleanpath.to_s.start_with?(@package_root)
         end
+        path
+      end
+
+      protected
+
+      def set_package_root(package_root)
+        @package_root = package_root
+        return unless @package_root
+        @package_root = Pathname.new(@package_root).cleanpath.to_s + '/'
       end
     end
   end

@@ -2,10 +2,16 @@ require 'find'
 
 module Qti
   class Importer
+    attr_reader :package_root
+
     def initialize(path)
       Find.find(path) do |subdir|
-        @path = subdir if subdir =~ /imsmanifest.xml/
+        if subdir =~ /imsmanifest.xml\z/
+          @path = subdir
+          break
+        end
       end
+      @package_root = File.dirname(@path)
     end
 
     def import_manifest
@@ -20,9 +26,9 @@ module Qti
 
     def version_agnostic_test_object(assessment_test_file)
       if @manifest.qti_1_href
-        Qti::V1::Models::Assessment.from_path!(assessment_test_file)
+        Qti::V1::Models::Assessment.from_path!(assessment_test_file, @package_root)
       else
-        Qti::V2::Models::AssessmentTest.from_path!(assessment_test_file)
+        Qti::V2::Models::AssessmentTest.from_path!(assessment_test_file, @package_root)
       end
     end
 
@@ -38,9 +44,9 @@ module Qti
 
     def create_assessment_item(assessment_item_ref)
       if @manifest.qti_1_href
-        Qti::V1::Models::AssessmentItem.new(assessment_item_ref)
+        Qti::V1::Models::AssessmentItem.new(assessment_item_ref, @package_root)
       else
-        Qti::V2::Models::AssessmentItem.from_path!(assessment_item_ref)
+        Qti::V2::Models::AssessmentItem.from_path!(assessment_item_ref, @package_root)
       end
     end
   end

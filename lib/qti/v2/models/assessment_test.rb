@@ -12,7 +12,7 @@ module Qti
           # Return the xml files we should be parsing
           @assessment_item_reference_hrefs ||= begin
             @doc.xpath('//xmlns:assessmentItemRef/@href').map(&:content).map do |href|
-              remap_href_path(href, @path)
+              remap_href_path(href)
             end
           end
         end

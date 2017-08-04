@@ -7,8 +7,10 @@ module Qti
       class AssessmentItem < Qti::V1::Models::Base
         attr_reader :doc
 
-        def initialize(item)
+        def initialize(item, package_root = nil)
           @doc = item
+          @path = item.document.url
+          set_package_root(package_root)
         end
 
         def item_body

@@ -9,6 +9,10 @@ describe Qti::Importer do
     it 'loads an xml file' do
       expect { importer }.to_not raise_error
     end
+
+    it 'sets the package root properly' do
+      expect(importer.package_root).to eq file_path
+    end
   end
 
   shared_examples_for 'unsupported QTI version' do
@@ -33,6 +37,13 @@ describe Qti::Importer do
         answer_arity = assessment_items.map { |item| item.scoring_data_structs.count }
         expect(answer_arity).to eq [1, 1, 4, 1, 1]
       end
+
+      it 'sets the path and package root properly' do
+        importer.test_object
+        item = importer.create_assessment_item(importer.assessment_item_refs.first)
+        expect(item.path).to eq file_path + '/quiz.xml'
+        expect(item.package_root).to eq file_path + '/'
+      end
     end
 
     context 'canvas generated' do
@@ -51,5 +62,15 @@ describe Qti::Importer do
 
     include_examples 'initialize'
     include_examples 'unsupported QTI version'
+
+    describe '#create_assessment_item' do
+      it 'sets the path and package root properly' do
+        importer.test_object
+        ref = importer.assessment_item_refs.first
+        item = importer.create_assessment_item(ref)
+        expect(item.path).to eq ref
+        expect(item.package_root).to eq file_path + '/'
+      end
+    end
   end
 end
