@@ -19,7 +19,7 @@ module Qti
             @item_body ||= begin
               node = @node.dup
               node.children.filter(PROHIBITED_NODE_NAMES).map(&:unlink)
-              node.content.strip.gsub(/\s+/, ' ')
+              sanitize_content!(node.content.strip.gsub(/\s+/, ' '))
             end
           end
         end

@@ -16,7 +16,7 @@ module Qti
           def item_body
             @item_body ||= begin
               node = @node.dup
-              node.content.strip.gsub(/\s+/, ' ')
+              sanitize_content!(node.content.strip.gsub(/\s+/, ' '))
             end
           end
         end

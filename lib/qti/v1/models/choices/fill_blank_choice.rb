@@ -17,7 +17,7 @@ module Qti
           def item_body
             @item_body ||= begin
               node = @node.dup
-              node.content.squish
+              sanitize_content!(node.content.squish)
             end
           end
         end
