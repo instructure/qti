@@ -15,10 +15,15 @@ describe Qti::Importer do
     end
   end
 
-  shared_examples_for 'unsupported QTI version' do
-    it 'raises an error' do
-      allow_any_instance_of(Qti::Models::Manifest).to receive(:assessment_test_href).and_return(nil)
-      expect { importer.import_manifest }.to raise_error('Unsupported QTI version')
+  context 'unsupported QTI version' do
+    it 'raises an error if the QTI file doesn\'t match expected' do
+      file_path = File.join(fixtures_path, 'items_2.1')
+      expect { Qti::Importer.new(file_path) }.to raise_error('Unsupported QTI version')
+    end
+
+    it 'raises an error if there is no imsmanifest' do
+      file_path = File.join(fixtures_path, 'items_1.2')
+      expect { Qti::Importer.new(file_path) }.to raise_error('Manifest not found')
     end
   end
 
@@ -27,7 +32,6 @@ describe Qti::Importer do
     let(:assessment_model) { Qti::V1::Models::Assessment }
 
     include_examples 'initialize'
-    include_examples 'unsupported QTI version'
 
     describe '#create_assessment_item' do
       it 'create items with correct scoring structs' do
@@ -61,7 +65,6 @@ describe Qti::Importer do
     let(:assessment_model) { Qti::V1::Models::AssessmentTest }
 
     include_examples 'initialize'
-    include_examples 'unsupported QTI version'
 
     describe '#create_assessment_item' do
       it 'sets the path and package root properly' do

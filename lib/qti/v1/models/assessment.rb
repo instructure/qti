@@ -11,6 +11,10 @@ module Qti
         def assessment_items
           @doc.xpath('.//xmlns:item')
         end
+
+        def create_assessment_item(assessment_item)
+          Qti::V1::Models::AssessmentItem.new(assessment_item, @package_root)
+        end
       end
     end
   end
