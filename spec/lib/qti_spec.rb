@@ -29,21 +29,18 @@ describe Qti::Importer do
 
   context 'QTI 1.2' do
     let(:file_path) { File.join(fixtures_path, 'test_qti_1.2') }
-    let(:assessment_model) { Qti::V1::Models::Assessment }
 
     include_examples 'initialize'
 
     describe '#create_assessment_item' do
       it 'create items with correct scoring structs' do
-        importer.test_object
-        assessment_items = importer.assessment_item_refs.map { |ref| importer.create_assessment_item(ref) }
+        assessment_items = importer.assessment_item_refs.map { |item| importer.create_assessment_item(item) }
         expect(assessment_items.count).to eq 5
         answer_arity = assessment_items.map { |item| item.scoring_data_structs.count }
         expect(answer_arity).to eq [1, 1, 4, 1, 1]
       end
 
       it 'sets the path and package root properly' do
-        importer.test_object
         item = importer.create_assessment_item(importer.assessment_item_refs.first)
         expect(item.path).to eq file_path + '/quiz.xml'
         expect(item.package_root).to eq file_path + '/'
@@ -54,7 +51,6 @@ describe Qti::Importer do
       let(:file_path) { File.join(fixtures_path, 'test_qti_1.2_canvas') }
 
       it 'imports a canvas generated quiz' do
-        importer.test_object
         expect(importer.assessment_item_refs.count).to eq 4
       end
     end
@@ -62,13 +58,11 @@ describe Qti::Importer do
 
   context 'QTI 2.1' do
     let(:file_path) { File.join(fixtures_path, 'test_qti_2.2') }
-    let(:assessment_model) { Qti::V1::Models::AssessmentTest }
 
     include_examples 'initialize'
 
     describe '#create_assessment_item' do
       it 'sets the path and package root properly' do
-        importer.test_object
         ref = importer.assessment_item_refs.first
         item = importer.create_assessment_item(ref)
         expect(item.path).to eq ref

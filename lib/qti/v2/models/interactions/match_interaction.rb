@@ -24,9 +24,9 @@ module Qti
           def self.matches(node)
             implementation =
               if use_associate_interaction_implementation?(node)
-                MatchItemTagProcesssors::AssociateInteractionTagProcessor
+                MatchItemTagProcessors::AssociateInteractionTagProcessor
               elsif use_match_interaction_implementation?(node)
-                MatchItemTagProcesssors::MatchInteractionTagProcessor
+                MatchItemTagProcessors::MatchInteractionTagProcessor
               end
 
             return false unless implementation.present?
@@ -34,14 +34,14 @@ module Qti
           end
 
           def self.use_associate_interaction_implementation?(node)
-            MatchItemTagProcesssors::AssociateInteractionTagProcessor.associate_interaction_tag?(node) &&
-              MatchItemTagProcesssors::AssociateInteractionTagProcessor.number_of_questions_per_answer(node)
+            MatchItemTagProcessors::AssociateInteractionTagProcessor.associate_interaction_tag?(node) &&
+              MatchItemTagProcessors::AssociateInteractionTagProcessor.number_of_questions_per_answer(node)
                                                                        .all? { |n| n == 1 }
           end
 
           def self.use_match_interaction_implementation?(node)
-            MatchItemTagProcesssors::MatchInteractionTagProcessor.match_interaction_tag?(node) &&
-              MatchItemTagProcesssors::MatchInteractionTagProcessor.number_of_questions_per_answer(node)
+            MatchItemTagProcessors::MatchInteractionTagProcessor.match_interaction_tag?(node) &&
+              MatchItemTagProcessors::MatchInteractionTagProcessor.number_of_questions_per_answer(node)
                                                                    .all? { |n| n == 1 }
           end
         end

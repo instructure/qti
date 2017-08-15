@@ -7,15 +7,15 @@ module Qti
         class CategorizationInteraction < MatchInteraction
           def self.matches(node)
             if use_match_interaction_implementation?(node)
-              new(node, MatchItemTagProcesssors::MatchInteractionTagProcessor)
+              new(node, MatchItemTagProcessors::MatchInteractionTagProcessor)
             else
               false
             end
           end
 
           def self.use_match_interaction_implementation?(node)
-            MatchItemTagProcesssors::MatchInteractionTagProcessor.match_interaction_tag?(node) &&
-              MatchItemTagProcesssors::MatchInteractionTagProcessor.number_of_questions_per_answer(node)
+            MatchItemTagProcessors::MatchInteractionTagProcessor.match_interaction_tag?(node) &&
+              MatchItemTagProcessors::MatchInteractionTagProcessor.number_of_questions_per_answer(node)
                                                                    .any? { |n| n != 1 }
           end
 

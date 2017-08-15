@@ -28,6 +28,14 @@ module Qti
         def create_assessment_item(assessment_item_ref)
           Qti::V2::Models::AssessmentItem.from_path!(assessment_item_ref, @package_root)
         end
+
+        def stimulus_ref(ref)
+          return nil
+        end
+
+        def create_stimulus(stimulus_ref)
+          Qti::V2::Models::StimulusItem.from_path!(stimulus_ref, @package_root)
+        end
       end
     end
   end

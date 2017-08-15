@@ -15,6 +15,14 @@ module Qti
         def create_assessment_item(assessment_item)
           Qti::V1::Models::AssessmentItem.new(assessment_item, @package_root)
         end
+
+        def stimulus_ref(ref)
+          return nil
+        end
+
+        def create_stimulus(stimulus)
+          raise "Stimulus type not supported for QTI version"
+        end
       end
     end
   end

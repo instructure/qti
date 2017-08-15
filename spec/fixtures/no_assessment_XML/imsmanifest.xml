@@ -24,7 +24,7 @@
   </metadata>
   <organizations/>
   <resources>
-    <resource href="59ee7c9d-e6cc-4d0c-b545-258e20b1a244.xml" identifier="59ee7c9d-e6cc-4d0c-b545-258e20b1a244" type="imsqti_item_xmlv2p1">
+    <resource href="1c7db4f7-e933-4296-8979-963480422832.xml" identifier="1c7db4f7-e933-4296-8979-963480422832" type="imsqti_item_xmlv2p1">
       <metadata>
         <schema>IMS QTI</schema>
         <schemaversion>2.1</schemaversion>
@@ -34,7 +34,7 @@
               <imsmd:langstring>UIN</imsmd:langstring>
             </imsmd:title>
             <imsmd:keyword>
-              <imsmd:langstring>Long Name</imsmd:langstring>
+              <imsmd:langstring>Course Name</imsmd:langstring>
             </imsmd:keyword>
           </imsmd:general>
           <imsmd:lifecycle>
@@ -92,7 +92,7 @@
               </imsmd:source>
               <imsmd:taxon>
                 <imsmd:entry>
-                  <imsmd:langstring>06-08</imsmd:langstring>
+                  <imsmd:langstring>#</imsmd:langstring>
                 </imsmd:entry>
               </imsmd:taxon>
             </imsmd:taxonpath>
@@ -102,7 +102,7 @@
               </imsmd:source>
               <imsmd:taxon>
                 <imsmd:entry>
-                  <imsmd:langstring>C432872E-31A9-11E0-8DC6-81119DFF4B22</imsmd:langstring>
+                  <imsmd:langstring>GUID</imsmd:langstring>
                 </imsmd:entry>
               </imsmd:taxon>
             </imsmd:taxonpath>
@@ -132,7 +132,7 @@
               </imsmd:source>
               <imsmd:taxon>
                 <imsmd:entry>
-                  <imsmd:langstring>5A</imsmd:langstring>
+                  <imsmd:langstring>#</imsmd:langstring>
                 </imsmd:entry>
               </imsmd:taxon>
             </imsmd:taxonpath>
@@ -142,7 +142,7 @@
               </imsmd:source>
               <imsmd:taxon>
                 <imsmd:entry>
-                  <imsmd:langstring>2014</imsmd:langstring>
+                  <imsmd:langstring>####</imsmd:langstring>
                 </imsmd:entry>
               </imsmd:taxon>
             </imsmd:taxonpath>
@@ -152,7 +152,7 @@
               </imsmd:source>
               <imsmd:taxon>
                 <imsmd:entry>
-                  <imsmd:langstring>Keywords</imsmd:langstring>
+                  <imsmd:langstring>words</imsmd:langstring>
                 </imsmd:entry>
               </imsmd:taxon>
             </imsmd:taxonpath>
@@ -309,16 +309,461 @@
           </imsmd:classification>
         </imsmd:lom>
       </metadata>
-      <file href="59ee7c9d-e6cc-4d0c-b545-258e20b1a244.xml"/>
-      <file href="objects/83+Track+83.mp3"/>
-      <file href="images/59ee7c9d-e6cc-4d0c-b545-258e20b1a244_resources.axd?path=LwAvADEAOQAyAC4AMQA2ADgALgAyADQAMAAuADEAMAAxAC8AaQB0AHMALwBPAE8AMgBjAG8AbgB0AGUAbgB0AC8ASQBCAF8ARgBsAG8AcgBpAGQAYQBfAFAAZQByAGYAQQByAHQAcwBfAE8ATwAyAC8AQwBvAG4AdABlAG4AdABQAHIAZQB2AGkAZQB3AC8A0&amp;file=item_3607_v10_graphics1_png256.png"/>
-      <file href="59ee7c9d-e6cc-4d0c-b545-258e20b1a244_choice_A.html"/>
-      <file href="images/59ee7c9d-e6cc-4d0c-b545-258e20b1a244_resources.axd?path=LwAvADEAOQAyAC4AMQA2ADgALgAyADQAMAAuADEAMAAxAC8AaQB0AHMALwBPAE8AMgBjAG8AbgB0AGUAbgB0AC8ASQBCAF8ARgBsAG8AcgBpAGQAYQBfAFAAZQByAGYAQQByAHQAcwBfAE8ATwAyAC8AQwBvAG4AdABlAG4AdABQAHIAZQB2AGkAZQB3AC8A0&amp;file=item_3607_v10_graphics2_png256.png"/>
-      <file href="59ee7c9d-e6cc-4d0c-b545-258e20b1a244_choice_B.html"/>
-      <file href="images/59ee7c9d-e6cc-4d0c-b545-258e20b1a244_resources.axd?path=LwAvADEAOQAyAC4AMQA2ADgALgAyADQAMAAuADEAMAAxAC8AaQB0AHMALwBPAE8AMgBjAG8AbgB0AGUAbgB0AC8ASQBCAF8ARgBsAG8AcgBpAGQAYQBfAFAAZQByAGYAQQByAHQAcwBfAE8ATwAyAC8AQwBvAG4AdABlAG4AdABQAHIAZQB2AGkAZQB3AC8A0&amp;file=item_3607_v10_graphics3_png256.png"/>
-      <file href="59ee7c9d-e6cc-4d0c-b545-258e20b1a244_choice_C.html"/>
-      <file href="images/59ee7c9d-e6cc-4d0c-b545-258e20b1a244_resources.axd?path=LwAvADEAOQAyAC4AMQA2ADgALgAyADQAMAAuADEAMAAxAC8AaQB0AHMALwBPAE8AMgBjAG8AbgB0AGUAbgB0AC8ASQBCAF8ARgBsAG8AcgBpAGQAYQBfAFAAZQByAGYAQQByAHQAcwBfAE8ATwAyAC8AQwBvAG4AdABlAG4AdABQAHIAZQB2AGkAZQB3AC8A0&amp;file=item_3607_v10_graphics4_png256.png"/>
-      <file href="59ee7c9d-e6cc-4d0c-b545-258e20b1a244_choice_D.html"/>
+      <file href="1c7db4f7-e933-4296-8979-963480422832.xml"/>
+      <file href="1c7db4f7-e933-4296-8979-963480422832_choice_A.html"/>
+      <file href="1c7db4f7-e933-4296-8979-963480422832_choice_B.html"/>
+      <file href="1c7db4f7-e933-4296-8979-963480422832_choice_C.html"/>
+      <file href="1c7db4f7-e933-4296-8979-963480422832_choice_D.html"/>
+    </resource>
+    <resource href="a4f3621a-195c-4847-a72c-69388250a078.xml" identifier="a4f3621a-195c-4847-a72c-69388250a078" type="imsqti_item_xmlv2p1">
+      <metadata>
+        <schema>IMS QTI</schema>
+        <schemaversion>2.1</schemaversion>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:title>
+              <imsmd:langstring>UIN</imsmd:langstring>
+            </imsmd:title>
+            <imsmd:keyword>
+              <imsmd:langstring>demonstrate understanding, factual information, common topics</imsmd:langstring>
+            </imsmd:keyword>
+          </imsmd:general>
+          <imsmd:lifecycle>
+            <imsmd:version>
+              <imsmd:langstring xml:lang="en">Published</imsmd:langstring>
+            </imsmd:version>
+          </imsmd:lifecycle>
+          <imsmd:rights>
+            <imsmd:description>
+              <imsmd:langstring xml:lang="en">Pearson Copyright</imsmd:langstring>
+            </imsmd:description>
+          </imsmd:rights>
+          <imsmd:classification>
+            <imsmd:purpose>
+              <imsmd:source>
+                <imsmd:langstring>LOMv1.0</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:value>
+                <imsmd:langstring>discipline</imsmd:langstring>
+              </imsmd:value>
+            </imsmd:purpose>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Blooms Taxonomy</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring/>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Passage Stimulus</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring/>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Content Focus</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>N/A</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Grade Level</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>Level</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>ABStandardGUIDs</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>UID</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Course ID</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>ID</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>UIN</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>UIN</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Batch</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>#</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Year</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>####</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Keywords</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>demonstrate understanding, factual information, common topics</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Htm</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring/>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Question Type</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>Selected Response</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Subject</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>Subject</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>WebDok</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>Level 1</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Response Type</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>Written</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Enable Rich Text</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>False</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Enable Special Chars</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>False</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Enable Spell Checker</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>False</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Enable Grammar Checker</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>False</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Response language</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring/>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Ruler</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring/>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Calculator</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring/>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Protractor</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>false</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Compass</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>false</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>enable equation editor</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>false</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="a4f3621a-195c-4847-a72c-69388250a078.xml"/>
+      <file href="a4f3621a-195c-4847-a72c-69388250a078_choice_A.html"/>
+      <file href="a4f3621a-195c-4847-a72c-69388250a078_choice_B.html"/>
+      <file href="a4f3621a-195c-4847-a72c-69388250a078_choice_C.html"/>
+      <file href="a4f3621a-195c-4847-a72c-69388250a078_choice_D.html"/>
+      <dependency identifierref="0cfd5cf7-2c91-4b35-a57a-9f5d1709f68f"/>
+    </resource>
+    <resource href="passages/0cfd5cf7-2c91-4b35-a57a-9f5d1709f68f.html" identifier="0cfd5cf7-2c91-4b35-a57a-9f5d1709f68f" type="webcontent">
+      <metadata>
+        <schema>IMS QTI</schema>
+        <schemaversion>2.1</schemaversion>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:title>
+              <imsmd:langstring>¡El equipo de hockey te necesita!</imsmd:langstring>
+            </imsmd:title>
+            <imsmd:keyword>
+              <imsmd:langstring/>
+            </imsmd:keyword>
+          </imsmd:general>
+          <imsmd:lifecycle>
+            <imsmd:version>
+              <imsmd:langstring xml:lang="en">Published</imsmd:langstring>
+            </imsmd:version>
+          </imsmd:lifecycle>
+          <imsmd:rights>
+            <imsmd:description>
+              <imsmd:langstring xml:lang="en">Pearson Copyright</imsmd:langstring>
+            </imsmd:description>
+          </imsmd:rights>
+          <imsmd:classification>
+            <imsmd:purpose>
+              <imsmd:source>
+                <imsmd:langstring>LOMv1.0</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:value>
+                <imsmd:langstring>discipline</imsmd:langstring>
+              </imsmd:value>
+            </imsmd:purpose>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Blooms Taxonomy</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring/>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Passage Stimulus</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring/>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Content Focus</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>N/A</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Grade Level</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>09-12</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>UIN</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>WLSPA09123P0180</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Course</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>SPA</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Batch</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>6</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Year</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>2013</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Asset Type</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>Audio</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Genre</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>Informational</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>RMM</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring/>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+            <imsmd:taxonpath>
+              <imsmd:source>
+                <imsmd:langstring>Subject</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>WL</imsmd:langstring>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonpath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="passages/0cfd5cf7-2c91-4b35-a57a-9f5d1709f68f.html"/>
+      <file href="passages/0cfd5cf7-2c91-4b35-a57a-9f5d1709f68f_instructions.html"/>
     </resource>
   </resources>
 </manifest>

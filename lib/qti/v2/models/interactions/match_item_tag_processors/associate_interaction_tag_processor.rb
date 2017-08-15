@@ -2,7 +2,7 @@ module Qti
   module V2
     module Models
       module Interactions
-        module MatchItemTagProcesssors
+        module MatchItemTagProcessors
           class AssociateInteractionTagProcessor < Interactions::BaseInteraction
             def self.associate_interaction_tag?(node)
               node.xpath('.//xmlns:associateInteraction').count == 1

@@ -27,6 +27,14 @@ module Qti
     def create_assessment_item(assessment_item)
       @import.create_assessment_item(assessment_item)
     end
+
+    def stimulus_ref(assessment_item_ref)
+      @import.stimulus_ref(assessment_item_ref)
+    end
+
+    def create_stimulus(stimulus_ref)
+      @import.create_stimulus(stimulus_ref)
+    end
   end
 end
 
@@ -50,6 +58,7 @@ require 'qti/v2/models/choices/simple_choice'
 require 'qti/v2/models/choices/simple_associable_choice'
 require 'qti/v2/models/choices/gap_match_choice'
 require 'qti/v2/models/assessment_item'
+require 'qti/v2/models/stimulus_item'
 require 'qti/v2/models/assessment_test'
 require 'qti/v2/models/non_assessment_test'
 require 'qti/v2/models/scoring_data'
