@@ -9,8 +9,9 @@ module Qti
             false
           end
 
-          def initialize(node)
+          def initialize(node, parent)
             @node = node
+            set_paths_from_item(parent)
           end
 
           def shuffled?

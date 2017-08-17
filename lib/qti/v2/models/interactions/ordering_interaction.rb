@@ -5,10 +5,10 @@ module Qti
     module Models
       module Interactions
         class OrderingInteraction < ChoiceInteraction
-          def self.matches(node)
+          def self.matches(node, parent)
             match = node.at_xpath('.//xmlns:orderInteraction')
             return false unless match.present?
-            new(node)
+            new(node, parent)
           end
 
           def shuffled?

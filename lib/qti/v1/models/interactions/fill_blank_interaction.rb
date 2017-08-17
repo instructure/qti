@@ -4,15 +4,11 @@ module Qti
       module Interactions
         class FillBlankInteraction < BaseInteraction
           # This will know if a class matches
-          def self.matches(node)
+          def self.matches(node, parent)
             return false if node.xpath('.//xmlns:other').present?
             matches = node.xpath('.//xmlns:render_fib')
             return false if matches.empty?
-            new(node)
-          end
-
-          def initialize(node)
-            @node = node
+            new(node, parent)
           end
 
           def stem_items
@@ -44,7 +40,7 @@ module Qti
 
           def answers
             @answers ||= answer_nodes.map do |node|
-              V1::Models::Choices::FillBlankChoice.new(node)
+              V1::Models::Choices::FillBlankChoice.new(node, self)
             end
           end
 

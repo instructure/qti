@@ -39,7 +39,7 @@ module Qti
 
         def interaction_model
           @interaction_model ||= begin
-            V2::Models::Interactions.interaction_model(@doc)
+            V2::Models::Interactions.interaction_model(@doc, self)
           end
         end
 

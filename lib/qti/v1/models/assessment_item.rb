@@ -17,7 +17,7 @@ module Qti
           @item_body ||= begin
             node = @doc.dup
             presentation = node.at_xpath('.//xmlns:presentation')
-            prompt = presentation.at_xpath('.//xmlns:mattext').content
+            prompt = presentation.at_xpath('.//xmlns:mattext').to_html
             sanitize_content!(prompt)
           end
         end
@@ -65,7 +65,7 @@ module Qti
 
         def interaction_model
           @interaction_model ||= begin
-            V1::Models::Interactions.interaction_model(@doc)
+            V1::Models::Interactions.interaction_model(@doc, self)
           end
         end
 

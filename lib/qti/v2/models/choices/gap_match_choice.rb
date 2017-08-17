@@ -6,8 +6,9 @@ module Qti
       module Choices
         class GapMatchChoice < Qti::V2::Models::Base
           PROHIBITED_NODE_NAMES = 'feedbackInline'.freeze
-          def initialize(node)
+          def initialize(node, parent)
             @node = node
+            set_paths_from_item(parent)
           end
 
           def identifier
@@ -18,7 +19,7 @@ module Qti
             @item_body ||= begin
               node = @node.dup
               node.children.filter(PROHIBITED_NODE_NAMES).each(&:unlink)
-              sanitize_content!(node.content.strip.gsub(/\s+/, ' '))
+              sanitize_content!(node.to_html)
             end
           end
         end

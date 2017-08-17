@@ -5,9 +5,9 @@ module Qti
     module Models
       module Interactions
         class CategorizationInteraction < MatchInteraction
-          def self.matches(node)
+          def self.matches(node, parent)
             if use_match_interaction_implementation?(node)
-              new(node, MatchItemTagProcessors::MatchInteractionTagProcessor)
+              new(node, parent, MatchItemTagProcessors::MatchInteractionTagProcessor)
             else
               false
             end

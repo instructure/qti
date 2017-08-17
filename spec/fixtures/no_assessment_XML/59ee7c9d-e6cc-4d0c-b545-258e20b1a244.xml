@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentItem adaptive="false" identifier="choice" timeDependent="false" title="02-1303010-00046" xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1 http://www.imsglobal.org/xsd/qti/qtiv2p1/imsqti_v2p1.xsd">
+  <responseDeclaration baseType="identifier" cardinality="single" identifier="RESPONSE">
+    <correctResponse>
+      <value>A</value>
+    </correctResponse>
+  </responseDeclaration>
+  <outcomeDeclaration baseType="identifier" cardinality="single" identifier="FEEDBACK" normalMaximum="1">
+    <defaultValue>
+      <value>1</value>
+    </defaultValue>
+  </outcomeDeclaration>
+  <itemBody>
+    <div>
+      <object data="59ee7c9d-e6cc-4d0c-b545-258e20b1a244.html" type="text/html"/>
+    </div>
+    <choiceInteraction maxChoices="1" responseIdentifier="RESPONSE" shuffle="false">
+      <simpleChoice identifier="A">
+        <object data="59ee7c9d-e6cc-4d0c-b545-258e20b1a244_choice_A.html" type="text/html"/>
+        <feedbackInline identifier="A" outcomeIdentifier="FEEDBACK" showHide="show">Key - This is the correct answer because the pitches in this answer are exactly what was played on the stem audio.</feedbackInline>
+      </simpleChoice>
+      <simpleChoice identifier="B">
+        <object data="some_image.jpg" type="image/jpeg"></object>
+      </simpleChoice>
+    </choiceInteraction>
+    <rubricBlock view="scorer">
+      <div/>
+    </rubricBlock>
+  </itemBody>
+  <responseProcessing template="http://www.imsglobal.org/question/qti_v2p1/rptemplates/match_correct"/>
+</assessmentItem>

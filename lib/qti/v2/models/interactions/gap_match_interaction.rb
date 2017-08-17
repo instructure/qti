@@ -3,14 +3,10 @@ module Qti
     module Models
       module Interactions
         class GapMatchInteraction < BaseInteraction
-          def self.matches(node)
+          def self.matches(node, parent)
             matches = node.xpath('.//xmlns:gapMatchInteraction')
             return false if matches.count != 1
-            new(node)
-          end
-
-          def initialize(node)
-            @node = node
+            new(node, parent)
           end
 
           def shuffled?
@@ -86,7 +82,7 @@ module Qti
 
           def answers
             @answers ||= answer_nodes.map do |node|
-              V2::Models::Choices::GapMatchChoice.new(node)
+              V2::Models::Choices::GapMatchChoice.new(node, self)
             end
           end
 

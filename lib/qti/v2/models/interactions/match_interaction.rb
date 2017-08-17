@@ -10,9 +10,9 @@ module Qti
 
           attr_reader :implementation
 
-          def initialize(node, implementation)
-            super(node)
-            @implementation = implementation.new(node)
+          def initialize(node, parent, implementation)
+            super(node, parent)
+            @implementation = implementation.new(node, parent)
           end
 
           def_delegators :@implementation, :answers, :questions, :shuffled?
@@ -21,7 +21,7 @@ module Qti
             implementation.scoring_data_structs
           end
 
-          def self.matches(node)
+          def self.matches(node, parent)
             implementation =
               if use_associate_interaction_implementation?(node)
                 MatchItemTagProcessors::AssociateInteractionTagProcessor
@@ -30,7 +30,7 @@ module Qti
               end
 
             return false unless implementation.present?
-            new(node, implementation)
+            new(node, parent, implementation)
           end
 
           def self.use_associate_interaction_implementation?(node)

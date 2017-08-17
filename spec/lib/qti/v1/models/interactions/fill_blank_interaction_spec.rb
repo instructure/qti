@@ -4,7 +4,7 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
   let(:fixtures_path) { File.join('spec', 'fixtures', 'items_1.2') }
   let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
   let(:assessment_item_refs) { test_object.assessment_items }
-  let(:loaded_class) { described_class.new(assessment_item_refs.first) }
+  let(:loaded_class) { described_class.new(assessment_item_refs.first, test_object) }
 
   shared_examples_for 'shuffled?' do
     it 'returns shuffle setting' do
@@ -64,7 +64,8 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
 
   describe '#scoring_data_structs' do
     let(:nodexml) { double }
-    subject { described_class.new(nodexml) }
+    let(:test_object) { double(package_root: 'dummy', path: 'dummy/blah') }
+    subject { described_class.new(nodexml, test_object) }
 
     it "returns 'no' as case default value" do
       allow(nodexml).to receive(:at_xpath)

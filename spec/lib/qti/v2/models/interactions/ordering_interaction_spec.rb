@@ -3,11 +3,11 @@ require 'spec_helper'
 describe Qti::V2::Models::Interactions::OrderingInteraction do
   let(:file) { File.join('spec', 'fixtures', 'items_2.1', 'order.xml') }
   let(:item) { Qti::V2::Models::AssessmentItem.from_path!(file) }
-  subject { described_class.new(item.doc) }
+  subject { described_class.new(item.doc, item) }
 
   describe '.matches' do
     it 'matches the item in file' do
-      expect(described_class.matches(item.doc)).to be_truthy
+      expect(described_class.matches(item.doc, item)).to be_truthy
     end
   end
 

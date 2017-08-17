@@ -23,6 +23,14 @@ module Qti
         Sanitize.fragment(html, sanitize_config)
       end
 
+      def object_tag_transformer
+        lambda do |env|
+          return unless env[:node_name] == 'object'
+          return if env[:is_whitelisted] || !env[:node].element?
+          replace_object_node(env[:node])
+        end
+      end
+
       def remap_unknown_tags_transformer
         lambda do |env|
           node_name = env[:node_name]
@@ -37,8 +45,11 @@ module Qti
         end
       end
 
-      def sanitize_config
-        Sanitize::Config::RELAXED.merge transformers: remap_unknown_tags_transformer
+      def sanitize_config(import_objects: true)
+        transformers = []
+        transformers << object_tag_transformer if import_objects
+        transformers << remap_unknown_tags_transformer
+        Sanitize::Config::RELAXED.merge transformers: transformers
       end
 
       def self.from_path!(path, package_root = nil)
@@ -85,6 +96,42 @@ module Qti
         @package_root = package_root
         return unless @package_root
         @package_root = Pathname.new(@package_root).cleanpath.to_s + '/'
+      end
+
+      def set_paths_from_item(other_item)
+        @package_root = other_item.package_root
+        @path = other_item.path
+      end
+
+      def replace_object_node(node)
+        path = remap_href_path(node[:data])
+        if path
+          case node[:type]
+          when /^image\//
+            return replace_with_image(node, node[:data])
+          when "text/html"
+            return replace_with_html(node, path)
+          end
+        end
+        # remove unrecognized or invalid objects from the sanitized document
+        node.unlink
+      end
+
+      def replace_with_image(node, src)
+        node.name = 'img'
+        node[:src] = src
+      end
+
+      def replace_with_html(node, path)
+        begin
+          content = File.read(path)
+          html_content = Sanitize.fragment(content, sanitize_config(import_objects: false))
+          node.name = 'div'
+          node.add_child(Nokogiri::HTML.fragment(html_content))
+        rescue StandardError => e
+          warn "failed to import html object #{path}: #{e.message}"
+          node.unlink
+        end
       end
     end
   end

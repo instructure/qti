@@ -4,15 +4,11 @@ module Qti
       module Interactions
         class StringInteraction < BaseInteraction
           # This will know if a class matches
-          def self.matches(node)
+          def self.matches(node, parent)
             return false unless node.xpath('.//xmlns:other').present?
             matches = node.xpath('.//xmlns:render_fib')
             return false if matches.empty?
-            new(matches.first)
-          end
-
-          def initialize(node)
-            @node = node
+            new(matches.first, parent)
           end
 
           private

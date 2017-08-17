@@ -6,7 +6,7 @@ describe Qti::V1::Models::Choices::LogicalIdentifierChoice do
     let(:file_path) { File.join(fixtures_path, 'items_1.2', 'choice.xml') }
     let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
     let(:nodes) { test_object.assessment_items }
-    let(:choices) { nodes.map { |node| described_class.new(node) } }
+    let(:choices) { nodes.map { |node| described_class.new(node, test_object) } }
 
     it 'returns the right identifier' do
       expect(choices.map(&:identifier)).to eq %w(QUE_1003 QUE_1007 QUE_1022)

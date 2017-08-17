@@ -16,7 +16,7 @@ describe Qti::V2::Models::Interactions::ShortTextInteraction do
         node = double('Nokogiri::XML::Document')
         matches = [double('Nokogiri::XML::Element'), double('Nokogiri::XML::Element')]
         allow(node).to receive(:xpath).with('.//xmlns:textEntryInteraction').and_return(matches)
-        expect{described_class.matches(node)}.to raise_error(Qti::UnsupportedSchema)
+        expect{described_class.matches(node, assessment_item)}.to raise_error(Qti::UnsupportedSchema)
       end
     end
   end

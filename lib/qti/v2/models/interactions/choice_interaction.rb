@@ -3,17 +3,17 @@ module Qti
     module Models
       module Interactions
         class ChoiceInteraction < BaseInteraction
-          def self.matches(node)
+          def self.matches(node, parent)
             matches = node.xpath('.//xmlns:choiceInteraction')
             return false if matches.empty?
 
             raise Qti::UnsupportedSchema if matches.size > 1
-            new(matches.first)
+            new(matches.first, parent)
           end
 
           def answers
             @answers ||= answer_nodes.map do |node|
-              V2::Models::Choices::SimpleChoice.new(node)
+              V2::Models::Choices::SimpleChoice.new(node, self)
             end
           end
 

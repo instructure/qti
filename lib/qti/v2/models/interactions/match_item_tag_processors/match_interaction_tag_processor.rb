@@ -24,7 +24,7 @@ module Qti
             end
 
             def answers
-              answer_nodes.map { |node| Choices::SimpleAssociableChoice.new(node) }
+              answer_nodes.map { |node| Choices::SimpleAssociableChoice.new(node, self) }
             end
 
             def scoring_data_structs

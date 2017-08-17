@@ -12,9 +12,10 @@ describe Qti::V1::Models::Interactions::BaseInteraction do
   end
 
   let(:node) { Nokogiri.XML(doc, &:noblanks) }
+  let(:assessment) { double(path: 'dummy/blah', package_root: 'dummy') }
 
   it 'returns "Single" rcardinality by default' do
-    interaction = described_class.new(node)
+    interaction = described_class.new(node, assessment)
     expect(interaction.rcardinality).to eq 'Single'
   end
 end

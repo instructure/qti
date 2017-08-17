@@ -2,9 +2,10 @@ require 'spec_helper'
 
 describe Qti::V2::Models::Interactions::GapMatchInteraction do
   context 'gap_match.xml' do
+    let(:item) { double(package_root: 'dummy', path: 'dummy/blah') }
     let(:io) { File.read(File.join('spec', 'fixtures', 'items_2.1', 'gap_match.xml')) }
     let(:node) { Nokogiri::XML(io) }
-    let(:loaded_class) { described_class.new(node) }
+    let(:loaded_class) { described_class.new(node, item) }
 
     let(:expected_stem_items) {[
       {type: "text",

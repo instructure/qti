@@ -4,21 +4,17 @@ module Qti
       module Interactions
         class ChoiceInteraction < BaseInteraction
           # This will know if a class matches
-          def self.matches(node)
+          def self.matches(node, parent)
             matches = node.xpath('.//xmlns:response_lid')
             return false if matches.count > 1  || matches.empty?
             rcardinality = matches.first.attributes['rcardinality']&.value || 'Single'
             return false if rcardinality == 'Ordered'
-            new(node)
-          end
-
-          def initialize(node)
-            @node = node
+            new(node, parent)
           end
 
           def answers
             @answers ||= answer_nodes.map do |node|
-              V1::Models::Choices::LogicalIdentifierChoice.new(node)
+              V1::Models::Choices::LogicalIdentifierChoice.new(node, self)
             end
           end
 

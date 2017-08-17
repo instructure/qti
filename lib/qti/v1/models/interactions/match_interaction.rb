@@ -3,21 +3,21 @@ module Qti
     module Models
       module Interactions
         class MatchInteraction < BaseInteraction
-          def self.matches(node)
+          def self.matches(node, parent)
             matches = node.xpath('.//xmlns:response_lid')
             return false if matches.count <= 1
-            new(node)
+            new(node, parent)
           end
 
           def answers
             @answers ||= answer_nodes.map do |node|
-              V1::Models::Choices::LogicalIdentifierChoice.new(node)
+              V1::Models::Choices::LogicalIdentifierChoice.new(node, self)
             end
           end
 
           def questions
             node.xpath('.//xmlns:response_lid').map do |lid_node|
-              item_body = sanitize_content!(lid_node.at_xpath('.//xmlns:mattext').text)
+              item_body = sanitize_content!(lid_node.at_xpath('.//xmlns:mattext').to_html)
               { id: lid_node.attributes['ident'].value, itemBody: item_body }
             end
           end

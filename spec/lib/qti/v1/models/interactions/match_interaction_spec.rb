@@ -4,7 +4,7 @@ describe Qti::V1::Models::Interactions::MatchInteraction do
   let(:file) { File.join('spec', 'fixtures', 'items_1.2', 'matching.xml') }
   let(:assessment) { Qti::V1::Models::Assessment.from_path!(file) }
   let(:item) { assessment.assessment_items.first }
-  subject { described_class.new(item) }
+  subject { described_class.new(item, assessment) }
 
   it 'returns shuffle setting' do
     expect(subject.shuffled?).to eq false
@@ -20,7 +20,7 @@ describe Qti::V1::Models::Interactions::MatchInteraction do
 
   describe '.matches' do
     it 'matches the item in file' do
-      expect(described_class.matches(item)).to be_truthy
+      expect(described_class.matches(item, assessment)).to be_truthy
     end
   end
 

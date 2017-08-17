@@ -5,12 +5,13 @@ module Qti
         class BaseInteraction < Qti::V1::Models::Base
           attr_reader :node
 
-          def self.matches(node)
+          def self.matches(node, parent)
             false
           end
 
-          def initialize(node)
+          def initialize(node, parent)
             @node = node
+            set_paths_from_item(parent)
           end
 
           def shuffled?
