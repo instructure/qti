@@ -56,10 +56,10 @@ module Qti
         new(path: path, package_root: package_root)
       end
 
-      def initialize(path:, package_root: nil)
+      def initialize(path:, package_root: nil, html: false)
         @path = path
         set_package_root(package_root || File.dirname(path))
-        @doc = parse_xml(File.read(path))
+        @doc = html ? parse_html(File.read(path)) : parse_xml(File.read(path))
         raise ArgumentError unless @doc
       end
 
@@ -77,6 +77,10 @@ module Qti
 
       def parse_xml(xml_string)
         Nokogiri.XML(xml_string, @path.to_s, &:noblanks)
+      end
+
+      def parse_html(html_string)
+        Nokogiri.HTML(html_string, @path.to_s, &:noblanks)
       end
 
       def remap_href_path(href)

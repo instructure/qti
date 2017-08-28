@@ -80,7 +80,7 @@ describe Qti::V2::Models::AssessmentTest do
     it 'creates a stimulus from a given file' do
       stimulus_path = File.join(fixtures_path, 'no_assessment_XML', 'passages', '0cfd5cf7-2c91-4b35-a57a-9f5d1709f68f.html')
       stimulus = loaded_class.create_stimulus(stimulus_path)
-      expect(stimulus.title).to eq 'El equipo de hockey te necesita!'
+      expect(stimulus.title).to eq '¡El equipo de hockey te necesita!'
     end
   end
 end

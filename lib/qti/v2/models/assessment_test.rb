@@ -34,7 +34,7 @@ module Qti
         end
 
         def create_stimulus(stimulus_ref)
-          Qti::V2::Models::StimulusItem.from_path!(stimulus_ref, @package_root)
+          Qti::V2::Models::StimulusItem.new(path: stimulus_ref, package_root: @package_root, html: true)
         end
       end
     end

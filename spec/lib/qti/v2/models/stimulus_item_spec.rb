@@ -4,7 +4,7 @@ describe Qti::V2::Models::StimulusItem do
   let(:file_path) { File.join('spec', 'fixtures', 'no_assessment_XML', 'imsmanifest.xml') }
   let(:test_object) { Qti::V2::Models::NonAssessmentTest.from_path!(file_path) }
   let(:stimulus_ref) { test_object.stimulus_ref(test_object.assessment_items[1]) }
-  let(:loaded_class) { described_class.from_path!(stimulus_ref) }
+  let(:loaded_class) { described_class.new(path: stimulus_ref, html: true) }
 
   it 'loads a stimulus ref' do
     expect do
@@ -13,12 +13,13 @@ describe Qti::V2::Models::StimulusItem do
   end
 
   it 'has the title' do
-    expect(loaded_class.title).to eq 'El equipo de hockey te necesita!'
+    expect(loaded_class.title).to eq '¡El equipo de hockey te necesita!'
   end
 
   it 'has sanitized item_body' do
     expect(loaded_class.body).to include '<div'
     expect(loaded_class.body).to include 'Listen to the audio passage.'
+    expect(loaded_class.body).to include '¡'
   end
 
   it 'has the identifier used to identify it in manifest file' do
