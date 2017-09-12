@@ -15,6 +15,8 @@ module Qti
 
             # Filter undesired interaction nodes out of the list (need to make this a deep traversal)
             node.children.filter(INTERACTION_ELEMENTS_CSS).map(&:unlink)
+            # Filter out rubrics
+            node.children.filter('rubricBlock').map(&:unlink)
 
             node.add_child(prompt) if prompt&.parent && prompt.parent != node
             sanitize_content!(node.to_html)

@@ -64,4 +64,17 @@ describe Qti::V2::Models::AssessmentItem do
       end
     end
   end
+
+  context 'rubrics' do
+    describe 'with a rubric' do
+    let(:fixtures_path) { File.join('spec', 'fixtures') }
+    let(:file_path) { File.join(fixtures_path, 'items_2.1', 'extended_text_rubric.xml') }
+    let(:loaded_class) { described_class.from_path!(file_path) }
+
+      it 'removes the rubric from the item_body' do
+        expect(loaded_class.item_body).to include 'Read this postcard'
+        expect(loaded_class.item_body).not_to include 'Scoring Guidelines'
+      end
+    end
+  end
 end
