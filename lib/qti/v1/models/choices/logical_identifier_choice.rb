@@ -17,7 +17,8 @@ module Qti
           def item_body
             @item_body ||= begin
               node = @node.dup
-              sanitize_content!(node.to_html)
+              inner_content = return_inner_content!(node)
+              sanitize_content!(inner_content)
             end
           end
         end

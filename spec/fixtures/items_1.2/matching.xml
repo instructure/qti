@@ -11,7 +11,7 @@
     </itemmetadata>
     <presentation>
       <material>
-        <mattext texttype="text/html">Match the statements with the correct type of microscope</mattext>
+        <mattext texttype="text/html"><div><strong>Match the statements with the correct type of microscope</strong></div></mattext>
       </material>
       <response_lid ident="question_1" rcardinality="Single">
         <material>

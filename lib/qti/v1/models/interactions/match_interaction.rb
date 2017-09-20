@@ -17,7 +17,9 @@ module Qti
 
           def questions
             node.xpath('.//xmlns:response_lid').map do |lid_node|
-              item_body = sanitize_content!(lid_node.at_xpath('.//xmlns:mattext').to_html)
+              mattext = lid_node.at_xpath('.//xmlns:mattext')
+              inner_content = return_inner_content!(mattext)
+              item_body = sanitize_content!(inner_content)
               { id: lid_node.attributes['ident'].value, itemBody: item_body }
             end
           end

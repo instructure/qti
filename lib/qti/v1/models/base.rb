@@ -7,6 +7,14 @@ module Qti
         def qti_version
           1
         end
+
+        def return_inner_content!(node)
+          if node.child.cdata? || node.inner_html.include?('&gt' || '&lt')
+            node.text
+          else
+            node.inner_html
+          end
+        end
       end
     end
   end

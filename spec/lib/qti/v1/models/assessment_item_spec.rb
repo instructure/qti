@@ -83,5 +83,48 @@ describe Qti::V1::Models::AssessmentItem do
     it 'sets the points possible from qtimetadata' do
       expect(loaded_class.points_possible).to eq '1.0'
     end
+
+    it 'returns the prompt inner content without &lt or &gt' do
+      expect(loaded_class.item_body).not_to include('&lt;', '&gt;')
+      expect(loaded_class.item_body).to include '<div><p>Multiple Answer pick A C and D</p></div>'
+    end
+  end
+
+  context 'inner_content' do
+    describe 'unescaped html' do
+      let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'matching.xml') }
+      let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
+      let(:assessment_item_refs) { test_object.assessment_items }
+      let(:loaded_class) { described_class.new(assessment_item_refs) }
+
+      it 'returns the prompt inner content without &lt or &gt' do
+        expect(loaded_class.item_body).not_to include('&lt;', '&gt;')
+        expect(loaded_class.item_body).to include '<div><strong>'
+      end
+    end
+
+    describe 'escaped html' do
+      let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'essay.xml') }
+      let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
+      let(:assessment_item_refs) { test_object.assessment_items }
+      let(:loaded_class) { described_class.new(assessment_item_refs) }
+
+      it 'returns the prompt inner content without &lt or &gt' do
+        expect(loaded_class.item_body).not_to include('&lt;', '&gt;')
+        expect(loaded_class.item_body).to include '<div><p>'
+      end
+    end
+
+    describe 'CDATA html' do
+      let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'choice.xml') }
+      let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
+      let(:assessment_item_refs) { test_object.assessment_items }
+      let(:loaded_class) { described_class.new(assessment_item_refs) }
+
+      it 'returns the prompt inner content without &lt or &gt' do
+        expect(loaded_class.item_body).not_to include('&lt;', '&gt;')
+        expect(loaded_class.item_body).to include '<img'
+      end
+    end
   end
 end

@@ -3,7 +3,9 @@
   <item ident="if15fb877c2cde9a14437aa7429360ac6" title="First Essay">
     <presentation>
       <material>
-        <mattext texttype="text/html">Here is an essay question</mattext>
+         <mattext texttype="text/html">
+            &lt;div&gt;&lt;p&gt;Here is an essay question.&lt;/p&gt;&lt;/div&gt;
+         </mattext>
       </material>
       <response_str ident="response1" rcardinality="Single">
         <render_fib>
