@@ -20,11 +20,8 @@ module Qti
       end
 
       def qti_2_non_assessment_href
-        qti2_ns = ['http://www.imsglobal.org/xsd/imsqti_metadata_v2p1', 'http://www.imsglobal.org/xsd/imsqti_v2p1']
-        if qti2_ns.include?(xpath_with_single_check('//xmlns:manifest')&.namespaces['xmlns:imsqti'])
-          # use imsmanifest.xml as the assessment XML if there is no assessment xml
-          Qti::V2::Models::NonAssessmentTest.from_path!(@path, @package_root)
-        end
+        item_path = @doc.at_xpath("//xmlns:resources/xmlns:resource[@type='imsqti_item_xmlv2p1']/@href")&.content
+        Qti::V2::Models::NonAssessmentTest.from_path!(@path, @package_root) if item_path
       end
 
       def unknown_type
