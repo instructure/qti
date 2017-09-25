@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+
+gemspec path: '../../'
+
+gem 'sanitize', '~> 4.2.0'

@@ -1,10 +1,11 @@
-# Qti Gem
+# QTI Gem
 
 The Qti gem supports QTI 1.2 and 2.1. It currently supports the following interaction types:
 
   - True/False
   - Multiple Choice
   - Multiple Answer
+
 
 ## Installation
 
@@ -13,6 +14,7 @@ $ cd your_project
 $ bundle install qti
 ```
 
+
 ## Usage
 
 ```rb
@@ -20,7 +22,8 @@ require 'qti'
 @gem = Qti::Importer.new(path_of_quiz)
 ```
 
-You can use the gem to access the manifest, the assessments, and the assessment items and use it in your own code!
+You can use the gem to access the manifest, the assessments, and the assessment
+items and use it in your own code!
 
 ### Available methods
 
@@ -54,13 +57,48 @@ Returns the version appropriate AssessmentItem model
   - `interaction_model` (ie Choice Interaction)
   - `scoring_data_structs`
 
-## Running Tests
-You can run tests with code coverage using the following command:
-  `docker-compose run --rm -e RAILS_ENV=test -e COVERAGE=1 testrunner bundle exec rspec spec`
-  
+
 ## Development
 
-Want to contribute? Please submit a pull request!
+A simple docker environment has been provided for spinning up and testing this
+gem with multiple versions of Ruby. This requires docker and docker-compose to
+be installed. To get started, run the following:
 
-## To Do
-  - More interaction models!
+```bash
+./build.sh
+```
+
+This will install the gem in a docker image with all versions of Ruby installed,
+and install all gem dependencies in the Ruby 2.4 set of gems. Then it will run
+[wwtd](https://github.com/grosser/wwtd), which runs all specs across all
+supported versions of Ruby and gem dependencies.
+
+The first build will take a long time, however, docker images and gems are
+cached, making additional runs significantly faster.
+
+Individual spec runs can be started like so:
+
+```bash
+docker-compose run --rm app /bin/bash -l -c \
+  "BUNDLE_GEMFILE=spec/gemfiles/nokogiri-1.8.gemfile rvm-exec 2.4 rspec"
+```
+
+If you'd like to mount your git checkout within the docker container running
+tests so changes are easier to test, use the override provided:
+
+```bash
+cp docker-compose.override.example.yml docker-compose.override.yml
+```
+
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at:
+
+- https://github.com/instructure/qti
+
+
+## License
+
+The gem is available as open source under the terms of the
+[MIT License](http://opensource.org/licenses/MIT).

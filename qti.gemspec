@@ -1,31 +1,34 @@
-# coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'qti/version'
 
-Gem::Specification.new do |spec|
-  spec.name          = 'qti'
-  spec.version       = '0.8.3'
-  spec.authors       = ['Hannah Bottalla', 'Robinson Rodríguez']
-  spec.email         = ['hannah@instructure.com', 'rrodriguez-bd@instructure.com', 'quizzes@instructure.com']
-  spec.summary       = %q(QTI 1.2 and 2.1 import and export models)
+Gem::Specification.new do |s|
+  s.name          = 'qti'
+  s.version       = Qti::VERSION
+  s.authors       = ['Hannah Bottalla', 'Robinson Rodríguez']
+  s.email         = ['hannah@instructure.com', 'rrodriguez-bd@instructure.com', 'quizzes@instructure.com']
+  s.summary       = %q(QTI 1.2 and 2.1 import and export models)
+  s.homepage      = 'https://github.com/instructure/qti'
+  s.license       = 'MIT'
 
-  spec.files         = Dir.glob('{lib,spec}/**/*') + %w(README.md Rakefile)
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ['lib']
+  s.files         = Dir.glob('{lib,spec}/**/*') + %w(README.md Rakefile)
+  s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
+  s.require_paths = ['lib']
 
-  spec.add_dependency 'activesupport', '~> 4.2.6'
-  spec.add_dependency 'dry-struct', '~> 0.2.1'
-  spec.add_dependency 'rubyzip', '~> 1.2.0'
+  s.add_dependency 'activesupport', '>= 4.2.9', '< 5.2'
+  s.add_dependency 'dry-struct', '~> 0.2.1'
+  s.add_dependency 'rubyzip', '~> 1.2'
+  s.add_dependency 'nokogiri', '>= 1.6.8', '< 1.9'
+  s.add_dependency 'sanitize', '>= 4.2.0', '< 5.0'
 
-  spec.add_development_dependency 'bundler', '~>1.11'
-  spec.add_development_dependency 'byebug', '~> 9.0.5'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'rspec-mocks'
-  spec.add_development_dependency 'nokogiri', '1.6.8'
-  spec.add_development_dependency 'sanitize', '~> 4.2.0'
-  spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'rubocop'
-  spec.add_development_dependency 'simplecov'
+  s.add_development_dependency 'bundler', '~> 1.15'
+  s.add_development_dependency 'byebug', '~> 9.0'
+  s.add_development_dependency 'rake', '~> 0'
+  s.add_development_dependency 'rspec', '~> 3.6'
+  s.add_development_dependency 'rspec-mocks', '~> 3.6'
+  s.add_development_dependency 'pry', '~> 0'
+  s.add_development_dependency 'rubocop', '~> 0.50.0'
+  s.add_development_dependency 'simplecov', '~> 0'
+  s.add_development_dependency 'wwtd', '~> 1.3'
 end

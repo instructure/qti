@@ -1,23 +1,27 @@
-FROM instructure/ruby:2.3
+FROM instructure/rvm
 
 USER root
 
-RUN apt-get update \
- && apt-get install -y unzip \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y unzip \
+ && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV LANG C.UTF-8
 WORKDIR /app
 
-COPY Gemfile qti.gemspec Gemfile.lock /app/
-COPY . /app
-RUN chown -R docker:docker /app
+COPY qti.gemspec Gemfile /app/
+COPY lib/qti/version.rb /app/lib/qti/version.rb
 
-USER docker
-RUN bundle install --jobs 8
 USER root
-
-RUN mkdir -p /app/coverage && chown -R docker:docker /app
+RUN mkdir -p /app/coverage \
+             /app/spec/gemfiles/.bundle \
+ && chown -R docker:docker /app
 
 USER docker
+RUN /bin/bash -l -c "cd /app && rvm-exec 2.4 bundle install --jobs 5"
+COPY . /app
+
+USER root
+RUN chown -R docker:docker /app
+USER docker
+
+CMD /bin/bash -l -c "rvm-exec 2.4 bundle exec wwtd"

@@ -15,7 +15,7 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
 
-Style/AlignParameters:
+Layout/AlignParameters:
   # Alignment of parameters in multi-line method calls.
   #
   # The `with_fixed_indentation` style aligns the following lines with one
@@ -25,24 +25,8 @@ Style/AlignParameters:
   #       b)
   EnforcedStyle: with_fixed_indentation
 
-Style/ClassAndModuleChildren:
-  # Checks the style of children definitions at classes and modules.
-  #
-  # Basically there are two different styles:
-  #
-  # `nested` - have each child on a separate line
-  #   class Foo
-  #     class Bar
-  #     end
-  #   end
-  #
-  # `compact` - combine definitions as much as possible
-  #   class Foo::Bar
-  #   end
-  #
-  # The compact style is only forced, for classes / modules with one child.
-  EnforcedStyle: nested
-  Enabled: false
+Lint/EndAlignment:
+  EnforcedStyleAlignWith: variable
 
 Style/Documentation:
   # This cop checks for missing top-level documentation of classes and modules.
@@ -50,12 +34,6 @@ Style/Documentation:
   # Namespace modules are modules that have nothing in their bodies except
   # classes or other modules.
   Enabled: false
-
-Lint/EndAlignment:
-  EnforcedStyleAlignWith: variable
-
-Style/CaseIndentation:
-  EnforcedStyle: end
 
 Style/FrozenStringLiteralComment:
   # `when_needed` will add the frozen string literal comment to files
@@ -71,4 +49,4 @@ Style/FrozenStringLiteralComment:
 
 Style/NumericPredicate:
   Exclude:
-    - 'spec/**/*'
+    - 'spec/**/*.rb'

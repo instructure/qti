@@ -1,5 +1,9 @@
 version: '2'
 
 services:
-  testrunner:
+  app:
     build: .
+    logging:
+      options:
+        max-file: '1'
+        max-size: 5m

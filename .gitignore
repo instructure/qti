@@ -1,4 +1,11 @@
-coverage
-qti-*.gem
-.byebug_history
-.ruby-version
+/.byebug_history
+/.rspec_status
+/.ruby-version
+/.yardoc
+/_yardoc/
+/coverage/
+/docker-compose.override.yml
+/Gemfile.lock
+/spec/gemfiles/.bundle/
+/spec/gemfiles/*.gemfile.lock
+/**/*.gem

@@ -1,20 +1,17 @@
-#!/bin/bash
-
-export COMPOSE_PROJECT_NAME=quiz_qti
+#!/bin/bash -ex
 
 function cleanup() {
   exit_code=$?
   set +e
-  docker cp testrunner:/app/coverage .
-  docker-compose stop
+  docker cp coverage:/app/coverage .
+  docker-compose kill
   docker-compose rm -f
   exit $exit_code
 }
 trap cleanup INT TERM EXIT
 
-set -e
-
 docker-compose build --pull
-
-echo "Running test suite..."
-docker-compose run --name testrunner -T testrunner bundle exec rspec
+# TODO: Re-enable after fixing Rubocop errors.
+#docker-compose run --rm app /bin/bash -l -c \
+#  "rvm-exec 2.4 bundle exec rubocop --fail-level autocorrect"
+docker-compose run --name coverage app $@

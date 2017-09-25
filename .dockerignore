@@ -1,5 +1,13 @@
-/coverage
-/docker-compose.yml
-/docker-compose.test.yml
+/.byebug_history
+/.dockerignore
+/.gitignore
+/.rspec_status
+/.ruby-version
+/coverage/
+/doc/
 /Dockerfile
+/docker-compose*
+/Gemfile.lock
+/spec/gemfiles/.bundle/
+/spec/gemfiles/*.gemfile.lock
 /**/*.gem
