@@ -9,7 +9,7 @@ describe Qti::V2::Models::Choices::SimpleChoice do
     let(:choices) { nodes.map { |node| described_class.new(node, item) } }
 
     it 'returns the right identifier' do
-      expect(choices.map(&:identifier)).to eq %w(true false)
+      expect(choices.map(&:identifier)).to eq %w[true false]
     end
 
     it 'returns the item body text' do

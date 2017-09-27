@@ -5,7 +5,7 @@ module Qti
         class BaseInteraction < Qti::V1::Models::Base
           attr_reader :node
 
-          def self.matches(node, parent)
+          def self.matches(_node, _parent)
             false
           end
 

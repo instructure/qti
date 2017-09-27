@@ -14,7 +14,7 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
 
   shared_examples_for 'blanks' do
     it 'returns the blanks' do
-      expect(loaded_class.blanks).to eq [{ id: "FIB01" }, { id: "FIB02" }, { id: "FIB03" }]
+      expect(loaded_class.blanks).to eq [{ id: 'FIB01' }, { id: 'FIB02' }, { id: 'FIB03' }]
     end
   end
 
@@ -42,19 +42,21 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
   context 'fib_str.xml' do
     let(:file_path) { File.join(fixtures_path, 'fib_str.xml') }
     let(:shuffle_value) { false }
-    let(:scoring_data_ids) { %w(FIB01 FIB02 FIB03) }
-    let(:scoring_data_values) { %w(Winter Summer York) }
-    let(:scoring_data_case) { %w(Yes Yes Yes) }
+    let(:scoring_data_ids) { %w[FIB01 FIB02 FIB03] }
+    let(:scoring_data_values) { %w[Winter Summer York] }
+    let(:scoring_data_case) { %w[Yes Yes Yes] }
     let(:answer_count) { 3 }
-    let(:expected_stem_items) {[
-      { id: "stem_0", position: 1, type: "text", value: "Fill-in-the blanks in this text from Richard III: " },
-      { id: "stem_1", position: 2, type: "text", value: "Now is the " },
-      { id: "stem_2", position: 3, type: "blank", blank_id: "FIB01" },
-      { id: "stem_3", position: 4, type: "text", value: " of our discontent made glorious " },
-      { id: "stem_4", position: 5, type: "blank", blank_id: "FIB02" },
-      { id: "stem_5", position: 6, type: "text", value: " by these sons of " },
-      { id: "stem_6", position: 7, type: "blank", blank_id: "FIB03" }
-    ]}
+    let(:expected_stem_items) do
+      [
+        { id: 'stem_0', position: 1, type: 'text', value: 'Fill-in-the blanks in this text from Richard III: ' },
+        { id: 'stem_1', position: 2, type: 'text', value: 'Now is the ' },
+        { id: 'stem_2', position: 3, type: 'blank', blank_id: 'FIB01' },
+        { id: 'stem_3', position: 4, type: 'text', value: ' of our discontent made glorious ' },
+        { id: 'stem_4', position: 5, type: 'blank', blank_id: 'FIB02' },
+        { id: 'stem_5', position: 6, type: 'text', value: ' by these sons of ' },
+        { id: 'stem_6', position: 7, type: 'blank', blank_id: 'FIB03' }
+      ]
+    end
 
     include_examples 'shuffled?'
     include_examples 'answers'

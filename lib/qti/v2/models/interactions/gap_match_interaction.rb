@@ -20,9 +20,7 @@ module Qti
               gap_node.children.filter('gapText').each(&:remove)
 
               gap_node.children.each do |child|
-                if child.inner_text.strip.empty?
-                  child.remove
-                end
+                child.remove if child.inner_text.strip.empty?
               end
 
               gap_node
@@ -68,7 +66,7 @@ module Qti
               else
                 {
                   type: 'text',
-                  value: stem_item.text.empty? ? " " : stem_item.text
+                  value: stem_item.text.empty? ? ' ' : stem_item.text
                 }
               end
             end
@@ -90,20 +88,18 @@ module Qti
             question_response_pairs = node.xpath('.//xmlns:correctResponse//xmlns:value').map do |value|
               value.content.split
             end
-            question_response_pairs.map!{ |qrp| qrp.reverse }
+            question_response_pairs.map!(&:reverse)
             question_response_id_mapping = Hash[question_response_pairs]
-            answer_nodes.map { |value_node|
+            answer_nodes.map do |value_node|
               node_id = value_node.attributes['identifier']&.value
-              answer_choice = choices.find{ |choice| choice.attributes['identifier']&.value == question_response_id_mapping[node_id] }
+              answer_choice = choices.find { |choice| choice.attributes['identifier']&.value == question_response_id_mapping[node_id] }
               ScoringData.new(
                 answer_choice.content,
                 'directedPair',
-                {
-                  id: node_id,
-                  case: false
-                }
+                id: node_id,
+                case: false
               )
-            }
+            end
           end
 
           def choices

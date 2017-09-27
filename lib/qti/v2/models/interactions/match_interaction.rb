@@ -36,13 +36,13 @@ module Qti
           def self.use_associate_interaction_implementation?(node)
             MatchItemTagProcessors::AssociateInteractionTagProcessor.associate_interaction_tag?(node) &&
               MatchItemTagProcessors::AssociateInteractionTagProcessor.number_of_questions_per_answer(node)
-                                                                       .all? { |n| n == 1 }
+                                                                      .all? { |n| n == 1 }
           end
 
           def self.use_match_interaction_implementation?(node)
             MatchItemTagProcessors::MatchInteractionTagProcessor.match_interaction_tag?(node) &&
               MatchItemTagProcessors::MatchInteractionTagProcessor.number_of_questions_per_answer(node)
-                                                                   .all? { |n| n == 1 }
+                                                                  .all? { |n| n == 1 }
           end
         end
       end

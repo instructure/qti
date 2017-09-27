@@ -5,7 +5,7 @@ module Qti
     module Models
       module Choices
         class SimpleChoice < Qti::V2::Models::Base
-          PROHIBITED_NODE_NAMES = %w(feedbackInline).join(',').freeze
+          PROHIBITED_NODE_NAMES = %w[feedbackInline].join(',').freeze
 
           def initialize(node, parent)
             @node = node

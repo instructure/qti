@@ -13,7 +13,7 @@ describe Qti::V2::Models::Interactions::OrderingInteraction do
 
   describe '#scoring_data_structs' do
     it 'grabs scoring data value for ordering questions' do
-      expect(subject.scoring_data_structs.map(&:values)).to eq ['DriverC', 'DriverA', 'DriverB']
+      expect(subject.scoring_data_structs.map(&:values)).to eq %w[DriverC DriverA DriverB]
     end
   end
 end

@@ -5,7 +5,7 @@ module Qti
     module Models
       class AssessmentTest < Qti::V2::Models::Base
         def title
-          @title ||= xpath_with_single_check('//xmlns:assessmentTest/@title')&.content || File.basename(@path, ".xml")
+          @title ||= xpath_with_single_check('//xmlns:assessmentTest/@title')&.content || File.basename(@path, '.xml')
         end
 
         def assessment_items
@@ -29,8 +29,8 @@ module Qti
           Qti::V2::Models::AssessmentItem.from_path!(assessment_item_ref, @package_root)
         end
 
-        def stimulus_ref(ref)
-          return nil
+        def stimulus_ref(_ref)
+          nil
         end
 
         def create_stimulus(stimulus_ref)

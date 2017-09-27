@@ -1,7 +1,5 @@
 class NullLogger < Logger
-  def initialize(*args)
-  end
+  def initialize(*args); end
 
-  def add(*args, &block)
-  end
+  def add(*args, &block); end
 end

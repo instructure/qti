@@ -7,11 +7,11 @@ Gem::Specification.new do |s|
   s.version       = Qti::VERSION
   s.authors       = ['Hannah Bottalla', 'Robinson Rodríguez']
   s.email         = ['hannah@instructure.com', 'rrodriguez-bd@instructure.com', 'quizzes@instructure.com']
-  s.summary       = %q(QTI 1.2 and 2.1 import and export models)
+  s.summary       = 'QTI 1.2 and 2.1 import and export models'
   s.homepage      = 'https://github.com/instructure/qti'
   s.license       = 'MIT'
 
-  s.files         = Dir.glob('{lib,spec}/**/*') + %w(README.md Rakefile)
+  s.files         = Dir.glob('{lib,spec}/**/*') + %w[README.md Rakefile]
   s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']

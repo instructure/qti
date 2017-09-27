@@ -9,7 +9,7 @@ describe Qti::V1::Models::Choices::LogicalIdentifierChoice do
     let(:choices) { nodes.map { |node| described_class.new(node, test_object) } }
 
     it 'returns the right identifier' do
-      expect(choices.map(&:identifier)).to eq %w(QUE_1003 QUE_1007 QUE_1022)
+      expect(choices.map(&:identifier)).to eq %w[QUE_1003 QUE_1007 QUE_1022]
     end
 
     it 'returns the item body text' do

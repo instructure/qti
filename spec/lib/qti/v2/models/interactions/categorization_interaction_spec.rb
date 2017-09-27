@@ -13,9 +13,9 @@ describe Qti::V2::Models::Interactions::CategorizationInteraction do
   describe '#scoring_data_structs' do
     it 'returns the scoring data for categorization questions' do
       expected_scoring_data_structs = [
-        Qti::V2::Models::ScoringData.new("A Midsummer-Night's Dream", "directedPair", id: "M", questions_ids: ["D", "L"]),
-        Qti::V2::Models::ScoringData.new('Romeo and Juliet', "directedPair", id: "R", questions_ids: ['C']),
-        Qti::V2::Models::ScoringData.new('The Tempest', "directedPair", id: "T", questions_ids: ['P']),
+        Qti::V2::Models::ScoringData.new("A Midsummer-Night's Dream", 'directedPair', id: 'M', questions_ids: %w[D L]),
+        Qti::V2::Models::ScoringData.new('Romeo and Juliet', 'directedPair', id: 'R', questions_ids: ['C']),
+        Qti::V2::Models::ScoringData.new('The Tempest', 'directedPair', id: 'T', questions_ids: ['P'])
       ]
       expect(subject.scoring_data_structs).to eq expected_scoring_data_structs
     end

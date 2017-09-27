@@ -45,22 +45,21 @@ module Qti
           end
 
           def scoring_data_structs
-            answer_nodes.map { |value_node| ScoringData.new(
+            answer_nodes.map do |value_node|
+              ScoringData.new(
                 value_node.content,
                 rcardinality,
-                {
-                  id: value_node.attributes['respident']&.value,
-                  case: value_node.attributes['case']&.value || 'no'
-                }
+                id: value_node.attributes['respident']&.value,
+                case: value_node.attributes['case']&.value || 'no'
               )
-            }
+            end
           end
 
           private
 
           def rcardinality
             @rcardinality ||= @node.at_xpath('.//xmlns:response_str/@rcardinality')&.value ||
-              @node.at_xpath('.//xmlns:response_num/@rcardinality')&.value
+                              @node.at_xpath('.//xmlns:response_num/@rcardinality')&.value
           end
 
           def answer_nodes

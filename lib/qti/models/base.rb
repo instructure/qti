@@ -113,7 +113,7 @@ module Qti
           case node[:type]
           when /^image\//
             return replace_with_image(node, node[:data])
-          when "text/html"
+          when 'text/html'
             return replace_with_html(node, path)
           end
         end
@@ -127,15 +127,13 @@ module Qti
       end
 
       def replace_with_html(node, path)
-        begin
-          content = File.read(path)
-          html_content = Sanitize.fragment(content, sanitize_config(import_objects: false))
-          node.name = 'div'
-          node.add_child(Nokogiri::HTML.fragment(html_content))
-        rescue StandardError => e
-          warn "failed to import html object #{path}: #{e.message}"
-          node.unlink
-        end
+        content = File.read(path)
+        html_content = Sanitize.fragment(content, sanitize_config(import_objects: false))
+        node.name = 'div'
+        node.add_child(Nokogiri::HTML.fragment(html_content))
+      rescue StandardError => e
+        warn "failed to import html object #{path}: #{e.message}"
+        node.unlink
       end
     end
   end

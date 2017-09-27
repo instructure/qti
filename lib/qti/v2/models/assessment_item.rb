@@ -35,7 +35,7 @@ module Qti
         def points_possible
           @points_possible ||= begin
             xpath_with_single_check("//xmlns:outcomeDeclaration[@identifier='SCORE']/@normalMaximum")&.content ||
-            xpath_with_single_check("//xmlns:outcomeDeclaration[@identifier='MAXSCORE']//xmlns:value")&.content
+              xpath_with_single_check("//xmlns:outcomeDeclaration[@identifier='MAXSCORE']//xmlns:value")&.content
           end
         end
 

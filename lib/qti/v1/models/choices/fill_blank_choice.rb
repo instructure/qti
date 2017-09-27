@@ -12,7 +12,7 @@ module Qti
 
           def identifier
             @identifier ||= @node.attributes['respident']&.value ||
-              @node.attributes['ident']&.value
+                            @node.attributes['ident']&.value
           end
 
           def item_body

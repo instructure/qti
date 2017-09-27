@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Qti::V2::Models::AssessmentItem do
-  context "object element" do
+  context 'object element' do
     let(:path) { File.join('spec', 'fixtures', 'no_assessment_XML', '59ee7c9d-e6cc-4d0c-b545-258e20b1a244.xml') }
     let(:loaded_class) { described_class.from_path!(path) }
 

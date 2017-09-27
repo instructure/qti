@@ -2,7 +2,6 @@ module Qti
   module V2
     module Models
       class StimulusItem < Qti::V2::Models::Base
-
         def body
           @body ||= begin
             item_body_node = xpath_with_single_check('//html/body')

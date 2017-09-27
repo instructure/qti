@@ -15,7 +15,7 @@ describe Qti::V1::Models::Interactions::OrderingInteraction do
   describe '#scoring_data_structs' do
     it 'grabs scoring data value for ordering questions' do
       assessment_item = described_class.new(assessment.assessment_items.first, assessment)
-      expect(assessment_item.scoring_data_structs.map(&:values)).to eq %w(A B E D C)
+      expect(assessment_item.scoring_data_structs.map(&:values)).to eq %w[A B E D C]
     end
   end
 end

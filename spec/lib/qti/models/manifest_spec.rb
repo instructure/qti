@@ -41,5 +41,4 @@ describe Qti::Models::Manifest do
     file = File.join(fixtures_path, 'items_2.1/imsmanifest.xml')
     expect { described_class.from_path!(file).assessment_test }.to raise_error('Unsupported QTI version')
   end
-
 end

@@ -9,7 +9,7 @@ describe Qti::V2::Models::Choices::GapMatchChoice do
     let(:choices) { nodes.map { |node| described_class.new(node, item) } }
 
     it 'returns the right identifier' do
-      expect(choices.map(&:identifier)).to eq %w(W Sp Su A)
+      expect(choices.map(&:identifier)).to eq %w[W Sp Su A]
     end
 
     it 'returns the item body text' do

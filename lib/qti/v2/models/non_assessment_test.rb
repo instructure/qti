@@ -16,7 +16,7 @@ module Qti
         def stimulus_ref(assessment_item_ref)
           ref = assessment_item_ref.sub(@package_root, '')
           dependencies = @doc.xpath("//xmlns:resource[@href='#{ref}']/xmlns:dependency/@identifierref")
-          return unless dependencies && dependencies.count == 1
+          return unless dependencies&.count == 1
           href = xpath_with_single_check("//xmlns:resource[@identifier='#{dependencies.first}']/@href")
           remap_href_path(href)
         end

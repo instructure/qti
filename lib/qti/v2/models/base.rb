@@ -4,7 +4,7 @@ module Qti
   module V2
     module Models
       class Base < Qti::Models::Base
-        BODY_ELEMENTS_CSS = %w(
+        BODY_ELEMENTS_CSS = %w[
           atomicBlock
           atomicInline
           caption
@@ -33,9 +33,9 @@ module Qti
           tr
           ul
           infoControl
-        ).join(',').freeze
+        ].join(',').freeze
 
-        INTERACTION_ELEMENTS_CSS = %w(
+        INTERACTION_ELEMENTS_CSS = %w[
           blockInteraction
           customInteraction
           inlineInteraction
@@ -55,11 +55,11 @@ module Qti
           orderInteraction
           sliderInteraction
           uploadInteraction
-        ).join(',').freeze
+        ].join(',').freeze
 
-        CHOICE_ELEMENTS_CSS = %w(
+        CHOICE_ELEMENTS_CSS = %w[
           simpleChoice
-        ).join(',').freeze
+        ].join(',').freeze
 
         def qti_version
           2

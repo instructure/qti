@@ -36,7 +36,7 @@ module Qti
 
         def has_points_possible_qti_metadata?
           if @doc.at_xpath('.//xmlns:qtimetadata').present?
-            points_possible_label = qti_metadata_children.children.find {|node| node.text == "points_possible"}
+            points_possible_label = qti_metadata_children.children.find { |node| node.text == 'points_possible' }
             points_possible_label.present?
           else
             false
@@ -46,7 +46,7 @@ module Qti
         def points_possible
           @points_possible ||= begin
             if has_points_possible_qti_metadata?
-              points_possible_label = qti_metadata_children.children.find {|node| node.text == "points_possible"}
+              points_possible_label = qti_metadata_children.children.find { |node| node.text == 'points_possible' }
               points_possible_node = points_possible_label.next.text
             else
               decvar_maxvalue

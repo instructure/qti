@@ -54,37 +54,37 @@ describe Qti::Models::Base do
       end
 
       it 'uses an implicit package root' do
-        expect {
+        expect do
           loaded_class.remap_href_path('../sneaky.txt')
-        }.to raise_error(Qti::ParseError)
+        end.to raise_error(Qti::ParseError)
       end
 
-      context "with explicit package root" do
+      context 'with explicit package root' do
         let(:package_root) { File.join('spec', 'fixtures', 'test_qti_2.2') }
         let(:item_path) { File.join(package_root, 'true-false', 'true-false.xml') }
         let(:item) { described_class.from_path!(item_path, package_root) }
 
         it 'allows safe .. hrefs' do
-          expect {
+          expect do
             item.remap_href_path('../okay.txt')
-          }.not_to raise_error
+          end.not_to raise_error
         end
 
         it 'rejects attempts to escape the package' do
-          expect {
+          expect do
             item.remap_href_path('../../bad.txt')
-          }.to raise_error(Qti::ParseError)
+          end.to raise_error(Qti::ParseError)
         end
       end
 
-      context "with nil package root" do
+      context 'with nil package root' do
         let(:item_path) { File.join('spec', 'fixtures', 'test_qti_2.2', 'true-false', 'true-false.xml') }
         let(:item) { described_class.from_path!(item_path, nil) }
 
         it 'rejects .. hrefs' do
-          expect {
+          expect do
             item.remap_href_path('../no_longer_okay.txt')
-          }.to raise_error(Qti::ParseError)
+          end.to raise_error(Qti::ParseError)
         end
       end
     end

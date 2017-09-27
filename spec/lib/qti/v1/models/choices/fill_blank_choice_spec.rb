@@ -9,7 +9,7 @@ describe Qti::V1::Models::Choices::FillBlankChoice do
     let(:choices) { nodes.map { |node| described_class.new(node, test_object) } }
 
     it 'returns the right identifier' do
-      expect(choices.map(&:identifier)).to eq %w(FIB_STR)
+      expect(choices.map(&:identifier)).to eq %w[FIB_STR]
     end
 
     it 'returns the item body text' do
