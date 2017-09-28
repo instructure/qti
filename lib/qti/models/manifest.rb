@@ -8,15 +8,21 @@ module Qti
       end
 
       def qti_1_href
-        test_path = xpath_with_single_check("//xmlns:resources/xmlns:resource[@type='imsqti_xmlv1p2']/@href")&.content ||
-                    xpath_with_single_check("//xmlns:resources/xmlns:resource[@type='imsqti_xmlv1p2']/xmlns:file/@href")&.content
-        Qti::V1::Models::Assessment.from_path!(remap_href_path(test_path), @package_root) if test_path
+        test_path = xmlns_resource("[@type='imsqti_xmlv1p2']/@href") ||
+                    xmlns_resource("[@type='imsqti_xmlv1p2']/xmlns:file/@href")
+        return unless test_path
+        Qti::V1::Models::Assessment.from_path!(
+          remap_href_path(test_path), @package_root
+        )
       end
 
       def qti_2_x_href
-        test_path = xpath_with_single_check("//xmlns:resources/xmlns:resource[@type='imsqti_test_xmlv2p1']/@href")&.content ||
-                    xpath_with_single_check("//xmlns:resources/xmlns:resource[@type='imsqti_test_xmlv2p2']/@href")&.content
-        Qti::V2::Models::AssessmentTest.from_path!(remap_href_path(test_path), @package_root) if test_path
+        test_path = xmlns_resource("[@type='imsqti_test_xmlv2p1']/@href") ||
+                    xmlns_resource("[@type='imsqti_test_xmlv2p2']/@href")
+        return unless test_path
+        Qti::V2::Models::AssessmentTest.from_path!(
+          remap_href_path(test_path), @package_root
+        )
       end
 
       def qti_2_non_assessment_href
@@ -26,6 +32,12 @@ module Qti
 
       def unknown_type
         raise Qti::UnsupportedSchema, 'Unsupported QTI version'
+      end
+
+      private
+
+      def xmlns_resource(type)
+        xpath_with_single_check("//xmlns:resources/xmlns:resource#{type}")&.content
       end
     end
   end

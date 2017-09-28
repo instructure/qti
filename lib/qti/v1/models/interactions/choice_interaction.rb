@@ -21,12 +21,9 @@ module Qti
           def scoring_data_structs
             choice_nodes = node.xpath('.//xmlns:respcondition')
             if choice_nodes.at_xpath('.//xmlns:and').present?
-              answer_choices = choice_nodes.at_xpath('.//xmlns:and')
-              answer_choices.children.filter('not').each(&:remove)
-              answer_choices.children.map { |value_node| ScoringData.new(value_node.content, rcardinality) }
+              scoring_data_condition(choice_nodes)
             else
-              set_var_nodes = choice_nodes.select { |choice_node| choice_node.at_xpath('.//xmlns:setvar')&.content&.to_f&.positive? }
-              set_var_nodes.map { |value_node| ScoringData.new(value_node.at_xpath('.//xmlns:varequal').content, rcardinality) }
+              scoring_data(choice_nodes)
             end
           end
 
@@ -34,6 +31,23 @@ module Qti
 
           def answer_nodes
             node.xpath('.//xmlns:response_label')
+          end
+
+          def scoring_data_condition(choice_nodes)
+            answer_choices = choice_nodes.at_xpath('.//xmlns:and')
+            answer_choices.children.filter('not').each(&:remove)
+            answer_choices.children.map do |value_node|
+              ScoringData.new(value_node.content, rcardinality)
+            end
+          end
+
+          def scoring_data(choice_nodes)
+            set_var_nodes = choice_nodes.select do |choice_node|
+              choice_node.at_xpath('.//xmlns:setvar')&.content&.to_f&.positive?
+            end
+            set_var_nodes.map do |value_node|
+              ScoringData.new(value_node.at_xpath('.//xmlns:varequal').content, rcardinality)
+            end
           end
         end
       end

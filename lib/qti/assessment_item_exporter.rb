@@ -1,6 +1,6 @@
 module Qti
   class AssessmentItemExporter
-    attr_reader :assessment_item, :package_root_path, :exported_file_path
+    attr_reader :assessment_item, :package_root_path
 
     def initialize(assessment_item, args = {})
       @assessment_item = assessment_item

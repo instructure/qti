@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'activesupport', '>= 4.2.9', '< 5.2'
   s.add_dependency 'dry-struct', '~> 0.2.1'
+  s.add_dependency 'dry-types', '~> 0.12.0'
   s.add_dependency 'rubyzip', '~> 1.2'
   s.add_dependency 'nokogiri', '>= 1.6.8', '< 1.9'
   s.add_dependency 'sanitize', '>= 4.2.0', '< 5.0'

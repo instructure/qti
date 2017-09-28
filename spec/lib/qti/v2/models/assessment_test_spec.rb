@@ -35,7 +35,11 @@ describe Qti::V2::Models::AssessmentTest do
     test_files = Dir.glob(File.join(fixtures_path, 'tests', 'tests', 'rtest[0-9][0-9].xml'))
     test_files << File.join(fixtures_path, 'tests', 'tests', 'complete.xml')
     test_files << File.join(fixtures_path, 'tests', 'feedbackTest', 'assessment.xml')
-    test_files << File.join(fixtures_path, 'tests', 'interactionmix_saxony_v3', 'InteractionMixSachsen_1901710679.xml')
+    test_files << File.join(
+      fixtures_path, 'tests',
+      'interactionmix_saxony_v3',
+      'InteractionMixSachsen_1901710679.xml'
+    )
     test_files.each do |file|
       context File.basename(file) do
         let(:loaded_class) { described_class.from_path!(file) }
@@ -77,7 +81,10 @@ describe Qti::V2::Models::AssessmentTest do
     let(:loaded_class) { described_class.from_path!(path) }
 
     it 'creates a stimulus from a given file' do
-      stimulus_path = File.join(fixtures_path, 'no_assessment_XML', 'passages', '0cfd5cf7-2c91-4b35-a57a-9f5d1709f68f.html')
+      stimulus_path = File.join(
+        fixtures_path, 'no_assessment_XML',
+        'passages', '0cfd5cf7-2c91-4b35-a57a-9f5d1709f68f.html'
+      )
       stimulus = loaded_class.create_stimulus(stimulus_path)
       expect(stimulus.title).to eq '¡El equipo de hockey te necesita!'
     end

@@ -85,16 +85,11 @@ module Qti
           end
 
           def scoring_data_structs
-            question_response_pairs = node.xpath('.//xmlns:correctResponse//xmlns:value').map do |value|
-              value.content.split
-            end
-            question_response_pairs.map!(&:reverse)
-            question_response_id_mapping = Hash[question_response_pairs]
+            mapping = question_response_id_mapping
             answer_nodes.map do |value_node|
               node_id = value_node.attributes['identifier']&.value
-              answer_choice = choices.find { |choice| choice.attributes['identifier']&.value == question_response_id_mapping[node_id] }
               ScoringData.new(
-                answer_choice.content,
+                answer_choice(choices, mapping[node_id]).content,
                 'directedPair',
                 id: node_id,
                 case: false
@@ -110,6 +105,20 @@ module Qti
 
           def answer_nodes
             @node.xpath('.//xmlns:gap')
+          end
+
+          def answer_choice(choices, response)
+            choices.find do |choice|
+              choice.attributes['identifier']&.value == response
+            end
+          end
+
+          def question_response_id_mapping
+            question_response_pairs = node.xpath('.//xmlns:correctResponse//xmlns:value').map do |value|
+              value.content.split
+            end
+            question_response_pairs.map!(&:reverse)
+            Hash[question_response_pairs]
           end
         end
       end

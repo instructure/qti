@@ -10,7 +10,7 @@ module Qti
         def initialize(item, package_root = nil)
           @doc = item
           @path = item.document.url
-          set_package_root(package_root)
+          self.package_root = package_root
         end
 
         def item_body
@@ -34,7 +34,7 @@ module Qti
           @doc.at_xpath('.//xmlns:qtimetadata')&.children
         end
 
-        def has_points_possible_qti_metadata?
+        def points_possible_qti_metadata?
           if @doc.at_xpath('.//xmlns:qtimetadata').present?
             points_possible_label = qti_metadata_children.children.find { |node| node.text == 'points_possible' }
             points_possible_label.present?
@@ -43,11 +43,19 @@ module Qti
           end
         end
 
+        # @deprecated Please use {#points_possible_qti_metadata?} instead
+        def has_points_possible_qti_metadata? # rubocop:disable Naming/PredicateName
+          warn "DEPRECATED: '#{__method__}' is renamed to 'points_possible_qti_metadata?'."
+          points_possible_qti_metadata?
+        end
+
         def points_possible
           @points_possible ||= begin
-            if has_points_possible_qti_metadata?
-              points_possible_label = qti_metadata_children.children.find { |node| node.text == 'points_possible' }
-              points_possible_node = points_possible_label.next.text
+            if points_possible_qti_metadata?
+              points_possible_label = qti_metadata_children.children.find do |node|
+                node.text == 'points_possible'
+              end
+              points_possible_label.next.text
             else
               decvar_maxvalue
             end

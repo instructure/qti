@@ -15,7 +15,8 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
   shared_examples_for 'answers' do
     it 'returns the answers' do
       expect(loaded_class.answers.count).to eq answer_choices_count
-      expect(loaded_class.answers.first).to be_an_instance_of(Qti::V1::Models::Choices::LogicalIdentifierChoice)
+      expect(loaded_class.answers.first)
+        .to be_an_instance_of(Qti::V1::Models::Choices::LogicalIdentifierChoice)
     end
   end
 
@@ -54,7 +55,13 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
 
   context 'multiple respconditions with empty setvars' do
     let(:fixtures_path) { File.join('spec', 'fixtures', 'test_with_comments') }
-    let(:file_path) { File.join(fixtures_path, 'i6c88aaf29feba2ffa58a487a20665394', 'i6c88aaf29feba2ffa58a487a20665394.xml') }
+    let(:file_path) do
+      File.join(
+        fixtures_path,
+        'i6c88aaf29feba2ffa58a487a20665394',
+        'i6c88aaf29feba2ffa58a487a20665394.xml'
+      )
+    end
 
     it 'loads the items' do
       expect(loaded_class.scoring_data_structs.count).to eq 1

@@ -4,7 +4,7 @@ module Qti
       attribute :identifier, Types::Strict::String
       attribute :title, Types::Strict::String
       attribute :interaction, ContentPackaging::ChoiceInteraction
-      attribute :response, Types::Strict::Array.member(String) | Types::Strict::String
+      attribute :response, Types::Strict::Array.of(String) | Types::Strict::String
     end
   end
 end

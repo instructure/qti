@@ -11,7 +11,7 @@ module Qti
 
           def initialize(node, parent)
             @node = node
-            set_paths_from_item(parent)
+            copy_paths_from_item(parent)
           end
 
           def shuffled?

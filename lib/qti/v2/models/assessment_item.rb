@@ -12,12 +12,7 @@ module Qti
             node = item_body_node.dup
             # ensure a prompt is carried into the html
             prompt = node.at_xpath('//xmlns:prompt')
-
-            # Filter undesired interaction nodes out of the list (need to make this a deep traversal)
-            node.children.filter(INTERACTION_ELEMENTS_CSS).map(&:unlink)
-            # Filter out rubrics
-            node.children.filter('rubricBlock').map(&:unlink)
-
+            filter_item_body(node)
             node.add_child(prompt) if prompt&.parent && prompt.parent != node
             sanitize_content!(node.to_html)
           end
@@ -53,6 +48,13 @@ module Qti
 
         def item_body_node
           @item_body_node ||= xpath_with_single_check('//xmlns:itemBody')
+        end
+
+        def filter_item_body(node)
+          # Filter undesired interaction nodes out of the list (need to make this a deep traversal)
+          node.children.filter(INTERACTION_ELEMENTS_CSS).map(&:unlink)
+          # Filter out rubrics
+          node.children.filter('rubricBlock').map(&:unlink)
         end
       end
     end

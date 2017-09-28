@@ -8,7 +8,7 @@ module Qti
           PROHIBITED_NODE_NAMES = 'feedbackInline'.freeze
           def initialize(node, parent)
             @node = node
-            set_paths_from_item(parent)
+            copy_paths_from_item(parent)
           end
 
           def identifier

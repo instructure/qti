@@ -11,7 +11,6 @@ function cleanup() {
 trap cleanup INT TERM EXIT
 
 docker-compose build --pull
-# TODO: Re-enable after fixing Rubocop errors.
-#docker-compose run --rm app /bin/bash -l -c \
-#  "rvm-exec 2.4 bundle exec rubocop --fail-level autocorrect"
+docker-compose run --rm app /bin/bash -l -c \
+  "rvm-exec 2.4 bundle exec rubocop --fail-level autocorrect"
 docker-compose run --name coverage app $@

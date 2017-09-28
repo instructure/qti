@@ -58,7 +58,7 @@ module Qti
 
       def initialize(path:, package_root: nil, html: false)
         @path = path
-        set_package_root(package_root || File.dirname(path))
+        self.package_root = package_root || File.dirname(path)
         @doc = html ? parse_html(File.read(path)) : parse_xml(File.read(path))
         raise ArgumentError unless @doc
       end
@@ -89,20 +89,22 @@ module Qti
         if @package_root.nil?
           raise Qti::ParseError, "Potentially unsafe href '#{href}'" if href.split('/').include?('..')
         else
-          raise Qti::ParseError, "Unsafe href '#{href}'" unless Pathname.new(path).cleanpath.to_s.start_with?(@package_root)
+          unless Pathname.new(path).cleanpath.to_s.start_with?(@package_root)
+            raise Qti::ParseError, "Unsafe href '#{href}'"
+          end
         end
         path
       end
 
       protected
 
-      def set_package_root(package_root)
+      def package_root=(package_root)
         @package_root = package_root
         return unless @package_root
         @package_root = Pathname.new(@package_root).cleanpath.to_s + '/'
       end
 
-      def set_paths_from_item(other_item)
+      def copy_paths_from_item(other_item)
         @package_root = other_item.package_root
         @path = other_item.path
       end
@@ -111,7 +113,7 @@ module Qti
         path = remap_href_path(node[:data])
         if path
           case node[:type]
-          when /^image\//
+          when %r{^image\/}
             return replace_with_image(node, node[:data])
           when 'text/html'
             return replace_with_html(node, path)
