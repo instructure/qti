@@ -4,7 +4,9 @@ module Qti
   module Models
     class Manifest < Qti::Models::Base
       def assessment_test
-        qti_2_x_href || qti_1_href || qti_2_non_assessment_href || unknown_type
+        test = qti_2_x_href || qti_1_href || qti_2_non_assessment_href || unknown_type
+        test.manifest = self
+        test
       end
 
       def qti_1_href

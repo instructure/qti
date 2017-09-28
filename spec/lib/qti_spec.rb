@@ -67,6 +67,7 @@ describe Qti::Importer do
         item = importer.create_assessment_item(ref)
         expect(item.path).to eq ref
         expect(item.package_root).to eq file_path + '/'
+        expect(item.manifest).not_to be_nil
       end
     end
   end

@@ -26,7 +26,9 @@ module Qti
         end
 
         def create_assessment_item(assessment_item_ref)
-          Qti::V2::Models::AssessmentItem.from_path!(assessment_item_ref, @package_root)
+          item = Qti::V2::Models::AssessmentItem.from_path!(assessment_item_ref, @package_root)
+          item.manifest = manifest
+          item
         end
 
         def stimulus_ref(_ref)

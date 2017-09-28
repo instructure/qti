@@ -55,6 +55,21 @@ module Qti
           node.children.filter(INTERACTION_ELEMENTS_CSS).map(&:unlink)
           # Filter out rubrics
           node.children.filter('rubricBlock').map(&:unlink)
+          # Filter out stimulus passages (these will be handled separately)
+          filter_stimulus_passages!(node)
+        end
+
+        def dependency_hrefs
+          return [] unless manifest
+          manifest.doc.xpath("//xmlns:resource[@href='#{relative_path}']/xmlns:dependency/@identifierref").map do |id|
+            manifest.xpath_with_single_check("//xmlns:resource[@identifier='#{id}']/@href")
+          end
+        end
+
+        def filter_stimulus_passages!(node)
+          dependency_hrefs.each do |href|
+            node.at_css("object[type='text/html'][data='#{href}']").try(:unlink)
+          end
         end
       end
     end

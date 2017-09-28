@@ -10,6 +10,7 @@ module Qti
   module Models
     class Base
       attr_reader :doc, :path, :package_root
+      attr_accessor :manifest
 
       ELEMENTS_REMAP = {
         'prompt' => 'div',
@@ -102,6 +103,11 @@ module Qti
         @package_root = package_root
         return unless @package_root
         @package_root = Pathname.new(@package_root).cleanpath.to_s + '/'
+      end
+
+      def relative_path
+        return nil if @path.nil? || @package_root.nil?
+        @path.sub(/\A#{Regexp.quote(@package_root)}/, '')
       end
 
       def copy_paths_from_item(other_item)
