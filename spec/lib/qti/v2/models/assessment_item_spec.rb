@@ -78,15 +78,15 @@ describe Qti::V2::Models::AssessmentItem do
     end
   end
 
-  context 'stimulus passages' do
-    let(:file_path) { File.join('spec', 'fixtures', 'no_assessment_XML') }
-    let(:importer) { Qti::Importer.new(file_path) }
-    let(:test_object) { importer.test_object }
-    let(:item_ref) { File.join(file_path, 'a4f3621a-195c-4847-a72c-69388250a078.xml') }
+  # context 'stimulus passages' do
+  #   let(:file_path) { File.join('spec', 'fixtures', 'no_assessment_XML') }
+  #   let(:importer) { Qti::Importer.new(file_path) }
+  #   let(:test_object) { importer.test_object }
+  #   let(:item_ref) { File.join(file_path, 'a4f3621a-195c-4847-a72c-69388250a078.xml') }
 
-    it 'removes the passage from the item_body' do
-      item = test_object.create_assessment_item(item_ref)
-      expect(item.item_body).not_to include '¡El equipo de hockey te necesita!'
-    end
-  end
+  #   it 'removes the passage from the item_body' do
+  #     item = test_object.create_assessment_item(item_ref)
+  #     expect(item.item_body).not_to include '¡El equipo de hockey te necesita!'
+  #   end
+  # end
 end

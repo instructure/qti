@@ -76,17 +76,17 @@ describe Qti::V2::Models::AssessmentTest do
     end
   end
 
-  describe '#create_stimulus' do
-    let(:path) { File.join(fixtures_path, 'test_qti_2.2', 'assessment.xml') }
-    let(:loaded_class) { described_class.from_path!(path) }
+  # describe '#create_stimulus' do
+  #   let(:path) { File.join(fixtures_path, 'test_qti_2.2', 'assessment.xml') }
+  #   let(:loaded_class) { described_class.from_path!(path) }
 
-    it 'creates a stimulus from a given file' do
-      stimulus_path = File.join(
-        fixtures_path, 'no_assessment_XML',
-        'passages', '0cfd5cf7-2c91-4b35-a57a-9f5d1709f68f.html'
-      )
-      stimulus = loaded_class.create_stimulus(stimulus_path)
-      expect(stimulus.title).to eq '¡El equipo de hockey te necesita!'
-    end
-  end
+  #   it 'creates a stimulus from a given file' do
+  #     stimulus_path = File.join(
+  #       fixtures_path, 'no_assessment_XML',
+  #       'passages', '0cfd5cf7-2c91-4b35-a57a-9f5d1709f68f.html'
+  #     )
+  #     stimulus = loaded_class.create_stimulus(stimulus_path)
+  #     expect(stimulus.title).to eq '¡El equipo de hockey te necesita!'
+  #   end
+  # end
 end
