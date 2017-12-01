@@ -17,7 +17,7 @@ describe Qti::Importer do
 
   context 'unsupported QTI version' do
     it 'raises an error if the QTI file doesn\'t match expected' do
-      file_path = File.join(fixtures_path, 'items_2.1')
+      file_path = File.join(fixtures_path, 'unsupported_version')
       expect { Qti::Importer.new(file_path) }.to raise_error('Unsupported QTI version')
     end
 

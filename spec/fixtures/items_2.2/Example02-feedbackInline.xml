@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This item is a true/false question with inline feedback, adapted from the CC question QUE_102010.xml -->
-<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1 http://www.imsglobal.org/xsd/qti/qtiv2p1/imsqti_v2p1p2.xsd" identifier="Example02-feedbackInline"
+<assessmentItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p2  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p2.xsd"
+    xmlns="http://www.imsglobal.org/xsd/imsqti_v2p2" identifier="Example02-feedbackInline"
     title="Example 2 - inline feedback" adaptive="false" timeDependent="false">
     <responseDeclaration identifier="RESPONSE" cardinality="single" baseType="identifier">
         <correctResponse>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p2  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p2p1.xsd" identifier="choice.xml" title="Choice Interaction" adaptive="false" timeDependent="false">
+    <responseDeclaration identifier="RESPONSE" cardinality="single" baseType="identifier"/>
+    <itemBody>
+        <choiceInteraction responseIdentifier="RESPONSE" shuffle="false" minChoices="0" maxChoices="1">
+            <prompt>Select a choice below</prompt>
+            <simpleChoice identifier="choice_a">choice_a</simpleChoice>
+            <simpleChoice identifier="choice_b">choice_b</simpleChoice>
+            <simpleChoice identifier="choice_c">choice_c</simpleChoice>
+        </choiceInteraction>
+    </itemBody>
+</assessmentItem>

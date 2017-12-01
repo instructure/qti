@@ -31,14 +31,14 @@ describe Qti::Models::Manifest do
     end
   end
 
-  # it 'returns a v2 non assessment test if it is not a standard v2 package' do
-  #   file = File.join(fixtures_path, 'no_assessment_XML/imsmanifest.xml')
-  #   assessment_test = described_class.from_path!(file).assessment_test
-  #   expect(assessment_test).to be_kind_of(Qti::V2::Models::NonAssessmentTest)
-  # end
+  it 'returns a v2 non assessment test if it is not a standard v2 package' do
+    file = File.join(fixtures_path, 'no_assessment_xml/imsmanifest.xml')
+    assessment_test = described_class.from_path!(file).assessment_test
+    expect(assessment_test).to be_kind_of(Qti::V2::Models::NonAssessmentTest)
+  end
 
   it 'raises a non-supported QTI type if it finds no other supported type' do
-    file = File.join(fixtures_path, 'items_2.1/imsmanifest.xml')
+    file = File.join(fixtures_path, 'unsupported_version/imsmanifest.xml')
     expect { described_class.from_path!(file).assessment_test }.to raise_error('Unsupported QTI version')
   end
 end

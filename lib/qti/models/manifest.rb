@@ -28,7 +28,8 @@ module Qti
       end
 
       def qti_2_non_assessment_href
-        item_path = @doc.at_xpath("//xmlns:resources/xmlns:resource[@type='imsqti_item_xmlv2p1']/@href")&.content
+        item_path = @doc.at_xpath("//xmlns:resources/xmlns:resource[@type='imsqti_item_xmlv2p1']/@href")&.content ||
+                    @doc.at_xpath("//xmlns:resources/xmlns:resource[@type='imsqti_item_xmlv2p2']/@href")
         Qti::V2::Models::NonAssessmentTest.from_path!(@path, @package_root) if item_path
       end
 
