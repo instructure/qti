@@ -32,6 +32,10 @@ module Qti
             end
           end
 
+          def single_fill_in_blank?
+            blanks.count == 1
+          end
+
           def blanks
             node.xpath('.//xmlns:response_str').map do |blank|
               { id: blank.attributes['ident'].value }

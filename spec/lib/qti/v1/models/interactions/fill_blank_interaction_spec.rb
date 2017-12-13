@@ -14,7 +14,7 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
 
   shared_examples_for 'blanks' do
     it 'returns the blanks' do
-      expect(loaded_class.blanks).to eq [{ id: 'FIB01' }, { id: 'FIB02' }, { id: 'FIB03' }]
+      expect(loaded_class.blanks).to eq(expected_blanks)
     end
   end
 
@@ -39,6 +39,30 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     end
   end
 
+  context 'single_fib.xml' do
+    let(:file_path) { File.join(fixtures_path, 'single_fib.xml') }
+    let(:scoring_data_ids) { %w[response1 response1] }
+    let(:scoring_data_values) { %w[Illinois illinois] }
+    let(:scoring_data_case) { %w[no no] }
+    let(:answer_count) { 2 }
+    let(:expected_blanks) {[{ id: 'response1' }]}
+    let(:expected_stem_items) do
+      [
+        {:id=>"stem_0", :position=>1, :type=>"text", :value=>"<div><p>Chicago is in what state?</p></div>"},
+        {:id=>"stem_1", :position=>2, :type=>"blank", :blank_id=>"response1"}
+      ]
+    end
+
+    include_examples 'answers'
+    include_examples 'scoring_data_structs'
+    include_examples 'blanks'
+    include_examples 'stem_items'
+
+    it 'returns true for #single_fill_in_blank?' do
+      expect(loaded_class.single_fill_in_blank?).to eq true
+    end
+  end
+
   context 'fib_str.xml' do
     let(:file_path) { File.join(fixtures_path, 'fib_str.xml') }
     let(:shuffle_value) { false }
@@ -46,6 +70,7 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     let(:scoring_data_values) { %w[Winter Summer York] }
     let(:scoring_data_case) { %w[Yes Yes Yes] }
     let(:answer_count) { 3 }
+    let(:expected_blanks) {[{ id: 'FIB01' }, { id: 'FIB02' }, { id: 'FIB03' }]}
     let(:expected_stem_items) do
       [
         { id: 'stem_0', position: 1, type: 'text', value: 'Fill-in-the blanks in this text from Richard III: ' },
@@ -61,7 +86,12 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     include_examples 'shuffled?'
     include_examples 'answers'
     include_examples 'scoring_data_structs'
+    include_examples 'blanks'
     include_examples 'stem_items'
+
+    it 'returns false for #single_fill_in_blank?' do
+      expect(loaded_class.single_fill_in_blank?).to eq false
+    end
   end
 
   describe '#scoring_data_structs' do
