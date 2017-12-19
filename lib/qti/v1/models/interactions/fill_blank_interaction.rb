@@ -7,7 +7,8 @@ module Qti
           def self.matches(node, parent)
             return false if node.xpath('.//xmlns:other').present?
             matches = node.xpath('.//xmlns:render_fib')
-            return false if matches.empty?
+            return false if matches.empty? ||
+              matches.first.attributes['fibtype']&.value == 'Decimal'
             new(node, parent)
           end
 

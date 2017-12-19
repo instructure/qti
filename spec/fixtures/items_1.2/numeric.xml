@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <assessment ident="i98661073a66c6b2567c8f9b1a22c2988" title="Quiz1.1">
+    <section ident="root_section">
+      <item ident="ia63b6a115fa68a555398a58626a62f81" title="Question1">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;question 1&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_str ident="response1" rcardinality="Single">
+            <render_fib fibtype="Decimal">
+              <response_label ident="answer1"/>
+            </render_fib>
+          </response_str>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <or>
+                <varequal respident="response1">1234.0</varequal>
+                <and>
+                  <vargte respident="response1">1234.0</vargte>
+                  <varlte respident="response1">1234.0</varlte>
+                </and>
+              </or>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="i62e978ad510f5b51f61e1073df6357df" title="Question2">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;question 2&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_str ident="response1" rcardinality="Single">
+            <render_fib fibtype="Decimal">
+              <response_label ident="answer1"/>
+            </render_fib>
+          </response_str>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <or>
+                <varequal respident="response1">4321.0</varequal>
+                <and>
+                  <vargte respident="response1">4321.0</vargte>
+                  <varlte respident="response1">4321.0</varlte>
+                </and>
+              </or>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+          <respcondition continue="No">
+            <conditionvar>
+              <or>
+                <varequal respident="response1">1234.0</varequal>
+                <and>
+                  <vargte respident="response1">1234.0</vargte>
+                  <varlte respident="response1">1234.0</varlte>
+                </and>
+              </or>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+          <respcondition continue="No">
+            <conditionvar>
+              <or>
+                <varequal respident="response1">1111.0</varequal>
+                <and>
+                  <vargte respident="response1">1111.0</vargte>
+                  <varlte respident="response1">1111.0</varlte>
+                </and>
+              </or>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+    </section>
+  </assessment>
+</questestinterop>
