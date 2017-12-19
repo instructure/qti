@@ -4,6 +4,7 @@ module Qti
       module Interactions
         class MatchInteraction < BaseInteraction
           def self.matches(node, parent)
+            return false if canvas_multiple_fib?(node)
             matches = node.xpath('.//xmlns:response_lid')
             return false if matches.count <= 1
             new(node, parent)

@@ -63,6 +63,35 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     end
   end
 
+  context 'canvas_multiple_fib.xml' do
+    let(:file_path) { File.join(fixtures_path, 'canvas_multiple_fib.xml') }
+    let(:shuffle_value) { false }
+    let(:scoring_data_ids) { %w[9799 5231 5939 6364] }
+    let(:scoring_data_values) { %w[red Red blue Blue] }
+    let(:scoring_data_case) { %w[no no no no] }
+    let(:answer_count) { 4 }
+    let(:expected_blanks) {[{id: '9799'}, {id: '5231'}, {id: '5939'}, {id: '6364'}]}
+    let(:expected_stem_items) do
+      [
+        { id: 'stem_0', position: 1, type: 'text', value: '<div><p><span>Roses are ' },
+        { id: 'stem_1', position: 2, type: 'blank', blank_id: 'response_color1' },
+        { id: 'stem_2', position: 3, type: 'text', value: ', violets are ' },
+        { id: 'stem_3', position: 4, type: 'blank', blank_id: 'response_color2' },
+        { id: "stem_4", position: 5, type: "text", value: "</span></p></div>"}
+      ]
+    end
+
+    include_examples 'shuffled?'
+    include_examples 'answers'
+    include_examples 'scoring_data_structs'
+    include_examples 'blanks'
+    include_examples 'stem_items'
+
+    it 'returns false for #single_fill_in_blank?' do
+      expect(loaded_class.single_fill_in_blank?).to eq false
+    end
+  end
+
   context 'fib_str.xml' do
     let(:file_path) { File.join(fixtures_path, 'fib_str.xml') }
     let(:shuffle_value) { false }
@@ -101,7 +130,11 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
 
     it "returns 'no' as case default value" do
       allow(nodexml).to receive(:at_xpath)
-      node = double(content: 'content', attributes: { 'respident' => double(value: 'a') })
+      node = double(
+        parent: double(parent: double(attributes: 'a')),
+        content: 'content',
+        attributes: { respident: double(value: 'a') }
+      )
       allow(subject).to receive(:answer_nodes).and_return([node])
       expect(subject.scoring_data_structs.first.case).to eq 'no'
     end
