@@ -16,6 +16,7 @@ require 'byebug'
 require 'securerandom'
 
 Dir['./spec/support/**/*.rb'].each { |f| require f }
+require 'action_view'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

@@ -8,7 +8,6 @@ module Qti
         # This one finds the correct parsing model based on the provided xml node
         def self.interaction_model(node, parent)
           subclasses = constants.map { |c| const_get(c) }
-
           # Check for matches
           matches = subclasses.each_with_object([]) do |interaction_class, result|
             match = interaction_class.matches(node, parent)
