@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <item ident="id39adb107fd2d03971a2d4206c6550dc" title="Formula">
+    <itemmetadata>
+      <qtimetadata>
+        <qtimetadatafield>
+          <fieldlabel>question_type</fieldlabel>
+          <fieldentry>calculated_question</fieldentry>
+        </qtimetadatafield>
+      <qtimetadatafield>
+        <fieldlabel>points_possible</fieldlabel>
+        <fieldentry>1.0</fieldentry>
+      </qtimetadatafield>
+      <qtimetadatafield>
+        <fieldlabel>assessment_question_identifierref</fieldlabel>
+        <fieldentry>i2c64259a331bc821bdcb2f326cf36631</fieldentry>
+      </qtimetadatafield>
+      </qtimetadata>
+    </itemmetadata>
+    <presentation>
+      <material>
+      <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;What number is [x]&lt;/p&gt;&lt;/div&gt;</mattext>
+      </material>
+      <response_str ident="response1" rcardinality="Single">
+      <render_fib fibtype="Decimal">
+        <response_label ident="answer1"/>
+      </render_fib>
+      </response_str>
+    </presentation>
+    <resprocessing>
+      <outcomes>
+      <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+      </outcomes>
+      <respcondition title="correct">
+      <conditionvar>
+        <other/>
+      </conditionvar>
+      <setvar varname="SCORE" action="Set">100</setvar>
+      </respcondition>
+      <respcondition title="incorrect">
+      <conditionvar>
+        <not>
+        <other/>
+        </not>
+      </conditionvar>
+      <setvar varname="SCORE" action="Set">0</setvar>
+      </respcondition>
+    </resprocessing>
+    <itemproc_extension>
+      <calculated>
+      <answer_tolerance>0</answer_tolerance>
+      <formulas decimal_places="0">
+        <formula>x</formula>
+      </formulas>
+      <vars>
+        <var name="x" scale="0">
+        <min>1.0</min>
+        <max>10.0</max>
+        </var>
+      </vars>
+      <var_sets>
+        <var_set ident="3322">
+        <var name="x">9</var>
+        <answer>9.0</answer>
+        </var_set>
+        <var_set ident="415">
+        <var name="x">9</var>
+        <answer>9.0</answer>
+        </var_set>
+        <var_set ident="3782">
+        <var name="x">6</var>
+        <answer>6.0</answer>
+        </var_set>
+        <var_set ident="1100">
+        <var name="x">2</var>
+        <answer>2.0</answer>
+        </var_set>
+        <var_set ident="858">
+        <var name="x">3</var>
+        <answer>3.0</answer>
+        </var_set>
+      </var_sets>
+      </calculated>
+    </itemproc_extension>
+  </item>
+</questestinterop>

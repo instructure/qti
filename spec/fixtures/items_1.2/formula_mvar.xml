@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <item ident="ifc0ea9e9754f1393a4b8d2979a4a2ae7" title="Question">
+  <itemmetadata>
+    <qtimetadata>
+    <qtimetadatafield>
+      <fieldlabel>question_type</fieldlabel>
+      <fieldentry>calculated_question</fieldentry>
+    </qtimetadatafield>
+    <qtimetadatafield>
+      <fieldlabel>points_possible</fieldlabel>
+      <fieldentry>1.0</fieldentry>
+    </qtimetadatafield>
+    <qtimetadatafield>
+      <fieldlabel>assessment_question_identifierref</fieldlabel>
+      <fieldentry>i6fc721d91a4fc5f997666939c90ae683</fieldentry>
+    </qtimetadatafield>
+    </qtimetadata>
+  </itemmetadata>
+  <presentation>
+    <material>
+    <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;[x] + [y]&lt;/p&gt;&lt;/div&gt;</mattext>
+    </material>
+    <response_str ident="response1" rcardinality="Single">
+    <render_fib fibtype="Decimal">
+      <response_label ident="answer1"/>
+    </render_fib>
+    </response_str>
+  </presentation>
+  <resprocessing>
+    <outcomes>
+    <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+    </outcomes>
+    <respcondition title="correct">
+    <conditionvar>
+      <other/>
+    </conditionvar>
+    <setvar varname="SCORE" action="Set">100</setvar>
+    </respcondition>
+    <respcondition title="incorrect">
+    <conditionvar>
+      <not>
+      <other/>
+      </not>
+    </conditionvar>
+    <setvar varname="SCORE" action="Set">0</setvar>
+    </respcondition>
+  </resprocessing>
+  <itemproc_extension>
+    <calculated>
+    <answer_tolerance>0</answer_tolerance>
+    <formulas decimal_places="0">
+      <formula>x+y</formula>
+    </formulas>
+    <vars>
+      <var name="x" scale="0">
+      <min>1.0</min>
+      <max>10.0</max>
+      </var>
+      <var name="y" scale="0">
+      <min>1.0</min>
+      <max>10.0</max>
+      </var>
+    </vars>
+    <var_sets>
+      <var_set ident="163">
+        <var name="x">9</var>
+        <var name="y">7</var>
+        <answer>16.0</answer>
+      </var_set>
+      <var_set ident="965">
+        <var name="x">5</var>
+        <var name="y">2</var>
+        <answer>7.0</answer>
+      </var_set>
+      <var_set ident="8589">
+        <var name="x">5</var>
+        <var name="y">9</var>
+        <answer>14.0</answer>
+      </var_set>
+      <var_set ident="6087">
+        <var name="x">3</var>
+        <var name="y">2</var>
+        <answer>5.0</answer>
+      </var_set>
+      <var_set ident="8894">
+        <var name="x">2</var>
+        <var name="y">5</var>
+        <answer>7.0</answer>
+      </var_set>
+      <var_set ident="5184">
+        <var name="x">6</var>
+        <var name="y">8</var>
+        <answer>14.0</answer>
+      </var_set>
+      <var_set ident="8918">
+        <var name="x">3</var>
+        <var name="y">8</var>
+        <answer>11.0</answer>
+      </var_set>
+      <var_set ident="3332">
+        <var name="x">4</var>
+        <var name="y">3</var>
+        <answer>7.0</answer>
+      </var_set>
+      <var_set ident="7495">
+        <var name="x">10</var>
+        <var name="y">10</var>
+        <answer>20.0</answer>
+      </var_set>
+      <var_set ident="6307">
+        <var name="x">9</var>
+        <var name="y">4</var>
+        <answer>13.0</answer>
+      </var_set>
+    </var_sets>
+    </calculated>
+  </itemproc_extension>
+  </item>
+</questestinterop>
