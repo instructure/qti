@@ -22,11 +22,9 @@ module Qti
         end
 
         def hrefs
-          if xpath_with_single_check("//xmlns:resource[@type='imsqti_item_xmlv2p1']/@href")&.value
-            @doc.xpath("//xmlns:resource[@type='imsqti_item_xmlv2p1']/@href")
-          else xpath_with_single_check("//xmlns:resource[@type='imsqti_item_xmlv2p2']/@href")&.value
-            @doc.xpath("//xmlns:resource[@type='imsqti_item_xmlv2p2']/@href")
-          end
+          nodes = @doc.xpath("//xmlns:resource[@type='imsqti_item_xmlv2p2']/@href")
+          return nodes if nodes.count >= 1
+          @doc.xpath("//xmlns:resource[@type='imsqti_item_xmlv2p1']/@href")
         end
       end
     end

@@ -28,9 +28,9 @@ module Qti
       end
 
       def qti_2_non_assessment_href
-        item_path = @doc.at_xpath("//xmlns:resources/xmlns:resource[@type='imsqti_item_xmlv2p1']/@href")&.content ||
-                    @doc.at_xpath("//xmlns:resources/xmlns:resource[@type='imsqti_item_xmlv2p2']/@href")
-        Qti::V2::Models::NonAssessmentTest.from_path!(@path, @package_root) if item_path
+        Qti::V2::Models::NonAssessmentTest.from_path!(@path, @package_root) if
+          xmlns_resource_count("[@type='imsqti_item_xmlv2p1']/@href") > 0 ||
+          xmlns_resource_count("[@type='imsqti_item_xmlv2p2']/@href") > 0
       end
 
       def unknown_type
@@ -41,6 +41,10 @@ module Qti
 
       def xmlns_resource(type)
         xpath_with_single_check("//xmlns:resources/xmlns:resource#{type}")&.content
+      end
+
+      def xmlns_resource_count(type)
+        @doc.xpath("//xmlns:resources/xmlns:resource#{type}").count
       end
     end
   end

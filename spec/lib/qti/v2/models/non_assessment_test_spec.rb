@@ -2,16 +2,33 @@ require 'spec_helper'
 
 fixtures_path = File.join('spec', 'fixtures')
 
-describe Qti::V2::Models::NonAssessmentTest do
-  let(:path) { File.join(fixtures_path, 'no_assessment_xml', 'imsmanifest.xml') }
-  let(:loaded_class) { described_class.from_path!(path) }
 
-  describe '2.2' do
-    it 'loads an AssessmentTest XML file' do
+
+describe Qti::V2::Models::NonAssessmentTest do
+  shared_examples_for 'loading_a_non-assessment' do
+    it 'loads an Non-AssessmentTest XML file' do
       expect do
         described_class.from_path!(path)
       end.to_not raise_error
     end
+
+    it 'expects at least one assement item' do
+      expect(loaded_class.assessment_items.count)
+    end
+  end
+
+  describe '2.2' do
+    let(:path) { File.join(fixtures_path, 'no_assessment_xml', 'imsmanifest.xml') }
+    let(:loaded_class) { described_class.from_path!(path) }
+
+    include_examples 'loading_a_non-assessment'
+  end
+
+  describe 'package_shared' do
+    let(:path) { File.join(fixtures_path, 'package_shared', 'imsmanifest.xml') }
+    let(:loaded_class) { described_class.from_path!(path) }
+
+    include_examples 'loading_a_non-assessment'
   end
 
   # describe '#stimulus_ref' do

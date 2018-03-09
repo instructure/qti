@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns="http://www.imsglobal.org/xsd/imscp_v1p1"
+  xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_v1p2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:imsqti="http://www.imsglobal.org/xsd/imsqti_metadata_v2p1"
+  identifier="MANIFEST-85D76736-6D19-9DC0-7C0B-57C31A9FD391"
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1 http://www.imsglobal.org/xsd/imscp_v1p1.xsd http://www.imsglobal.org/xsd/imsmd_v1p2 http://www.imsglobal.org/xsd/imsmd_v1p2p4.xsd http://www.imsglobal.org/xsd/imsqti_metadata_v2p1 http://www.imsglobal.org/xsd/qti/qtiv2p1/imsqti_metadata_v2p1.xsd">
+  <metadata>
+    <schema>IMS Content</schema>
+    <schemaversion>1.1</schemaversion>
+    <imsmd:lom>
+      <imsmd:general>
+        <imsmd:identifier>package_shared</imsmd:identifier>
+        <imsmd:title>
+          <imsmd:langstring xml:lang="en">Shared Image Example</imsmd:langstring>
+        </imsmd:title>
+        <imsmd:language>en</imsmd:language>
+        <imsmd:description>
+          <imsmd:langstring xml:lang="en">This is an example Contentpackage containing a
+            number of QTI v2.1 items, it also demonstrates the use of a shared media
+            object</imsmd:langstring>
+        </imsmd:description>
+      </imsmd:general>
+      <imsmd:lifecycle>
+        <imsmd:version>
+          <imsmd:langstring xml:lang="en">1.0</imsmd:langstring>
+        </imsmd:version>
+        <imsmd:status>
+          <imsmd:source>
+            <imsmd:langstring xml:lang="en">LOMv1.0</imsmd:langstring>
+          </imsmd:source>
+          <imsmd:value>
+            <imsmd:langstring xml:lang="x-none">Final</imsmd:langstring>
+          </imsmd:value>
+        </imsmd:status>
+      </imsmd:lifecycle>
+      <imsmd:metametadata>
+        <imsmd:metadatascheme>LOMv1.0</imsmd:metadatascheme>
+        <imsmd:metadatascheme>QTIv2.1</imsmd:metadatascheme>
+        <imsmd:language>en</imsmd:language>
+      </imsmd:metametadata>
+      <imsmd:technical>
+        <imsmd:format>text/x-imsqti-item-xml</imsmd:format>
+        <imsmd:format>image/png</imsmd:format>
+      </imsmd:technical>
+      <imsmd:rights>
+        <imsmd:description>
+          <imsmd:langstring xml:lang="en">(c) 2004, IMS Global Learning Consortium;
+            individual questions may have their own copyright
+          statements.</imsmd:langstring>
+        </imsmd:description>
+      </imsmd:rights>
+    </imsmd:lom>
+  </metadata>
+  <organizations/>
+  <resources>
+    <resource identifier="RES-BCA84FC0-53F9-ABBD-C3FE-BDB5B825CA9E" type="imsqti_item_xmlv2p1"
+      href="example/graphic_order.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>graphicOrder</imsmd:identifier>
+            <imsmd:title>
+              <imsmd:langstring xml:lang="en">Flying Home</imsmd:langstring>
+            </imsmd:title>
+            <imsmd:description>
+              <imsmd:langstring xml:lang="en">This example illustrates the
+                graphicOrderInteraction. The task is similar to Grand Prix of
+                Bahrain except that the choices are presented as hotspots on a
+                graphic image.</imsmd:langstring>
+            </imsmd:description>
+          </imsmd:general>
+          <imsmd:lifecycle>
+            <imsmd:version>
+              <imsmd:langstring xml:lang="en">1.0</imsmd:langstring>
+            </imsmd:version>
+            <imsmd:status>
+              <imsmd:source>
+                <imsmd:langstring xml:lang="x-none">LOMv1.0</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:value>
+                <imsmd:langstring xml:lang="x-none">Draft</imsmd:langstring>
+              </imsmd:value>
+            </imsmd:status>
+          </imsmd:lifecycle>
+          <imsmd:technical>
+            <imsmd:format>text/x-imsqti-item-xml</imsmd:format>
+          </imsmd:technical>
+        </imsmd:lom>
+        <imsqti:qtiMetadata>
+          <imsqti:timeDependent>false</imsqti:timeDependent>
+          <imsqti:interactionType>graphicOrderInteraction</imsqti:interactionType>
+          <imsqti:feedbackType>none</imsqti:feedbackType>
+          <imsqti:solutionAvailable>true</imsqti:solutionAvailable>
+        </imsqti:qtiMetadata>
+      </metadata>
+      <file href="example/graphic_order.xml"/>
+      <dependency identifierref="images01"/>
+    </resource>
+    <resource identifier="RES-1CDACE46-DD7B-719F-0D4D-BDA579A862AB" type="imsqti_item_xmlv2p1"
+      href="example/hotspot.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>hotspot</imsmd:identifier>
+            <imsmd:title>
+              <imsmd:langstring xml:lang="en">UK Airports (Take 1)</imsmd:langstring>
+            </imsmd:title>
+            <imsmd:description>
+              <imsmd:langstring xml:lang="en">This example illustrates the
+                hotspotInteraction.</imsmd:langstring>
+            </imsmd:description>
+          </imsmd:general>
+          <imsmd:lifecycle>
+            <imsmd:version>
+              <imsmd:langstring xml:lang="en">1.0</imsmd:langstring>
+            </imsmd:version>
+            <imsmd:status>
+              <imsmd:source>
+                <imsmd:langstring xml:lang="x-none">LOMv1.0</imsmd:langstring>
+              </imsmd:source>
+              <imsmd:value>
+                <imsmd:langstring xml:lang="x-none">Draft</imsmd:langstring>
+              </imsmd:value>
+            </imsmd:status>
+          </imsmd:lifecycle>
+          <imsmd:technical>
+            <imsmd:format>text/x-imsqti-item-xml</imsmd:format>
+          </imsmd:technical>
+        </imsmd:lom>
+        <imsqti:qtiMetadata>
+          <imsqti:timeDependent>false</imsqti:timeDependent>
+          <imsqti:interactionType>hotspotInteraction</imsqti:interactionType>
+          <imsqti:feedbackType>none</imsqti:feedbackType>
+          <imsqti:solutionAvailable>true</imsqti:solutionAvailable>
+        </imsqti:qtiMetadata>
+      </metadata>
+      <file href="example/hotspot.xml"/>
+      <dependency identifierref="images01"/>
+    </resource>
+    <resource identifier="images01" type="webcontent">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:description>
+              <imsmd:langstring xml:lang="en">Image of the United Kingdom with the
+                marked locations of Edinburgh, Glasgow, Heathrow and Manchester
+                airports.</imsmd:langstring>
+            </imsmd:description>
+          </imsmd:general>
+          <imsmd:technical>
+            <imsmd:format>image/png</imsmd:format>
+          </imsmd:technical>
+        </imsmd:lom>
+      </metadata>
+      <file href="examples/ukair.png"/>
+    </resource>
+  </resources>
+</manifest>
