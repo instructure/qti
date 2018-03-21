@@ -10,13 +10,6 @@ module Qti
             new(node, parent)
           end
 
-          def item_body
-            presentation = @node.at_xpath('.//xmlns:presentation')
-            mattext = presentation.at_xpath('.//xmlns:mattext')
-            inner_content = return_inner_content!(mattext)
-            sanitize_content!(inner_content)
-          end
-
           def scoring_data_structs
             solutions.map do |answer|
               ScoringData.new(
@@ -30,8 +23,7 @@ module Qti
           def solutions
             node.xpath('.//xmlns:var_set').map do |anode|
               {
-                id: anode.attributes['ident']&.value,
-                input: vars_at_node(anode),
+                inputs: vars_at_node(anode),
                 output: anode.at_xpath('.//xmlns:answer').text
               }
             end

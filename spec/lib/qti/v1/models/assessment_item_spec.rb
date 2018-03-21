@@ -90,6 +90,20 @@ describe Qti::V1::Models::AssessmentItem do
     end
   end
 
+  context 'formula.xml' do
+    let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'formula.xml') }
+    let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
+    let(:assessment_item_refs) { test_object.assessment_items }
+    let(:loaded_class) { described_class.new(assessment_item_refs) }
+
+    describe '#scoring_data_structs' do
+      it 'collects all the correct answers' do
+        struct = loaded_class.scoring_data_structs
+        expect(struct.size).to eq 5
+      end
+    end
+  end
+
   context 'inner_content' do
     describe 'unescaped html' do
       let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'matching.xml') }
