@@ -1,6 +1,7 @@
 require 'nokogiri'
 require 'sanitize'
 require 'pathname'
+require 'mathml2latex'
 
 module Qti
   class ParseError < StandardError; end
@@ -62,6 +63,21 @@ module Qti
         self.package_root = package_root || File.dirname(path)
         @doc = html ? parse_html(File.read(path)) : parse_xml(File.read(path))
         raise ArgumentError unless @doc
+        preprocess_xml_doc(@doc) unless html
+      end
+
+      def preprocess_xml_doc(xml_doc)
+        converter = Mathml2latex::Converter.new
+        converter.replace_with_latex(xml_doc)
+        nodes = xml_doc.xpath('//mm:latex', 'mm' => Mathml2latex::INSTUCTURE_LATEX_NS)
+
+        nodes.each do |node|
+          # convert all #160 space to regular #32 whitespace
+          # latex parser won't work for #160 space
+          text = node.text.gsub(/\u00a0/, ' ')
+          latex_string = "&#160;\\(#{text}\\)&#160;"
+          node.replace(latex_string)
+        end
       end
 
       def xpath_with_single_check(xpath)

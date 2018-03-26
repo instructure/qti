@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe Qti::Models::Base do
-  let(:loaded_class) do
-    path = File.join('spec', 'fixtures', 'test_qti_2.2', 'assessment.xml')
-    described_class.from_path!(path)
-  end
-
   context 'specified as single content node matching helpers' do
+    let(:loaded_class) do
+      path = File.join('spec', 'fixtures', 'test_qti_2.2', 'assessment.xml')
+      described_class.from_path!(path)
+    end
+
     let(:content_stub) { Struct.new(:content, :thing) }
 
     # "assessmentItemRef" should match 4 nodes, and therefore raise for these helpers
@@ -87,6 +87,19 @@ describe Qti::Models::Base do
           end.to raise_error(Qti::ParseError)
         end
       end
+    end
+  end
+
+  context 'preprocessing' do
+    let(:loaded_class) do
+      path = File.join('spec', 'fixtures', 'mathml', 'numeric_1.2.xml')
+      described_class.from_path!(path)
+    end
+    let(:expected_latex) { '\\(\\frac{1}{2}\\times \\sqrt[10]{379}\\)' }
+
+    it 'replaces any mathml block' do
+      obj = loaded_class
+      expect(obj.instance_variable_get('@doc').to_s).to include(expected_latex)
     end
   end
 end
