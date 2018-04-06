@@ -26,7 +26,9 @@ module Qti
           end
 
           def scoring_data_structs
-            matches = node.xpath('.//xmlns:varequal').map do |node|
+            # This preserves the original behavior while not breaking on itemfeedback
+            path = './/xmlns:respcondition/xmlns:setvar/../xmlns:conditionvar/xmlns:varequal'
+            matches = node.xpath(path).map do |node|
               [node.attributes['respident'].value, answers_map[node.content]]
             end
             [Models::ScoringData.new(Hash[matches], rcardinality)]

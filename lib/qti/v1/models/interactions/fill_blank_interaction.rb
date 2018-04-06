@@ -7,7 +7,7 @@ module Qti
 
           # This will know if a class matches
           def self.matches(node, parent)
-            return false if node.at_xpath('.//xmlns:other').present?
+            return false if node.at_xpath('.//xmlns:respcondition[@continue!="Yes"]/*/xmlns:other').present?
             match = if BaseInteraction.canvas_multiple_fib?(node)
               node.at_xpath('.//xmlns:response_lid')
             else

@@ -9,7 +9,8 @@ module Qti
         end
 
         def return_inner_content!(node)
-          if node.child.cdata? || node.inner_html.include?('&gt' || '&lt')
+          if node.attributes['texttype']&.value == 'text/plain' ||
+             node.child.cdata? || node.inner_html.include?('&gt' || '&lt')
             node.text
           else
             node.inner_html

@@ -44,6 +44,10 @@ module Qti
           @scoring_data_structs ||= interaction_model.scoring_data_structs
         end
 
+        def feedback
+          @feedback ||= interaction_model.canvas_item_feedback
+        end
+
         private
 
         def item_body_node

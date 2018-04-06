@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe Qti::V1::Models::AssessmentItem do
+  context 'multiple_fib' do
+    let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'single_fib.xml') }
+    let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
+    let(:assessment_item_refs) { test_object.assessment_items }
+    let(:loaded_class) { described_class.new(assessment_item_refs) }
+
+    it 'has sanitized item_body' do
+      expect(loaded_class.item_body).to include '<div'
+    end
+  end
+
   context 'quiz.xml' do
     let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'true_false.xml') }
     let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }

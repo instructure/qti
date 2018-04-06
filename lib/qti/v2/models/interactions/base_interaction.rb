@@ -26,6 +26,8 @@ module Qti
             end
           end
 
+          def canvas_item_feedback; end
+
           def xpath_with_single_check(xpath)
             node_list = node.xpath(xpath)
             raise Qti::ParseError, 'Too many matches' if node_list.count > 1

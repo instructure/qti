@@ -32,7 +32,7 @@ module Qti
           private
 
           def answer_nodes
-            @node.xpath('.//xmlns:respcondition')
+            @node.xpath('.//xmlns:respcondition/xmlns:setvar[@varname="SCORE"]/..')
           end
         end
       end

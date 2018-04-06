@@ -18,4 +18,60 @@ describe Qti::V1::Models::Interactions::BaseInteraction do
     interaction = described_class.new(node, assessment)
     expect(interaction.rcardinality).to eq 'Single'
   end
+
+  let(:fixtures_path) { File.join('spec', 'fixtures', 'items_1.2') }
+  let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
+  let(:assessment_item_refs) { test_object.assessment_items }
+  let(:loaded_class) { described_class.new(assessment_item_refs.first, test_object) }
+
+  shared_examples_for 'item_level_feedback' do
+    it 'returns the correct item-level feedback' do
+      expect(loaded_class.canvas_item_feedback[:neutral]).to eq(general_fb)
+      expect(loaded_class.canvas_item_feedback[:correct]).to eq(correct_fb)
+      expect(loaded_class.canvas_item_feedback[:incorrect]).to eq(incorrect_fb)
+    end
+  end
+
+  shared_examples_for 'answer_feedback' do
+    it 'returns the correct answer feedback' do
+      expect(loaded_class.answer_feedback).to eq(answer_fb)
+    end
+  end
+
+  context 'canvas_multiple_dropdown.xml' do
+    let(:file_path) { File.join(fixtures_path, 'canvas_multiple_dropdown.xml') }
+    let(:general_fb) do
+      "<p>Roses come in many colors, violets probably do too.</p>\n<p>Never the less, " \
+      'the correct answers were <strong>red</strong> and <strong>blue</strong>.</p>'
+    end
+    let(:correct_fb) { '<p>Completing the poem, is left to you.</p>' }
+    let(:incorrect_fb) { '<p>Those aren\'t colors, you meant <strong>red</strong> and <strong>blue</strong>.</p>' }
+
+    let(:answer_fb) do
+      [
+        { response_id: 'response_color1', response_value: '6548',
+          texttype: 'text/html', feedback: '<p>Yes! <strong>Red</strong>.</p>' },
+        { response_id: 'response_color1', response_value: '5550',
+          texttype: 'text/html', feedback: "<p>I'm pretty sure you meant <strong>red.</strong></p>" },
+        { response_id: 'response_color2', response_value: '6951',
+          texttype: 'text/html', feedback: '<p>Yes, <strong>blue</strong>!</p>' },
+        { response_id: 'response_color2', response_value: '4500',
+          texttype: 'text/html', feedback: '<p>Did you also chose plaid? You wanted to <strong>blue</strong>.</p>' }
+      ]
+    end
+
+    include_examples('item_level_feedback')
+    include_examples('answer_feedback')
+  end
+
+  context 'canvas_multiple_fib.xml' do
+    let(:file_path) { File.join(fixtures_path, 'canvas_multiple_fib.xml') }
+    let(:general_fb) { nil }
+    let(:correct_fb) { nil }
+    let(:incorrect_fb) { nil }
+    let(:answer_fb) { nil }
+
+    include_examples('item_level_feedback')
+    include_examples('answer_feedback')
+  end
 end

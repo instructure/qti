@@ -1,44 +1,88 @@
 require 'spec_helper'
 
 describe Qti::V1::Models::Interactions::MatchInteraction do
-  let(:file) { File.join('spec', 'fixtures', 'items_1.2', 'matching.xml') }
+  let(:path) { File.join('spec', 'fixtures', 'items_1.2') }
   let(:assessment) { Qti::V1::Models::Assessment.from_path!(file) }
   let(:item) { assessment.assessment_items.first }
-  subject { described_class.new(item, assessment) }
+  let(:subject) { described_class.new(item, assessment) }
 
-  it 'returns shuffle setting' do
-    expect(subject.shuffled?).to eq false
-  end
+  shared_examples_for 'common features' do
+    describe '.matches' do
+      it 'matches the item in file' do
+        expect(described_class.matches(item, assessment)).to be_truthy
+      end
+    end
 
-  it 'returns the answers' do
-    expect(subject.answers.map(&:item_body)).to eq(
-      ['Magnify up to about 400 times. Sometimes requires colored staining of cells.',
-       "Uses a beam of electrons. Can provide details of cells' internal structure.",
-       'A distractor answer.']
-    )
-  end
-
-  describe '.matches' do
-    it 'matches the item in file' do
-      expect(described_class.matches(item, assessment)).to be_truthy
+    it 'returns shuffle setting' do
+      expect(subject.shuffled?).to eq false
     end
   end
 
-  describe '#scoring_data_structs' do
+  shared_examples_for 'questions and answers' do
+    it 'returns the answers' do
+      expect(subject.answers.map(&:item_body)).to eq(expected_answers)
+    end
+
+    it 'returns the questions' do
+      expect(subject.questions).to eq(expected_questions)
+    end
+  end
+
+  shared_examples_for '#scoring_data_structs' do
     it 'grabs scoring data value for matching questions' do
-      expect(subject.scoring_data_structs.first.values).to eq(
+      expect(subject.scoring_data_structs.first.values).to eq(expected_scoring_data)
+    end
+  end
+
+  context 'matching.xml' do
+    let(:file) { File.join(path, 'matching.xml') }
+    let(:expected_answers) do
+      [
+        'Magnify up to about 400 times. Sometimes requires colored staining of cells.',
+        "Uses a beam of electrons. Can provide details of cells' internal structure.",
+        'A distractor answer.'
+      ]
+    end
+    let(:expected_questions) do
+      [
+        { id: 'question_1', itemBody: 'Light Microscope' },
+        { id: 'question_2', itemBody: 'Electron Microscopes' }
+      ]
+    end
+    let(:expected_scoring_data) do
+      {
         'question_1' => 'Magnify up to about 400 times. Sometimes requires colored staining of cells.',
         'question_2' => "Uses a beam of electrons. Can provide details of cells' internal structure."
-      )
+      }
     end
+
+    include_examples('common features')
+    include_examples('questions and answers')
+    include_examples('#scoring_data_structs')
   end
 
-  describe '#questions' do
-    it 'returns the questions' do
-      expect(subject.questions).to eq(
-        [{ id: 'question_1', itemBody: 'Light Microscope' },
-         { id: 'question_2', itemBody: 'Electron Microscopes' }]
-      )
+  context 'matching_feedback.xml' do
+    let(:file) { File.join(path, 'matching_feedback.xml') }
+    let(:expected_answers) { '1,2,,C,D,E,F,3,4,5,6'.split(',') }
+    let(:expected_questions) do
+      [
+        { id: 'response_6831', itemBody: 'A' },
+        { id: 'response_6259', itemBody: 'B' },
+        { id: 'response_743', itemBody: '' },
+        { id: 'response_1943', itemBody: '' }
+      ]
     end
+    let(:expected_scoring_data) do
+      {
+        'response_6831' => '1',
+        'response_6259' => '2',
+        'response_743' => '',
+        'response_1943' => ''
+      }
+    end
+
+    include_examples('common features')
+    include_examples('questions and answers')
+    include_examples('#scoring_data_structs')
   end
 end

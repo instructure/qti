@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <assessment ident="ie797010092a6c1798006e216ba4c9c90" title="Full Matching">
+    <qtimetadata>
+      <qtimetadatafield>
+        <fieldlabel>cc_maxattempts</fieldlabel>
+        <fieldentry>1</fieldentry>
+      </qtimetadatafield>
+    </qtimetadata>
+    <section ident="root_section">
+      <item ident="i43dbc4f8278e6ded31674b351f9a1c37" title="Question">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>matching_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>points_possible</fieldlabel>
+              <fieldentry>1.0</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>ia35182d853a74713f030ee217920ee59</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;A:1 B:2&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response_6831">
+            <material>
+              <mattext texttype="text/plain">A</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6753">
+                <material>
+                  <mattext>1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7138">
+                <material>
+                  <mattext>2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7422">
+                <material>
+                  <mattext></mattext>
+                </material>
+              </response_label>
+              <response_label ident="9758">
+                <material>
+                  <mattext>C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2171">
+                <material>
+                  <mattext>D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7178">
+                <material>
+                  <mattext>E</mattext>
+                </material>
+              </response_label>
+              <response_label ident="5271">
+                <material>
+                  <mattext>F</mattext>
+                </material>
+              </response_label>
+              <response_label ident="491">
+                <material>
+                  <mattext>3</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8310">
+                <material>
+                  <mattext>4</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7507">
+                <material>
+                  <mattext>5</mattext>
+                </material>
+              </response_label>
+              <response_label ident="3052">
+                <material>
+                  <mattext>6</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_6259">
+            <material>
+              <mattext texttype="text/plain">B</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6753">
+                <material>
+                  <mattext>1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7138">
+                <material>
+                  <mattext>2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7422">
+                <material>
+                  <mattext></mattext>
+                </material>
+              </response_label>
+              <response_label ident="9758">
+                <material>
+                  <mattext>C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2171">
+                <material>
+                  <mattext>D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7178">
+                <material>
+                  <mattext>E</mattext>
+                </material>
+              </response_label>
+              <response_label ident="5271">
+                <material>
+                  <mattext>F</mattext>
+                </material>
+              </response_label>
+              <response_label ident="491">
+                <material>
+                  <mattext>3</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8310">
+                <material>
+                  <mattext>4</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7507">
+                <material>
+                  <mattext>5</mattext>
+                </material>
+              </response_label>
+              <response_label ident="3052">
+                <material>
+                  <mattext>6</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_743">
+            <material>
+              <mattext texttype="text/plain"></mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6753">
+                <material>
+                  <mattext>1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7138">
+                <material>
+                  <mattext>2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7422">
+                <material>
+                  <mattext></mattext>
+                </material>
+              </response_label>
+              <response_label ident="9758">
+                <material>
+                  <mattext>C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2171">
+                <material>
+                  <mattext>D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7178">
+                <material>
+                  <mattext>E</mattext>
+                </material>
+              </response_label>
+              <response_label ident="5271">
+                <material>
+                  <mattext>F</mattext>
+                </material>
+              </response_label>
+              <response_label ident="491">
+                <material>
+                  <mattext>3</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8310">
+                <material>
+                  <mattext>4</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7507">
+                <material>
+                  <mattext>5</mattext>
+                </material>
+              </response_label>
+              <response_label ident="3052">
+                <material>
+                  <mattext>6</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_1943">
+            <material>
+              <mattext texttype="text/plain"></mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6753">
+                <material>
+                  <mattext>1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7138">
+                <material>
+                  <mattext>2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7422">
+                <material>
+                  <mattext></mattext>
+                </material>
+              </response_label>
+              <response_label ident="9758">
+                <material>
+                  <mattext>C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2171">
+                <material>
+                  <mattext>D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7178">
+                <material>
+                  <mattext>E</mattext>
+                </material>
+              </response_label>
+              <response_label ident="5271">
+                <material>
+                  <mattext>F</mattext>
+                </material>
+              </response_label>
+              <response_label ident="491">
+                <material>
+                  <mattext>3</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8310">
+                <material>
+                  <mattext>4</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7507">
+                <material>
+                  <mattext>5</mattext>
+                </material>
+              </response_label>
+              <response_label ident="3052">
+                <material>
+                  <mattext>6</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_fb"/>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_6831">6753</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">25.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <not>
+                <varequal respident="response_6831">6753</varequal>
+              </not>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="6831_fb"/>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_6259">7138</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">25.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <not>
+                <varequal respident="response_6259">7138</varequal>
+              </not>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="6259_fb"/>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_743">7422</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">25.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_1943">7422</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">25.00</setvar>
+          </respcondition>
+        </resprocessing>
+        <itemfeedback ident="general_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Neutral&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="correct_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Correct&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="general_incorrect_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Incorrect&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="6831_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;A:1&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="6259_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;B:2&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+      </item>
+    </section>
+  </assessment>
+</questestinterop>

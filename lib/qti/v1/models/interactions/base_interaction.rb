@@ -31,6 +31,42 @@ module Qti
           def rcardinality
             @rcardinality ||= @node.at_xpath('.//xmlns:response_lid/@rcardinality')&.value || 'Single'
           end
+
+          def canvas_item_feedback
+            {
+              neutral: get_feedback('general_fb')&.text,
+              correct: get_feedback('correct_fb')&.text,
+              incorrect: get_feedback('general_incorrect_fb')&.text
+            }.compact
+          end
+
+          def answer_feedback
+            path = './/xmlns:respcondition//xmlns:displayfeedback/../' \
+              'xmlns:conditionvar/xmlns:varequal[@respident]/../../' \
+              'xmlns:displayfeedback/..'
+            answers = node.xpath(path).map do |entry|
+              answer_feedback_entry(entry)
+            end
+            answers unless answers.empty?
+          end
+
+          private
+
+          def answer_feedback_entry(entry)
+            ve = entry.xpath('.//xmlns:varequal').first
+            refid = entry.xpath('./xmlns:displayfeedback').first[:linkrefid]
+            feedback = get_feedback(refid)
+            {
+              response_id: ve[:respident],
+              response_value: ve.text,
+              texttype: feedback[:texttype],
+              feedback: feedback.text
+            }
+          end
+
+          def get_feedback(ident)
+            node.xpath(".//xmlns:itemfeedback[@ident='#{ident}']/xmlns:*/xmlns:*/xmlns:mattext").first
+          end
         end
       end
     end
