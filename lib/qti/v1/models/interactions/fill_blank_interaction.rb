@@ -2,7 +2,7 @@ module Qti
   module V1
     module Models
       module Interactions
-        class FillBlankInteraction < BaseInteraction
+        class FillBlankInteraction < BaseFillBlankInteraction
           CANVAS_REGEX = /(\[.+?\])/
 
           # This will know if a class matches
@@ -24,20 +24,9 @@ module Qti
 
           def stem_items
             if canvas_multiple_fib?
-              canvas_stem_items
+              canvas_stem_items(node.at_xpath('.//xmlns:mattext').text)
             else
               qti_stem_items
-            end
-          end
-
-          def canvas_stem_items
-            item_prompt_words = node.at_xpath('.//xmlns:mattext').text.split(CANVAS_REGEX)
-            item_prompt_words.map.with_index do |stem_item, index|
-              if stem_item.match CANVAS_REGEX
-                stem_blank(index, canvas_blank_id(stem_item))
-              else
-                stem_text(index, stem_item)
-              end
             end
           end
 
@@ -109,40 +98,12 @@ module Qti
             end
           end
 
-          def stem_blank(index, value)
-            {
-              id: "stem_#{index}",
-              position: index + 1,
-              type: 'blank',
-              blank_id: value
-            }
-          end
-
-          def stem_text(index, value)
-            {
-              id: "stem_#{index}",
-              position: index + 1,
-              type: 'text',
-              value: value
-            }
-          end
-
           def scoring_data_id(node)
             node.attributes['respident']&.value || node.attributes['ident']&.value
           end
 
           def scoring_data_case(node)
             node.attributes['case']&.value || 'no'
-          end
-
-          def canvas_blank_id(stem_item)
-            blank_id = nil
-            node.xpath('.//xmlns:response_lid').children.map do |response_lid_node|
-              if stem_item.include?(response_lid_node.text)
-                blank_id = response_lid_node.parent.attributes['ident']&.value
-              end
-            end
-            blank_id
           end
         end
       end

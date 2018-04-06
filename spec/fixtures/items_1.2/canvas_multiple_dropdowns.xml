@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <assessment ident="ie797010092a6c1798006e216ba4c9c90" title="Multiple Drop Down">
+    <qtimetadata>
+      <qtimetadatafield>
+        <fieldlabel>cc_maxattempts</fieldlabel>
+        <fieldentry>1</fieldentry>
+      </qtimetadatafield>
+    </qtimetadata>
+    <section ident="root_section">
+      <item ident="id9d8b63d85a03f2987646622805b61cf" title="Question">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>multiple_dropdowns_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>points_possible</fieldlabel>
+              <fieldentry>1.0</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>i7ad7f9841cc58f0a1392816b78aaa878</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Roses are [color1], violets are [color2].&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response_color1">
+            <material>
+              <mattext>color1</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6548">
+                <material>
+                  <mattext texttype="text/plain">red</mattext>
+                </material>
+              </response_label>
+              <response_label ident="5550">
+                <material>
+                  <mattext texttype="text/plain">plaid</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_color2">
+            <material>
+              <mattext>color2</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6951">
+                <material>
+                  <mattext texttype="text/plain">blue</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4500">
+                <material>
+                  <mattext texttype="text/plain">paisely</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response_color1">6548</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="6548_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response_color1">5550</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="5550_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response_color2">6951</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="6951_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response_color2">4500</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="4500_fb"/>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_color1">6548</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">50.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_color2">6951</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">50.00</setvar>
+          </respcondition>
+        </resprocessing>
+        <itemfeedback ident="general_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Roses come in many colors, violets probably do too.&lt;/p&gt;
+&lt;p&gt;Never the less, the correct answers were &lt;strong&gt;red&lt;/strong&gt; and &lt;strong&gt;blue&lt;/strong&gt;.&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="correct_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Completing the poem, is left to you.&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="general_incorrect_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Those aren't colors, you meant &lt;strong&gt;red&lt;/strong&gt; and &lt;strong&gt;blue&lt;/strong&gt;.&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="6548_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Yes! &lt;strong&gt;Red&lt;/strong&gt;.&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="5550_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;I'm pretty sure you meant &lt;strong&gt;red.&lt;/strong&gt;&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="6951_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Yes, &lt;strong&gt;blue&lt;/strong&gt;!&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="4500_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Did you also chose plaid? You wanted to &lt;strong&gt;blue&lt;/strong&gt;.&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+      </item>
+    </section>
+  </assessment>
+</questestinterop>
