@@ -15,7 +15,7 @@ module Qti
               ScoringData.new(
                 answer[:output],
                 rcardinality,
-                {id: answer[:id]}
+                id: answer[:id]
               )
             end
           end
@@ -46,10 +46,10 @@ module Qti
           end
 
           def margin_of_error
-            if answer_tolerance.ends_with? "%"
-              return {margin: answer_tolerance[0..-2], margin_type:'percent'}
+            if answer_tolerance.ends_with? '%'
+              return { margin: answer_tolerance[0..-2], margin_type: 'percent' }
             end
-            {margin: answer_tolerance, margin_type:'absolute'}
+            { margin: answer_tolerance, margin_type: 'absolute' }
           end
 
           def formula_decimal_places
@@ -57,9 +57,7 @@ module Qti
           end
 
           def formulas
-            node.xpath('.//xmlns:formula').map do |fnode|
-              fnode.text
-            end
+            node.xpath('.//xmlns:formula').map(&:text)
           end
 
           private

@@ -74,7 +74,7 @@ module Qti
         nodes.each do |node|
           # convert all #160 space to regular #32 whitespace
           # latex parser won't work for #160 space
-          text = node.text.gsub(/\u00a0/, ' ')
+          text = node.text.tr("\u00a0", ' ')
           latex_string = "&#160;\\(#{text}\\)&#160;"
           node.replace(latex_string)
         end

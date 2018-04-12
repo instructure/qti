@@ -71,18 +71,14 @@ describe Qti::V1::Models::Numerics::Precision do
 
   context '#significant_digits' do
     it 'returns correct number for leading zeros' do
-      expect(described_class.significant_digits('0.0000123')).
-        to eq(3)
+      expect(described_class.significant_digits('0.0000123')).to eq(3)
     end
     it 'returns correct number for trailing zeros' do
-      expect(described_class.significant_digits('0.0000123000')).
-        to eq(3)
+      expect(described_class.significant_digits('0.0000123000')).to eq(3)
     end
     it 'returns correct number for zeros in the middle' do
-      expect(described_class.significant_digits('0.000012003')).
-        to eq(5)
-      expect(described_class.significant_digits('15.000012003')).
-        to eq(11)
+      expect(described_class.significant_digits('0.000012003')).to eq(5)
+      expect(described_class.significant_digits('15.000012003')).to eq(11)
     end
   end
 end

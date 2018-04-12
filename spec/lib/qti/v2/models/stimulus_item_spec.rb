@@ -13,13 +13,17 @@
 #   end
 
 #   it 'has the title' do
+# rubocop:disable AsciiComments
 #     expect(loaded_class.title).to eq '¡El equipo de hockey te necesita!'
+# rubocop:enable AsciiComments
 #   end
 
 #   it 'has sanitized item_body' do
 #     expect(loaded_class.body).to include '<div'
 #     expect(loaded_class.body).to include 'Listen to the audio passage.'
+# rubocop:disable AsciiComments
 #     expect(loaded_class.body).to include '¡'
+# rubocop:enable AsciiComments
 #   end
 
 #   it 'has the identifier used to identify it in manifest file' do

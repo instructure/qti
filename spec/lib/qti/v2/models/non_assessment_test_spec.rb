@@ -2,8 +2,6 @@ require 'spec_helper'
 
 fixtures_path = File.join('spec', 'fixtures')
 
-
-
 describe Qti::V2::Models::NonAssessmentTest do
   shared_examples_for 'loading_a_non-assessment' do
     it 'loads an Non-AssessmentTest XML file' do

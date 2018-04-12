@@ -45,9 +45,9 @@ describe Qti::V1::Models::Interactions::FormulaInteraction do
     let(:formula_decimal_places) { '0' }
     let(:formula_formulas) { ['x'] }
 
-    let(:item_title) {'<div><p>What number is [x]</p></div>'}
+    let(:item_title) { '<div><p>What number is [x]</p></div>' }
 
-    let(:variables) { [ { name: 'x', min: '1.0', max: '10.0', precision: '0' } ] }
+    let(:variables) { [{ name: 'x', min: '1.0', max: '10.0', precision: '0' }] }
 
     include_examples 'scoring_data_structs'
     include_examples 'reading_formulas'
@@ -65,10 +65,12 @@ describe Qti::V1::Models::Interactions::FormulaInteraction do
     let(:formula_decimal_places) { '0' }
     let(:formula_formulas) { ['x+y'] }
 
-    let(:item_title) {'<div><p>[x] + [y]</p></div>'}
+    let(:item_title) { '<div><p>[x] + [y]</p></div>' }
 
-    let(:variables) { [ { name: 'x', min: '1.0', max: '10.0', precision: '0' },
-                      { name: 'y', min: '1.0', max: '10.0', precision: '0' } ] }
+    let(:variables) do
+      [{ name: 'x', min: '1.0', max: '10.0', precision: '0' },
+       { name: 'y', min: '1.0', max: '10.0', precision: '0' }]
+    end
 
     include_examples 'scoring_data_structs'
     include_examples 'answer_tolerance'
@@ -86,12 +88,14 @@ describe Qti::V1::Models::Interactions::FormulaInteraction do
     let(:formula_decimal_places) { '2' }
     let(:formula_formulas) { ['x=n*x', 'y=m*y', 'x+y'] }
 
-    let(:item_title) {'<div><p>[n][x] + [m][y]</p></div>'}
+    let(:item_title) { '<div><p>[n][x] + [m][y]</p></div>' }
 
-    let(:variables) { [ { name: 'y', min: '1.0', max: '10.0', precision: '2' },
-                        { name: 'x', min: '1.0', max: '10.0', precision: '2' },
-                        { name: 'n', min: '1.0', max: '10.0', precision: '2' },
-                        { name: 'm', min: '1.0', max: '10.0', precision: '2' } ] }
+    let(:variables) do
+      [{ name: 'y', min: '1.0', max: '10.0', precision: '2' },
+       { name: 'x', min: '1.0', max: '10.0', precision: '2' },
+       { name: 'n', min: '1.0', max: '10.0', precision: '2' },
+       { name: 'm', min: '1.0', max: '10.0', precision: '2' }]
+    end
 
     include_examples 'scoring_data_structs'
     include_examples 'answer_tolerance'

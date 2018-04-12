@@ -10,8 +10,8 @@ module Qti
       end
 
       def qti_1_href
-        test_path = xmlns_resource("[@type='imsqti_xmlv1p2']/@href") ||
-                    xmlns_resource("[@type='imsqti_xmlv1p2']/xmlns:file/@href")
+        test_path = xmlns_resource('[@type="imsqti_xmlv1p2"]/@href') ||
+                    xmlns_resource('[@type="imsqti_xmlv1p2"]/xmlns:file/@href')
         return unless test_path
         Qti::V1::Models::Assessment.from_path!(
           remap_href_path(test_path), @package_root
@@ -19,8 +19,8 @@ module Qti
       end
 
       def qti_2_x_href
-        test_path = xmlns_resource("[@type='imsqti_test_xmlv2p1']/@href") ||
-                    xmlns_resource("[@type='imsqti_test_xmlv2p2']/@href")
+        test_path = xmlns_resource('[@type="imsqti_test_xmlv2p1"]/@href') ||
+                    xmlns_resource('[@type="imsqti_test_xmlv2p2"]/@href')
         return unless test_path
         Qti::V2::Models::AssessmentTest.from_path!(
           remap_href_path(test_path), @package_root
@@ -29,8 +29,8 @@ module Qti
 
       def qti_2_non_assessment_href
         Qti::V2::Models::NonAssessmentTest.from_path!(@path, @package_root) if
-          xmlns_resource_count("[@type='imsqti_item_xmlv2p1']/@href") > 0 ||
-          xmlns_resource_count("[@type='imsqti_item_xmlv2p2']/@href") > 0
+          xmlns_resource_count('[@type="imsqti_item_xmlv2p1"]/@href').positive? ||
+          xmlns_resource_count('[@type="imsqti_item_xmlv2p2"]/@href').positive?
       end
 
       def unknown_type

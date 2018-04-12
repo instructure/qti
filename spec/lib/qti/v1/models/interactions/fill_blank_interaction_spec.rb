@@ -45,11 +45,11 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     let(:scoring_data_values) { %w[Illinois illinois] }
     let(:scoring_data_case) { %w[no no] }
     let(:answer_count) { 2 }
-    let(:expected_blanks) {[{ id: 'response1' }]}
+    let(:expected_blanks) { [{ id: 'response1' }] }
     let(:expected_stem_items) do
       [
-        {:id=>"stem_0", :position=>1, :type=>"text", :value=>"<div><p>Chicago is in what state?</p></div>"},
-        {:id=>"stem_1", :position=>2, :type=>"blank", :blank_id=>"response1"}
+        { id: 'stem_0', position: 1, type: 'text', value: '<div><p>Chicago is in what state?</p></div>' },
+        { id: 'stem_1', position: 2, type: 'blank', blank_id: 'response1' }
       ]
     end
 
@@ -70,14 +70,14 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     let(:scoring_data_values) { %w[red Red blue Blue] }
     let(:scoring_data_case) { %w[no no no no] }
     let(:answer_count) { 4 }
-    let(:expected_blanks) {[{id: '9799'}, {id: '5231'}, {id: '5939'}, {id: '6364'}]}
+    let(:expected_blanks) { [{ id: '9799' }, { id: '5231' }, { id: '5939' }, { id: '6364' }] }
     let(:expected_stem_items) do
       [
         { id: 'stem_0', position: 1, type: 'text', value: '<div><p><span>Roses are ' },
         { id: 'stem_1', position: 2, type: 'blank', blank_id: 'response_color1' },
         { id: 'stem_2', position: 3, type: 'text', value: ', violets are ' },
         { id: 'stem_3', position: 4, type: 'blank', blank_id: 'response_color2' },
-        { id: "stem_4", position: 5, type: "text", value: "</span></p></div>"}
+        { id: 'stem_4', position: 5, type: 'text', value: '</span></p></div>' }
       ]
     end
 
@@ -99,7 +99,7 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     let(:scoring_data_values) { %w[Winter Summer York] }
     let(:scoring_data_case) { %w[Yes Yes Yes] }
     let(:answer_count) { 3 }
-    let(:expected_blanks) {[{ id: 'FIB01' }, { id: 'FIB02' }, { id: 'FIB03' }]}
+    let(:expected_blanks) { [{ id: 'FIB01' }, { id: 'FIB02' }, { id: 'FIB03' }] }
     let(:expected_stem_items) do
       [
         { id: 'stem_0', position: 1, type: 'text', value: 'Fill-in-the blanks in this text from Richard III: ' },

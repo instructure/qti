@@ -1,4 +1,4 @@
-require "active_support/core_ext/hash/except"
+require 'active_support/core_ext/hash/except'
 # Populate the subclasses
 Dir["#{__dir__}/interactions/*.rb"].each { |f| load f }
 
@@ -8,8 +8,8 @@ module Qti
       module Interactions
         # This one finds the correct parsing model based on the provided xml node
         def self.interaction_model(node, parent)
-          ordered_classes = [ FormulaInteraction, NumericInteraction ]
-          ordered_classes.each do | interaction_class |
+          ordered_classes = [FormulaInteraction, NumericInteraction]
+          ordered_classes.each do |interaction_class|
             match = interaction_class.matches(node, parent)
             return match if match
           end

@@ -12,7 +12,7 @@ module Qti
           def self.canvas_multiple_fib?(node)
             matches = node.xpath('.//xmlns:response_lid')
             return false if matches.count <= 1
-            node.at_xpath('.//xmlns:fieldentry').text == "fill_in_multiple_blanks_question"
+            node.at_xpath('.//xmlns:fieldentry').text == 'fill_in_multiple_blanks_question'
           end
 
           def initialize(node, parent)
