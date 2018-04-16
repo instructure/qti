@@ -45,6 +45,7 @@ require 'qti/models/base'
 
 require 'qti/v1/models/base'
 require 'qti/v1/models/interactions/base_interaction'
+require 'qti/v1/models/interactions/base_fill_blank_interaction'
 require 'qti/v1/models/interactions/choice_interaction'
 
 require 'qti/v1/models/assessment'
