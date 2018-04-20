@@ -18,6 +18,15 @@ module Qti
             end
           end
 
+          def meta_type
+            meta_node = node.at_xpath(
+              './/xmlns:qtimetadatafield[./xmlns:fieldlabel/text()="question_type"]'
+            )
+            return nil unless meta_node.present?
+            type_node = meta_node.at_xpath('.//xmlns:fieldentry')
+            type_node&.text()
+          end
+
           def scoring_data_structs
             choice_nodes = node.xpath('.//xmlns:respcondition')
             if choice_nodes.at_xpath('.//xmlns:and').present?

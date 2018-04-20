@@ -20,22 +20,32 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
     end
   end
 
+  shared_examples_for 'meta_type' do
+    it 'returns interaction type from canvas meta data' do
+      expect(loaded_class.meta_type).to eq meta_type
+    end
+  end
+
   context 'multiple_choice.xml' do
     let(:file_path) { File.join(fixtures_path, 'multiple_choice.xml') }
     let(:shuffle_value) { false }
     let(:answer_choices_count) { 5 }
+    let(:meta_type) { nil }
 
     include_examples 'shuffled?'
     include_examples 'answers'
+    include_examples 'meta_type'
   end
 
   context 'true_false.xml' do
     let(:file_path) { File.join(fixtures_path, 'true_false.xml') }
     let(:shuffle_value) { true }
     let(:answer_choices_count) { 2 }
+    let(:meta_type) { nil }
 
     include_examples 'shuffled?'
     include_examples 'answers'
+    include_examples 'meta_type'
   end
 
   context 'multiple_answer.xml' do
@@ -49,8 +59,10 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
     let(:file_path) { File.join(fixtures_path, 'multiple_answer_canvas.xml') }
     let(:shuffle_value) { false }
     let(:answer_choices_count) { 4 }
+    let(:meta_type) { 'multiple_answers_question' }
 
     include_examples 'shuffled?'
+    include_examples 'meta_type'
   end
 
   context 'multiple respconditions with empty setvars' do
