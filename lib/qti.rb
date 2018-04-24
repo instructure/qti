@@ -60,6 +60,7 @@ require 'qti/v1/models/numerics/precision'
 require 'qti/v1/models/numerics/scoring_data'
 require 'qti/v1/models/numerics/scoring_node'
 require 'qti/v1/models/numerics/within_range'
+require 'qti/v1/models/stimulus_item'
 
 require 'qti/v2/models/base'
 require 'qti/v2/models/choices/simple_choice'
