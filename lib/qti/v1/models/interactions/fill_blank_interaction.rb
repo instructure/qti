@@ -3,8 +3,6 @@ module Qti
     module Models
       module Interactions
         class FillBlankInteraction < BaseFillBlankInteraction
-          CANVAS_REGEX = /(\[.+?\])/
-
           # This will know if a class matches
           def self.matches(node, parent)
             return false if node.at_xpath('.//xmlns:respcondition[@continue!="Yes"]/*/xmlns:other').present?

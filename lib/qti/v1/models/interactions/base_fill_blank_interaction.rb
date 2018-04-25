@@ -3,7 +3,7 @@ module Qti
     module Models
       module Interactions
         class BaseFillBlankInteraction < BaseInteraction
-          CANVAS_REGEX = /(\[.+?\])/
+          CANVAS_REGEX ||= /(\[.+?\])/
 
           def canvas_stem_items(item_prompt)
             item_prompt.split(CANVAS_REGEX).map.with_index do |stem_item, index|
