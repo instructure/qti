@@ -35,7 +35,7 @@ describe Qti::V1::Models::AssessmentItem do
 
     describe '#points_possible' do
       it 'grabs the points possible' do
-        expect(loaded_class.points_possible).to eq 0
+        expect(loaded_class.points_possible).to eq 1
       end
 
       it 'returns 0 by default' do
@@ -50,7 +50,7 @@ describe Qti::V1::Models::AssessmentItem do
 					XML
         node = Nokogiri.XML(doc, &:noblanks)
         assessment_item = described_class.new(node)
-        expect(assessment_item.points_possible). to eq 0
+        expect(assessment_item.points_possible). to eq 1
       end
     end
 

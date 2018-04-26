@@ -58,7 +58,7 @@ module Qti
               end
               points_possible_label.next.text
             else
-              decvar_maxvalue
+              1
             end
           end
         end
