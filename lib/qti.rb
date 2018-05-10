@@ -3,17 +3,32 @@ require 'find'
 module Qti
   class Importer
     attr_reader :package_root
+    attr_reader :assessment_id
+    delegate :assessment_identifiers, to: :@manifest
+    delegate :question_bank_identifiers, to: :@manifest
 
-    def initialize(path)
+    def initialize(path, assessment_id = nil)
+      @path, @package_root, @manifest = Importer.manifest(path)
+      @assessment_id = assessment_id || @manifest.assessment_identifiers.first
+      @import = @manifest.assessment_test(@assessment_id)
+    end
+
+    def self.assessment_identifiers_for(path)
+      manifest(path)[2].assessment_identifiers
+    end
+
+    def self.manifest_path(path)
       Find.find(path) do |subdir|
-        if subdir =~ /imsmanifest.xml\z/
-          @path = subdir
-          break
-        end
+        return subdir if subdir =~ /imsmanifest.xml\z/
       end
-      raise 'Manifest not found' unless @path
-      @package_root = File.dirname(@path)
-      @import = Qti::Models::Manifest.from_path!(@path, @package_root).assessment_test
+      raise 'Manifest not found'
+    end
+
+    def self.manifest(path)
+      mpath = manifest_path(path)
+      package_root = File.dirname(mpath)
+      manifest = Qti::Models::Manifest.from_path!(mpath, package_root)
+      [mpath, package_root, manifest]
     end
 
     def test_object
@@ -39,6 +54,7 @@ module Qti
 end
 
 require 'active_support/core_ext/string'
+require 'active_support/core_ext/module/delegation'
 
 require 'qti/models/manifest'
 require 'qti/models/base'

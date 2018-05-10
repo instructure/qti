@@ -71,4 +71,50 @@ describe Qti::Importer do
       end
     end
   end
+
+  context 'QTI file contianing Multiple Assessments' do
+    let(:assessment_list) { Qti::Importer.assessment_identifiers_for(file_path) }
+    let(:importer) { Qti::Importer.new(file_path, assessment_id) }
+    let(:assessment_ids) { %w[ife643a8a04b48b22acab95de6c01f1cc i913965373124f56ca136e87deb040c03] }
+
+    shared_examples_for 'quiz instance' do
+      it 'loads the correct quiz' do
+        expect(importer.assessment_id).to eq(assessment_id)
+        expect(importer.test_object.title).to eq(expected_quiz_title)
+      end
+    end
+
+    shared_examples_for 'the course container' do
+      it 'can get a list of available assessments' do
+        expect(assessment_list.count).to eq(2)
+        expect(assessment_list).to eq(assessment_ids)
+      end
+
+      describe 'importing first assessment' do
+        let(:assessment_id) { 'ife643a8a04b48b22acab95de6c01f1cc' }
+        let(:expected_quiz_title) { 'Quiz #1' }
+
+        include_examples 'quiz instance'
+      end
+
+      describe 'importing second assessment' do
+        let(:assessment_id) { 'i913965373124f56ca136e87deb040c03' }
+        let(:expected_quiz_title) { 'Quiz #2' }
+
+        include_examples 'quiz instance'
+      end
+    end
+
+    describe 'as a QTI file' do
+      let(:file_path) { File.join(fixtures_path, 'test_qti_1.2_multi') }
+
+      include_examples 'the course container'
+    end
+
+    describe 'as a Common Cartridge file' do
+      let(:file_path) { File.join(fixtures_path, 'test_imscc_canvas') }
+
+      include_examples 'the course container'
+    end
+  end
 end
