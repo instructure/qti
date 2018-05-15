@@ -8,16 +8,15 @@ module Qti
     class Manifest < Qti::Models::Base
       RESOURCE_QTI_TYPES = %w[imsqti_test_xmlv2p1
                               imsqti_test_xmlv2p2
-                              imsqti_xmlv1p2
-                              imsqti_item_xmlv2p1
-                              imsqti_item_xmlv2p2].freeze
+                              imsqti_xmlv1p2].freeze
       ASSESSMENT_CLASSES = {
         'imsqti_xmlv1p2' => Qti::V1::Models::Assessment,
         'imsqti_test_xmlv2p1' => Qti::V2::Models::AssessmentTest,
-        'imsqti_test_xmlv2p2' => Qti::V2::Models::AssessmentTest,
-        'imsqti_item_xmlv2p1' => Qti::V2::Models::NonAssessmentTest,
-        'imsqti_item_xmlv2p2' => Qti::V2::Models::NonAssessmentTest
+        'imsqti_test_xmlv2p2' => Qti::V2::Models::AssessmentTest
       }.freeze
+      EMBEDDED_QTI_TYPES = %w[imsqti_item_xmlv2p1
+                              imsqti_item_xmlv2p2].freeze
+      EMBEDDED_NON_ASSESSMENT_ID = '@embedded_non_assessment'.freeze
 
       def assessment_test(resource_id = nil)
         resource_id ||= assessment_identifiers.first
@@ -30,8 +29,10 @@ module Qti
         raise Qti::UnsupportedSchema, 'Unsupported QTI version'
       end
 
-      def assessment_identifiers
-        identifier_list('/assessment')
+      def assessment_identifiers(embedded_as_assessment = true)
+        id_list = identifier_list('/assessment')
+        return id_list + [EMBEDDED_NON_ASSESSMENT_ID] if embedded_as_assessment && embedded_non_assessment?
+        id_list
       end
 
       def question_bank_identifiers
@@ -47,6 +48,7 @@ module Qti
       private
 
       def assessment_from_identifier(identifier)
+        return embedded_non_assessment if identifier == EMBEDDED_NON_ASSESSMENT_ID
         rsc_ver = xpath_with_single_check(xpath_xmlns_resource("[@identifier='#{identifier}']"))&.[](:type)
         raise_unsupported unless rsc_ver
         builder = assessment_class_from_version(rsc_ver)
@@ -87,6 +89,14 @@ module Qti
           "substring(@type, string-length(@type) - string-length('#{rsc_type}') + 1) = '#{rsc_type}'"
         qti_match = "@type='#{ver}'"
         "#{qti_match} or (#{cc_match})"
+      end
+
+      def embedded_non_assessment?
+        EMBEDDED_QTI_TYPES.map { |typ| xmlns_resource_count("[@type='#{typ}']/@href") }.flatten.sum.positive?
+      end
+
+      def embedded_non_assessment
+        Qti::V2::Models::NonAssessmentTest.from_path!(@path, @package_root)
       end
     end
   end
