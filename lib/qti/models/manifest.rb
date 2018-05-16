@@ -1,4 +1,5 @@
 require 'qti/v1/models/base'
+require 'qti/models/assessment_meta'
 require 'qti/v1/models/assessment'
 require 'qti/v2/models/assessment_test'
 require 'qti/v2/models/non_assessment_test'
@@ -51,18 +52,32 @@ module Qti
         return embedded_non_assessment if identifier == EMBEDDED_NON_ASSESSMENT_ID
         rsc_ver = xpath_with_single_check(xpath_xmlns_resource("[@identifier='#{identifier}']"))&.[](:type)
         raise_unsupported unless rsc_ver
-        builder = assessment_class_from_version(rsc_ver)
-        raise_unsupported unless builder
-        builder.from_path!(remap_href_path(asset_resource_for(identifier, rsc_ver)), @package_root)
+        assessment_from(rsc_ver, identifier)
       end
 
-      def assessment_class_from_version(version)
-        ASSESSMENT_CLASSES[version.split('/').first]
+      def assessment_from(version, identifier)
+        builder = ASSESSMENT_CLASSES[version.split('/').first]
+        raise_unsupported unless builder
+        assessment = builder.from_path!(remap_href_path(asset_resource_for(identifier, version)), @package_root)
+        assessment.canvas_meta_data(canvas_meta_data_for(identifier))
+        assessment
       end
 
       def asset_resource_for(identifier, qti_type)
         base_xpath = "[@identifier='#{identifier}' and starts-with(@type, '#{qti_type}')]"
         xmlns_resource(base_xpath + '/@href') || xmlns_resource(base_xpath + '/xmlns:file/@href')
+      end
+
+      def dependency_id(identifier)
+        xmlns_resource("[@identifier='#{identifier}']/xmlns:dependency/@identifierref")
+      end
+
+      def canvas_meta_data_for(identifier)
+        dep_id = dependency_id(identifier)
+        meta_file = xmlns_resource(
+          "[@identifier='#{dep_id}']/xmlns:file[#{xpath_endswith('@href', 'assessment_meta.xml')}]/@href"
+        )
+        return Qti::Models::AssessmentMeta.from_path!(File.join(@package_root, meta_file)) if meta_file
       end
 
       def xmlns_resource(type)
@@ -81,12 +96,15 @@ module Qti
         "//xmlns:resources/xmlns:resource#{type}"
       end
 
+      def xpath_endswith(tag, tail)
+        "substring(#{tag}, string-length(#{tag}) - string-length('#{tail}') + 1) = '#{tail}'"
+      end
+
       def rtype_predicate(ver, rsc_type)
         # XPath 2.0 supports ends-with, which is what substring is doing here.
         # It also support regex matching with matches.
         # We only have XPath 1.0 available.
-        cc_match = "starts-with(@type, '#{ver}') and " \
-          "substring(@type, string-length(@type) - string-length('#{rsc_type}') + 1) = '#{rsc_type}'"
+        cc_match = "starts-with(@type, '#{ver}') and " + xpath_endswith('@type', rsc_type)
         qti_match = "@type='#{ver}'"
         "#{qti_match} or (#{cc_match})"
       end

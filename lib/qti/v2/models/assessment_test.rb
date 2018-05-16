@@ -1,9 +1,11 @@
 require 'qti/v2/models/base'
+require 'qti/models/assessment_meta'
 
 module Qti
   module V2
     module Models
       class AssessmentTest < Qti::V2::Models::Base
+        include Qti::Models::AssessmentMetaBase
         def title
           @title ||= xpath_with_single_check('//xmlns:assessmentTest/@title')&.content || File.basename(@path, '.xml')
         end
