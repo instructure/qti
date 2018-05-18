@@ -38,7 +38,7 @@ describe Qti::V1::Models::Interactions::FormulaInteraction do
   context 'Simple Formula' do
     let(:file_path) { File.join(fixtures_path, 'formula.xml') }
 
-    let(:scoring_data_values) { %w[9.0 9.0 6.0 2.0 3.0] }
+    let(:scoring_data_values) { [9.0, 9.0, 6.0, 2.0, 3.0] }
 
     let(:answer_tolerance) { '0' }
     let(:margin_of_error) { { margin: '0', margin_type: 'absolute' } }
@@ -58,7 +58,7 @@ describe Qti::V1::Models::Interactions::FormulaInteraction do
   context 'Multiple variable formula' do
     let(:file_path) { File.join(fixtures_path, 'formula_mvar.xml') }
 
-    let(:scoring_data_values) { %w[16.0 7.0 14.0 5.0 7.0 14.0 11.0 7.0 20.0 13.0] }
+    let(:scoring_data_values) { [16.0, 7.0, 14.0, 5.0, 7.0, 14.0, 11.0, 7.0, 20.0, 13.0] }
 
     let(:answer_tolerance) { '0' }
     let(:margin_of_error) { { margin: '0', margin_type: 'absolute' } }
@@ -81,7 +81,7 @@ describe Qti::V1::Models::Interactions::FormulaInteraction do
   context 'Multiple Formula Steps' do
     let(:file_path) { File.join(fixtures_path, 'formula_mform.xml') }
 
-    let(:scoring_data_values) { %w[82.58 23.72 39.75 46.25 41.03] }
+    let(:scoring_data_values) { [82.58, 23.72, 39.75, 46.25, 41.03] }
 
     let(:answer_tolerance) { '10%' }
     let(:margin_of_error) { { margin: '10', margin_type: 'percent' } }

@@ -24,7 +24,7 @@ module Qti
             node.xpath('.//xmlns:var_set').map do |anode|
               {
                 inputs: vars_at_node(anode),
-                output: anode.at_xpath('.//xmlns:answer').text
+                output: anode.at_xpath('.//xmlns:answer')&.text&.to_f
               }
             end
           end
@@ -66,7 +66,7 @@ module Qti
             parent_node.xpath('.//xmlns:var').map do |vnode|
               {
                 name: vnode.attributes['name']&.value,
-                value: vnode.text
+                value: vnode.text&.to_f
               }
             end
           end
