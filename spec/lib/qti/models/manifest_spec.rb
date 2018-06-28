@@ -41,4 +41,11 @@ describe Qti::Models::Manifest do
     file = File.join(fixtures_path, 'unsupported_version/imsmanifest.xml')
     expect { described_class.from_path!(file).assessment_test }.to raise_error('Unsupported QTI version')
   end
+
+  it 'canvas cartridge returns the qti assessment with canvas extensions' do
+    file = File.join(fixtures_path, 'canvas_cartridge/imsmanifest.xml')
+    assessment_test = described_class.from_path!(file).assessment_test
+    expect(assessment_test).to be_kind_of(Qti::V1::Models::Assessment)
+    expect(assessment_test.assessment_items.count).to eq(12)
+  end
 end

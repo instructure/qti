@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<course identifier="id542f3757649f8a5422311abd0a56d55" xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+  <title>Canvas Cartridge</title>
+  <course_code>Canvas</course_code>
+  <is_public>false</is_public>
+  <allow_student_wiki_edits>false</allow_student_wiki_edits>
+  <allow_student_forum_attachments>false</allow_student_forum_attachments>
+  <lock_all_announcements>false</lock_all_announcements>
+  <allow_student_organized_groups>true</allow_student_organized_groups>
+  <default_view>modules</default_view>
+  <license>private</license>
+  <restrict_student_future_view>false</restrict_student_future_view>
+  <restrict_student_past_view>false</restrict_student_past_view>
+  <grading_standard_enabled>false</grading_standard_enabled>
+  <storage_quota>524288000</storage_quota>
+  <root_account_uuid>oN8zZuqCngDa6Q2w0MbHXROBzpheymhUj9kx9vm1</root_account_uuid>
+</course>

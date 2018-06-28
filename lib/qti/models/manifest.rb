@@ -58,12 +58,25 @@ module Qti
       def assessment_from(version, identifier)
         builder = ASSESSMENT_CLASSES[version.split('/').first]
         raise_unsupported unless builder
-        assessment = builder.from_path!(remap_href_path(asset_resource_for(identifier, version)), @package_root)
+        canvas_meta = canvas_meta_data_for(identifier)
+        assessment = builder.from_path!(
+          remap_href_path(asset_resource_for(identifier, version, canvas_meta&.quiz_identifier)),
+          @package_root
+        )
         assessment.canvas_meta_data(canvas_meta_data_for(identifier))
         assessment
       end
 
-      def asset_resource_for(identifier, qti_type)
+      def asset_resource_for(identifier, qti_type, canvas_ident)
+        asset_resource_for_canvas(canvas_ident) || asset_resource_for_ims(identifier, qti_type)
+      end
+
+      def asset_resource_for_canvas(identifier)
+        canvas_extra_file(identifier, '.xml.qti')
+      end
+
+
+      def asset_resource_for_ims(identifier, qti_type)
         base_xpath = "[@identifier='#{identifier}' and starts-with(@type, '#{qti_type}')]"
         xmlns_resource(base_xpath + '/@href') || xmlns_resource(base_xpath + '/xmlns:file/@href')
       end
@@ -73,11 +86,15 @@ module Qti
       end
 
       def canvas_meta_data_for(identifier)
-        dep_id = dependency_id(identifier)
-        meta_file = xmlns_resource(
-          "[@identifier='#{dep_id}']/xmlns:file[#{xpath_endswith('@href', 'assessment_meta.xml')}]/@href"
-        )
+        meta_file = canvas_extra_file(identifier, 'assessment_meta.xml')
         return Qti::Models::AssessmentMeta.from_path!(File.join(@package_root, meta_file)) if meta_file
+      end
+
+      def canvas_extra_file(identifier, filename)
+        dep_id = dependency_id(identifier)
+        xmlns_resource(
+          "[@identifier='#{dep_id}']/xmlns:file[#{xpath_endswith('@href', filename)}]/@href"
+        )
       end
 
       def xmlns_resource(type)

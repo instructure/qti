@@ -123,6 +123,10 @@ module Qti
         string_true?(module_locked)
       end
 
+      def quiz_identifier
+        @doc.xpath('//xmlns:quiz/xmlns:assignment/xmlns:quiz_identifierref')&.first&.content
+      end
+
       private
 
       def tag_under_quiz(tag)
