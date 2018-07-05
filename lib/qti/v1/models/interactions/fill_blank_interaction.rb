@@ -92,7 +92,7 @@ module Qti
             if canvas_multiple_fib?
               @node.xpath('.//xmlns:response_label')
             else
-              @node.xpath('.//xmlns:varequal')
+              @node.xpath('.//xmlns:respcondition/xmlns:setvar/../xmlns:conditionvar/xmlns:varequal')
             end
           end
 

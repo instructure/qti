@@ -123,6 +123,21 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     end
   end
 
+  context 'fib_feedback.xml' do
+    let(:file_path) { File.join(fixtures_path, 'fib_feedback.xml') }
+    let(:shuffle_value) { false }
+    let(:scoring_data_ids) { %w[response1 response1 response1] }
+    let(:scoring_data_values) { %w[blank Blank BLANK] }
+    let(:scoring_data_case) { %w[no no no] }
+    let(:answer_count) { 3 }
+    let(:expected_blanks) { [{ id: 'response1' }] }
+
+    include_examples 'shuffled?'
+    include_examples 'answers'
+    include_examples 'scoring_data_structs'
+    include_examples 'blanks'
+  end
+
   describe '#scoring_data_structs' do
     let(:nodexml) { double }
     let(:test_object) { double(package_root: 'dummy', path: 'dummy/blah') }
