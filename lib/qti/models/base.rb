@@ -1,7 +1,7 @@
 require 'nokogiri'
-require 'sanitize'
 require 'pathname'
 require 'mathml2latex'
+require 'qti/sanitizer'
 
 module Qti
   class ParseError < StandardError; end
@@ -13,45 +13,8 @@ module Qti
       attr_reader :doc, :path, :package_root
       attr_accessor :manifest
 
-      ELEMENTS_REMAP = {
-        'prompt' => 'div',
-        'simpleBlock' => 'div',
-        'simpleInline' => 'span',
-        'atomicBlock' => 'div',
-        'atomicInline' => 'span'
-      }.freeze
-
       def sanitize_content!(html)
-        Sanitize.fragment(html, sanitize_config)
-      end
-
-      def object_tag_transformer
-        lambda do |env|
-          return unless env[:node_name] == 'object'
-          return if env[:is_whitelisted] || !env[:node].element?
-          replace_object_node(env[:node])
-        end
-      end
-
-      def remap_unknown_tags_transformer
-        lambda do |env|
-          node_name = env[:node_name]
-          node = env[:node]
-
-          return if env[:is_whitelisted] || !node.element?
-          return unless ELEMENTS_REMAP.keys.include? node_name
-
-          new_name = ELEMENTS_REMAP[node_name]
-          env[:node].name = new_name
-          env[:node_name] = new_name
-        end
-      end
-
-      def sanitize_config(import_objects: true)
-        transformers = []
-        transformers << object_tag_transformer if import_objects
-        transformers << remap_unknown_tags_transformer
-        Sanitize::Config::RELAXED.merge transformers: transformers
+        sanitizer.clean(html)
       end
 
       def self.from_path!(path, package_root = nil)
@@ -131,33 +94,10 @@ module Qti
         @path = other_item.path
       end
 
-      def replace_object_node(node)
-        path = remap_href_path(node[:data])
-        if path
-          case node[:type]
-          when %r{^image\/}
-            return replace_with_image(node, node[:data])
-          when 'text/html'
-            return replace_with_html(node, path)
-          end
-        end
-        # remove unrecognized or invalid objects from the sanitized document
-        node.unlink
-      end
+      private
 
-      def replace_with_image(node, src)
-        node.name = 'img'
-        node[:src] = src
-      end
-
-      def replace_with_html(node, path)
-        content = File.read(path)
-        html_content = Sanitize.fragment(content, sanitize_config(import_objects: false))
-        node.name = 'div'
-        node.add_child(Nokogiri::HTML.fragment(html_content))
-      rescue StandardError => e
-        warn "failed to import html object #{path}: #{e.message}"
-        node.unlink
+      def sanitizer
+        @sanitizer ||= Sanitizer.new
       end
     end
   end

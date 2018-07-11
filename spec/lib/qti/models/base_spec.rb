@@ -59,6 +59,50 @@ describe Qti::Models::Base do
         end.to raise_error(Qti::ParseError)
       end
 
+      describe 'sanitize of href/src in html' do
+        let(:ftp) { 'ftp://foo.bar/' }
+        let(:http) { 'http://foo.bar/' }
+        let(:https) { 'https://foo.bar' }
+
+        shared_examples_for 'specific html elements' do
+          it 'removes a src with a bad protocol' do
+            ftp_tag = "<#{tag_name} #{src_attr}=\"#{ftp}\"></#{tag_name}>"
+            expect(loaded_class.sanitize_content!(ftp_tag)).to eq "<#{tag_name}></#{tag_name}>"
+          end
+
+          it 'removes a src with a valid http protocol' do
+            http_tag = "<#{tag_name} #{src_attr}=\"#{http}\"></#{tag_name}>"
+            expect(loaded_class.sanitize_content!(http_tag)).to eq(http_tag)
+          end
+
+          it 'removes a src with a valid https protocol' do
+            https_tag = "<#{tag_name} #{src_attr}=\"#{https}\"></#{tag_name}>"
+            expect(loaded_class.sanitize_content!(https_tag)).to eq(https_tag)
+          end
+        end
+
+        describe 'iframe elements' do
+          let(:tag_name) { 'iframe' }
+          let(:src_attr) { 'src' }
+
+          include_examples('specific html elements')
+        end
+
+        describe 'object elements' do
+          let(:tag_name) { 'object' }
+          let(:src_attr) { 'src' }
+
+          include_examples('specific html elements')
+        end
+
+        describe 'embed elements' do
+          let(:tag_name) { 'embed' }
+          let(:src_attr) { 'src' }
+
+          include_examples('specific html elements')
+        end
+      end
+
       context 'with explicit package root' do
         let(:package_root) { File.join('spec', 'fixtures', 'test_qti_2.2') }
         let(:item_path) { File.join(package_root, 'true-false', 'true-false.xml') }

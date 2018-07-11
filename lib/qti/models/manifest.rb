@@ -75,7 +75,6 @@ module Qti
         canvas_extra_file(identifier, '.xml.qti')
       end
 
-
       def asset_resource_for_ims(identifier, qti_type)
         base_xpath = "[@identifier='#{identifier}' and starts-with(@type, '#{qti_type}')]"
         xmlns_resource(base_xpath + '/@href') || xmlns_resource(base_xpath + '/xmlns:file/@href')
