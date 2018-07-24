@@ -17,6 +17,7 @@ RUN mkdir -p /app/coverage \
  && chown -R docker:docker /app
 
 USER docker
+RUN /bin/bash -l -c "cd /app && rvm-exec 2.3 bundle install --jobs 5"
 RUN /bin/bash -l -c "cd /app && rvm-exec 2.4 bundle install --jobs 5"
 COPY . /app
 
