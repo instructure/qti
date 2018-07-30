@@ -1,16 +1,12 @@
 #!/usr/bin/env groovy
 
 def gemfiles = [
-    'nokogiri-1.6.gemfile',
-    'nokogiri-1.8.gemfile',
-    'rails-4.2.gemfile',
     'rails-5.0.gemfile',
     'rails-5.1.gemfile',
-    'sanitize-4.2.gemfile',
-    'sanitize-4.5.gemfile',
+    'rails-5.2.gemfile',
 ]
 def buildMatrix = gemfiles.collectEntries { gemfile ->
-    ['2.3', '2.4'].collectEntries { ruby ->
+    ['2.3', '2.4', '2.5'].collectEntries { ruby ->
         ["Ruby ${ruby} - ${gemfile}": {
             sh """
                 docker-compose run -e BUNDLE_GEMFILE="spec/gemfiles/${gemfile}" \
@@ -21,7 +17,7 @@ def buildMatrix = gemfiles.collectEntries { gemfile ->
     }
 }
 buildMatrix << ['Lint': {
-    sh 'docker-compose run --rm app /bin/bash -lc "rvm-exec 2.4 bundle exec rubocop --fail-level autocorrect"'
+    sh 'docker-compose run --rm app /bin/bash -lc "rvm-exec 2.5 bundle exec rubocop --fail-level autocorrect"'
 }]
 
 pipeline {
@@ -42,7 +38,7 @@ pipeline {
             steps { script { parallel buildMatrix } }
             post {
                 always {
-                    sh "docker cp \"${env.JOB_NAME.replaceAll("/", "-")}-${env.BUILD_ID}-ruby-2.4-nokogiri-1.8.gemfile-rspec:/app/coverage\" ."
+                    sh "docker cp \"${env.JOB_NAME.replaceAll("/", "-")}-${env.BUILD_ID}-ruby-2.5-rails-5.2.gemfile-rspec:/app/coverage\" ."
                     sh 'docker-compose down --remove-orphans --rmi all'
                     archiveArtifacts artifacts: 'coverage/*.json', fingerprint: true
                 }

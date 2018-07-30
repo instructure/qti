@@ -16,14 +16,14 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.add_dependency 'activesupport', '>= 4.2.9', '< 5.2'
+  s.add_dependency 'activesupport', '>= 5.0.7', '< 5.3'
   s.add_dependency 'dry-struct', '~> 0.2.1'
   s.add_dependency 'dry-types', '~> 0.12.0'
   s.add_dependency 'rubyzip', '~> 1.2'
-  s.add_dependency 'nokogiri', '>= 1.6.8', '< 1.9'
-  s.add_dependency 'sanitize', '>= 4.2.0', '< 5.0'
-  s.add_dependency 'actionview', '>= 4.2.0'
-  s.add_dependency 'mathml2latex', '>= 0.1.0'
+  s.add_dependency 'nokogiri', '~> 1.8'
+  s.add_dependency 'sanitize', '~> 4.6', '>= 4.6.3'
+  s.add_dependency 'actionview', '>= 5.0.7', '< 5.3'
+  s.add_dependency 'mathml2latex', '~> 1.0'
 
   s.add_development_dependency 'bundler', '~> 1.15'
   s.add_development_dependency 'byebug', '~> 9.0'

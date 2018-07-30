@@ -1,5 +1,5 @@
 # Limit coverage reporting to one build:
-if /^2\.4/ =~ RUBY_VERSION && /nokogiri-1\.8/ =~ ENV['BUNDLE_GEMFILE']
+if /^2\.5/ =~ RUBY_VERSION && /rails-5\.2/ =~ ENV['BUNDLE_GEMFILE']
   require 'simplecov'
 
   SimpleCov.start do

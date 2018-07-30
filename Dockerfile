@@ -19,10 +19,11 @@ RUN mkdir -p /app/coverage \
 USER docker
 RUN /bin/bash -l -c "cd /app && rvm-exec 2.3 bundle install --jobs 5"
 RUN /bin/bash -l -c "cd /app && rvm-exec 2.4 bundle install --jobs 5"
+RUN /bin/bash -l -c "cd /app && rvm-exec 2.5 bundle install --jobs 5"
 COPY . /app
 
 USER root
 RUN chown -R docker:docker /app
 USER docker
 
-CMD /bin/bash -l -c "rvm-exec 2.4 bundle exec wwtd"
+CMD /bin/bash -l -c "rvm-exec 2.5 bundle exec wwtd"

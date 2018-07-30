@@ -70,7 +70,7 @@ docker-compose run --rm app
 ```
 
 This will install the gem in a docker image with all versions of Ruby installed,
-and install all gem dependencies in the Ruby 2.4 set of gems. Then it will run
+and install all gem dependencies in the Ruby 2.5 set of gems. Then it will run
 [wwtd](https://github.com/grosser/wwtd), which runs all specs across all
 supported versions of Ruby and gem dependencies.
 
@@ -81,7 +81,7 @@ Individual spec runs can be started like so:
 
 ```bash
 docker-compose run --rm app /bin/bash -l -c \
-  "BUNDLE_GEMFILE=spec/gemfiles/nokogiri-1.8.gemfile rvm-exec 2.4 rspec"
+  "BUNDLE_GEMFILE=spec/gemfiles/rails-5.2.gemfile rvm-exec 2.5 rspec"
 ```
 
 If you'd like to mount your git checkout within the docker container running
