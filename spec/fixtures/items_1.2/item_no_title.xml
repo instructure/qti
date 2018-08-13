@@ -1,0 +1,46 @@
+<?xml version = "1.0" encoding = "UTF-8" standalone = "no"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <item ident = "FIB_STR">
+  <presentation label = "BasicExample013b">
+    <material>
+      <mattext>Fill-in-the blanks in this text from Richard III: </mattext>
+    </material>
+      <material>
+        <mattext>Now is the </mattext>
+      </material>
+      <response_str ident = "FIB01" rcardinality = "Single" rtiming = "No">
+        <render_fib fibtype = "String" prompt = "Dashline" maxchars = "6">
+          <response_label ident = "A"/>
+        </render_fib>
+      </response_str>
+      <material>
+        <mattext> of our discontent made glorious </mattext>
+      </material>
+      <response_str ident = "FIB02" rcardinality = "Single" rtiming = "No">
+        <render_fib fibtype = "String" prompt = "Dashline" maxchars = "6">
+          <response_label ident = "A"/>
+        </render_fib>
+      </response_str>
+      <material>
+        <mattext> by these sons of </mattext>
+      </material>
+      <response_str ident = "FIB03" rcardinality = "Single" rtiming = "No">
+        <render_fib fibtype = "String" prompt = "Dashline" maxchars = "4">
+          <response_label ident = "A"/>
+        </render_fib>
+      </response_str>
+  </presentation>
+  <resprocessing>
+    <outcomes>
+      <decvar varname = "FIBSCORE1" vartype = "Integer" defaultval = "0"/>
+    </outcomes>
+    <respcondition>
+      <conditionvar>
+        <varequal respident = "FIB01" case = "Yes">Winter</varequal>
+        <varequal respident = "FIB02" case = "Yes">Summer</varequal>
+        <varequal respident = "FIB03" case = "Yes">York</varequal>
+      </conditionvar>
+      <setvar action = "Add" varname = "FIBSCORE1">3</setvar>
+    </respcondition>
+  </item>
+</questestinterop>

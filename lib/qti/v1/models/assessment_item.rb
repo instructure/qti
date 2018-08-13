@@ -28,7 +28,7 @@ module Qti
         end
 
         def title
-          @title ||= @doc.attribute('title').value
+          @title ||= @doc.attribute('title')&.value
         end
 
         def qti_metadata_children

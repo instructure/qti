@@ -151,5 +151,16 @@ describe Qti::V1::Models::AssessmentItem do
         expect(loaded_class.item_body).to include '<img'
       end
     end
+
+    context 'without title' do
+      let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'item_no_title.xml') }
+      let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
+      let(:assessment_item_refs) { test_object.assessment_items }
+      let(:loaded_class) { described_class.new(assessment_item_refs) }
+
+      it 'returns nil title without exceptions' do
+        expect(loaded_class.title).to be_nil
+      end
+    end
   end
 end
