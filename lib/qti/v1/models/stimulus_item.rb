@@ -6,7 +6,6 @@ module Qti
           @node = ref_node
         end
 
-        # Not used yet
         def identifier
           @identifier ||= @node.attributes['ident']&.value
         end

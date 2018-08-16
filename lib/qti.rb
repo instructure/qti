@@ -50,6 +50,10 @@ module Qti
     def create_stimulus(stimulus_ref)
       @import.create_stimulus(stimulus_ref)
     end
+
+    def create_question_group(question_group_ref)
+      @import.create_question_group(question_group_ref)
+    end
   end
 end
 
@@ -77,6 +81,7 @@ require 'qti/v1/models/numerics/scoring_data'
 require 'qti/v1/models/numerics/scoring_node'
 require 'qti/v1/models/numerics/within_range'
 require 'qti/v1/models/stimulus_item'
+require 'qti/v1/models/question_group'
 
 require 'qti/v2/models/base'
 require 'qti/v2/models/choices/simple_choice'

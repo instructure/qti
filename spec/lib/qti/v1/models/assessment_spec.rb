@@ -208,4 +208,18 @@ describe Qti::V1::Models::Assessment do
       ).to be(Qti::V1::Models::StimulusItem)
     end
   end
+
+  describe 'question group items' do
+    let(:fixtures_path) { File.join('spec', 'fixtures', 'items_1.2') }
+    let(:test_object) { described_class.from_path!(file_path) }
+    let(:assessment_item_refs) { test_object.assessment_items }
+    let(:assessment_item_ref) { assessment_item_refs.first }
+    let(:file_path) { File.join(fixtures_path, 'question_group.xml') }
+
+    it 'methods behave as expected' do
+      expect(
+        test_object.create_assessment_item(assessment_item_ref)
+      ).to eq(nil)
+    end
+  end
 end
