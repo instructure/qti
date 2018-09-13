@@ -16,10 +16,25 @@ module Qti
 
           def item_body
             @item_body ||= begin
-              node = @node.dup
-              inner_content = return_inner_content!(node)
+              inner_content = return_inner_content!(content_node)
               sanitize_content!(inner_content)
             end
+          end
+
+          private
+
+          # @node is answer node queried in callers by:
+          #   node.xpath('.//xmlns:response_label')
+          # inner content should be in child node (mattext ...)
+          # `texttype` is an attribute of mattext element.
+          # Possible child node types of response_label include:
+          #   mattext, matmtext, matimage, mataudio ... ...
+          # from the code context, obviously we don't cover the full
+          # specification. We only consider mattext here.
+          # If there is no mattext, we basically go through original
+          # logic
+          def content_node
+            (@node.at_xpath('.//xmlns:mattext') || @node).dup
           end
         end
       end

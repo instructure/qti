@@ -79,4 +79,15 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
       expect(loaded_class.scoring_data_structs.count).to eq 1
     end
   end
+
+  context 'encoded html text in answers' do
+    let(:file_path) do
+      File.join(fixtures_path, 'choice.xml')
+    end
+    let(:loaded_class) { described_class.new(assessment_item_refs.last, test_object) }
+
+    it 'correctly processes decode html text' do
+      expect(loaded_class.answers.second.item_body).to eq('a &amp;&amp; b')
+    end
+  end
 end
