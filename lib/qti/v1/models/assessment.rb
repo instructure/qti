@@ -18,7 +18,7 @@ module Qti
 
         def create_assessment_item(assessment_item)
           return nil if sub_section?(assessment_item)
-          item = Qti::V1::Models::AssessmentItem.new(assessment_item, @package_root)
+          item = Qti::V1::Models::AssessmentItem.new(assessment_item, @package_root, self)
           item.manifest = manifest
           item
         end

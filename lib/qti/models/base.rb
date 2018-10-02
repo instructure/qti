@@ -10,19 +10,21 @@ module Qti
 
   module Models
     class Base
-      attr_reader :doc, :path, :package_root
+      attr_reader :doc, :path, :package_root, :resource
       attr_accessor :manifest
+      delegate :metadata, to: :@resource, allow_nil: true
 
       def sanitize_content!(html)
         sanitizer.clean(html)
       end
 
-      def self.from_path!(path, package_root = nil)
-        new(path: path, package_root: package_root)
+      def self.from_path!(path, package_root = nil, resource = nil)
+        new(path: path, package_root: package_root, resource: resource)
       end
 
-      def initialize(path:, package_root: nil, html: false)
+      def initialize(path:, package_root: nil, html: false, resource: nil)
         @path = path
+        @resource = resource
         self.package_root = package_root || File.dirname(path)
         @doc = html ? parse_html(File.read(path)) : parse_xml(File.read(path))
         raise ArgumentError unless @doc
@@ -74,6 +76,10 @@ module Qti
           end
         end
         path
+      end
+
+      def raise_unsupported(message = 'Unsupported QTI version')
+        raise Qti::UnsupportedSchema, message
       end
 
       protected

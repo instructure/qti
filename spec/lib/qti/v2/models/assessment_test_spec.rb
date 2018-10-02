@@ -19,7 +19,7 @@ describe Qti::V2::Models::AssessmentTest do
 
     it 'gets dependency file refs' do
       refs = loaded_class.assessment_items
-      expect(refs.all? { |ref| File.extname(ref) == '.xml' })
+      expect(refs.all? { |ref| File.extname(ref[:path]) == '.xml' })
     end
 
     it 'loads up some testParts' do
@@ -56,7 +56,7 @@ describe Qti::V2::Models::AssessmentTest do
 
         it 'gets dependency file refs' do
           refs = loaded_class.assessment_items
-          expect(refs.all? { |ref| File.extname(ref) == '.xml' })
+          expect(refs.all? { |ref| File.extname(ref[:path]) == '.xml' })
         end
       end
     end

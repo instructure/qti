@@ -27,7 +27,7 @@ module Qti
     def self.manifest(path)
       mpath = manifest_path(path)
       package_root = File.dirname(mpath)
-      manifest = Qti::Models::Manifest.from_path!(mpath, package_root)
+      manifest = Qti::Models::Manifest.from_path!(mpath, package_root = package_root)
       [mpath, package_root, manifest]
     end
 

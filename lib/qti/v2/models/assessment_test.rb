@@ -1,11 +1,13 @@
 require 'qti/v2/models/base'
 require 'qti/models/assessment_meta'
+require 'qti/xpath_helpers'
 
 module Qti
   module V2
     module Models
       class AssessmentTest < Qti::V2::Models::Base
         include Qti::Models::AssessmentMetaBase
+        include Qti::XPathHelpers
         def title
           @title ||= xpath_with_single_check('//xmlns:assessmentTest/@title')&.content || File.basename(@path, '.xml')
         end
@@ -14,7 +16,7 @@ module Qti
           # Return the xml files we should be parsing
           @assessment_item_reference_hrefs ||= begin
             @doc.xpath('//xmlns:assessmentItemRef/@href').map(&:content).map do |href|
-              remap_href_path(href)
+              { path: remap_href_path(href), resource: self }
             end
           end
         end
@@ -27,8 +29,8 @@ module Qti
           @assessment_sections ||= test_parts.first.xpath('//xmlns:assessmentSection')
         end
 
-        def create_assessment_item(assessment_item_ref)
-          item = Qti::V2::Models::AssessmentItem.from_path!(assessment_item_ref, @package_root)
+        def create_assessment_item(ref)
+          item = Qti::V2::Models::AssessmentItem.from_path!(ref[:path], @package_root, ref[:resource])
           item.manifest = manifest
           item
         end

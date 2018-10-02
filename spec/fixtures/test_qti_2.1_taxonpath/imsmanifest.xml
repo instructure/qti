@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- QTI Template -->
+<manifest xmlns="http://www.imsglobal.org/xsd/imscp_v1p1" xmlns:imsmd="http://ltsc.ieee.org/xsd/LOM">
+  <resources>
+    <resource identifier="i-taxonpath-identifier" type="imsqti_item_xmlv2p1" href="fourofour">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>Blank Entry</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:string/>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>Single Entry</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:string>Data</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>Nested Entry</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:string>Level 1</imsmd:string>
+                </imsmd:entry>
+                <imsmd:taxon>
+                  <imsmd:entry>
+                    <imsmd:string>Level 2</imsmd:string>
+                  </imsmd:entry>
+                  <imsmd:taxon>
+                    <imsmd:entry>
+                      <imsmd:string>Level 3</imsmd:string>
+                    </imsmd:entry>
+                  </imsmd:taxon>
+                </imsmd:taxon>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>String Type</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring>langstring</imsmd:langstring>
+                </imsmd:entry>
+                <imsmd:taxon>
+                  <imsmd:entry>
+                    <imsmd:string>string</imsmd:string>
+                  </imsmd:entry>
+                </imsmd:taxon>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>Language Entry</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:entry>
+                  <imsmd:langstring xml:lang="en">English</imsmd:langstring>
+                  <imsmd:langstring>Default</imsmd:langstring>
+                  <imsmd:langstring lang="ja">Japanese</imsmd:langstring>
+                  <imsmd:langstring language="hu">Hungarian</imsmd:langstring>
+                  <imsmd:string lang="de">Deutsch</imsmd:string>
+                  <imsmd:string xml:lang="fr">French</imsmd:string>
+                  <imsmd:string language="hr">Croatian</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+    </resource>
+  </resources>
+</manifest>

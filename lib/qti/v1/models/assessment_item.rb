@@ -6,10 +6,13 @@ module Qti
     module Models
       class AssessmentItem < Qti::V1::Models::Base
         attr_reader :doc
+        attr_reader :resource
+        delegate :metadata, to: :@resource
 
-        def initialize(item, package_root = nil)
+        def initialize(item, package_root = nil, resource = nil)
           @doc = item
           @path = item.document.url
+          @resource = resource
           self.package_root = package_root
         end
 
