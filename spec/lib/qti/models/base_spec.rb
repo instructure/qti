@@ -101,6 +101,13 @@ describe Qti::Models::Base do
 
           include_examples('specific html elements')
         end
+
+        describe 'object elements' do
+          let(:tag_name) { 'object' }
+          let(:src_attr) { 'data' }
+
+          include_examples('specific html elements')
+        end
       end
 
       context 'with explicit package root' do

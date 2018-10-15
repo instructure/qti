@@ -21,7 +21,7 @@ module Qti
         protocols:
           {
             'iframe' => { 'src' => PROTOCOLS },
-            'object' => { 'src' => PROTOCOLS },
+            'object' => { 'src' => PROTOCOLS, 'data' => PROTOCOLS },
             'embed' => { 'src' => PROTOCOLS }
           }.freeze,
         attributes:
