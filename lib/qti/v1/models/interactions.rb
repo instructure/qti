@@ -6,22 +6,29 @@ module Qti
   module V1
     module Models
       module Interactions
+        ALL_CLASSES = constants.map { |c| const_get(c) }.freeze
+        ORDERED_CLASSES = [CanvasMultipleDropdownInteraction, FormulaInteraction, NumericInteraction].freeze
+        FALLBACK_CLASSES = [StringInteraction].freeze
         # This one finds the correct parsing model based on the provided xml node
         def self.interaction_model(node, parent)
-          ordered_classes = [CanvasMultipleDropdownInteraction, FormulaInteraction, NumericInteraction]
-          ordered_classes.each do |interaction_class|
-            match = interaction_class.matches(node, parent)
-            return match if match
-          end
+          matches = Interactions.get_matches(node, parent, ORDERED_CLASSES)
+          return matches.first unless matches.empty?
 
-          subclasses = constants.map { |c| const_get(c) } - ordered_classes
+          subclasses = ALL_CLASSES - ORDERED_CLASSES - FALLBACK_CLASSES
 
-          matches = subclasses.each_with_object([]) do |interaction_class, result|
+          matches = Interactions.get_matches(node, parent, subclasses)
+          matches = Interactions.get_matches(node, parent, FALLBACK_CLASSES) if matches.empty?
+
+          raise UnsupportedSchema if matches.size != 1
+          matches.first
+        end
+
+        def self.get_matches(node, parent, classlist)
+          matches = classlist.each_with_object([]) do |interaction_class, result|
             match = interaction_class.matches(node, parent)
             result << match if match
           end
-          raise UnsupportedSchema if matches.size != 1
-          matches.first
+          matches
         end
       end
     end

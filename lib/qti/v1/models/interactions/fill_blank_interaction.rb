@@ -6,14 +6,24 @@ module Qti
           # This will know if a class matches
           def self.matches(node, parent)
             return false if node.at_xpath('.//xmlns:respcondition[@continue!="Yes"]/*/xmlns:other').present?
-            match = if BaseInteraction.canvas_multiple_fib?(node)
-              node.at_xpath('.//xmlns:response_lid')
-            else
-              node.at_xpath('.//xmlns:render_fib')
-            end
-            return false if match.blank? ||
-                            match.attributes['fibtype']&.value == 'Decimal'
+
+            match, answers = FillBlankInteraction.match_and_answers(node)
+            return false if answers.blank?
+            return false if match.blank? || match.attributes['fibtype']&.value == 'Decimal'
             new(node, parent)
+          end
+
+          def self.match_and_answers(node)
+            if BaseInteraction.canvas_multiple_fib?(node)
+              return [
+                node.at_xpath('.//xmlns:response_lid'),
+                node.xpath('.//xmlns:response_label')
+              ]
+            end
+            [
+              node.at_xpath('.//xmlns:render_fib'),
+              node.xpath('.//xmlns:respcondition/xmlns:setvar/../xmlns:conditionvar/xmlns:varequal')
+            ]
           end
 
           def canvas_multiple_fib?
@@ -90,9 +100,9 @@ module Qti
 
           def answer_nodes
             if canvas_multiple_fib?
-              @node.xpath('.//xmlns:response_label')
+              node.xpath('.//xmlns:response_label')
             else
-              @node.xpath('.//xmlns:respcondition/xmlns:setvar/../xmlns:conditionvar/xmlns:varequal')
+              node.xpath('.//xmlns:respcondition/xmlns:setvar/../xmlns:conditionvar/xmlns:varequal')
             end
           end
 
