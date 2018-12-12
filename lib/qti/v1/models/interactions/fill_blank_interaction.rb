@@ -27,7 +27,7 @@ module Qti
           end
 
           def canvas_multiple_fib?
-            BaseInteraction.canvas_multiple_fib?(@node)
+            @canvas_multiple_fib ||= BaseInteraction.canvas_multiple_fib?(@node)
           end
 
           def stem_items
@@ -50,7 +50,7 @@ module Qti
           end
 
           def single_fill_in_blank?
-            blanks.count == 1
+            !canvas_multiple_fib? && blanks.count == 1
           end
 
           def blanks

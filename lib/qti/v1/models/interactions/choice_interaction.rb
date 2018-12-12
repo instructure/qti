@@ -5,11 +5,19 @@ module Qti
         class ChoiceInteraction < BaseInteraction
           # This will know if a class matches
           def self.matches(node, parent)
+            return false unless maybe_choice_type(node)
             matches = node.xpath('.//xmlns:response_lid')
             return false if matches.count > 1 || matches.empty?
             rcardinality = matches.first.attributes['rcardinality']&.value || 'Single'
             return false if rcardinality == 'Ordered'
             new(node, parent)
+          end
+
+          def self.maybe_choice_type(node)
+            question_type = self.question_type(node)
+            return true unless question_type
+            valid_types = %w[multiple_choice_question multiple_answers_question true_false_question]
+            valid_types.include?(question_type)
           end
 
           def answers

@@ -19,7 +19,7 @@ module Qti
           matches = Interactions.get_matches(node, parent, subclasses)
           matches = Interactions.get_matches(node, parent, FALLBACK_CLASSES) if matches.empty?
 
-          raise UnsupportedSchema if matches.size != 1
+          raise UnsupportedSchema, "Multiple Types (#{matches.map(&:class)})" if matches.size != 1
           matches.first
         end
 

@@ -154,4 +154,63 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
       expect(subject.scoring_data_structs.first.case).to eq 'no'
     end
   end
+
+  context 'fib_str.xml' do
+    let(:file_path) { File.join(fixtures_path, 'fib_str.xml') }
+    let(:shuffle_value) { false }
+    let(:scoring_data_ids) { %w[FIB01 FIB02 FIB03] }
+    let(:scoring_data_values) { %w[Winter Summer York] }
+    let(:scoring_data_case) { %w[Yes Yes Yes] }
+    let(:answer_count) { 3 }
+    let(:expected_blanks) { [{ id: 'FIB01' }, { id: 'FIB02' }, { id: 'FIB03' }] }
+    let(:expected_stem_items) do
+      [
+        { id: 'stem_0', position: 1, type: 'text', value: 'Fill-in-the blanks in this text from Richard III: ' },
+        { id: 'stem_1', position: 2, type: 'text', value: 'Now is the ' },
+        { id: 'stem_2', position: 3, type: 'blank', blank_id: 'FIB01' },
+        { id: 'stem_3', position: 4, type: 'text', value: ' of our discontent made glorious ' },
+        { id: 'stem_4', position: 5, type: 'blank', blank_id: 'FIB02' },
+        { id: 'stem_5', position: 6, type: 'text', value: ' by these sons of ' },
+        { id: 'stem_6', position: 7, type: 'blank', blank_id: 'FIB03' }
+      ]
+    end
+
+    include_examples 'shuffled?'
+    include_examples 'answers'
+    include_examples 'scoring_data_structs'
+    include_examples 'blanks'
+    include_examples 'stem_items'
+
+    it 'returns false for #single_fill_in_blank?' do
+      expect(loaded_class.single_fill_in_blank?).to eq false
+    end
+  end
+
+  context 'canvas multiple fill in the blank questions with a single blank' do
+    let(:file_path) { File.join(fixtures_path, 'canvas_multiple_fib_as_single.xml') }
+    let(:shuffle_value) { false }
+    let(:scoring_data_ids) { %w[3537] }
+    let(:scoring_data_values) { %w[word] }
+    let(:scoring_data_case) { %w[no] }
+    let(:answer_count) { 1 }
+    let(:expected_blanks) { [{ id: '3537' }] }
+    let(:expected_stem_items) do
+      [
+        { id: 'stem_0', position: 1, type: 'text', value: '<div><p>Bird, bird, bird, bird is the ' },
+        { id: 'stem_1', position: 2, type: 'blank', blank_id: 'response_word' },
+        { id: 'stem_2', position: 3, type: 'text', value: '</p></div>' }
+      ]
+    end
+
+    include_examples 'shuffled?'
+    include_examples 'answers'
+    include_examples 'scoring_data_structs'
+    include_examples 'blanks'
+    include_examples 'stem_items'
+
+    it 'returns false for #single_fill_in_blank?' do
+      puts "LOADED CLASS: #{loaded_class}"
+      expect(loaded_class.single_fill_in_blank?).to eq false
+    end
+  end
 end

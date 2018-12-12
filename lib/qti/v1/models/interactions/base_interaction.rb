@@ -11,8 +11,19 @@ module Qti
 
           def self.canvas_multiple_fib?(node)
             matches = node.xpath('.//xmlns:response_lid')
-            return false if matches.count <= 1
-            node.at_xpath('.//xmlns:fieldentry').text == 'fill_in_multiple_blanks_question'
+            return false if matches.count < 1
+            question_type(node) == 'fill_in_multiple_blanks_question'
+          end
+
+          def self.question_type(node)
+            path = './/xmlns:qtimetadatafield/xmlns:fieldlabel' \
+              '[text()="question_type"]/../xmlns:fieldentry'
+            node.at_xpath(path)&.text
+          end
+
+          def self.maybe_question_type(node, qtype)
+            question_type = self.question_type(node)
+            !question_type || question_type == qtype
           end
 
           def initialize(node, parent)
