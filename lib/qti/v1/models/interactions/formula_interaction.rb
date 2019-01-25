@@ -32,12 +32,7 @@ module Qti
           def variables
             varlist = @node.at_xpath('.//xmlns:vars')
             varlist.xpath('.//xmlns:var').map do |vnode|
-              {
-                name: vnode.attributes['name']&.value,
-                min: vnode.at_xpath('.//xmlns:min').text,
-                max: vnode.at_xpath('.//xmlns:max').text,
-                precision: vnode.attributes['scale']&.value
-              }
+              variable_def(vnode)
             end
           end
 
@@ -69,6 +64,15 @@ module Qti
                 value: vnode.text&.to_f
               }
             end
+          end
+
+          def variable_def(var_node)
+            {
+              name: var_node.attributes['name']&.value,
+              min: var_node.at_xpath('.//xmlns:min').text&.to_f,
+              max: var_node.at_xpath('.//xmlns:max').text&.to_f,
+              precision: var_node.attributes['scale']&.value&.to_i
+            }
           end
         end
       end

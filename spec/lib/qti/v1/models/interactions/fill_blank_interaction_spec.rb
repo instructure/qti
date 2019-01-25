@@ -209,7 +209,6 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     include_examples 'stem_items'
 
     it 'returns false for #single_fill_in_blank?' do
-      puts "LOADED CLASS: #{loaded_class}"
       expect(loaded_class.single_fill_in_blank?).to eq false
     end
   end
