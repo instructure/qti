@@ -41,11 +41,7 @@ module Qti
           def qti_stem_items
             stem_item_nodes = node.xpath('.//xmlns:presentation').children
             stem_item_nodes.map.with_index do |stem_item, index|
-              if stem_item.xpath('./xmlns:render_fib').present?
-                stem_blank(index, stem_item.attributes['ident'].value)
-              else
-                stem_text(index, stem_item.children.text)
-              end
+              qti_stem_item(index, stem_item)
             end
           end
 
@@ -112,6 +108,14 @@ module Qti
 
           def scoring_data_case(node)
             node.attributes['case']&.value || 'no'
+          end
+
+          def qti_stem_item(index, stem_item)
+            if stem_item.xpath('./xmlns:render_fib').present?
+              stem_blank(index, stem_item.attributes['ident'].value)
+            else
+              stem_text(index, sanitize_content!(stem_item.children.text))
+            end
           end
         end
       end

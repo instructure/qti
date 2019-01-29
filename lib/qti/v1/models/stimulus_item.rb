@@ -1,7 +1,7 @@
 module Qti
   module V1
     module Models
-      class StimulusItem
+      class StimulusItem < Qti::V1::Models::Base
         def initialize(ref_node)
           @node = ref_node
         end
@@ -18,8 +18,7 @@ module Qti
           @body ||= begin
             presentation = @node.at_xpath('.//xmlns:presentation')
             return nil if presentation.blank?
-            mattext = presentation.at_xpath('.//xmlns:mattext')
-            mattext&.text
+            sanitize_content!(presentation.at_xpath('.//xmlns:mattext')&.text)
           end
         end
 
