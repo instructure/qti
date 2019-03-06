@@ -26,6 +26,18 @@ module Qti
           end
 
           def scoring_data_structs
+            @scoring_data ||= parse_scoring_data
+          end
+
+          def distractors
+            correct = scoring_data_structs[0].values.map(&:second)
+            all = answers.map(&:item_body)
+            all.reject { |v| correct.include? v }
+          end
+
+          private
+
+          def parse_scoring_data
             # This preserves the original behavior while not breaking on itemfeedback
             path = './/xmlns:respcondition/xmlns:setvar/../xmlns:conditionvar/xmlns:varequal'
             matches = node.xpath(path).map do |node|
@@ -33,8 +45,6 @@ module Qti
             end
             [Models::ScoringData.new(Hash[matches], rcardinality)]
           end
-
-          private
 
           def answers_map
             @answers_map ||= answers.reduce({}) do |acc, answer|

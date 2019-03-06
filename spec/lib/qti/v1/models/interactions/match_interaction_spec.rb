@@ -26,6 +26,10 @@ describe Qti::V1::Models::Interactions::MatchInteraction do
     it 'returns the questions' do
       expect(subject.questions).to eq(expected_questions)
     end
+
+    it 'contaons distractors' do
+      expect(subject.distractors).to eq(expected_distractors)
+    end
   end
 
   shared_examples_for '#scoring_data_structs' do
@@ -55,6 +59,7 @@ describe Qti::V1::Models::Interactions::MatchInteraction do
         'question_2' => "Uses a beam of electrons. Can provide details of cells' internal structure."
       }
     end
+    let(:expected_distractors) { ['A distractor answer.'] }
 
     include_examples('common features')
     include_examples('questions and answers')
@@ -80,6 +85,7 @@ describe Qti::V1::Models::Interactions::MatchInteraction do
         'response_1943' => ''
       }
     end
+    let(:expected_distractors) { %w[C D E F 3 4 5 6] }
 
     include_examples('common features')
     include_examples('questions and answers')
