@@ -1,0 +1,1516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <assessment ident="ie09bc528e6ecd1cb9ebfafd940c20215" title="Every Canvas Interaction">
+    <qtimetadata>
+      <qtimetadatafield>
+        <fieldlabel>cc_maxattempts</fieldlabel>
+        <fieldentry>1</fieldentry>
+      </qtimetadatafield>
+    </qtimetadata>
+    <section ident="root_section">
+      <item ident="ia4813e41c5505cc0eb7fec982226364e" title="Question 1">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Question 1, Multiple Choice, Answer is C&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="2799">
+                <material>
+                  <mattext texttype="text/plain">C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9607">
+                <material>
+                  <mattext texttype="text/plain">A</mattext>
+                </material>
+              </response_label>
+              <response_label ident="599">
+                <material>
+                  <mattext texttype="text/plain">B</mattext>
+                </material>
+              </response_label>
+              <response_label ident="5711">
+                <material>
+                  <mattext texttype="text/plain">D</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response1">2799</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="2799_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response1">9607</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="9607_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response1">599</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="599_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response1">5711</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="5711_fb"/>
+          </respcondition>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">2799</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+            <displayfeedback feedbacktype="Response" linkrefid="correct_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_incorrect_fb"/>
+          </respcondition>
+        </resprocessing>
+        <itemfeedback ident="general_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Neutral&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="correct_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Correct&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="general_incorrect_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Incorrect&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="2799_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer feedback for C, correct&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="9607_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer feedback for A, incorrect&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="599_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer feedback for B, incorrect&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="5711_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer feedback for D, incorrect&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+      </item>
+      <item ident="id9d8b63d85a03f2987646622805b61cf" title="Question 2">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Question 2, True/False, Answer is True&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="919">
+                <material>
+                  <mattext texttype="text/plain">True</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2680">
+                <material>
+                  <mattext texttype="text/plain">False</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response1">919</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="919_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response1">2680</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="2680_fb"/>
+          </respcondition>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">919</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+            <displayfeedback feedbacktype="Response" linkrefid="correct_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_incorrect_fb"/>
+          </respcondition>
+        </resprocessing>
+        <itemfeedback ident="general_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Neutral&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="correct_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Correct&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="general_incorrect_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Incorrect&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="919_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, True, Correct&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="2680_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, False, Incorrect&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+      </item>
+      <item ident="ice33989533cca4de7f72a4ec804f9913" title="Question 3">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Question 3, Fill in the&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_str ident="response1" rcardinality="Single">
+            <render_fib>
+              <response_label ident="answer1" rshuffle="No"/>
+            </render_fib>
+          </response_str>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response1">Blank</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="4993_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response1">blank</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="4346_fb"/>
+          </respcondition>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">Blank</varequal>
+              <varequal respident="response1">blank</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+            <displayfeedback feedbacktype="Response" linkrefid="correct_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_incorrect_fb"/>
+          </respcondition>
+        </resprocessing>
+        <itemfeedback ident="general_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Neutral&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="correct_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Correct&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="general_incorrect_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Incorrect&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="4993_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, Correct, Blank&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="4346_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, Correct, blank&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+      </item>
+      <item ident="i2fcd1e9d01e3b1529bf9bfbe56e513dd" title="Question 4">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Question 4, Fill in [Multiple] [Blanks], Answers 'Multiple', 'Blanks'&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response_Multiple">
+            <material>
+              <mattext>Multiple</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="832">
+                <material>
+                  <mattext texttype="text/plain">Multiple</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2173">
+                <material>
+                  <mattext texttype="text/plain">multiple</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_Blanks">
+            <material>
+              <mattext>Blanks</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="9226">
+                <material>
+                  <mattext texttype="text/plain">Blanks</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1700">
+                <material>
+                  <mattext texttype="text/plain">blanks</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response_Multiple">832</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="832_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response_Multiple">2173</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="2173_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response_Blanks">9226</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="9226_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response_Blanks">1700</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="1700_fb"/>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_Multiple">832</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">50.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_Blanks">9226</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">50.00</setvar>
+          </respcondition>
+        </resprocessing>
+        <itemfeedback ident="general_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Neutral&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="correct_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Correct&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="general_incorrect_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Incorrect&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="832_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, correct, Multiple&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="2173_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, correct, multiple&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="9226_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, correct, Blanks&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="1700_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, correct, blanks&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+      </item>
+      <item ident="i61c2bf35142c25332962acd201a5bb45" title="Question 5">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Multiple Answers, Correct Answers: A, B, C&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Multiple">
+            <render_choice>
+              <response_label ident="4403">
+                <material>
+                  <mattext texttype="text/plain"></mattext>
+                </material>
+              </response_label>
+              <response_label ident="5871">
+                <material>
+                  <mattext texttype="text/plain"></mattext>
+                </material>
+              </response_label>
+              <response_label ident="5689">
+                <material>
+                  <mattext texttype="text/plain"></mattext>
+                </material>
+              </response_label>
+              <response_label ident="4094">
+                <material>
+                  <mattext texttype="text/html">&lt;p&gt;A&lt;/p&gt;</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8128">
+                <material>
+                  <mattext texttype="text/plain">B</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1582">
+                <material>
+                  <mattext texttype="text/plain">C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7498">
+                <material>
+                  <mattext texttype="text/plain">D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="141">
+                <material>
+                  <mattext texttype="text/plain">E</mattext>
+                </material>
+              </response_label>
+              <response_label ident="3202">
+                <material>
+                  <mattext texttype="text/plain">F</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response1">4094</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="4094_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response1">8128</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="8128_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response1">1582</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="1582_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response1">7498</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="7498_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response1">141</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="141_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response1">3202</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="3202_fb"/>
+          </respcondition>
+          <respcondition continue="No">
+            <conditionvar>
+              <and>
+                <not>
+                  <varequal respident="response1">4403</varequal>
+                </not>
+                <not>
+                  <varequal respident="response1">5871</varequal>
+                </not>
+                <not>
+                  <varequal respident="response1">5689</varequal>
+                </not>
+                <varequal respident="response1">4094</varequal>
+                <varequal respident="response1">8128</varequal>
+                <varequal respident="response1">1582</varequal>
+                <not>
+                  <varequal respident="response1">7498</varequal>
+                </not>
+                <not>
+                  <varequal respident="response1">141</varequal>
+                </not>
+                <not>
+                  <varequal respident="response1">3202</varequal>
+                </not>
+              </and>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+            <displayfeedback feedbacktype="Response" linkrefid="correct_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_incorrect_fb"/>
+          </respcondition>
+        </resprocessing>
+        <itemfeedback ident="general_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Neutral&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="correct_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Correct&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="general_incorrect_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Incorrect&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="4094_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, correct, A&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="8128_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, correct, B&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="1582_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, correct, C&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="7498_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, incorrect, D&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="141_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, incorrect, E&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="3202_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, incorrect, F&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+      </item>
+      <item ident="id97b6303fa7b8df7f32ac779ca3cd957" title="Question 6">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Question 6, Multiple Dropdowns, Answers is C: [C]&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response_C">
+            <material>
+              <mattext>C</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="520">
+                <material>
+                  <mattext texttype="text/plain">C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9701">
+                <material>
+                  <mattext texttype="text/plain">D</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response_C">520</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="520_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response_C">9701</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="9701_fb"/>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_C">520</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">100.00</setvar>
+          </respcondition>
+        </resprocessing>
+        <itemfeedback ident="general_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Neutral&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="correct_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Correct&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="general_incorrect_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Incorrect&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="520_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, correct, C&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="9701_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, incorrect, D&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+      </item>
+      <item ident="i3846da99b022d2a347759703fc50351e" title="Question 7">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Question 7, Matching,  Correct Answer A:1, B:2&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response_9770">
+            <material>
+              <mattext texttype="text/plain"></mattext>
+            </material>
+            <render_choice>
+              <response_label ident="182">
+                <material>
+                  <mattext></mattext>
+                </material>
+              </response_label>
+              <response_label ident="6823">
+                <material>
+                  <mattext>1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4469">
+                <material>
+                  <mattext>2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1557">
+                <material>
+                  <mattext>C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8042">
+                <material>
+                  <mattext>D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7177">
+                <material>
+                  <mattext>E</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6875">
+                <material>
+                  <mattext>F</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9873">
+                <material>
+                  <mattext>3</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2836">
+                <material>
+                  <mattext>4</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7745">
+                <material>
+                  <mattext>5</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_7296">
+            <material>
+              <mattext texttype="text/plain"></mattext>
+            </material>
+            <render_choice>
+              <response_label ident="182">
+                <material>
+                  <mattext></mattext>
+                </material>
+              </response_label>
+              <response_label ident="6823">
+                <material>
+                  <mattext>1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4469">
+                <material>
+                  <mattext>2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1557">
+                <material>
+                  <mattext>C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8042">
+                <material>
+                  <mattext>D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7177">
+                <material>
+                  <mattext>E</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6875">
+                <material>
+                  <mattext>F</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9873">
+                <material>
+                  <mattext>3</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2836">
+                <material>
+                  <mattext>4</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7745">
+                <material>
+                  <mattext>5</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_1696">
+            <material>
+              <mattext texttype="text/plain">A</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="182">
+                <material>
+                  <mattext></mattext>
+                </material>
+              </response_label>
+              <response_label ident="6823">
+                <material>
+                  <mattext>1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4469">
+                <material>
+                  <mattext>2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1557">
+                <material>
+                  <mattext>C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8042">
+                <material>
+                  <mattext>D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7177">
+                <material>
+                  <mattext>E</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6875">
+                <material>
+                  <mattext>F</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9873">
+                <material>
+                  <mattext>3</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2836">
+                <material>
+                  <mattext>4</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7745">
+                <material>
+                  <mattext>5</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_1659">
+            <material>
+              <mattext texttype="text/plain">A</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="182">
+                <material>
+                  <mattext></mattext>
+                </material>
+              </response_label>
+              <response_label ident="6823">
+                <material>
+                  <mattext>1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4469">
+                <material>
+                  <mattext>2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1557">
+                <material>
+                  <mattext>C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8042">
+                <material>
+                  <mattext>D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7177">
+                <material>
+                  <mattext>E</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6875">
+                <material>
+                  <mattext>F</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9873">
+                <material>
+                  <mattext>3</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2836">
+                <material>
+                  <mattext>4</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7745">
+                <material>
+                  <mattext>5</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_8021">
+            <material>
+              <mattext texttype="text/plain">B</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="182">
+                <material>
+                  <mattext></mattext>
+                </material>
+              </response_label>
+              <response_label ident="6823">
+                <material>
+                  <mattext>1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4469">
+                <material>
+                  <mattext>2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1557">
+                <material>
+                  <mattext>C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8042">
+                <material>
+                  <mattext>D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7177">
+                <material>
+                  <mattext>E</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6875">
+                <material>
+                  <mattext>F</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9873">
+                <material>
+                  <mattext>3</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2836">
+                <material>
+                  <mattext>4</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7745">
+                <material>
+                  <mattext>5</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_2030">
+            <material>
+              <mattext texttype="text/plain">A</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="182">
+                <material>
+                  <mattext></mattext>
+                </material>
+              </response_label>
+              <response_label ident="6823">
+                <material>
+                  <mattext>1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4469">
+                <material>
+                  <mattext>2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1557">
+                <material>
+                  <mattext>C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8042">
+                <material>
+                  <mattext>D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7177">
+                <material>
+                  <mattext>E</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6875">
+                <material>
+                  <mattext>F</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9873">
+                <material>
+                  <mattext>3</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2836">
+                <material>
+                  <mattext>4</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7745">
+                <material>
+                  <mattext>5</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_1293">
+            <material>
+              <mattext texttype="text/plain">B</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="182">
+                <material>
+                  <mattext></mattext>
+                </material>
+              </response_label>
+              <response_label ident="6823">
+                <material>
+                  <mattext>1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4469">
+                <material>
+                  <mattext>2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1557">
+                <material>
+                  <mattext>C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8042">
+                <material>
+                  <mattext>D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7177">
+                <material>
+                  <mattext>E</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6875">
+                <material>
+                  <mattext>F</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9873">
+                <material>
+                  <mattext>3</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2836">
+                <material>
+                  <mattext>4</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7745">
+                <material>
+                  <mattext>5</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_fb"/>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_9770">182</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">14.29</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_7296">182</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">14.29</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_1696">6823</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">14.29</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_1659">6823</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">14.29</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_8021">4469</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">14.29</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_2030">6823</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">14.29</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <not>
+                <varequal respident="response_2030">6823</varequal>
+              </not>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="2030_fb"/>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_1293">4469</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">14.29</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <not>
+                <varequal respident="response_1293">4469</varequal>
+              </not>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="1293_fb"/>
+          </respcondition>
+        </resprocessing>
+        <itemfeedback ident="general_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Neutral&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="correct_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Correct&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="general_incorrect_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Incorrect&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="2030_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, A:1 Chosen&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="1293_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, B:2 Chosen&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+      </item>
+      <item ident="ic72ec957ee36c87bb8774a0798ea9d2d" title="Question 8">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Question 8, Numerical Answers: Exactly 42, or Between 41.5 and 42.5, or 42.00 precision 4&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_str ident="response1" rcardinality="Single">
+            <render_fib fibtype="Decimal">
+              <response_label ident="answer1"/>
+            </render_fib>
+          </response_str>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_fb"/>
+          </respcondition>
+          <respcondition continue="No">
+            <conditionvar>
+              <or>
+                <varequal respident="response1">0.0</varequal>
+                <and>
+                  <vargte respident="response1">0.0</vargte>
+                  <varlte respident="response1">0.0</varlte>
+                </and>
+              </or>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+            <displayfeedback feedbacktype="Response" linkrefid="9309_fb"/>
+            <displayfeedback feedbacktype="Response" linkrefid="correct_fb"/>
+          </respcondition>
+          <respcondition continue="No">
+            <conditionvar>
+              <vargte respident="response1">41.5</vargte>
+              <varlte respident="response1">42.5</varlte>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+            <displayfeedback feedbacktype="Response" linkrefid="8958_fb"/>
+            <displayfeedback feedbacktype="Response" linkrefid="correct_fb"/>
+          </respcondition>
+          <respcondition continue="No">
+            <conditionvar>
+              <or>
+                <varequal respident="response1">42.0</varequal>
+                <and>
+                  <vargt respident="response1">41.995</vargt>
+                  <varlte respident="response1">42.005</varlte>
+                </and>
+              </or>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+            <displayfeedback feedbacktype="Response" linkrefid="1573_fb"/>
+            <displayfeedback feedbacktype="Response" linkrefid="correct_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_incorrect_fb"/>
+          </respcondition>
+        </resprocessing>
+        <itemfeedback ident="general_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Neutral&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="correct_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Correct&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="general_incorrect_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Incorrect&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="9309_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, 42, exact&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="8958_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, 41.5-42.5, range&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="1573_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer Feedback, 42.00, precision 4&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+      </item>
+      <item ident="i671f685f8d3902befa38c673d4a58c70" title="Question 9">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Formula, Answer is 42. [x]&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_str ident="response1" rcardinality="Single">
+            <render_fib fibtype="Decimal">
+              <response_label ident="answer1"/>
+            </render_fib>
+          </response_str>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_fb"/>
+          </respcondition>
+          <respcondition title="correct">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <setvar varname="SCORE" action="Set">100</setvar>
+          </respcondition>
+          <respcondition title="incorrect">
+            <conditionvar>
+              <not>
+                <other/>
+              </not>
+            </conditionvar>
+            <setvar varname="SCORE" action="Set">0</setvar>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_incorrect_fb"/>
+          </respcondition>
+        </resprocessing>
+        <itemproc_extension>
+          <calculated>
+            <answer_tolerance>0</answer_tolerance>
+            <formulas decimal_places="0">
+              <formula>42</formula>
+            </formulas>
+            <vars>
+              <var name="x" scale="0">
+                <min>1.0</min>
+                <max>10.0</max>
+              </var>
+            </vars>
+            <var_sets>
+              <var_set ident="4648">
+                <var name="x">5</var>
+                <answer>42.0</answer>
+              </var_set>
+              <var_set ident="5679">
+                <var name="x">10</var>
+                <answer>42.0</answer>
+              </var_set>
+              <var_set ident="4249">
+                <var name="x">2</var>
+                <answer>42.0</answer>
+              </var_set>
+              <var_set ident="9671">
+                <var name="x">9</var>
+                <answer>42.0</answer>
+              </var_set>
+              <var_set ident="1564">
+                <var name="x">7</var>
+                <answer>42.0</answer>
+              </var_set>
+              <var_set ident="5542">
+                <var name="x">3</var>
+                <answer>42.0</answer>
+              </var_set>
+              <var_set ident="7288">
+                <var name="x">1</var>
+                <answer>42.0</answer>
+              </var_set>
+              <var_set ident="9738">
+                <var name="x">6</var>
+                <answer>42.0</answer>
+              </var_set>
+              <var_set ident="7745">
+                <var name="x">8</var>
+                <answer>42.0</answer>
+              </var_set>
+              <var_set ident="8661">
+                <var name="x">6</var>
+                <answer>42.0</answer>
+              </var_set>
+            </var_sets>
+          </calculated>
+        </itemproc_extension>
+        <itemfeedback ident="general_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Neutral&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="correct_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Correct&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="general_incorrect_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Incorrect&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+      </item>
+      <item ident="ia926602fb1321f38727fa3e2785c71ea" title="Question 10">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;Question 10, Essay&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_str ident="response1" rcardinality="Single">
+            <render_fib>
+              <response_label ident="answer1" rshuffle="No"/>
+            </render_fib>
+          </response_str>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="general_fb"/>
+          </respcondition>
+          <respcondition continue="No">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+          </respcondition>
+        </resprocessing>
+        <itemfeedback ident="general_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Item Feedback, Neutral&lt;/p&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+      </item>
+    </section>
+  </assessment>
+</questestinterop>
