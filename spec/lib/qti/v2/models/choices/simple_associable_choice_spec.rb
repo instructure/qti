@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V2::Models::Choices::SimpleAssociableChoice do
   let(:item) { double(package_root: 'dummy', path: 'dummy/blah') }
   let(:io) { File.read('spec/fixtures/items_2.1/match2.xml') }

@@ -1,15 +1,9 @@
-require 'qti/v1/models/base'
-require 'qti/models/assessment_meta'
-require 'qti/v1/models/assessment'
-require 'qti/v2/models/assessment_test'
-require 'qti/v2/models/non_assessment_test'
-require 'qti/models/resource'
-
 module Qti
   module Models
     class Manifest < Qti::Models::Base
       include Qti::Models::ResourceGroup
       include Qti::XPathHelpers
+
       def assessment_test(resource_id = nil)
         resource_id ||= assessment_identifiers.first
         test = assessment_from_identifier(resource_id)

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V1::Models::Numerics::ScoringBase do
   let(:scoring_node) { double }
 

@@ -1,5 +1,3 @@
-require 'rspec/expectations'
-
 RSpec::Matchers.define :have_file_content do |expected|
   match do |actual|
     File.read(actual) == expected

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 fixtures_path = File.join('spec', 'fixtures')
 
 describe Qti::Models::Manifest do

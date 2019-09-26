@@ -1,5 +1,3 @@
-require 'qti/models/base'
-
 module Qti
   module V2
     module Models

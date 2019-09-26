@@ -52,12 +52,5 @@ module Qti
         taxon(node.xpath('imsmd:taxon')&.first, path)
       end
     end
-
-    module MetaDataBase
-      delegate :taxonpath, to: :@meta_data, allow_nil: true
-      def metadata_from_node!(node)
-        @meta_data ||= MetaData.new(node)
-      end
-    end
   end
 end

@@ -1,6 +1,3 @@
-require 'qti/v1/models/base'
-require 'qti/v1/models/interactions'
-
 module Qti
   module V1
     module Models

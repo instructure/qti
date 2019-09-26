@@ -1,5 +1,3 @@
-require 'qti/v1/models/base'
-
 module Qti
   module V1
     module Models

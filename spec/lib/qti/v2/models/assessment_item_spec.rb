@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V2::Models::AssessmentItem do
   context 'choice.xml' do
     let(:fixtures_path) { File.join('spec', 'fixtures') }

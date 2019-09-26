@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V1::Models::Assessment do
   describe 'interaction item' do
     let(:fixtures_path) { File.join('spec', 'fixtures') }

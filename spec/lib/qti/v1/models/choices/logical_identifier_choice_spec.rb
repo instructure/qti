@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V1::Models::Choices::LogicalIdentifierChoice do
   context 'quiz.xml' do
     let(:fixtures_path) { File.join('spec', 'fixtures') }

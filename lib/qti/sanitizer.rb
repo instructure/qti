@@ -1,7 +1,3 @@
-require 'nokogiri'
-require 'sanitize'
-require 'uri'
-
 module Qti
   class Sanitizer
     ELEMENTS_REMAP = {

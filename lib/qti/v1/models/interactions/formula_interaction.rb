@@ -37,13 +37,11 @@ module Qti
           end
 
           def answer_tolerance
-            @answer_tolernance ||= @node.at_xpath('.//xmlns:answer_tolerance').text
+            @answer_tolerance ||= @node.at_xpath('.//xmlns:answer_tolerance').text
           end
 
           def margin_of_error
-            if answer_tolerance.ends_with? '%'
-              return { margin: answer_tolerance[0..-2], margin_type: 'percent' }
-            end
+            return { margin: answer_tolerance[0..-2], margin_type: 'percent' } if answer_tolerance.ends_with? '%'
             { margin: answer_tolerance, margin_type: 'absolute' }
           end
 

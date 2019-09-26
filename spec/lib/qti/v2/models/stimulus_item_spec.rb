@@ -1,5 +1,3 @@
-# require 'spec_helper'
-
 # describe Qti::V2::Models::StimulusItem do
 #   let(:file_path) { File.join('spec', 'fixtures', 'no_assessment_XML', 'imsmanifest.xml') }
 #   let(:test_object) { Qti::V2::Models::NonAssessmentTest.from_path!(file_path) }

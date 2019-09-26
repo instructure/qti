@@ -1,5 +1,3 @@
-require 'qti/v1/models/base'
-
 module Qti
   module Models
     class AssessmentMeta < Qti::Models::Base

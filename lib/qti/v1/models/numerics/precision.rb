@@ -1,5 +1,3 @@
-require 'qti/v1/models/numerics/scoring_base'
-
 module Qti
   module V1
     module Models
@@ -55,7 +53,7 @@ module Qti
             end
             # this is not exactly significant digits
             # trailing zeros are ignored
-            # because gt_node and lte_ndoe don't expect trailing zeros
+            # because gt_node and lte_node don't expect trailing zeros
             sig
           end
         end

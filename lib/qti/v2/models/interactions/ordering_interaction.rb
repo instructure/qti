@@ -1,5 +1,3 @@
-require 'qti/v2/models/interactions/choice_interaction'
-
 module Qti
   module V2
     module Models

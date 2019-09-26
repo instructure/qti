@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 fixtures_path = File.join('spec', 'fixtures')
 
 describe Qti::V2::Models::AssessmentTest do
@@ -64,13 +62,12 @@ describe Qti::V2::Models::AssessmentTest do
 
   describe '#title' do
     it 'sets the title to the filename by default' do
-      empty_test_string = <<~XML.strip_heredoc
+      allow(File).to receive(:read).and_return(<<~XML)
         <?xml version="1.0" encoding="UTF-8"?>
         <assessmentTest xmlns="http://www.imsglobal.org/xsd/imsqti_v2p2p1" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p2 http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p2.xsd">
           <testPart identifier="Main" navigationMode="linear" submissionMode="individual"/>
         </assessmentTest>
       XML
-      allow(File).to receive(:read).and_return(empty_test_string)
       assessment_test = described_class.new path: '/a/b/c/Test123.xml'
       expect(assessment_test.title).to eq 'Test123'
     end

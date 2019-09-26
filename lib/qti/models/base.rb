@@ -1,8 +1,3 @@
-require 'nokogiri'
-require 'pathname'
-require 'mathml2latex'
-require 'qti/sanitizer'
-
 module Qti
   class ParseError < StandardError; end
   class SpecificationViolation < StandardError; end

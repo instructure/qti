@@ -1,4 +1,4 @@
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'qti/version'
 
@@ -16,22 +16,24 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.add_dependency 'activesupport', '>= 5.0.7', '< 5.3'
-  s.add_dependency 'dry-struct', '~> 0.2.1'
-  s.add_dependency 'dry-types', '~> 0.12.0'
-  s.add_dependency 'rubyzip', '~> 1.2'
-  s.add_dependency 'nokogiri', '~> 1.8'
-  s.add_dependency 'sanitize', '~> 4.6', '>= 4.6.3'
-  s.add_dependency 'actionview', '>= 5.0.7', '< 5.3'
-  s.add_dependency 'mathml2latex', '~> 1.0'
+  s.required_ruby_version = '>= 2.4'
 
-  s.add_development_dependency 'bundler', '~> 1.15'
-  s.add_development_dependency 'byebug', '~> 9.0'
-  s.add_development_dependency 'rake', '~> 0'
-  s.add_development_dependency 'rspec', '~> 3.6'
-  s.add_development_dependency 'rspec-mocks', '~> 3.6'
-  s.add_development_dependency 'pry', '~> 0'
-  s.add_development_dependency 'rubocop', '~> 0.50.0'
-  s.add_development_dependency 'simplecov', '~> 0'
-  s.add_development_dependency 'wwtd', '~> 1.3'
+  s.add_dependency 'actionview', '>= 5.1.7', '< 6.1'
+  s.add_dependency 'activesupport', '>= 5.1.7', '< 6.1'
+  s.add_dependency 'dry-struct', '~> 0.4.0'
+  s.add_dependency 'dry-types', '~> 0.12.3'
+  s.add_dependency 'mathml2latex', '~> 2.0'
+  s.add_dependency 'nokogiri', '~> 1.10'
+  s.add_dependency 'rubyzip', '~> 1.2'
+  s.add_dependency 'sanitize', '~> 5.1'
+
+  s.add_development_dependency 'bundler', '~> 1.17'
+  s.add_development_dependency 'byebug', '~> 11.0'
+  s.add_development_dependency 'pry'
+  s.add_development_dependency 'rake', '~> 12.3'
+  s.add_development_dependency 'rspec', '~> 3.8'
+  s.add_development_dependency 'rspec-mocks', '~> 3.8'
+  s.add_development_dependency 'rubocop', '~> 0.74.0'
+  s.add_development_dependency 'simplecov'
+  s.add_development_dependency 'wwtd', '~> 1.4'
 end

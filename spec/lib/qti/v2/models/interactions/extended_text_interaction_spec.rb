@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V2::Models::Interactions::ExtendedTextInteraction do
   context 'essay.xml' do
     let(:item) { double(package_root: 'dummy', path: 'dummy/blah') }

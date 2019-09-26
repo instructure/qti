@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V2::Models::Choices::GapMatchChoice do
   context 'choice.xml' do
     let(:item) { double(package_root: 'dummy', path: 'dummy/blah') }

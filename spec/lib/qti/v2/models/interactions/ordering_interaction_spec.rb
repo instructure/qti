@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V2::Models::Interactions::OrderingInteraction do
   let(:file) { File.join('spec', 'fixtures', 'items_2.1', 'order.xml') }
   let(:item) { Qti::V2::Models::AssessmentItem.from_path!(file) }

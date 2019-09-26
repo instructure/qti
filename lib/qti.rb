@@ -1,4 +1,16 @@
+require 'action_view'
+require 'active_support/core_ext/array/access'
+require 'active_support/core_ext/string'
+require 'active_support/core_ext/hash/except'
+require 'active_support/core_ext/module/delegation'
+require 'dry-struct'
 require 'find'
+require 'mathml2latex'
+require 'nokogiri'
+require 'pathname'
+require 'sanitize'
+require 'uri'
+require 'zip'
 
 module Qti
   class Importer
@@ -57,22 +69,60 @@ module Qti
   end
 end
 
-require 'active_support/core_ext/string'
-require 'active_support/core_ext/module/delegation'
+# The load order of all of these is important.
 
-require 'qti/models/manifest'
+require 'null_logger'
+
+require 'qti/version'
+
+require 'qti/assessment_item_exporter'
+require 'qti/content_packaging'
+require 'qti/exporter'
+require 'qti/sanitizer'
+require 'qti/xpath_helpers'
+
+require 'qti/content_packaging/simple_choice'
+require 'qti/content_packaging/choice_interaction'
+require 'qti/content_packaging/assessment_item'
+require 'qti/content_packaging/outcome_declaration'
+require 'qti/content_packaging/assessment_test'
+
 require 'qti/models/base'
+require 'qti/models/assessment_meta'
 
 require 'qti/v1/models/base'
-require 'qti/v1/models/interactions/base_interaction'
-require 'qti/v1/models/interactions/base_fill_blank_interaction'
-require 'qti/v1/models/interactions/choice_interaction'
-
 require 'qti/v1/models/assessment'
+
+require 'qti/v2/models/base'
+require 'qti/v2/models/assessment_test'
+
+require 'qti/models/metadata'
+require 'qti/models/resource'
+require 'qti/models/manifest'
+
 require 'qti/v1/models/assessment_item'
 require 'qti/v1/models/choices/logical_identifier_choice'
 require 'qti/v1/models/choices/fill_blank_choice'
 require 'qti/v1/models/scoring_data'
+require 'qti/v1/models/stimulus_item'
+require 'qti/v1/models/question_group'
+
+require 'qti/v1/models/interactions/base_interaction'
+require 'qti/v1/models/interactions/choice_interaction'
+
+require 'qti/v1/models/interactions/base_fill_blank_interaction'
+require 'qti/v1/models/interactions/canvas_multiple_dropdown'
+require 'qti/v1/models/interactions/fill_blank_interaction'
+require 'qti/v1/models/interactions/formula_interaction'
+require 'qti/v1/models/interactions/match_interaction'
+require 'qti/v1/models/interactions/numeric_interaction'
+require 'qti/v1/models/interactions/ordering_interaction'
+require 'qti/v1/models/interactions/string_interaction'
+require 'qti/v1/models/interactions/upload_interaction'
+
+require 'qti/v1/models/interactions'
+
+require 'qti/v1/models/numerics/scoring_base'
 
 require 'qti/v1/models/numerics/exact_match'
 require 'qti/v1/models/numerics/margin_error'
@@ -80,23 +130,26 @@ require 'qti/v1/models/numerics/precision'
 require 'qti/v1/models/numerics/scoring_data'
 require 'qti/v1/models/numerics/scoring_node'
 require 'qti/v1/models/numerics/within_range'
-require 'qti/v1/models/stimulus_item'
-require 'qti/v1/models/question_group'
 
-require 'qti/v2/models/base'
-require 'qti/v2/models/choices/simple_choice'
-require 'qti/v2/models/choices/simple_associable_choice'
-require 'qti/v2/models/choices/gap_match_choice'
 require 'qti/v2/models/assessment_item'
 require 'qti/v2/models/stimulus_item'
-require 'qti/v2/models/assessment_test'
+require 'qti/v2/models/interactions'
 require 'qti/v2/models/non_assessment_test'
 require 'qti/v2/models/scoring_data'
 
-require 'zip'
-require 'qti/exporter'
+require 'qti/v2/models/interactions/base_interaction'
 
-require 'qti/content_packaging'
-require 'qti/assessment_item_exporter'
+require 'qti/v2/models/interactions/categorization_interaction'
+require 'qti/v2/models/interactions/choice_interaction'
+require 'qti/v2/models/interactions/extended_text_interaction'
+require 'qti/v2/models/interactions/gap_match_interaction'
+require 'qti/v2/models/interactions/match_interaction'
+require 'qti/v2/models/interactions/ordering_interaction'
+require 'qti/v2/models/interactions/short_text_interaction'
 
-require 'null_logger'
+require 'qti/v2/models/interactions/match_item_tag_processors/associate_interaction_tag_processor'
+require 'qti/v2/models/interactions/match_item_tag_processors/match_interaction_tag_processor'
+
+require 'qti/v2/models/choices/simple_choice'
+require 'qti/v2/models/choices/simple_associable_choice'
+require 'qti/v2/models/choices/gap_match_choice'

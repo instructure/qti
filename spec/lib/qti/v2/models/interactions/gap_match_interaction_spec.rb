@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V2::Models::Interactions::GapMatchInteraction do
   context 'gap_match.xml' do
     let(:item) { double(package_root: 'dummy', path: 'dummy/blah') }

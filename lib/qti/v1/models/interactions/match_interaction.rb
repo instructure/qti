@@ -26,7 +26,7 @@ module Qti
           end
 
           def scoring_data_structs
-            @scoring_data ||= parse_scoring_data
+            @scoring_data_structs ||= parse_scoring_data
           end
 
           def distractors
@@ -38,7 +38,7 @@ module Qti
           private
 
           def parse_scoring_data
-            # This preserves the original behavior while not breaking on itemfeedback
+            # This preserves the original behavior while not breaking on item feedback
             path = './/xmlns:respcondition/xmlns:setvar/../xmlns:conditionvar/xmlns:varequal'
             matches = node.xpath(path).map do |node|
               [node.attributes['respident'].value, answers_map[node.content]]

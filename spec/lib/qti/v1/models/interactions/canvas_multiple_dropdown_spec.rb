@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V1::Models::Interactions::CanvasMultipleDropdownInteraction do
   let(:fixtures_path) { File.join('spec', 'fixtures', 'items_1.2') }
   let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }

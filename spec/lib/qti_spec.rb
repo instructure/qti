@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::Importer do
   let(:fixtures_path) { File.join('spec', 'fixtures') }
   let(:importer) { Qti::Importer.new(file_path) }

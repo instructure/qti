@@ -1,14 +1,12 @@
-require 'qti/v2/models/base'
-require 'qti/models/resource'
-
 module Qti
   module V2
     module Models
       class NonAssessmentTest < Qti::V2::Models::AssessmentTest
         include Qti::Models::ResourceGroup
+
         def assessment_items
           # Return the xml files we should be parsing
-          @assessment_item_resources ||= begin
+          @assessment_items ||= begin
             item_resources_v2.map do |node|
               rsc = Qti::Models::Resource.new(node, self)
               { path: remap_href_path(rsc.href), resource: rsc }

@@ -1,16 +1,10 @@
-require 'qti/v1/models/base'
-require 'qti/models/assessment_meta'
-require 'qti/v1/models/assessment'
-require 'qti/v2/models/assessment_test'
-require 'qti/v2/models/non_assessment_test'
-require 'qti/xpath_helpers'
-require 'qti/models/metadata'
-
 module Qti
   module Models
     class Resource < Qti::Models::Base
-      include Qti::Models::MetaDataBase
       include Qti::XPathHelpers
+
+      delegate :taxonpath, to: :@metadata, allow_nil: true
+
       def initialize(node, parent)
         @node = node
         @parent = parent
@@ -24,7 +18,7 @@ module Qti
       end
 
       def metadata
-        @metadata = metadata_from_node!(@node)
+        @metadata ||= MetaData.new(@node)
       end
 
       def canvas_metadata

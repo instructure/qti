@@ -1,6 +1,3 @@
-require 'qti/v2/models/base'
-require 'qti/v2/models/interactions'
-
 module Qti
   module V2
     module Models

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V1::Models::Assessment do
   describe 'interaction item' do
     let(:fixtures_path) { File.join('spec', 'fixtures') }
@@ -53,12 +51,12 @@ describe Qti::V1::Models::Assessment do
           {
             interaction_class: Qti::V1::Models::Interactions::StringInteraction,
             title: 'Question',
-            feedback:  { neutral: '<p>General Feedback</p>' }
+            feedback: { neutral: '<p>General Feedback</p>' }
           },
           {
             interaction_class: Qti::V1::Models::Interactions::ChoiceInteraction,
             title: 'Question',
-            feedback:  { neutral: '<p>Neutral</p>', correct: '<p>Correct</p>', incorrect: '<p>Incorrect</p>' }
+            feedback: { neutral: '<p>Neutral</p>', correct: '<p>Correct</p>', incorrect: '<p>Incorrect</p>' }
           },
           {
             interaction_class: Qti::V1::Models::Interactions::ChoiceInteraction,
@@ -173,14 +171,13 @@ describe Qti::V1::Models::Assessment do
 
     context '<assessmentTest> has no title property' do
       it 'sets the title to the filename by default' do
-        empty_test_string = <<~XML.strip_heredoc
+        allow(File).to receive(:read).and_return(<<~XML)
           <?xml version="1.0" encoding="UTF-8"?>
           <questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
             <assessment ident="A1001">
             </assessment>
           </questestinterop>
         XML
-        allow(File).to receive(:read).and_return(empty_test_string)
         assessment_test = described_class.new path: '/a/b/c/Test123.xml'
         expect(assessment_test.title).to eq 'Test123'
       end

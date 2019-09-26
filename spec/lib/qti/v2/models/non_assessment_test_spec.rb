@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 fixtures_path = File.join('spec', 'fixtures')
 
 describe Qti::V2::Models::NonAssessmentTest do

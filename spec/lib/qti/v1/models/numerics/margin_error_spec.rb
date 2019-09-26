@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V1::Models::Numerics::MarginError do
   context '#scoring_data' do
     let(:equal_node) do

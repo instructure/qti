@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V1::Models::Interactions::MatchInteraction do
   let(:path) { File.join('spec', 'fixtures', 'items_1.2') }
   let(:assessment) { Qti::V1::Models::Assessment.from_path!(file) }

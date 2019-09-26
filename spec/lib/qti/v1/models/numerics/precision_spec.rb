@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V1::Models::Numerics::Precision do
   context '#scoring_data' do
     # test case: 0.0123450 with 6 significant digits

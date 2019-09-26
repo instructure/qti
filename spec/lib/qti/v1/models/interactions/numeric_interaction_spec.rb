@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V1::Models::Interactions::NumericInteraction do
   let(:fixtures_path) { File.join('spec', 'fixtures', 'items_1.2') }
   let(:file_path) { File.join(fixtures_path, xml_file_name) }

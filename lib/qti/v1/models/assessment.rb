@@ -1,11 +1,9 @@
-require 'qti/v1/models/base'
-require 'qti/models/assessment_meta'
-
 module Qti
   module V1
     module Models
       class Assessment < Qti::V1::Models::Base
         include Qti::Models::AssessmentMetaBase
+
         GROUP_ID = 'xmlns:section/xmlns:selection_ordering'.freeze
 
         def title

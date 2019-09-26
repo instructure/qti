@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V2::Models::Interactions::MatchInteraction do
   context 'assessmentItem is implemented with <associateInteraction>' do
     let(:assessment_item) { Qti::V2::Models::AssessmentItem.from_path! 'spec/fixtures/items_2.1/match.xml' }

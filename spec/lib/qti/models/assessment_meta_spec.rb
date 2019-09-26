@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 context 'Canvas Assessment Meta Data' do
   let(:fixtures_path) { File.join('spec', 'fixtures') }
   let(:file_path) { File.join(fixtures_path, qti_file) }

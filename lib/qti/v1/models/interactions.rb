@@ -1,7 +1,3 @@
-require 'active_support/core_ext/hash/except'
-# Populate the subclasses
-Dir["#{__dir__}/interactions/*.rb"].each { |f| load f }
-
 module Qti
   module V1
     module Models

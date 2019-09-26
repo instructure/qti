@@ -1,5 +1,3 @@
-require 'qti/v1/models/numerics/scoring_base'
-
 module Qti
   module V1
     module Models

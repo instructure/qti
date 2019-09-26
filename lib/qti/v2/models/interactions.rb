@@ -1,6 +1,3 @@
-require 'qti/v2/models/interactions/base_interaction'
-Dir["#{__dir__}/interactions/*.rb"].each { |f| load f }
-
 module Qti
   module V2
     module Models

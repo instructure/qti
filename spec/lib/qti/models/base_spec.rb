@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::Models::Base do
   context 'specified as single content node matching helpers' do
     let(:loaded_class) do
@@ -63,22 +61,36 @@ describe Qti::Models::Base do
         let(:ftp) { 'ftp://foo.bar/' }
         let(:http) { 'http://foo.bar/' }
         let(:https) { 'https://foo.bar' }
+        let(:closing_tag) { true }
 
         shared_examples_for 'specific html elements' do
           it 'removes a src with a bad protocol' do
-            ftp_tag = "<#{tag_name} #{src_attr}=\"#{ftp}\"></#{tag_name}>"
-            expect(loaded_class.sanitize_content!(ftp_tag)).to eq "<#{tag_name}></#{tag_name}>"
+            ftp_tag = "<#{tag_name} #{src_attr}=\"#{ftp}\">"
+            ftp_tag += "</#{tag_name}>" if closing_tag
+            expected_tag = "<#{tag_name}>"
+            expected_tag += "</#{tag_name}>" if closing_tag
+            expect(loaded_class.sanitize_content!(ftp_tag)).to eq(expected_tag)
           end
 
           it 'removes a src with a valid http protocol' do
-            http_tag = "<#{tag_name} #{src_attr}=\"#{http}\"></#{tag_name}>"
+            http_tag = "<#{tag_name} #{src_attr}=\"#{http}\">"
+            http_tag += "</#{tag_name}>" if closing_tag
             expect(loaded_class.sanitize_content!(http_tag)).to eq(http_tag)
           end
 
           it 'removes a src with a valid https protocol' do
-            https_tag = "<#{tag_name} #{src_attr}=\"#{https}\"></#{tag_name}>"
+            https_tag = "<#{tag_name} #{src_attr}=\"#{https}\">"
+            https_tag += "</#{tag_name}>" if closing_tag
             expect(loaded_class.sanitize_content!(https_tag)).to eq(https_tag)
           end
+        end
+
+        describe 'embed elements' do
+          let(:tag_name) { 'embed' }
+          let(:src_attr) { 'src' }
+          let(:closing_tag) { false }
+
+          include_examples('specific html elements')
         end
 
         describe 'iframe elements' do
@@ -88,23 +100,16 @@ describe Qti::Models::Base do
           include_examples('specific html elements')
         end
 
-        describe 'object elements' do
-          let(:tag_name) { 'object' }
-          let(:src_attr) { 'src' }
-
-          include_examples('specific html elements')
-        end
-
-        describe 'embed elements' do
-          let(:tag_name) { 'embed' }
-          let(:src_attr) { 'src' }
-
-          include_examples('specific html elements')
-        end
-
-        describe 'object elements' do
+        describe 'object elements with data' do
           let(:tag_name) { 'object' }
           let(:src_attr) { 'data' }
+
+          include_examples('specific html elements')
+        end
+
+        describe 'object elements with src' do
+          let(:tag_name) { 'object' }
+          let(:src_attr) { 'src' }
 
           include_examples('specific html elements')
         end

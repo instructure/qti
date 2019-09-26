@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Qti::V1::Models::StimulusItem do
   let(:ref_node) { double }
   let(:attrs) do
