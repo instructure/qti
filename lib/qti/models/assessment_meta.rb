@@ -18,7 +18,7 @@ module Qti
       end
 
       def hide_results
-        tag_under_quiz('hide_results')
+        nil_if_empty(tag_under_quiz('hide_results'))
       end
 
       def scoring_policy
@@ -125,6 +125,71 @@ module Qti
         @doc.xpath('//xmlns:quiz/xmlns:assignment/xmlns:quiz_identifierref')&.first&.content
       end
 
+      def lock_at
+        tag_under_quiz('lock_at')
+      end
+
+      def unlock_at
+        tag_under_quiz('unlock_at')
+      end
+
+      def due_at
+        tag_under_quiz('due_at')
+      end
+
+      def access_code
+        tag_under_quiz('access_code')
+      end
+
+      def ip_filter
+        tag_under_quiz('ip_filter')
+      end
+
+      def time_limit_raw
+        tag_under_quiz('time_limit')
+      end
+
+      def time_limit
+        return nil if time_limit_raw.nil?
+        time_limit_raw.to_i
+      end
+
+      def show_correct_answers_at
+        tag_under_quiz('show_correct_answers_at')
+      end
+
+      def hide_correct_answers_at
+        tag_under_quiz('hide_correct_answers_at')
+      end
+
+      def require_lockdown_browser
+        tag_under_quiz('require_lockdown_browser')
+      end
+
+      def require_lockdown_browser?
+        string_true?(require_lockdown_browser)
+      end
+
+      def require_lockdown_browser_for_results
+        tag_under_quiz('require_lockdown_browser_for_results')
+      end
+
+      def require_lockdown_browser_for_results?
+        string_true?(require_lockdown_browser_for_results)
+      end
+
+      def require_lockdown_browser_monitor
+        tag_under_quiz('require_lockdown_browser_monitor')
+      end
+
+      def require_lockdown_browser_monitor?
+        string_true?(require_lockdown_browser_monitor)
+      end
+
+      def lockdown_browser_monitor_data
+        nil_if_empty(tag_under_quiz('lockdown_browser_monitor_data'))
+      end
+
       private
 
       def tag_under_quiz(tag)
@@ -133,6 +198,11 @@ module Qti
 
       def string_true?(value)
         value&.casecmp('true')&.zero?
+      end
+
+      def nil_if_empty(value)
+        return nil if value.to_s.empty?
+        value
       end
     end
 
@@ -143,7 +213,12 @@ module Qti
         :could_be_locked?, :allowed_attempts, :one_question_at_a_time?,
         :cant_go_back?, :available?, :one_time_results?,
         :show_correct_answers_attempt?, :only_visible_to_overrides?,
-        :module_locked?,
+        :module_locked?, :access_code, :ip_filter, :time_limit,
+        :show_correct_answers_at, :hide_correct_answers_at,
+        :lock_at, :unlock_at, :due_at, :require_lockdown_browser?,
+        :require_lockdown_browser_for_results?,
+        :require_lockdown_browser_monitor?,
+        :lockdown_browser_monitor_data,
         to: :@canvas_meta_data, prefix: :canvas, allow_nil: true
 
       alias canvas_instructions canvas_description
