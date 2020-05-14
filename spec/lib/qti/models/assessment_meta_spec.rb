@@ -70,7 +70,7 @@ context 'Canvas Assessment Meta Data' do
   end
 
   describe 'in a QTI 1.2 container with extended fields' do
-    let(:qti_file) { 'test_qti_1.2_canvas_extended' }
+    let(:qti_file) { 'test_qti_1.2_canvas_extended_1' }
     let(:assessment_type) { Qti::V1::Models::Assessment }
     let(:title) { 'asd09sdfaxsdflj' }
     let(:instructions) { '<p>dlkjfaflkjla3rlajl3lafd</p>' }
@@ -94,6 +94,39 @@ context 'Canvas Assessment Meta Data' do
     let(:time_limit) { 187 }
     let(:show_answers_at) { '2041-02-17 06:00:00 UTC' }
     let(:hide_answers_at) { '2042-12-26 06:00:00 UTC' }
+    let(:rlb) { false }
+    let(:rlb_results) { false }
+    let(:rlb_monitor) { false }
+    let(:lb_monitor_data) { nil }
+
+    include_examples('loads canvas meta data')
+  end
+
+  describe 'in a QTI 1.2 container with extended fields and empty tags' do
+    let(:qti_file) { 'test_qti_1.2_canvas_extended_2' }
+    let(:assessment_type) { Qti::V1::Models::Assessment }
+    let(:title) { '' }
+    let(:instructions) { '' }
+    let(:points_possible) { 0.0 }
+    let(:oqaat) { false }
+    let(:allowed_attempts) { 0 }
+    let(:hide_results) { nil }
+    let(:quiz_type) { nil }
+    let('anon_submissions') { false }
+    let(:could_be_locked) { false }
+    let(:nobacktracking) { false }
+    let(:available) { false }
+    let(:one_time_results) { false }
+    let(:scoring_policy) { nil }
+    let(:shuffle_answers) { false }
+    let(:lock_at) { nil }
+    let(:unlock_at) { nil }
+    let(:due_at) { nil }
+    let(:access_code) { nil }
+    let(:ip_filter) { nil }
+    let(:time_limit) { nil }
+    let(:show_answers_at) { nil }
+    let(:hide_answers_at) { nil }
     let(:rlb) { false }
     let(:rlb_results) { false }
     let(:rlb_monitor) { false }

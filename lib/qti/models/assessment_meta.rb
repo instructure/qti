@@ -18,7 +18,7 @@ module Qti
       end
 
       def hide_results
-        nil_if_empty(tag_under_quiz('hide_results'))
+        tag_under_quiz('hide_results')
       end
 
       def scoring_policy
@@ -138,7 +138,9 @@ module Qti
       end
 
       def access_code
-        tag_under_quiz('access_code')
+        code = sanitize_content!(tag_under_quiz('access_code'))
+        return nil if code.to_s.empty?
+        code
       end
 
       def ip_filter
@@ -187,22 +189,20 @@ module Qti
       end
 
       def lockdown_browser_monitor_data
-        nil_if_empty(tag_under_quiz('lockdown_browser_monitor_data'))
+        tag_under_quiz('lockdown_browser_monitor_data')
       end
 
       private
 
       def tag_under_quiz(tag)
-        @doc.xpath("//xmlns:quiz/xmlns:#{tag}")&.first&.content
+        value = @doc.xpath("//xmlns:quiz/xmlns:#{tag}")&.first&.content
+        # If the tag is present but has no content, return nil
+        return nil if value.to_s.empty?
+        value
       end
 
       def string_true?(value)
-        value&.casecmp('true')&.zero?
-      end
-
-      def nil_if_empty(value)
-        return nil if value.to_s.empty?
-        value
+        value&.casecmp('true')&.zero? || false
       end
     end
 
