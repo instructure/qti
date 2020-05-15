@@ -48,4 +48,18 @@ describe Qti::Models::Manifest do
       expect(assessment_test.assessment_items.first[:resource]).not_to eq(nil)
     end
   end
+
+  describe 'object banks' do
+    file = File.join(fixtures_path, 'with_banks/imsmanifest.xml')
+    manifest = described_class.from_path!(file)
+
+    it 'has associated content' do
+      expect(manifest.associated_content_list.count).to eq(4)
+    end
+
+    it 'loads objectbanks' do
+      expect(manifest.objectbanks.count).to eq(3)
+      expect(manifest.objectbanks.first).to be_kind_of(Qti::V1::Models::ObjectBank)
+    end
+  end
 end

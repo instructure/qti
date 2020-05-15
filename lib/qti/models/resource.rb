@@ -73,6 +73,12 @@ module Qti
         rsc.href
       end
 
+      def load_asset_resource(rsc_path)
+        doc = Nokogiri.XML(File.read(rsc_path), rsc_path.to_s, &:noblanks)
+        raise ArgumentError unless doc
+        doc
+      end
+
       def identifier_list(rsc_type)
         RESOURCE_QTI_TYPES.map do |v|
           xmlns_resource_list("[#{rtype_predicate(v, rsc_type)}]").map { |r| r[:identifier] }
@@ -91,8 +97,26 @@ module Qti
         id_list
       end
 
-      def question_bank_identifiers
-        identifier_list('/question-bank')
+      def associated_content_list
+        predicate = rtype_predicate('associatedcontent', 'learning-application-resource')
+        xmlns_resource_list("[#{predicate}]").map { |r| r[:identifier] }
+      end
+
+      def load_associated_content
+        @_load_associated_content ||= associated_content_list.map do |ident|
+          rsc = resource_for(ident)
+          rsc_path = remap_href_path(asset_resource_for(rsc))
+          doc = load_asset_resource(rsc_path)
+
+          # There are other types, but all we support right now are object banks...
+          Qti::V1::Models::ObjectBank.from_path!(rsc_path, @package_root, rsc) unless doc.search('objectbank').empty?
+        end.reject(&:nil?)
+      end
+
+      def objectbanks
+        load_associated_content.select do |c|
+          c.class == Qti::V1::Models::ObjectBank
+        end
       end
 
       def item_resources_v2
