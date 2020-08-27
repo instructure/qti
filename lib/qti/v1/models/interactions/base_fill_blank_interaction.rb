@@ -7,7 +7,7 @@ module Qti
 
           def canvas_stem_items(item_prompt)
             item_prompt.split(CANVAS_REGEX).map.with_index do |stem_item, index|
-              if stem_item.match CANVAS_REGEX
+              if canvas_fib_response_ids.include?(stem_item)
                 # Strip the brackets before searching
                 stem_blank(index, canvas_blank_id(stem_item[1..-2]))
               else
@@ -42,6 +42,38 @@ module Qti
               end
             end
             blank_id
+          end
+
+          def canvas_fib_responses
+            @base_canvas_blanks ||= node.xpath('.//xmlns:response_lid').map do |resp|
+              index = 0
+              {
+                id: resp[:ident],
+                choices:
+                  resp.xpath('.//xmlns:response_label').map do |bnode|
+                    canvas_blank_choice(bnode, index += 1)
+                  end
+              }
+            end
+            @base_canvas_blanks
+          end
+
+          def canvas_fib_response_ids
+            @canvas_fib_response_ids ||= canvas_fib_responses.map { |b| "[#{b[:id].sub(/^response_/, '')}]" }
+          end
+
+          private
+
+          def canvas_blank_choice(bnode, index)
+            bnode_id = bnode[:ident]
+            choice = {
+              id: bnode_id,
+              position: index + 1,
+              item_body: bnode.at_xpath('.//xmlns:mattext').text
+            }
+            @blank_choices ||= {}
+            @blank_choices[bnode_id] = choice
+            choice
           end
         end
       end

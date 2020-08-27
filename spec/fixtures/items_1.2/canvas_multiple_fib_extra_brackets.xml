@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+      <item ident="gdc445634f8b3e063eb009700326194e9" title="L2Q2RUnit8q1">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>multiple_dropdowns_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>points_possible</fieldlabel>
+              <fieldentry>7.0</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>original_answer_ids</fieldlabel>
+              <fieldentry>8464,265,3002,1356,5614,4002,8630,7844,3602,9525,8390,8745,3760,7542,1523,3317,6768,5823,2492,4494,6742,794,4259,4851,8574</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>gf47b767d37e06559ff801f2d253307ba</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span data-contrast="none"&gt;LOREM &lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span data-contrast="none"&gt;Lorem ipsum dolor sit amet consecteur&lt;/span&gt;&lt;/strong&gt;&lt;strong&gt;&lt;span data-contrast="none"&gt;to&lt;/span&gt;&lt;/strong&gt;&lt;strong&gt;&lt;span data-contrast="none"&gt;? Write the letter of the correct paragraph&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+                &lt;p&gt;&lt;span data-contrast="none"&gt;&lt;strong&gt;A.&lt;/strong&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.  &lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;span data-contrast="none"&gt;&lt;strong&gt;B&lt;/strong&gt;. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.  &lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;span data-contrast="none"&gt;&lt;strong&gt;C&lt;/strong&gt;. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. &lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;span data-contrast="none"&gt;&lt;strong&gt;D&lt;/strong&gt;.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt. &lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;span data-contrast="none"&gt;&lt;strong&gt;E&lt;/strong&gt;. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span data-ccp-props='{"201341983":0,"335559739":160,"335559740":240}'&gt; &lt;/span&gt;&lt;span data-contrast="none"&gt;1&lt;/span&gt;&lt;span data-contrast="none"&gt;. L&lt;/span&gt;&lt;i&gt;&lt;span data-contrast="none"&gt;orem&lt;/span&gt;&lt;/i&gt;&lt;i&gt;&lt;span data-contrast="none"&gt; impsum dolor / &lt;/span&gt;&lt;/i&gt;&lt;i&gt;&lt;span data-contrast="none"&gt;ppl&lt;/span&gt;&lt;/i&gt;&lt;i&gt;&lt;span data-contrast="none"&gt; sit amet consectetur &lt;/span&gt;&lt;/i&gt;&lt;span data-contrast="auto"&gt; &lt;/span&gt;&lt;span data-ccp-props='{"134233117":true,"134233118":true,"201341983":0,"335559685":1080,"335559739":160,"335559740":240,"335559991":1080}'&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span data-contrast="auto"&gt; &lt;/span&gt;&lt;span data-contrast="none"&gt;This note refers to paragraph &lt;/span&gt;&lt;strong&gt;&lt;span data-contrast="none"&gt;[1]&lt;/span&gt;&lt;/strong&gt;&lt;strong&gt;&lt;span data-contrast="auto"&gt; &lt;/span&gt;&lt;/strong&gt;&lt;span data-ccp-props='{"134233117":true,"134233118":true,"201341983":0,"335559685":1080,"335559739":160,"335559740":240}'&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span data-contrast="none"&gt;2&lt;/span&gt;&lt;span data-contrast="none"&gt;. L&lt;/span&gt;&lt;i&gt;&lt;span data-contrast="none"&gt;orem&lt;/span&gt;&lt;/i&gt;&lt;i&gt;&lt;span data-contrast="none"&gt; ipsum dolor sit amet / &lt;/span&gt;&lt;/i&gt;&lt;i&gt;&lt;span data-contrast="none"&gt;ppl&lt;/span&gt;&lt;/i&gt;&lt;i&gt;&lt;span data-contrast="none"&gt; consectetur adipiscing&lt;/span&gt;&lt;/i&gt;&lt;span data-contrast="auto"&gt; &lt;/span&gt;&lt;span data-ccp-props='{"134233117":true,"134233118":true,"201341983":0,"335559739":160,"335559740":240}'&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span data-contrast="auto"&gt; &lt;/span&gt;&lt;span data-contrast="none"&gt;This note refers to paragraph &lt;/span&gt; &lt;strong&gt;&lt;span data-contrast="none"&gt;[2]&lt;/span&gt;&lt;/strong&gt;&lt;span data-ccp-props='{"134233117":true,"134233118":true,"201341983":0,"335559685":1080,"335559739":160,"335559740":240}'&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span data-contrast="none"&gt;3&lt;/span&gt;&lt;span data-contrast="none"&gt;. &lt;/span&gt;&lt;i&gt;&lt;span data-contrast="none"&gt;Lorem&lt;/span&gt;&lt;/i&gt;&lt;i&gt;&lt;span data-contrast="none"&gt; ipsum dolor sit amet&lt;/span&gt;&lt;/i&gt;&lt;span data-contrast="auto"&gt; &lt;/span&gt;&lt;span data-ccp-props='{"134233117":true,"134233118":true,"201341983":0,"335559685":1080,"335559739":160,"335559740":240,"335559991":1080}'&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span data-contrast="auto"&gt; &lt;/span&gt;&lt;span data-contrast="none"&gt;This note refers to paragraph &lt;/span&gt;&lt;strong&gt;&lt;span data-contrast="none"&gt;[3]&lt;/span&gt;&lt;/strong&gt;&lt;span data-contrast="auto"&gt; &lt;/span&gt;&lt;span data-ccp-props='{"134233117":true,"134233118":true,"201341983":0,"335559685":1080,"335559739":160,"335559740":240}'&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span data-contrast="none"&gt;4&lt;/span&gt;&lt;span data-contrast="none"&gt;. L&lt;/span&gt;&lt;i&gt;&lt;span data-contrast="none"&gt;orem&lt;/span&gt;&lt;/i&gt;&lt;i&gt;&lt;span data-contrast="none"&gt; ipsum dolor sit amet consectetur&lt;/span&gt;&lt;/i&gt;&lt;span data-contrast="auto"&gt; &lt;/span&gt;&lt;span data-ccp-props='{"134233117":true,"134233118":true,"201341983":0,"335559739":160,"335559740":240}'&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span data-contrast="auto"&gt; &lt;/span&gt;&lt;span data-contrast="none"&gt;This note refers to paragraph  &lt;/span&gt;&lt;strong&gt;&lt;span data-contrast="none"&gt;[4]&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span data-contrast="none"&gt;5&lt;/span&gt;&lt;span data-contrast="none"&gt;. L&lt;/span&gt;&lt;i&gt;&lt;span data-contrast="none"&gt;irst&lt;/span&gt;&lt;/i&gt;&lt;i&gt;&lt;span data-contrast="none"&gt; orem ipsum dolor sit &lt;/span&gt;&lt;/i&gt;&lt;i&gt;&lt;span data-contrast="none"&gt;ppl&lt;/span&gt;&lt;/i&gt;&lt;span data-contrast="auto"&gt; &lt;/span&gt;&lt;span data-ccp-props='{"134233117":true,"134233118":true,"201341983":0,"335559739":160,"335559740":240}'&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span data-contrast="auto"&gt; &lt;/span&gt;&lt;span data-contrast="none"&gt;This note refers to paragraph &lt;/span&gt;&lt;strong&gt;&lt;span data-contrast="none"&gt;[5]&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response_1">
+            <material>
+              <mattext>1</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="8464">
+                <material>
+                  <mattext texttype="text/plain">A</mattext>
+                </material>
+              </response_label>
+              <response_label ident="265">
+                <material>
+                  <mattext texttype="text/plain">B</mattext>
+                </material>
+              </response_label>
+              <response_label ident="3002">
+                <material>
+                  <mattext texttype="text/plain">C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1356">
+                <material>
+                  <mattext texttype="text/plain">D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="5614">
+                <material>
+                  <mattext texttype="text/plain">E</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_2">
+            <material>
+              <mattext>2</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="4002">
+                <material>
+                  <mattext texttype="text/plain">A</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8630">
+                <material>
+                  <mattext texttype="text/plain">B</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7844">
+                <material>
+                  <mattext texttype="text/plain">C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="3602">
+                <material>
+                  <mattext texttype="text/plain">D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9525">
+                <material>
+                  <mattext texttype="text/plain">E</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_3">
+            <material>
+              <mattext>3</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="8390">
+                <material>
+                  <mattext texttype="text/plain">A</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8745">
+                <material>
+                  <mattext texttype="text/plain">B</mattext>
+                </material>
+              </response_label>
+              <response_label ident="3760">
+                <material>
+                  <mattext texttype="text/plain">C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="7542">
+                <material>
+                  <mattext texttype="text/plain">D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1523">
+                <material>
+                  <mattext texttype="text/plain">E</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_4">
+            <material>
+              <mattext>4</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="3317">
+                <material>
+                  <mattext texttype="text/plain">A</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6768">
+                <material>
+                  <mattext texttype="text/plain">B</mattext>
+                </material>
+              </response_label>
+              <response_label ident="5823">
+                <material>
+                  <mattext texttype="text/plain">C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2492">
+                <material>
+                  <mattext texttype="text/plain">D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4494">
+                <material>
+                  <mattext texttype="text/plain">E</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_5">
+            <material>
+              <mattext>5</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6742">
+                <material>
+                  <mattext texttype="text/plain">A</mattext>
+                </material>
+              </response_label>
+              <response_label ident="794">
+                <material>
+                  <mattext texttype="text/plain">B</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4259">
+                <material>
+                  <mattext texttype="text/plain">C</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4851">
+                <material>
+                  <mattext texttype="text/plain">D</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8574">
+                <material>
+                  <mattext texttype="text/plain">E</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_1">1356</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">20.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_2">9525</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">20.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_3">8745</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">20.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_4">5823</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">20.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_5">6742</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">20.00</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+</questestinterop>

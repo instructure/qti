@@ -14,19 +14,6 @@ module Qti
             canvas_stem_items(node.at_xpath('.//xmlns:presentation/xmlns:material/xmlns:mattext').text)
           end
 
-          def blanks
-            @blanks = node.xpath('.//xmlns:response_lid').map do |resp|
-              index = 0
-              {
-                id: resp[:ident],
-                choices:
-                  resp.xpath('.//xmlns:response_label').map do |bnode|
-                    blank_choice(bnode, index += 1)
-                  end
-              }
-            end
-          end
-
           def scoring_data_structs
             answers.map do |answer|
               ScoringData.new(
@@ -42,12 +29,12 @@ module Qti
           end
 
           def text_for_entry(entry_id)
-            blanks
+            canvas_fib_responses
             @blank_choices[entry_id][:item_body]
           end
 
           def position_for_entry(entry_id)
-            blanks
+            canvas_fib_responses
             @blank_choices[entry_id][:position]
           end
 
@@ -62,20 +49,6 @@ module Qti
                 point_value: points.text
               }
             end
-          end
-
-          private
-
-          def blank_choice(bnode, index)
-            bnode_id = bnode[:ident]
-            choice = {
-              id: bnode_id,
-              position: index + 1,
-              item_body: bnode.at_xpath('.//xmlns:mattext').text
-            }
-            @blank_choices ||= {}
-            @blank_choices[bnode_id] = choice
-            choice
           end
         end
       end

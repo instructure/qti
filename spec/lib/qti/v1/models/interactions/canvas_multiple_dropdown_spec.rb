@@ -10,12 +10,6 @@ describe Qti::V1::Models::Interactions::CanvasMultipleDropdownInteraction do
     end
   end
 
-  shared_examples_for 'blanks' do
-    it 'returns the blanks' do
-      expect(loaded_class.blanks).to eq(expected_blanks)
-    end
-  end
-
   shared_examples_for 'answers' do
     it 'returns the answers' do
       expect(loaded_class.answers.count).to eq answer_count
@@ -45,26 +39,6 @@ describe Qti::V1::Models::Interactions::CanvasMultipleDropdownInteraction do
       [
         { id: '6548', position: 2, item_body: 'red' },
         { id: '6951', position: 2, item_body: 'blue' }
-      ]
-    end
-    let(:expected_blanks) do
-      [
-        {
-          id: 'response_color1',
-          choices:
-          [
-            { id: '6548', position: 2, item_body: 'red' },
-            { id: '5550', position: 3, item_body: 'plaid' }
-          ]
-        },
-        {
-          id: 'response_color2',
-          choices:
-          [
-            { id: '6951', position: 2, item_body: 'blue' },
-            { id: '4500', position: 3, item_body: 'paisely' }
-          ]
-        }
       ]
     end
     let(:expected_stem_items) do
@@ -97,7 +71,6 @@ describe Qti::V1::Models::Interactions::CanvasMultipleDropdownInteraction do
 
     include_examples 'shuffled?'
     include_examples 'answers'
-    include_examples 'blanks'
     include_examples 'stem_items'
     include_examples 'scoring_data_structs'
   end
