@@ -85,6 +85,10 @@ module Qti
         def feedback
           @feedback ||= interaction_model.canvas_item_feedback
         end
+
+        def answer_feedback
+          @answer_feedback ||= interaction_model.answer_feedback
+        end
       end
     end
   end
