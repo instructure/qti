@@ -6,7 +6,7 @@ module Qti
     module Models
       module Interactions
         class MatchInteraction < BaseInteraction
-          extend Forwardable
+          extend ::Forwardable
 
           attr_reader :implementation
 

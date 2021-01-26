@@ -1,28 +1,9 @@
 AllCops:
-  TargetRubyVersion: 2.4
+  NewCops: disable
+  SuggestExtensions: false
+  TargetRubyVersion: 2.6
 
-Naming/FileName:
-  Exclude:
-    - spec/gemfiles/*
-
-Naming/MemoizedInstanceVariableName:
-  EnforcedStyleForLeadingUnderscores: optional # Default: disallowed
-
-Metrics/ClassLength:
-  Max: 200 # Default: 100
-
-Metrics/LineLength:
-  Max: 120 # Default: 80
-
-Metrics/MethodLength:
-  Max: 20 # Default: 10
-
-Metrics/BlockLength:
-  Max: 30
-  Exclude:
-    - 'spec/**/*.rb'
-
-Layout/AlignArguments:
+Layout/ArgumentAlignment:
   # Alignment of arguments in multi-line method calls.
   #
   # The `with_fixed_indentation` style aligns the following lines with one
@@ -32,7 +13,16 @@ Layout/AlignArguments:
   #       b)
   EnforcedStyle: with_fixed_indentation
 
-Layout/AlignParameters:
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+Layout/LineLength:
+  Max: 120 # Default: 80
+
+Layout/ParameterAlignment:
   # Alignment of parameters in multi-line method definition.
   #
   # The `with_fixed_indentation` style aligns the following lines with one
@@ -42,11 +32,29 @@ Layout/AlignParameters:
   #       b)
   EnforcedStyle: with_fixed_indentation
 
-Layout/EmptyLineAfterGuardClause:
+Lint/MissingSuper:
   Enabled: false
 
-Layout/EndAlignment:
-  EnforcedStyleAlignWith: variable
+Lint/StructNewOverride:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 200 # Default: 100
+
+Metrics/MethodLength:
+  Max: 20 # Default: 10
+
+Metrics/BlockLength:
+  Max: 30
+  Exclude:
+    - spec/**/*.rb
+
+Naming/FileName:
+  Exclude:
+    - spec/gemfiles/*
+
+Naming/MemoizedInstanceVariableName:
+  EnforcedStyleForLeadingUnderscores: optional # Default: disallowed
 
 Style/Documentation:
   # This cop checks for missing top-level documentation of classes and modules.
@@ -60,4 +68,4 @@ Style/FrozenStringLiteralComment:
 
 Style/NumericPredicate:
   Exclude:
-    - 'spec/**/*.rb'
+    - spec/**/*.rb

@@ -2,8 +2,8 @@ module Qti
   module V1
     module Models
       class AssessmentItem < Qti::V1::Models::Base
-        attr_reader :doc
-        attr_reader :resource
+        attr_reader :doc, :resource
+
         delegate :metadata, to: :@resource
 
         def initialize(item, package_root = nil, resource = nil)

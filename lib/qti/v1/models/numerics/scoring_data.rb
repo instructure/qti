@@ -4,6 +4,7 @@ module Qti
       module Numerics
         class ScoringData
           class UnsupportedNumreicType < StandardError; end
+
           def initialize(node)
             @scoring_node = ScoringNode.new(node)
           end

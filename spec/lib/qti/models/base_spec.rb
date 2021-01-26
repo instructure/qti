@@ -118,7 +118,7 @@ describe Qti::Models::Base do
       context 'with explicit package root' do
         let(:package_root) { File.join('spec', 'fixtures', 'test_qti_2.2') }
         let(:item_path) { File.join(package_root, 'true-false', 'true-false.xml') }
-        let(:item) { described_class.from_path!(item_path, package_root) }
+        let(:item) { described_class.from_path!(item_path, package_root: package_root) }
 
         it 'allows safe .. hrefs' do
           expect do
@@ -135,7 +135,7 @@ describe Qti::Models::Base do
 
       context 'with nil package root' do
         let(:item_path) { File.join('spec', 'fixtures', 'test_qti_2.2', 'true-false', 'true-false.xml') }
-        let(:item) { described_class.from_path!(item_path, nil) }
+        let(:item) { described_class.from_path!(item_path, package_root: nil) }
 
         it 'rejects .. hrefs' do
           expect do

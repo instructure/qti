@@ -93,7 +93,7 @@ module Qti
       path = remap_href_path(node[:data])
       if path
         case node[:type]
-        when %r{^image\/}
+        when %r{^image/}
           return replace_with_image(node, node[:data])
         when 'text/html'
           return replace_with_html(node, path)

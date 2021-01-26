@@ -56,11 +56,10 @@ module Qti
         end
 
         def self.get_matches(node, parent, classlist)
-          matches = classlist.each_with_object([]) do |interaction_class, result|
+          classlist.each_with_object([]) do |interaction_class, result|
             match = interaction_class.matches(node, parent)
             result << match if match
           end
-          matches
         end
       end
     end

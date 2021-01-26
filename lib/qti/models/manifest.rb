@@ -24,7 +24,8 @@ module Qti
         builder = ASSESSMENT_CLASSES[version.split('/').first]
         raise_unsupported unless builder
         rsc = resource_for(identifier, version)
-        assessment = builder.from_path!(remap_href_path(asset_resource_for(rsc)), @package_root, rsc)
+        assessment = builder.from_path!(remap_href_path(asset_resource_for(rsc)), package_root: @package_root,
+                                                                                  resource: rsc)
         assessment.canvas_meta_data(rsc.canvas_metadata)
         assessment
       end
@@ -46,7 +47,7 @@ module Qti
       end
 
       def embedded_non_assessment
-        Qti::V2::Models::NonAssessmentTest.from_path!(@path, @package_root)
+        Qti::V2::Models::NonAssessmentTest.from_path!(@path, package_root: @package_root)
       end
     end
   end

@@ -80,8 +80,8 @@ cached, making additional runs significantly faster.
 Individual spec runs can be started like so:
 
 ```bash
-docker-compose run --rm app /bin/bash -l -c \
-  "BUNDLE_GEMFILE=spec/gemfiles/rails-6.0.gemfile rvm-exec 2.5 rspec"
+docker-compose run --rm app bash -lc \
+  "BUNDLE_GEMFILE=spec/gemfiles/rails-6.1.gemfile rvm-exec 2.7 rspec"
 ```
 
 If you'd like to mount your git checkout within the docker container running

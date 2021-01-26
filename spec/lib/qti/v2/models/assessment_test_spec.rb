@@ -87,9 +87,9 @@ describe Qti::V2::Models::AssessmentTest do
   #       'passages', '0cfd5cf7-2c91-4b35-a57a-9f5d1709f68f.html'
   #     )
   #     stimulus = loaded_class.create_stimulus(stimulus_path)
-  # rubocop:disable AsciiComments
+  # rubocop:disable Style/AsciiComments
   #     expect(stimulus.title).to eq '¡El equipo de hockey te necesita!'
-  # rubocop:enable AsciiComments
+  # rubocop:enable Style/AsciiComments
   #   end
   # end
 end

@@ -3,10 +3,6 @@ module Qti
     module Models
       module Numerics
         class ExactMatch < ScoringBase
-          def initialize(scoring_node)
-            super(scoring_node)
-          end
-
           def scoring_data
             return unless valid?
             Struct.new(

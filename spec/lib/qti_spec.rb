@@ -40,8 +40,8 @@ describe Qti::Importer do
 
       it 'sets the path and package root properly' do
         item = importer.create_assessment_item(importer.assessment_item_refs.first)
-        expect(item.path).to eq file_path + '/quiz.xml'
-        expect(item.package_root).to eq file_path + '/'
+        expect(item.path).to eq "#{file_path}/quiz.xml"
+        expect(item.package_root).to eq "#{file_path}/"
       end
     end
 
@@ -64,7 +64,7 @@ describe Qti::Importer do
         ref = importer.assessment_item_refs.first
         item = importer.create_assessment_item(ref)
         expect(item.path).to eq ref[:path]
-        expect(item.package_root).to eq file_path + '/'
+        expect(item.package_root).to eq "#{file_path}/"
         expect(item.manifest).not_to be_nil
       end
     end

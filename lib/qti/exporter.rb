@@ -7,7 +7,7 @@ module Qti
       @assessment_test = assessment_test
       @package_root_path = args[:package_root_path] || '.'
       @exported_file_path =
-        File.join(File.expand_path('..', package_root_path), File.basename(export_file_name)) + '.zip'
+        "#{File.join(File.expand_path('..', package_root_path), File.basename(export_file_name))}.zip"
     end
 
     def export
@@ -167,12 +167,10 @@ module Qti
 
     def add_all_files(zipfile, package_root_path)
       Dir["#{package_root_path}/**/**"].each do |file|
-        begin
-          entry = file.sub(package_root_path + '/', '')
-          zipfile.add(entry, file)
-        rescue Zip::EntryExistsError
-          logger.info("#{file} already exists")
-        end
+        entry = file.sub("#{package_root_path}/", '')
+        zipfile.add(entry, file)
+      rescue Zip::EntryExistsError
+        logger.info("#{file} already exists")
       end
     end
   end

@@ -31,7 +31,8 @@ module Qti
         end
 
         def create_assessment_item(ref)
-          item = Qti::V2::Models::AssessmentItem.from_path!(ref[:path], @package_root, ref[:resource])
+          item = Qti::V2::Models::AssessmentItem.from_path!(ref[:path], package_root: @package_root,
+                                                                        resource: ref[:resource])
           item.manifest = manifest
           item
         end

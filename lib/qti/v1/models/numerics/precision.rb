@@ -5,10 +5,6 @@ module Qti
         class Precision < ScoringBase
           include ActionView::Helpers::NumberHelper
 
-          def initialize(scoring_node)
-            super(scoring_node)
-          end
-
           def scoring_data
             return unless equal_node && gt_node && lte_node
             Struct.new(

@@ -91,7 +91,7 @@ module Qti
         Resource.new(resource_node(base_xpath), self)
       end
 
-      def assessment_identifiers(embedded_as_assessment = true)
+      def assessment_identifiers(embedded_as_assessment: true)
         id_list = identifier_list('/assessment')
         return id_list + [EMBEDDED_NON_ASSESSMENT_ID] if embedded_as_assessment && embedded_non_assessment?
         id_list
@@ -109,13 +109,16 @@ module Qti
           doc = load_asset_resource(rsc_path)
 
           # There are other types, but all we support right now are object banks...
-          Qti::V1::Models::ObjectBank.from_path!(rsc_path, @package_root, rsc) unless doc.search('objectbank').empty?
+          unless doc.search('objectbank').empty?
+            Qti::V1::Models::ObjectBank.from_path!(rsc_path, package_root: @package_root,
+                                                             resource: rsc)
+          end
         end.reject(&:nil?)
       end
 
       def objectbanks
         load_associated_content.select do |c|
-          c.class == Qti::V1::Models::ObjectBank
+          c.instance_of?(Qti::V1::Models::ObjectBank)
         end
       end
 

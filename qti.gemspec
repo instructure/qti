@@ -16,10 +16,10 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.required_ruby_version = '>= 2.4'
+  s.required_ruby_version = '>= 2.6'
 
-  s.add_dependency 'actionview', '>= 5.1.7', '< 6.1'
-  s.add_dependency 'activesupport', '>= 5.1.7', '< 6.1'
+  s.add_dependency 'actionview', '>= 5.2', '< 6.2'
+  s.add_dependency 'activesupport', '>= 5.2', '< 6.2'
   s.add_dependency 'dry-struct', '~> 0.4.0'
   s.add_dependency 'dry-types', '~> 0.12.3'
   s.add_dependency 'mathml2latex', '~> 2.0'
@@ -27,13 +27,14 @@ Gem::Specification.new do |s|
   s.add_dependency 'rubyzip', '~> 2.0'
   s.add_dependency 'sanitize', '~> 5.1'
 
-  s.add_development_dependency 'bundler', '~> 1.17'
+  s.add_development_dependency 'bundler', '~> 2.1'
   s.add_development_dependency 'byebug', '~> 11.0'
   s.add_development_dependency 'pry'
-  s.add_development_dependency 'rake', '~> 12.3'
+  s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rspec', '~> 3.8'
   s.add_development_dependency 'rspec-mocks', '~> 3.8'
-  s.add_development_dependency 'rubocop', '~> 0.74.0'
+  s.add_development_dependency 'rubocop', '~> 1.8.1'
+  s.add_development_dependency 'rubocop-rails', '~> 2.9.1'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'wwtd', '~> 1.4'
 end

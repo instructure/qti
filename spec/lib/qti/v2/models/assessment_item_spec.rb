@@ -84,9 +84,9 @@ describe Qti::V2::Models::AssessmentItem do
 
   #   it 'removes the passage from the item_body' do
   #     item = test_object.create_assessment_item(item_ref)
-  # rubocop:disable AsciiComments
+  # rubocop:disable Style/AsciiComments
   #     expect(item.item_body).not_to include '¡El equipo de hockey te necesita!'
-  # rubocop:enable AsciiComments
+  # rubocop:enable Style/AsciiComments
   #   end
   # end
 end

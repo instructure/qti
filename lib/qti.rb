@@ -5,6 +5,7 @@ require 'active_support/core_ext/hash/except'
 require 'active_support/core_ext/module/delegation'
 require 'dry-struct'
 require 'find'
+require 'forwardable'
 require 'mathml2latex'
 require 'nokogiri'
 require 'pathname'
@@ -14,8 +15,8 @@ require 'zip'
 
 module Qti
   class Importer
-    attr_reader :package_root
-    attr_reader :assessment_id
+    attr_reader :package_root, :assessment_id
+
     delegate :assessment_identifiers, to: :@manifest
     delegate :question_bank_identifiers, to: :@manifest
 
@@ -39,7 +40,7 @@ module Qti
     def self.manifest(path)
       mpath = manifest_path(path)
       package_root = File.dirname(mpath)
-      manifest = Qti::Models::Manifest.from_path!(mpath, package_root = package_root)
+      manifest = Qti::Models::Manifest.from_path!(mpath, package_root: package_root)
       [mpath, package_root, manifest]
     end
 

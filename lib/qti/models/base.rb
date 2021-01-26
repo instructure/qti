@@ -1,19 +1,22 @@
 module Qti
   class ParseError < StandardError; end
+
   class SpecificationViolation < StandardError; end
+
   class UnsupportedSchema < StandardError; end
 
   module Models
     class Base
       attr_reader :doc, :path, :package_root, :resource
       attr_accessor :manifest
+
       delegate :metadata, to: :@resource, allow_nil: true
 
       def sanitize_content!(html)
         sanitizer.clean(html)
       end
 
-      def self.from_path!(path, package_root = nil, resource = nil)
+      def self.from_path!(path, package_root: nil, resource: nil)
         new(path: path, package_root: package_root, resource: resource)
       end
 
@@ -82,7 +85,8 @@ module Qti
       def package_root=(package_root)
         @package_root = package_root
         return unless @package_root
-        @package_root = Pathname.new(@package_root).cleanpath.to_s + '/'
+
+        @package_root = "#{Pathname.new(@package_root).cleanpath}/"
       end
 
       def relative_path

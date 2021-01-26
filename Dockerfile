@@ -1,29 +1,22 @@
 FROM instructure/rvm
 
-USER root
-
-RUN apt-get update && apt-get install -y unzip \
- && apt-get clean && rm -rf /var/lib/apt/lists/*
-
 ENV LANG C.UTF-8
 WORKDIR /app
 
-COPY qti.gemspec Gemfile /app/
-COPY lib/qti/version.rb /app/lib/qti/version.rb
-
 USER root
-RUN mkdir -p /app/coverage \
-             /app/spec/gemfiles/.bundle \
+RUN apt-get update && apt-get install -y unzip \
+ && apt-get clean && rm -rf /var/lib/apt/lists/* \
  && chown -R docker:docker /app
-
-USER docker
-RUN /bin/bash -l -c "cd /app && rvm-exec 2.4 bundle install --jobs 5"
-RUN /bin/bash -l -c "cd /app && rvm-exec 2.5 bundle install --jobs 5"
-RUN /bin/bash -l -c "cd /app && rvm-exec 2.6 bundle install --jobs 5"
-COPY . /app
-
-USER root
-RUN chown -R docker:docker /app
 USER docker
 
-CMD /bin/bash -l -c "rvm-exec 2.6 bundle exec wwtd"
+COPY --chown=docker:docker qti.gemspec Gemfile /app/
+COPY --chown=docker:docker lib/qti/version.rb /app/lib/qti/version.rb
+
+RUN mkdir -p /app/coverage \
+             /app/spec/gemfiles/.bundle
+
+RUN bash -lc "rvm 2.6,2.7 do gem install --no-document bundler -v '~> 2.1'"
+RUN bash -lc "rvm 2.6,2.7 do bundle install --jobs 5"
+COPY --chown=docker:docker . /app
+
+CMD bash -lc "rvm-exec 2.7 bundle exec wwtd"
