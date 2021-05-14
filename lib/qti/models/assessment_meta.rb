@@ -37,8 +37,12 @@ module Qti
         points_possible_raw.to_f
       end
 
-      def show_correct_anwers
+      def show_correct_answers
         tag_under_quiz('show_correct_answers')
+      end
+
+      def show_correct_answers?
+        string_true?(show_correct_answers)
       end
 
       def anonymous_submissions
@@ -217,7 +221,7 @@ module Qti
         :show_correct_answers_at, :hide_correct_answers_at,
         :lock_at, :unlock_at, :due_at, :require_lockdown_browser?,
         :require_lockdown_browser_for_results?,
-        :require_lockdown_browser_monitor?,
+        :require_lockdown_browser_monitor?, :show_correct_answers?,
         :lockdown_browser_monitor_data,
         to: :@canvas_meta_data, prefix: :canvas, allow_nil: true
 

@@ -27,6 +27,7 @@ context 'Canvas Assessment Meta Data' do
       expect(assessment.canvas_access_code).to eq(access_code)
       expect(assessment.canvas_ip_filter).to eq(ip_filter)
       expect(assessment.canvas_time_limit).to eq(time_limit)
+      expect(assessment.canvas_show_correct_answers?).to eq(show_answers)
       expect(assessment.canvas_show_correct_answers_at).to eq(show_answers_at)
       expect(assessment.canvas_hide_correct_answers_at).to eq(hide_answers_at)
       expect(assessment.canvas_require_lockdown_browser?).to eq(rlb)
@@ -59,6 +60,7 @@ context 'Canvas Assessment Meta Data' do
     let(:access_code) { nil }
     let(:ip_filter) { nil }
     let(:time_limit) { nil }
+    let(:show_answers) { true }
     let(:show_answers_at) { nil }
     let(:hide_answers_at) { nil }
     let(:rlb) { false }
@@ -92,6 +94,7 @@ context 'Canvas Assessment Meta Data' do
     let(:access_code) { '98aAlfmxtw#!£$s' }
     let(:ip_filter) { '192.168.217.1/24' }
     let(:time_limit) { 187 }
+    let(:show_answers) { true }
     let(:show_answers_at) { '2041-02-17 06:00:00 UTC' }
     let(:hide_answers_at) { '2042-12-26 06:00:00 UTC' }
     let(:rlb) { false }
@@ -125,6 +128,7 @@ context 'Canvas Assessment Meta Data' do
     let(:access_code) { nil }
     let(:ip_filter) { nil }
     let(:time_limit) { nil }
+    let(:show_answers) { false }
     let(:show_answers_at) { nil }
     let(:hide_answers_at) { nil }
     let(:rlb) { false }
@@ -158,6 +162,7 @@ context 'Canvas Assessment Meta Data' do
     let(:access_code) { nil }
     let(:ip_filter) { nil }
     let(:time_limit) { nil }
+    let(:show_answers) { true }
     let(:show_answers_at) { nil }
     let(:hide_answers_at) { nil }
     let(:rlb) { false }
