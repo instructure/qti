@@ -33,6 +33,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'docker-compose build --pull'
+                // Initialize docker network now to avoid race condition later.
+                sh 'docker-compose run --rm app /bin/bash -lc "rvm version"'
             }
         }
         stage('Test') {
