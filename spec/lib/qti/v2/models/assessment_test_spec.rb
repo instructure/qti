@@ -15,6 +15,10 @@ describe Qti::V2::Models::AssessmentTest do
       expect(loaded_class.title).to eq 'Simple Feedback Test'
     end
 
+    it 'has the identifier' do
+      expect(loaded_class.identifier).to eq 'SPECTATUS-GENERATED-TEST'
+    end
+
     it 'gets dependency file refs' do
       refs = loaded_class.assessment_items
       expect(refs.all? { |ref| File.extname(ref[:path]) == '.xml' })

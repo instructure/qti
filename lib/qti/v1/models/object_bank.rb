@@ -8,6 +8,10 @@ module Qti
             './/xmlns:qtimetadatafield/xmlns:fieldlabel[text()="bank_title"]/../xmlns:fieldentry'
           )&.content || File.basename(@path, '.xml')
         end
+
+        def identifier
+          @identifier ||= xpath_with_single_check('.//xmlns:objectbank/@ident')&.content
+        end
       end
     end
   end

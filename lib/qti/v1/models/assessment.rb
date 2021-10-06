@@ -6,6 +6,10 @@ module Qti
 
         GROUP_ID = 'xmlns:section/xmlns:selection_ordering'.freeze
 
+        def identifier
+          @identifier ||= xpath_with_single_check('.//xmlns:assessment/@ident')&.content
+        end
+
         def title
           @title ||= xpath_with_single_check('.//xmlns:assessment/@title')&.content || File.basename(@path, '.xml')
         end

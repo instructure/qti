@@ -5,6 +5,10 @@ module Qti
         include Qti::Models::AssessmentMetaBase
         include Qti::XPathHelpers
 
+        def identifier
+          @identifier ||= xpath_with_single_check('//xmlns:assessmentTest/@identifier')&.content
+        end
+
         def title
           @title ||= xpath_with_single_check('//xmlns:assessmentTest/@title')&.content || File.basename(@path, '.xml')
         end

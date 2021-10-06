@@ -1,4 +1,20 @@
 describe Qti::V1::Models::ObjectBank do
+  let(:doc) do
+    <<~XML
+      <?xml version="1.0" encoding="UTF-8"?>
+      <questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+        <objectbank ident="gooblegobble12345">
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>not_a_bank_title</fieldlabel>
+              <fieldentry>A different metadata entry</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </objectbank>
+      </questestinterop>
+    XML
+  end
+
   describe 'bank loading' do
     [
       'gf3edf8167be16b3a65a00ca923132b07.xml.qti',
@@ -19,21 +35,17 @@ describe Qti::V1::Models::ObjectBank do
 
   describe '#title' do
     it 'missing bank_title defaults to filename' do
-      allow(File).to receive(:read).and_return(<<~XML)
-        <?xml version="1.0" encoding="UTF-8"?>
-        <questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
-          <objectbank ident="gooblegobble12345">
-            <qtimetadata>
-              <qtimetadatafield>
-                <fieldlabel>not_a_bank_title</fieldlabel>
-                <fieldentry>A different metadata entry</fieldentry>
-              </qtimetadatafield>
-            </qtimetadata>
-          </objectbank>
-        </questestinterop>
-      XML
+      allow(File).to receive(:read).and_return(doc)
       objectbank = described_class.new path: '/etc/FakeBank007.xml'
       expect(objectbank.title).to eq 'FakeBank007'
+    end
+  end
+
+  describe '#identifier' do
+    it 'has the identifier attribute' do
+      allow(File).to receive(:read).and_return(doc)
+      objectbank = described_class.new path: '/etc/FakeBank008.xml'
+      expect(objectbank.identifier).to eq 'gooblegobble12345'
     end
   end
 end
