@@ -7,6 +7,7 @@ describe Qti::V1::Models::QuestionGroup do
   it 'configures a group correctly' do
     expect(loaded_class.title).to eq('Group 1 (1/4)')
     expect(loaded_class.identifier).to eq('i4663897607358cfba8636ed6127b9466')
+    expect(loaded_class.sourcebank_ref).to eq('sourcebank_reference_uuid')
     expect(loaded_class.items.count).to eq(4)
     expect(loaded_class.selection_number).to eq(1)
     expect(loaded_class.points_per_item).to eq(1)

@@ -15,6 +15,7 @@
             <selection_extension>
               <points_per_item>1.0</points_per_item>
             </selection_extension>
+            <sourcebank_ref>sourcebank_reference_uuid</sourcebank_ref>
           </selection>
         </selection_ordering>
         <item ident="i09d4a5492a38a5b4d1533b8fdbdf7376" title="Question">

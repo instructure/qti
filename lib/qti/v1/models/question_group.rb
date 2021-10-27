@@ -34,6 +34,10 @@ module Qti
           selection&.xpath('xmlns:selection_number')&.text&.to_i
         end
 
+        def sourcebank_ref
+          selection&.xpath('xmlns:sourcebank_ref')&.text
+        end
+
         def points_per_item
           selection.xpath('xmlns:selection_extension/xmlns:points_per_item')&.text&.to_f
         end

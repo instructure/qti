@@ -9,6 +9,10 @@ describe Qti::V1::Models::ObjectBank do
               <fieldlabel>not_a_bank_title</fieldlabel>
               <fieldentry>A different metadata entry</fieldentry>
             </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>bank_type</fieldlabel>
+              <fieldentry>account</fieldentry>
+            </qtimetadatafield>
           </qtimetadata>
         </objectbank>
       </questestinterop>
@@ -46,6 +50,14 @@ describe Qti::V1::Models::ObjectBank do
       allow(File).to receive(:read).and_return(doc)
       objectbank = described_class.new path: '/etc/FakeBank008.xml'
       expect(objectbank.identifier).to eq 'gooblegobble12345'
+    end
+  end
+
+  describe '#bank_type' do
+    it 'has the bank_type attribute' do
+      allow(File).to receive(:read).and_return(doc)
+      objectbank = described_class.new path: '/etc/FakeBank008.xml'
+      expect(objectbank.bank_type).to eq 'account'
     end
   end
 end

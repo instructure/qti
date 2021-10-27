@@ -12,6 +12,13 @@ module Qti
         def identifier
           @identifier ||= xpath_with_single_check('.//xmlns:objectbank/@ident')&.content
         end
+
+        # tells us whether the bank was an account or course bank
+        def bank_type
+          @bank_type ||= xpath_with_single_check(
+            './/xmlns:qtimetadatafield/xmlns:fieldlabel[text()="bank_type"]/../xmlns:fieldentry'
+          )&.content
+        end
       end
     end
   end
