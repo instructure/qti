@@ -10,6 +10,31 @@ describe Qti::V1::Models::Interactions::BaseFillBlankInteraction do
     end
   end
 
+  context 'canvas_stem_items' do
+    let(:file_path) { File.join(fixtures_path, 'canvas_multiple_fib_as_single.xml') }
+    let(:simple_prompt) { 'fill in the [blank]' }
+    let(:simple_expected) do
+      [
+        { id: 'stem_0', position: 1, type: 'text', value: 'fill in the ' },
+        { id: 'stem_1', position: 2, type: 'text', value: '[blank]' }
+      ]
+    end
+    let(:embedded_prompt) { '[[embedded] [groups]]' }
+    let(:embedded_expected) do
+      [
+        { id: 'stem_0', position: 1, type: 'text', value: '[' },
+        { id: 'stem_1', position: 2, type: 'text', value: '[embedded]' },
+        { id: 'stem_2', position: 3, type: 'text', value: ' ' },
+        { id: 'stem_3', position: 4, type: 'text', value: '[groups]' },
+        { id: 'stem_4', position: 5, type: 'text', value: ']' }
+      ]
+    end
+    it 'decomposes item prompts' do
+      expect(loaded_class.canvas_stem_items(simple_prompt)).to eq(simple_expected)
+      expect(loaded_class.canvas_stem_items(embedded_prompt)).to eq(embedded_expected)
+    end
+  end
+
   context 'canvas_multiple_dropdowns.xml' do
     let(:file_path) { File.join(fixtures_path, 'canvas_multiple_dropdowns.xml') }
     let(:expected_blanks) do
