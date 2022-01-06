@@ -29,6 +29,18 @@ describe Qti::V1::Models::AssessmentItem do
     it 'has sanitized item_body' do
       expect(loaded_class.item_body).to include '<img'
       expect(loaded_class.item_body).to include 'If I get a 3, I must have done something wrong.'
+      expect(loaded_class.item_body).not_to include 'script="alert(\'bad\')"'
+    end
+
+    it 'transforms canvas math content when conversion is enabled' do
+      expect(loaded_class.item_body).to include '\(sample equation\)'
+    end
+
+    it 'does not transform math content when conversion is Disabled' do
+      Qti.configure do |config|
+        config.extract_latex_from_image_tags = false
+      end
+      expect(loaded_class.item_body).not_to include '"sample equation"'
     end
 
     describe '#points_possible' do

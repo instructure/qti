@@ -37,6 +37,18 @@ module Qti
 
     private
 
+    def convert_canvas_math_images(env)
+      node = env[:node]
+      node_name = env[:node_name]
+      latex = node['data-equation-content']
+
+      return if env[:is_whitelisted] || !env[:node].element?
+      return unless node_name == 'img'
+      return unless latex
+
+      node.replace("\\(#{latex}\\)")
+    end
+
     def object_tag_transformer
       lambda do |env|
         return unless env[:node_name] == 'object'
@@ -73,6 +85,7 @@ module Qti
       transformers << src_transformers
       transformers << object_tag_transformer if import_objects
       transformers << remap_unknown_tags_transformer
+      transformers << method(:convert_canvas_math_images) if Qti.configuration.extract_latex_from_image_tags
       Sanitize::Config::RELAXED.merge transformers: transformers
     end
 

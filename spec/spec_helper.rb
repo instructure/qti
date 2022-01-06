@@ -16,6 +16,10 @@ end
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'qti'
 
+Qti.configure do |config|
+  config.extract_latex_from_image_tags = true
+end
+
 Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 
 RSpec.configure do |config|

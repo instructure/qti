@@ -5,7 +5,7 @@
       <item title="Grading - specific - 3 pt score" ident="QUE_1003">
         <presentation>
           <material>
-            <mattext texttype="text/html"><![CDATA[If I get a 3, I must have done something wrong. <img align="bottom" alt="image.png" src="org0/images/image.png" border="0"/>]]></mattext>
+            <mattext texttype="text/html"><![CDATA[If I get a 3, I must have done something wrong. <img data-equation-content="sample equation" script="alert('bad')" align="bottom" alt="image.png" src="org0/images/image.png" border="0"/> <img script="alert('bad')" align="bottom" alt="image.png" src="org0/images/image.png" border="0"/>]]></mattext>
           </material>
           <response_lid ident="QUE_1004_RL" rcardinality="Single" rtiming="No">
             <render_choice shuffle="Yes">

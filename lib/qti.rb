@@ -4,6 +4,7 @@ require 'active_support/core_ext/string'
 require 'active_support/core_ext/hash/except'
 require 'active_support/core_ext/module/delegation'
 require 'dry-struct'
+require 'ostruct'
 require 'find'
 require 'forwardable'
 require 'mathml2latex'
@@ -67,6 +68,14 @@ module Qti
     def create_question_group(question_group_ref)
       @import.create_question_group(question_group_ref)
     end
+  end
+
+  def self.configuration
+    @configuration ||= OpenStruct.new
+  end
+
+  def self.configure
+    yield(configuration)
   end
 end
 
