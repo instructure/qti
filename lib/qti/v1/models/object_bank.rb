@@ -19,6 +19,12 @@ module Qti
             './/xmlns:qtimetadatafield/xmlns:fieldlabel[text()="bank_type"]/../xmlns:fieldentry'
           )&.content
         end
+
+        def bank_context_uuid
+          @bank_context_uuid ||= xpath_with_single_check(
+            './/xmlns:qtimetadatafield/xmlns:fieldlabel[text()="bank_context_uuid"]/../xmlns:fieldentry'
+          )&.content
+        end
       end
     end
   end

@@ -13,6 +13,10 @@ describe Qti::V1::Models::ObjectBank do
               <fieldlabel>bank_type</fieldlabel>
               <fieldentry>account</fieldentry>
             </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>bank_context_uuid</fieldlabel>
+              <fieldentry>oAORQgMEvQquzZyKIW6Usg6CFveihQH5pOqHadsb</fieldentry>
+            </qtimetadatafield>
           </qtimetadata>
         </objectbank>
       </questestinterop>
@@ -58,6 +62,14 @@ describe Qti::V1::Models::ObjectBank do
       allow(File).to receive(:read).and_return(doc)
       objectbank = described_class.new path: '/etc/FakeBank008.xml'
       expect(objectbank.bank_type).to eq 'account'
+    end
+  end
+
+  describe '#bank_context_uuid' do
+    it 'has the bank_context_uuid attribute' do
+      allow(File).to receive(:read).and_return(doc)
+      objectbank = described_class.new path: '/etc/FakeBank008.xml'
+      expect(objectbank.bank_context_uuid).to eq 'oAORQgMEvQquzZyKIW6Usg6CFveihQH5pOqHadsb'
     end
   end
 end
