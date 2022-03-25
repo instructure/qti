@@ -47,7 +47,7 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     let(:expected_stem_items) do
       [
         { id: 'stem_0', position: 1, type: 'text', value: '<div><p>Chicago is in what state?</p></div>' },
-        { id: 'stem_1', position: 2, type: 'blank', blank_id: 'response1' }
+        { id: 'stem_1', position: 2, type: 'blank', blank_id: 'response1', blank_name: 'response1' }
       ]
     end
 
@@ -72,9 +72,9 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     let(:expected_stem_items) do
       [
         { id: 'stem_0', position: 1, type: 'text', value: '<div><p><span>Roses are ' },
-        { id: 'stem_1', position: 2, type: 'blank', blank_id: 'response_color1' },
+        { id: 'stem_1', position: 2, type: 'blank', blank_id: 'response_color1', blank_name: 'color1' },
         { id: 'stem_2', position: 3, type: 'text', value: ', violets are ' },
-        { id: 'stem_3', position: 4, type: 'blank', blank_id: 'response_color2' },
+        { id: 'stem_3', position: 4, type: 'blank', blank_id: 'response_color2', blank_name: 'color2' },
         { id: 'stem_4', position: 5, type: 'text', value: '</span></p></div>' }
       ]
     end
@@ -102,11 +102,11 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
       [
         { id: 'stem_0', position: 1, type: 'text', value: 'Fill-in-the blanks in this text from Richard III: ' },
         { id: 'stem_1', position: 2, type: 'text', value: 'Now is the ' },
-        { id: 'stem_2', position: 3, type: 'blank', blank_id: 'FIB01' },
+        { id: 'stem_2', position: 3, type: 'blank', blank_id: 'FIB01', blank_name: 'FIB01' },
         { id: 'stem_3', position: 4, type: 'text', value: ' of our discontent made glorious ' },
-        { id: 'stem_4', position: 5, type: 'blank', blank_id: 'FIB02' },
+        { id: 'stem_4', position: 5, type: 'blank', blank_id: 'FIB02', blank_name: 'FIB02' },
         { id: 'stem_5', position: 6, type: 'text', value: ' by these sons of ' },
-        { id: 'stem_6', position: 7, type: 'blank', blank_id: 'FIB03' }
+        { id: 'stem_6', position: 7, type: 'blank', blank_id: 'FIB03', blank_name: 'FIB03' }
       ]
     end
 
@@ -165,11 +165,11 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
       [
         { id: 'stem_0', position: 1, type: 'text', value: 'Fill-in-the blanks in this text from Richard III: ' },
         { id: 'stem_1', position: 2, type: 'text', value: 'Now is the ' },
-        { id: 'stem_2', position: 3, type: 'blank', blank_id: 'FIB01' },
+        { id: 'stem_2', position: 3, type: 'blank', blank_id: 'FIB01', blank_name: 'FIB01' },
         { id: 'stem_3', position: 4, type: 'text', value: ' of our discontent made glorious ' },
-        { id: 'stem_4', position: 5, type: 'blank', blank_id: 'FIB02' },
+        { id: 'stem_4', position: 5, type: 'blank', blank_id: 'FIB02', blank_name: 'FIB02' },
         { id: 'stem_5', position: 6, type: 'text', value: ' by these sons of ' },
-        { id: 'stem_6', position: 7, type: 'blank', blank_id: 'FIB03' }
+        { id: 'stem_6', position: 7, type: 'blank', blank_id: 'FIB03', blank_name: 'FIB03' }
       ]
     end
 
@@ -195,7 +195,7 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     let(:expected_stem_items) do
       [
         { id: 'stem_0', position: 1, type: 'text', value: '<div><p>Bird, bird, bird, bird is the ' },
-        { id: 'stem_1', position: 2, type: 'blank', blank_id: 'response_word' },
+        { id: 'stem_1', position: 2, type: 'blank', blank_id: 'response_word', blank_name: 'word' },
         { id: 'stem_2', position: 3, type: 'text', value: '</p></div>' }
       ]
     end

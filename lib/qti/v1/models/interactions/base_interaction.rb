@@ -9,6 +9,11 @@ module Qti
             false
           end
 
+          def self.canvas_custom_fitb?(node)
+            qtype = question_type(node)
+            %w[fill_in_multiple_blanks_question multiple_dropdowns_question].include? qtype
+          end
+
           def self.canvas_multiple_fib?(node)
             matches = node.xpath('.//xmlns:response_lid')
             return false if matches.count < 1
