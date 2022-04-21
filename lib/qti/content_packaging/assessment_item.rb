@@ -1,6 +1,8 @@
 module Qti
   module ContentPackaging
     class AssessmentItem < Dry::Struct
+      constructor_type :schema
+
       attribute :identifier, Types::Strict::String
       attribute :title, Types::Strict::String
       attribute :interaction, ContentPackaging::ChoiceInteraction

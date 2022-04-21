@@ -5,8 +5,8 @@ require 'qti/version'
 Gem::Specification.new do |s|
   s.name          = 'qti'
   s.version       = Qti::VERSION
-  s.authors       = ['Hannah Bottalla', 'Robinson Rodríguez']
-  s.email         = ['hannah@instructure.com', 'rrodriguez-bd@instructure.com', 'quizzes@instructure.com']
+  s.authors       = ['Adrian Diaz', 'Alex Slaughter', 'James Logan', 'Jorge Arteaga', 'Stephen Kacsmark']
+  s.email         = ['quizzes@instructure.com']
   s.summary       = 'QTI 1.2 and 2.1 import and export models'
   s.homepage      = 'https://github.com/instructure/qti'
   s.license       = 'MIT'
@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'actionview', '>= 5.2', '< 6.2'
   s.add_dependency 'activesupport', '>= 5.2', '< 6.2'
   s.add_dependency 'dry-struct', '~> 0.4.0'
-  s.add_dependency 'dry-types', '~> 0.12.3'
+  s.add_dependency 'dry-types', '~> 0.14.0'
   s.add_dependency 'mathml2latex', '~> 2.0'
   s.add_dependency 'nokogiri', '~> 1.10'
   s.add_dependency 'rubyzip', '~> 2.0'
