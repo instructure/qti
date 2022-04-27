@@ -62,7 +62,7 @@ module Qti
               'xmlns:displayfeedback/..'
             answers = node.xpath(path).map do |entry|
               answer_feedback_entry(entry)
-            end
+            end.compact
             answers unless answers.empty?
           end
 
@@ -70,13 +70,15 @@ module Qti
 
           def answer_feedback_entry(entry)
             ve = entry.xpath('.//xmlns:varequal').first
-            refid = entry.xpath('./xmlns:displayfeedback').first[:linkrefid]
+            refid = entry.xpath('./xmlns:displayfeedback[not (@linkrefid="correct_fb" or ' \
+              '@linkrefid="general_incorrect_fb" or @linkrefid="general_fb")]').first&.[](:linkrefid)
             feedback = get_feedback(refid)
+            return nil unless feedback
             {
               response_id: ve[:respident],
               response_value: ve.text,
-              texttype: feedback[:texttype],
-              feedback: feedback.text
+              texttype: feedback&.[](:texttype),
+              feedback: feedback&.text
             }
           end
 

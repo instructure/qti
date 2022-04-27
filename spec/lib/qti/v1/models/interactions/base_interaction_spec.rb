@@ -72,4 +72,26 @@ describe Qti::V1::Models::Interactions::BaseInteraction do
     include_examples('item_level_feedback')
     include_examples('answer_feedback')
   end
+
+  context 'mc_feedback.xml' do
+    let(:file_path) { File.join(fixtures_path, 'mc_feedback.xml') }
+    let(:general_fb) { '<p>General Feedback</p>' }
+    let(:correct_fb) { '<p>General Correct Feedback</p>' }
+    let(:incorrect_fb) { '<p>General Incorrect Feedback</p>' }
+    let(:answer_fb) do
+      [
+        { response_id: 'response1', response_value: '5706',
+          texttype: 'text/html', feedback: '<p>Answer A Feedback</p>' },
+        { response_id: 'response1', response_value: '2408',
+          texttype: 'text/html', feedback: '<p>Answer B Feedback</p>' },
+        { response_id: 'response1', response_value: '621',
+          texttype: 'text/html', feedback: '<p>Answer C Feedback</p>' },
+        { response_id: 'response1', response_value: '7011',
+          texttype: 'text/html', feedback: '<p>Answer D Feedback</p>' }
+      ]
+    end
+
+    include_examples('item_level_feedback')
+    include_examples('answer_feedback')
+  end
 end
