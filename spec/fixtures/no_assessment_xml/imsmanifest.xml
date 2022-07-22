@@ -7,6 +7,13 @@ identifier="non-assessment-item">
     <metadata>
        <schema>QTIv2.2 Package</schema>
        <schemaversion>1.0.0</schemaversion>
+       <lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+          <general>
+             <title>
+                <string>1027TestTitle12</string>
+             </title>
+          </general>
+       </lom>
     </metadata>
     <organizations/>
     <resources>

@@ -11,11 +11,16 @@ describe Qti::V2::Models::NonAssessmentTest do
     it 'expects at least one assement item' do
       expect(loaded_class.assessment_items.count)
     end
+
+    it 'imports title' do
+      expect(loaded_class.title).to eq(title)
+    end
   end
 
   describe '2.2' do
     let(:path) { File.join(fixtures_path, 'no_assessment_xml', 'imsmanifest.xml') }
     let(:loaded_class) { described_class.from_path!(path) }
+    let(:title) { '1027TestTitle12' }
 
     include_examples 'loading_a_non-assessment'
   end
@@ -23,6 +28,7 @@ describe Qti::V2::Models::NonAssessmentTest do
   describe 'package_shared' do
     let(:path) { File.join(fixtures_path, 'package_shared', 'imsmanifest.xml') }
     let(:loaded_class) { described_class.from_path!(path) }
+    let(:title) { 'imsmanifest' }
 
     include_examples 'loading_a_non-assessment'
   end
