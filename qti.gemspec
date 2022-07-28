@@ -20,8 +20,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'actionview', '>= 5.2', '< 6.2'
   s.add_dependency 'activesupport', '>= 5.2', '< 6.2'
-  s.add_dependency 'dry-struct', '~> 0.4.0'
-  s.add_dependency 'dry-types', '~> 0.14.0'
+  s.add_dependency 'dry-struct', '~> 1.4.0'
+  s.add_dependency 'dry-types', '~> 1.5.1'
   s.add_dependency 'mathml2latex', '~> 2.0'
   s.add_dependency 'nokogiri', '~> 1.10'
   s.add_dependency 'rubyzip', '~> 2.0'
