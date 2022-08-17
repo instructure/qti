@@ -44,9 +44,9 @@ describe Qti::V1::Models::Interactions::CanvasMultipleDropdownInteraction do
     let(:expected_stem_items) do
       [
         { id: 'stem_0', position: 1, type: 'text', value: '<div><p>Roses are ' },
-        { id: 'stem_1', position: 2, type: 'blank', blank_id: 'response_color1', blank_name: 'color1' },
+        { id: 'stem_1', position: 2, type: 'blank', blank_id: 'response_color1', blank_name: 'red' },
         { id: 'stem_2', position: 3, type: 'text', value: ', violets are ' },
-        { id: 'stem_3', position: 4, type: 'blank', blank_id: 'response_color2', blank_name: 'color2' },
+        { id: 'stem_3', position: 4, type: 'blank', blank_id: 'response_color2', blank_name: 'blue' },
         { id: 'stem_4', position: 5, type: 'text', value: '.</p></div>' }
       ]
     end

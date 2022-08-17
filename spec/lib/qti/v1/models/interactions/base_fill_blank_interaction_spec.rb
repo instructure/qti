@@ -12,11 +12,11 @@ describe Qti::V1::Models::Interactions::BaseFillBlankInteraction do
 
   context 'canvas_stem_items' do
     let(:file_path) { File.join(fixtures_path, 'canvas_multiple_fib_as_single.xml') }
-    let(:simple_prompt) { 'fill in the [blank]' }
+    let(:simple_prompt) { 'fill in the [blank1]' }
     let(:simple_expected) do
       [
         { id: 'stem_0', position: 1, type: 'text', value: 'fill in the ' },
-        { id: 'stem_1', position: 2, type: 'text', value: '[blank]' }
+        { id: 'stem_1', position: 2, type: 'blank', blank_id: 'response_blank1', blank_name: 'word' }
       ]
     end
     let(:embedded_prompt) { '[[embedded] [groups]]' }
@@ -92,7 +92,7 @@ describe Qti::V1::Models::Interactions::BaseFillBlankInteraction do
     let(:expected_blanks) do
       [
         {
-          id: 'response_word',
+          id: 'response_blank1',
           choices:
           [
             { id: '3537', item_body: 'word', position: 2 }

@@ -112,7 +112,10 @@ module Qti
 
           def qti_stem_item(index, stem_item)
             if stem_item.xpath('./xmlns:render_fib').present?
-              stem_blank(index, stem_item.attributes['ident'].value)
+              blank_id = stem_item.attributes['ident'].value
+              blank_answer = answers.find { |answer| answer.identifier == blank_id }
+              blank_name = blank_answer&.item_body || blank_id
+              stem_blank(index, blank_id, blank_name)
             else
               stem_text(index, sanitize_content!(stem_item.children.text))
             end

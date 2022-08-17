@@ -9,20 +9,23 @@ module Qti
             item_prompt.split(CANVAS_REGEX).map.with_index do |stem_item, index|
               if canvas_fib_response_ids.include?(stem_item)
                 # Strip the brackets before searching
-                stem_blank(index, stem_item[1..-2])
+                value = stem_item[1..-2]
+                blank_id = blank_id(value)
+                blank_name = blank_value(blank_id) || value
+                stem_blank(index, blank_id, blank_name)
               else
                 stem_text(index, stem_item)
               end
             end
           end
 
-          def stem_blank(index, value)
+          def stem_blank(index, blank_id, blank_name)
             {
               id: "stem_#{index}",
               position: index + 1,
               type: 'blank',
-              blank_id: blank_id(value),
-              blank_name: value
+              blank_id: blank_id,
+              blank_name: blank_name
             }
           end
 
@@ -38,6 +41,11 @@ module Qti
           def blank_id(stem_item)
             return stem_item unless canvas_custom_fitb?
             canvas_blank_id(stem_item)
+          end
+
+          def blank_value(blank_id)
+            blank = canvas_fib_responses.find { |response| response[:id] == blank_id }
+            blank&.dig(:choices, 0, :item_body)
           end
 
           def canvas_custom_fitb?
