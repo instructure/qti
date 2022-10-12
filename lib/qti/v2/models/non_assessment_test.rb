@@ -29,7 +29,7 @@ module Qti
         def title
           @title ||= begin
             QTIV2_TITLE_PATHS.map do |path|
-              xpath_with_single_check(path)&.content
+              @doc.xpath(path).first&.content
             end.compact.first
           end || super
         end

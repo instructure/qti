@@ -33,6 +33,14 @@ describe Qti::V2::Models::NonAssessmentTest do
     include_examples 'loading_a_non-assessment'
   end
 
+  describe 'imsqti_2.2_package' do
+    let(:path) { File.join(fixtures_path, 'imsqti_2.2_package', 'imsmanifest.xml') }
+    let(:loaded_class) { described_class.from_path!(path) }
+    let(:title) { 'Example Package' }
+
+    include_examples 'loading_a_non-assessment'
+  end
+
   # describe '#stimulus_ref' do
   #   it 'should return the stimulus ref if it exists' do
   #     item = loaded_class.assessment_items[1]
