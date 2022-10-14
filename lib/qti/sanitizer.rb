@@ -9,26 +9,37 @@ module Qti
     }.freeze
 
     PROTOCOLS = ['http', 'https', :relative].freeze
-    FILTER_TAGS = %w[iframe object embed].freeze
+    FILTER_TAGS = %w[iframe object embed video audio source].freeze
+    MEDIA_SRC_ATTR = %w[src data type codebase].freeze
+    MEDIA_FMT_ATTR = %w[width height classid].freeze
+    MEDIA_ALT_ATTR = %w[title alt allow allowfullscreen].freeze
+    MEDIA_EXT_ATTR = %w[data-media-type data-media-id].freeze
+    MEDIA_ATTR = [MEDIA_SRC_ATTR, MEDIA_FMT_ATTR, MEDIA_ALT_ATTR, MEDIA_EXT_ATTR].flatten.freeze
 
     CONFIG =
       {
-        elements: FILTER_TAGS,
+        elements: Sanitize::Config::RELAXED[:elements] + FILTER_TAGS,
         protocols:
           {
             'iframe' => { 'src' => PROTOCOLS },
             'object' => { 'src' => PROTOCOLS, 'data' => PROTOCOLS },
-            'embed' => { 'src' => PROTOCOLS }
-          }.freeze,
+            'embed' => { 'src' => PROTOCOLS },
+            'video' => { 'src' => PROTOCOLS },
+            'audio' => { 'src' => PROTOCOLS },
+            'source' => { 'src' => PROTOCOLS }
+          },
         attributes:
           {
-            'object' => %w[src width height style data type classid codebase],
+            'video' => MEDIA_ATTR,
+            'audio' => MEDIA_ATTR,
+            'source' => MEDIA_ATTR,
+            'object' => MEDIA_ATTR,
             'embed' => %w[name src type allowfullscreen pluginspage wmode
                           allowscriptaccess width height],
             'iframe' => %w[src width height name align frameborder scrolling sandbox
                            allowfullscreen webkitallowfullscreen mozallowfullscreen
                            allow] # TODO: remove explicit allow with domain whitelist account setting
-          }.freeze
+          }
       }.freeze
 
     def clean(html)
@@ -86,7 +97,10 @@ module Qti
       transformers << object_tag_transformer if import_objects
       transformers << remap_unknown_tags_transformer
       transformers << method(:convert_canvas_math_images) if Qti.configuration.extract_latex_from_image_tags
-      Sanitize::Config::RELAXED.merge transformers: transformers
+      Sanitize::Config.merge(
+        Sanitize::Config.merge(Sanitize::Config::RELAXED, CONFIG),
+        transformers: transformers
+      )
     end
 
     def remap_href_path(href)
