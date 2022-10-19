@@ -2,6 +2,7 @@ lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'qti/version'
 
+# rubocop:disable Metrics/BlockLength
 Gem::Specification.new do |s|
   s.name          = 'qti'
   s.version       = Qti::VERSION
@@ -20,6 +21,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'actionview', '>= 5.2', '< 6.2'
   s.add_dependency 'activesupport', '>= 5.2', '< 6.2'
+  s.add_dependency 'dry-logic', '~> 1.2.0', '< 1.3'
   s.add_dependency 'dry-struct', '~> 1.4.0'
   s.add_dependency 'dry-types', '~> 1.5.1'
   s.add_dependency 'mathml2latex', '~> 2.0'
@@ -38,3 +40,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'wwtd', '~> 1.4'
 end
+# rubocop:enable Metrics/BlockLength
