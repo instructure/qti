@@ -59,9 +59,11 @@ module Qti
           def stem_text
             clean_stem_items.search('p').children.map do |stem_item|
               if stem_item.name == 'gap'
+                blank_id = stem_item.attributes['identifier'].value
                 {
                   type: 'blank',
-                  blank_id: stem_item.attributes['identifier'].value
+                  blank_id: blank_id,
+                  blank_name: correct_choice_value(blank_id)
                 }
               else
                 {
@@ -84,12 +86,15 @@ module Qti
             end
           end
 
+          def correct_choice_value(node_id)
+            answer_choice(choices, question_response_id_mapping[node_id]).content
+          end
+
           def scoring_data_structs
-            mapping = question_response_id_mapping
             answer_nodes.map do |value_node|
               node_id = value_node.attributes['identifier']&.value
               ScoringData.new(
-                answer_choice(choices, mapping[node_id]).content,
+                correct_choice_value(node_id),
                 'directedPair',
                 id: node_id,
                 case: false
@@ -114,11 +119,13 @@ module Qti
           end
 
           def question_response_id_mapping
-            question_response_pairs = node.xpath('.//xmlns:correctResponse//xmlns:value').map do |value|
-              value.content.split
+            @question_response_id_mapping ||= begin
+              question_response_pairs = node.xpath('.//xmlns:correctResponse//xmlns:value').map do |value|
+                value.content.split
+              end
+              question_response_pairs.map!(&:reverse)
+              Hash[question_response_pairs]
             end
-            question_response_pairs.map!(&:reverse)
-            Hash[question_response_pairs]
           end
         end
       end

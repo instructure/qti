@@ -20,6 +20,10 @@ describe Qti::V2::Models::AssessmentItem do
       expect(loaded_class.item_body).to include 'Look at the text in the picture.'
     end
 
+    it 'includes the prompt in the item_body' do
+      expect(loaded_class.item_body).to include 'What does it say?'
+    end
+
     it 'falls back onto nil points possible value' do
       expect(loaded_class.points_possible).to eq nil
     end
@@ -40,6 +44,19 @@ describe Qti::V2::Models::AssessmentItem do
 
     it 'loads the correct interaction model' do
       expect(loaded_class.interaction_model).to be_an_instance_of(Qti::V2::Models::Interactions::ChoiceInteraction)
+    end
+  end
+
+  context 'gap_match.xml' do
+    let(:fixtures_path) { File.join('spec', 'fixtures') }
+    let(:file_path) { File.join(fixtures_path, 'items_2.1', 'gap_match.xml') }
+    let(:loaded_class) { described_class.from_path!(file_path) }
+
+    it 'returns the prompt as the first stem item even after calculating item_body' do
+      loaded_class.item_body
+      stem_items = loaded_class.interaction_model.stem_items
+      expect(stem_items.count).to equal(12)
+      expect(stem_items.first[:value]).to include('Identify the missing words')
     end
   end
 
