@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'mathml2latex', '~> 2.0'
   s.add_dependency 'nokogiri', '~> 1.10'
   s.add_dependency 'rubyzip', '~> 2.0'
-  s.add_dependency 'sanitize', '~> 5.1'
+  s.add_dependency 'sanitize', '>= 5.3'
 
   s.add_development_dependency 'bundler', '~> 2.1'
   s.add_development_dependency 'byebug', '~> 11.0'
