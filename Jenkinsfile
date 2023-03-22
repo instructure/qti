@@ -6,7 +6,7 @@ def gemfiles = [
     'rails-6.1.gemfile',
 ]
 def buildMatrix = gemfiles.collectEntries { gemfile ->
-    ['2.6', '2.7', '3.0', '3.1'].collectEntries { ruby ->
+    ['2.7', '3.0', '3.1'].collectEntries { ruby ->
         ["Ruby ${ruby} - ${gemfile}": {
             sh """
                 docker-compose run -e BUNDLE_GEMFILE="spec/gemfiles/${gemfile}" \
