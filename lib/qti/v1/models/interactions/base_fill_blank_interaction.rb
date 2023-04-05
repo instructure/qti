@@ -3,10 +3,9 @@ module Qti
     module Models
       module Interactions
         class BaseFillBlankInteraction < BaseInteraction
-          CANVAS_REGEX ||= /(\[[A-Za-z0-9_\-.]+\])/.freeze
-
           def canvas_stem_items(item_prompt)
-            item_prompt.split(CANVAS_REGEX).map.with_index do |stem_item, index|
+            item_prompt = sanitize_attributes(item_prompt)
+            item_prompt.split(CANVAS_BLANK_REGEX).map.with_index do |stem_item, index|
               if canvas_fib_response_ids.include?(stem_item)
                 # Strip the brackets before searching
                 value = stem_item[1..-2]

@@ -18,7 +18,7 @@ module Qti
             node = @doc.dup
             presentation = node.at_xpath('.//xmlns:presentation')
             mattext = presentation.at_xpath('.//xmlns:mattext')
-            prompt = return_inner_content!(mattext)
+            prompt = sanitize_attributes(return_inner_content!(mattext))
             sanitize_content!(prompt)
           end
         end
