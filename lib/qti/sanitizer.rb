@@ -10,11 +10,15 @@ module Qti
 
     PROTOCOLS = ['http', 'https', :relative].freeze
     FILTER_TAGS = %w[iframe object embed video audio source].freeze
+    ALL_DATA_ATTR = [:data].freeze
     MEDIA_SRC_ATTR = %w[src data type codebase].freeze
     MEDIA_FMT_ATTR = %w[width height classid].freeze
     MEDIA_ALT_ATTR = %w[title alt allow allowfullscreen].freeze
-    MEDIA_EXT_ATTR = %w[data-media-type data-media-id].freeze
-    MEDIA_ATTR = [MEDIA_SRC_ATTR, MEDIA_FMT_ATTR, MEDIA_ALT_ATTR, MEDIA_EXT_ATTR].flatten.freeze
+    MEDIA_ATTR = [MEDIA_SRC_ATTR, MEDIA_FMT_ATTR, MEDIA_ALT_ATTR, ALL_DATA_ATTR].flatten.freeze
+
+    def self.relaxed_config(element, overrides)
+      Sanitize::Config::RELAXED[:attributes][element] + overrides
+    end
 
     CONFIG =
       {
@@ -38,7 +42,9 @@ module Qti
                           allowscriptaccess width height],
             'iframe' => %w[src width height name align frameborder scrolling sandbox
                            allowfullscreen webkitallowfullscreen mozallowfullscreen
-                           allow] # TODO: remove explicit allow with domain whitelist account setting
+                           allow] + ALL_DATA_ATTR, # TODO: remove explicit allow with domain whitelist account setting
+            'a' => relaxed_config('a', ['target'] + ALL_DATA_ATTR),
+            'img' => relaxed_config('img', ALL_DATA_ATTR)
           }
       }.freeze
 

@@ -36,11 +36,11 @@ describe Qti::V1::Models::AssessmentItem do
       expect(loaded_class.item_body).to include '\(sample equation\)'
     end
 
-    it 'does not transform math content when conversion is Disabled' do
+    it 'does not replace <img> math content with pure latex when conversion is Disabled' do
       Qti.configure do |config|
         config.extract_latex_from_image_tags = false
       end
-      expect(loaded_class.item_body).not_to include '"sample equation"'
+      expect(loaded_class.item_body).to include '<img data-equation-content="sample equation"'
     end
 
     describe '#points_possible' do

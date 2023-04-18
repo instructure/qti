@@ -31,13 +31,6 @@ describe Qti::Sanitizer do
       expect(sanitizer.clean(html)).to include 'classid'
     end
 
-    it 'allows needed media extension attributes' do
-      html = '<object data-media-type="thing" data-media-id=123456789>'
-
-      expect(sanitizer.clean(html)).to include 'data-media-type'
-      expect(sanitizer.clean(html)).to include 'data-media-id'
-    end
-
     it 'allows needed media alt attributes' do
       html = '<source title="Title" alt="description" allow="fullscreen" allowfullscreen=1>'
 
@@ -45,6 +38,21 @@ describe Qti::Sanitizer do
       expect(sanitizer.clean(html)).to include 'alt'
       expect(sanitizer.clean(html)).to include 'allow'
       expect(sanitizer.clean(html)).to include 'allowfullscreen'
+    end
+
+    it 'allows data attributes on <img>, <object>, <video>, <audio>, <iframe>, <source>, <a>' do
+      %w[<img> <object> <video> <audio> <iframe> <source> <a>].each do |tag|
+        tag.insert(-2, ' data-test="thing" data-media-id=123456789')
+
+        expect(sanitizer.clean(tag)).to include 'data-test'
+        expect(sanitizer.clean(tag)).to include 'data-media-id'
+      end
+    end
+
+    it 'allows target attribute on <a>' do
+      html = '<a href="http://a.url" target="_blank">'
+
+      expect(sanitizer.clean(html)).to include 'target="_blank"'
     end
   end
 end
