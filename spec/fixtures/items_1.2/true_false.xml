@@ -3,6 +3,18 @@
   <assessment title="1.2 Import Quiz" ident="A1001">
     <section title="Main" ident="S1002">
       <item title="Grading - specific - 3 pt score" ident="QUE_1003">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>true_false_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>iff205c7405d3b36bdca9b75b51198932</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
         <presentation>
           <material>
             <mattext texttype="text/html"><![CDATA[If I get a 3, I must have done something wrong. <img data-equation-content="sample equation" script="alert('bad')" align="bottom" alt="image.png" src="org0/images/image.png" border="0"/> <img script="alert('bad')" align="bottom" alt="image.png" src="org0/images/image.png" border="0"/>]]></mattext>
@@ -37,8 +49,37 @@
               <varequal respident="QUE_1004_RL">QUE_1006_A2</varequal>
             </conditionvar>
             <setvar varname="que_score" action="Set">10.00</setvar>
+            <displayfeedback feedbacktype="Response" linkrefid="fb_QUE_1006_A2"/>
           </respcondition>
         </resprocessing>
+        <itemfeedback ident="general_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Neutral&lt;/p&gt;&lt;img script="alert('bad')" alt="image.png" src="org0/images/image.png"/&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="correct_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Correct&lt;/p&gt;&lt;img script="alert('bad')" alt="image.png" src="org0/images/image.png"/&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="general_incorrect_fb">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Incorrect&lt;/p&gt;&lt;img script="alert('bad')" alt="image.png" src="org0/images/image.png"/&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
+        <itemfeedback ident="fb_QUE_1006_A2">
+          <flow_mat>
+            <material>
+              <mattext texttype="text/html">&lt;p&gt;Answer was Correct&lt;/p&gt;&lt;img script="alert('bad')" alt="image.png" src="org0/images/image.png"/&gt;</mattext>
+            </material>
+          </flow_mat>
+        </itemfeedback>
       </item>
     </section>
   </assessment>

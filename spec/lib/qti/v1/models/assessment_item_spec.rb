@@ -10,6 +10,37 @@ describe Qti::V1::Models::AssessmentItem do
     end
   end
 
+  context 'feedback', focus: true do
+    let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'true_false.xml') }
+    let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
+    let(:assessment_item_refs) { test_object.assessment_items }
+    let(:loaded_class) { described_class.new(assessment_item_refs) }
+
+    it 'sanitizes general neutral feedback' do
+      expect(loaded_class.feedback[:neutral]).to include '<p>Neutral'
+      expect(loaded_class.feedback[:neutral]).to include '<img'
+      expect(loaded_class.feedback[:neutral]).not_to include 'script="alert(\'bad\')"'
+    end
+
+    it 'sanitizes general correct feedback' do
+      expect(loaded_class.feedback[:correct]).to include '<p>Correct'
+      expect(loaded_class.feedback[:correct]).to include '<img'
+      expect(loaded_class.feedback[:correct]).not_to include 'script="alert(\'bad\')"'
+    end
+
+    it 'sanitizes general incorrect feedback' do
+      expect(loaded_class.feedback[:incorrect]).to include '<p>Incorrect'
+      expect(loaded_class.feedback[:incorrect]).to include '<img'
+      expect(loaded_class.feedback[:incorrect]).not_to include 'script="alert(\'bad\')"'
+    end
+
+    it 'sanitizes answer feedback' do
+      expect(loaded_class.answer_feedback.first[:feedback]).to include '<p>Answer was Correc'
+      expect(loaded_class.answer_feedback.first[:feedback]).to include '<img'
+      expect(loaded_class.answer_feedback.first[:feedback]).not_to include 'script="alert(\'bad\')"'
+    end
+  end
+
   context 'quiz.xml' do
     let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'true_false.xml') }
     let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }

@@ -83,11 +83,15 @@ module Qti
         end
 
         def feedback
-          @feedback ||= interaction_model.canvas_item_feedback
+          @feedback ||= interaction_model.canvas_item_feedback&.transform_values { |v| sanitize_content!(v) }
         end
 
         def answer_feedback
-          @answer_feedback ||= interaction_model.answer_feedback
+          @answer_feedback ||= interaction_model.answer_feedback&.map do |answer|
+            duped = answer.dup
+            duped[:feedback] = sanitize_content!(duped[:feedback])
+            duped
+          end
         end
       end
     end

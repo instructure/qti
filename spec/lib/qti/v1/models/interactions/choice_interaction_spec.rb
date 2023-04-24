@@ -39,7 +39,7 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
     let(:file_path) { File.join(fixtures_path, 'true_false.xml') }
     let(:shuffle_value) { true }
     let(:answer_choices_count) { 2 }
-    let(:meta_type) { nil }
+    let(:meta_type) { 'true_false_question' }
 
     include_examples 'shuffled?'
     include_examples 'answers'
