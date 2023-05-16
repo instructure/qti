@@ -54,5 +54,14 @@ describe Qti::Sanitizer do
 
       expect(sanitizer.clean(html)).to include 'target="_blank"'
     end
+
+    it 'allows style attributes on iframe' do
+      html = '<iframe style="width: 523px; height: 294px; display: inline-block;"></iframe>'
+
+      expect(sanitizer.clean(html)).to include 'style'
+      expect(sanitizer.clean(html)).to include 'width: 523px;'
+      expect(sanitizer.clean(html)).to include 'height: 294px;'
+      expect(sanitizer.clean(html)).to include 'display: inline-block;'
+    end
   end
 end

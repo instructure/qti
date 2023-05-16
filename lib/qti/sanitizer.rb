@@ -40,7 +40,7 @@ module Qti
             'object' => MEDIA_ATTR,
             'embed' => %w[name src type allowfullscreen pluginspage wmode
                           allowscriptaccess width height],
-            'iframe' => %w[src width height name align frameborder scrolling sandbox
+            'iframe' => %w[src style width height name align frameborder scrolling sandbox
                            allowfullscreen webkitallowfullscreen mozallowfullscreen
                            allow] + ALL_DATA_ATTR, # TODO: remove explicit allow with domain whitelist account setting
             'a' => relaxed_config('a', ['target'] + ALL_DATA_ATTR),
@@ -92,7 +92,7 @@ module Qti
       lambda do |env|
         return unless FILTER_TAGS.include?(env[:node_name])
         return if env[:is_whitelisted] || !env[:node].element?
-        Sanitize.node!(env[:node], CONFIG)
+        Sanitize.node!(env[:node], Sanitize::Config.merge(Sanitize::Config::RELAXED, CONFIG))
         { node_whitelist: [env[:node]] }
       end
     end
