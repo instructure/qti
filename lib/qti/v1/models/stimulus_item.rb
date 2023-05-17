@@ -14,6 +14,10 @@ module Qti
           @title ||= @node.attributes['title']&.value
         end
 
+        def instructions
+          @instructions ||= @node.attributes['instructions']&.value
+        end
+
         def body
           @body ||= begin
             presentation = @node.at_xpath('.//xmlns:presentation')
@@ -24,6 +28,38 @@ module Qti
 
         def stimulus_type
           'text'
+        end
+
+        def qti_metadata_children
+          @node.at_xpath('.//xmlns:qtimetadata')&.children
+        end
+
+        def source_url_qti_metadata?
+          if @node.at_xpath('.//xmlns:qtimetadata').present?
+            source_url_label = qti_metadata_children.children.find { |node| node.text == 'source_url' }
+            source_url_label.present?
+          else
+            false
+          end
+        end
+
+        def source_url
+          @source_url ||= begin
+            if source_url_qti_metadata?
+              source_url_label = qti_metadata_children.children.find do |node|
+                node.text == 'source_url'
+              end
+              source_url_label&.next&.text
+            end
+          end
+        end
+
+        def orientation
+          @orientation ||= begin
+            presentation = @node.at_xpath('.//xmlns:presentation')
+            return 'left' if presentation.blank?
+            presentation.at_xpath('.//xmlns:material')&.attributes&.[]('orientation')&.value || 'left'
+          end
         end
       end
     end

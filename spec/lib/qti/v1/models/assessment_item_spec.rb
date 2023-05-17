@@ -93,6 +93,28 @@ describe Qti::V1::Models::AssessmentItem do
       end
     end
 
+    describe '#parent_stimulus_item_ident' do
+      let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'stimulus_with_child_item.xml') }
+      let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
+      let(:assessment_item_refs) { test_object.assessment_items }
+
+      context 'when it does not contain parent_stimulus_item_ident metadata' do
+        let(:loaded_class) { described_class.new(assessment_item_refs[0]) }
+
+        it 'returns nil' do
+          expect(loaded_class.parent_stimulus_item_ident).to be_nil
+        end
+      end
+
+      context 'when it contains parent_stimulus_item_ident metadata' do
+        let(:loaded_class) { described_class.new(assessment_item_refs[1]) }
+
+        it 'returns the parent_stimulus_item_ident value' do
+          expect(loaded_class.parent_stimulus_item_ident).to eq '6e2618d0f5e795a363f1eefec748fb68'
+        end
+      end
+    end
+
     describe '#scoring_data_structs' do
       it 'grabs the rcardinality and scoring data value' do
         struct = loaded_class.send(:scoring_data_structs)

@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <assessment ident="7f805e79bec484e9075115f05b2042fa" title="nq q with stimulus with attached question">
+    <qtimetadata>
+      <qtimetadatafield>
+        <fieldlabel>cc_maxattempts</fieldlabel>
+        <fieldentry>1</fieldentry>
+      </qtimetadatafield>
+    </qtimetadata>
+    <section ident="root_section">
+      <item ident="6e2618d0f5e795a363f1eefec748fb68" title="stimulus title" instructions="some instructions">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>text_only_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>points_possible</fieldlabel>
+              <fieldentry>0.0</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>original_answer_ids</fieldlabel>
+              <fieldentry/>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>8efb1df4dc2fb1048a7f349a3165f28d</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>source_url</fieldlabel>
+              <fieldentry>https://sourceurl.com</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material orientation="top">
+            <mattext texttype="text/html">&lt;p&gt;some content&lt;/p&gt;</mattext>
+          </material>
+        </presentation>
+      </item>
+      <item ident="bace7f0cffb532a21d2de194c68edeac" title="Child multiple choice question">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>multiple_choice_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>points_possible</fieldlabel>
+              <fieldentry>1.0</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>original_answer_ids</fieldlabel>
+              <fieldentry>210e9a21-bf55-4472-97d7-1ddb973f4cea,ada66409-0d31-4e5f-b67b-8e33f66c8299,3b6679be-071a-46ca-a79f-6e019cd65af7,3a4658ed-c0ad-40cd-b8d8-627f87f9bcf0</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>5d040aba22c641e4c3ff7480aed7b1e2</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>parent_stimulus_item_ident</fieldlabel>
+              <fieldentry>6e2618d0f5e795a363f1eefec748fb68</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;p&gt;the answer is letter A&lt;/p&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="210e9a21-bf55-4472-97d7-1ddb973f4cea">
+                <material>
+                  <mattext texttype="text/html">&lt;p&gt;A&lt;/p&gt;</mattext>
+                </material>
+              </response_label>
+              <response_label ident="ada66409-0d31-4e5f-b67b-8e33f66c8299">
+                <material>
+                  <mattext texttype="text/html">&lt;p&gt;B&lt;/p&gt;</mattext>
+                </material>
+              </response_label>
+              <response_label ident="3b6679be-071a-46ca-a79f-6e019cd65af7">
+                <material>
+                  <mattext texttype="text/html">&lt;p&gt;C&lt;/p&gt;</mattext>
+                </material>
+              </response_label>
+              <response_label ident="3a4658ed-c0ad-40cd-b8d8-627f87f9bcf0">
+                <material>
+                  <mattext texttype="text/html">&lt;p&gt;D&lt;/p&gt;</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal respident="response1">210e9a21-bf55-4472-97d7-1ddb973f4cea</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+    </section>
+  </assessment>
+</questestinterop>

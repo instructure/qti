@@ -28,6 +28,10 @@ describe Qti::V2::Models::AssessmentItem do
       expect(loaded_class.points_possible).to eq nil
     end
 
+    it 'falls back to nil parent_stimulus_item_ident value' do
+      expect(loaded_class.parent_stimulus_item_ident).to eq nil
+    end
+
     it 'grabs the type and scoring data value' do
       struct = loaded_class.send(:scoring_data_structs)
       expect(struct.first.values).to eq 'ChoiceA'

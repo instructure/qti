@@ -25,6 +25,18 @@ module Qti
         def stimulus_type
           'text'
         end
+
+        def instructions
+          nil
+        end
+
+        def source_url
+          nil
+        end
+
+        def orientation
+          'left'
+        end
       end
     end
   end

@@ -63,6 +63,27 @@ module Qti
           end
         end
 
+        def parent_stimulus_item_ident_metadata?
+          if @doc.at_xpath('.//xmlns:qtimetadata').present?
+            qti_metadata_children.children.find do |node|
+              node.text == 'parent_stimulus_item_ident'
+            end.present?
+          else
+            false
+          end
+        end
+
+        def parent_stimulus_item_ident
+          @parent_stimulus_item_ident ||= begin
+            if parent_stimulus_item_ident_metadata?
+              parent_stimulus_item_ident_label = qti_metadata_children.children.find do |node|
+                node.text == 'parent_stimulus_item_ident'
+              end
+              parent_stimulus_item_ident_label.next.text
+            end
+          end
+        end
+
         def decvar_maxvalue
           @doc.at_xpath('.//xmlns:decvar/@maxvalue')&.value&.to_i ||
             @doc.at_xpath('.//xmlns:decvar/@defaultval')&.value&.to_i || 0

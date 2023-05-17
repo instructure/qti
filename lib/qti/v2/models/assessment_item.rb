@@ -31,6 +31,10 @@ module Qti
           end
         end
 
+        def parent_stimulus_item_ident
+          nil
+        end
+
         def interaction_model
           @interaction_model ||= begin
             V2::Models::Interactions.interaction_model(@doc, self)
