@@ -18,21 +18,29 @@ module Qti
               'preciseResponse',
               value,
               precision.to_s,
-              'significantDigits'
+              precision_type
             )
           end
 
           def value
             fval = equal_node.content.to_f
-            number_with_precision(fval, precision: precision, significant: true)
+            number_with_precision(fval, precision: precision, significant: precision_type == 'significantDigits')
           end
 
           def precision
+            overridden_precision = equal_node.attributes['precision']&.value
+
+            return overridden_precision.to_i if overridden_precision.present?
+
             sig = [
               Precision.significant_digits(gt_node.content),
               Precision.significant_digits(lte_node.content)
             ].max
             sig - 1
+          end
+
+          def precision_type
+            equal_node.attributes['precisiontype']&.value || 'significantDigits'
           end
 
           def self.significant_digits(number_s)

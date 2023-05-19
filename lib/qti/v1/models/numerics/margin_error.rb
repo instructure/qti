@@ -16,14 +16,19 @@ module Qti
               'marginOfError',
               equal_node.content.to_f.to_s,
               margin,
-              'absolute'
+              margin_type
             )
           end
 
           private
 
           def margin
-            (equal_node.content.to_f - gte_node.content.to_f).to_s
+            equal_node.attributes['margin']&.value ||
+              (equal_node.content.to_f - gte_node.content.to_f).to_s
+          end
+
+          def margin_type
+            equal_node.attributes['margintype']&.value || 'absolute'
           end
 
           def valid?

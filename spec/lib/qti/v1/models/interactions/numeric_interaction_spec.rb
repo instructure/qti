@@ -65,6 +65,21 @@ describe Qti::V1::Models::Interactions::NumericInteraction do
         expect(loaded_class.item_body).to eq '<div><p>QQ1.margin error</p></div>'
       end
     end
+
+    context 'with explicit margin and margin_type' do
+      let(:xml_file_name) { 'numeric_margin_error_percent.xml' }
+      context 'the first item in numeric_margin_error.xml' do
+        let(:loaded_class) { described_class.new(assessment_item_refs.first, test_object) }
+        let(:answer_count) { 1 }
+
+        include_examples 'scoring_data_structs',
+          id: %w[response1],
+          type: %w[marginOfError],
+          value: %w[200.0],
+          margin: %w[20.0],
+          margin_type: %w[percent]
+      end
+    end
   end
 
   context 'precision' do
@@ -85,6 +100,22 @@ describe Qti::V1::Models::Interactions::NumericInteraction do
       let(:loaded_class) { described_class.new(assessment_item_refs.first, test_object) }
       it 'returns right title' do
         expect(loaded_class.item_body).to eq '<div><p>QQ1.presision ss</p></div>'
+      end
+    end
+
+    context 'with explicit precision and precision_type' do
+      let(:xml_file_name) { 'numeric_precision_decimals.xml' }
+
+      context 'the first item in numeric_precision_decimals.xml' do
+        let(:loaded_class) { described_class.new(assessment_item_refs.first, test_object) }
+        let(:answer_count) { 1 }
+
+        include_examples 'scoring_data_structs',
+          id: %w[response1],
+          type: %w[preciseResponse],
+          value: %w[100.1234],
+          precision: %w[4],
+          precision_type: %w[decimals]
       end
     end
   end
