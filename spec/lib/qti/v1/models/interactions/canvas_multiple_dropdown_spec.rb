@@ -74,4 +74,15 @@ describe Qti::V1::Models::Interactions::CanvasMultipleDropdownInteraction do
     include_examples 'stem_items'
     include_examples 'scoring_data_structs'
   end
+
+  context 'canvas_multiple_dropdowns_correct_choice_is_not_the_first.xml' do
+    let(:file_path) { File.join(fixtures_path, 'canvas_multiple_dropdowns_correct_choice_is_not_the_first.xml') }
+
+    it 'returns the scoring_data_structs with item_body values and ids of the correct choice' do
+      expect(loaded_class.scoring_data_structs.first[:values][:id]).to eq('2050')
+      expect(loaded_class.scoring_data_structs.first[:values][:item_body]).to eq('a')
+      expect(loaded_class.scoring_data_structs.second[:values][:id]).to eq('6742')
+      expect(loaded_class.scoring_data_structs.second[:values][:item_body]).to eq('d')
+    end
+  end
 end

@@ -44,7 +44,8 @@ module Qti
 
           def blank_value(blank_id)
             blank = canvas_fib_responses.find { |response| response[:id] == blank_id }
-            blank&.dig(:choices, 0, :item_body)
+            correct_choice = blank[:choices].find { |c| c[:id] == correct_choice_id(blank) }
+            (correct_choice || {})[:item_body] || blank&.dig(:choices, 0, :item_body)
           end
 
           def canvas_custom_fitb?
@@ -80,6 +81,11 @@ module Qti
           end
 
           private
+
+          def correct_choice_id(blank)
+            node.xpath('.//xmlns:resprocessing/xmlns:respcondition/xmlns:conditionvar/xmlns:varequal')
+                .find { |varequal| varequal.attribute('respident').value == blank[:id] }&.text
+          end
 
           def canvas_blank_choice(bnode, index)
             bnode_id = bnode[:ident]
