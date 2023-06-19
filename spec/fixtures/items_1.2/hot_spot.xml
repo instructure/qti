@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <assessment ident="id2b817165c302c0c57416146dc94ce47" title="Quiz with hot-spot question">
+    <qtimetadata>
+      <qtimetadatafield>
+        <fieldlabel>cc_maxattempts</fieldlabel>
+        <fieldentry>1</fieldentry>
+      </qtimetadatafield>
+    </qtimetadata>
+    <section ident="root_section">
+      <item ident="g515255148f5a3cae1832584071aa8528" title="this is a hot-spot question">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>hot_spot_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>points_possible</fieldlabel>
+              <fieldentry>1.0</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>original_answer_ids</fieldlabel>
+              <fieldentry/>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>gd6ff15355f3dd3f532816fa268230130</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <flow>
+            <response_xy ident="response1" rcardinality="Single" rtiming="No">
+              <material>
+                <mattext texttype="text/html">&lt;p&gt;point something on the image&lt;/p&gt;</mattext>
+              </material>
+              <render_hotspot>
+                <material>
+                  <matimage uri="$IMS-CC-FILEBASE$/Uploaded Media/someuuid"/>
+                </material>
+                <response_label ident="response1" rarea="square">0.372,0.1376,0.616,0.4256</response_label>
+              </render_hotspot>
+            </response_xy>
+          </flow>
+        </presentation>
+      </item>
+      <item ident="g515255148f5a3cae1832584071aa8529" title="hot-spot with invalid coordinates">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>hot_spot_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>points_possible</fieldlabel>
+              <fieldentry>1.0</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>original_answer_ids</fieldlabel>
+              <fieldentry/>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>gd6ff15355f3dd3f532816fa268230130</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <flow>
+            <response_xy ident="response1" rcardinality="Single" rtiming="No">
+              <material>
+                <mattext texttype="text/html">&lt;p&gt;point something on the image&lt;/p&gt;</mattext>
+              </material>
+              <render_hotspot>
+                <material>
+                  <matimage uri="$IMS-CC-FILEBASE$/Uploaded Media/someuuid"/>
+                </material>
+                <response_label ident="response1" rarea="square">0.372</response_label>
+              </render_hotspot>
+            </response_xy>
+          </flow>
+        </presentation>
+      </item>
+      <item ident="g515255148f5a3cae1832584071aa8529" title="hot-spot without coordinates">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>hot_spot_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>points_possible</fieldlabel>
+              <fieldentry>1.0</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>original_answer_ids</fieldlabel>
+              <fieldentry/>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>gd6ff15355f3dd3f532816fa268230130</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <flow>
+            <response_xy ident="response1" rcardinality="Single" rtiming="No">
+              <material>
+                <mattext texttype="text/html">&lt;p&gt;point something on the image&lt;/p&gt;</mattext>
+              </material>
+              <render_hotspot>
+                <material>
+                  <matimage uri="$IMS-CC-FILEBASE$/Uploaded Media/someuuid"/>
+                </material>
+                <response_label ident="response1" rarea="square"></response_label>
+              </render_hotspot>
+            </response_xy>
+          </flow>
+        </presentation>
+      </item>
+    </section>
+  </assessment>
+</questestinterop>
