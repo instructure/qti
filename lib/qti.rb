@@ -123,6 +123,7 @@ require 'qti/v1/models/interactions/choice_interaction'
 
 require 'qti/v1/models/interactions/base_fill_blank_interaction'
 require 'qti/v1/models/interactions/canvas_multiple_dropdown'
+require 'qti/v1/models/interactions/categorization_interaction'
 require 'qti/v1/models/interactions/fill_blank_interaction'
 require 'qti/v1/models/interactions/formula_interaction'
 require 'qti/v1/models/interactions/hot_spot_interaction'

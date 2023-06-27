@@ -17,7 +17,8 @@ module Qti
           'calculated_question' => FormulaInteraction,
           'essay_question ' => StringInteraction,
           'file_upload_question' => UploadInteraction,
-          'hot_spot_question' => HotSpotInteraction
+          'hot_spot_question' => HotSpotInteraction,
+          'categorization_question' => CategorizationInteraction
           # "text_only_question" => StimulusNoQuestion
         }.freeze
 

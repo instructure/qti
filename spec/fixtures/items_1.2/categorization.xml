@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <assessment ident="id2b817165c302c0c57416146dc94ce47" title="Quiz with hot-spot question">
+    <qtimetadata>
+      <qtimetadatafield>
+        <fieldlabel>cc_maxattempts</fieldlabel>
+        <fieldentry>1</fieldentry>
+      </qtimetadatafield>
+    </qtimetadata>
+    <section ident="root_section">
+      <item ident="d74b47a4abeeed159e030bfecbcecea2" title="quiz with categorization question">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>categorization_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>points_possible</fieldlabel>
+              <fieldentry>1.0</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>original_answer_ids</fieldlabel>
+              <fieldentry/>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>9f47365e112840d80a79a960b1b0b6a7</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;p&gt;Hello there&lt;/p&gt;</mattext>
+          </material>
+          <response_lid ident="df4fb8d7-8033-445a-b8be-171dd9b973ba" rcardinality="Multiple">
+            <material>
+              <mattext texttype="text/plain">Category_A</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="19e37ce3-3a8b-4e26-ab61-9770e58af00e">
+                <material>
+                  <mattext texttype="text/plain">Distractor2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="3b8dcef8-c8c1-4827-85b0-6e381739adbf">
+                <material>
+                  <mattext texttype="text/plain">B1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="53a97aa7-d55c-402c-a061-f85d837c7c77">
+                <material>
+                  <mattext texttype="text/plain">A2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="5a67c627-cf85-4b70-922a-c7d1b7c720b8">
+                <material>
+                  <mattext texttype="text/plain">B2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="5d78f3f5-28c2-4e71-9c33-70c6b301e017">
+                <material>
+                  <mattext texttype="text/plain">Distractor1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9432e8cb-1d3e-4d04-89b5-95185b7e557d">
+                <material>
+                  <mattext texttype="text/plain">A1</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="eb2f823d-b857-4c06-9d5f-998d14ee8d58" rcardinality="Multiple">
+            <material>
+              <mattext texttype="text/plain">Category_B</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="19e37ce3-3a8b-4e26-ab61-9770e58af00e">
+                <material>
+                  <mattext texttype="text/plain">Distractor2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="3b8dcef8-c8c1-4827-85b0-6e381739adbf">
+                <material>
+                  <mattext texttype="text/plain">B1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="53a97aa7-d55c-402c-a061-f85d837c7c77">
+                <material>
+                  <mattext texttype="text/plain">A2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="5a67c627-cf85-4b70-922a-c7d1b7c720b8">
+                <material>
+                  <mattext texttype="text/plain">B2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="5d78f3f5-28c2-4e71-9c33-70c6b301e017">
+                <material>
+                  <mattext texttype="text/plain">Distractor1</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9432e8cb-1d3e-4d04-89b5-95185b7e557d">
+                <material>
+                  <mattext texttype="text/plain">A1</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="df4fb8d7-8033-445a-b8be-171dd9b973ba">9432e8cb-1d3e-4d04-89b5-95185b7e557d</varequal>
+              <varequal respident="df4fb8d7-8033-445a-b8be-171dd9b973ba">53a97aa7-d55c-402c-a061-f85d837c7c77</varequal>
+            </conditionvar>
+            <setvar action="Add" varname="SCORE">50.00</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="eb2f823d-b857-4c06-9d5f-998d14ee8d58">3b8dcef8-c8c1-4827-85b0-6e381739adbf</varequal>
+              <varequal respident="eb2f823d-b857-4c06-9d5f-998d14ee8d58">5a67c627-cf85-4b70-922a-c7d1b7c720b8</varequal>
+            </conditionvar>
+            <setvar action="Add" varname="SCORE">50.00</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+    </section>
+  </assessment>
+</questestinterop>
