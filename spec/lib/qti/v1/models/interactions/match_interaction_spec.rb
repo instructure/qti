@@ -47,8 +47,8 @@ describe Qti::V1::Models::Interactions::MatchInteraction do
     end
     let(:expected_questions) do
       [
-        { id: 'question_1', itemBody: 'Light Microscope' },
-        { id: 'question_2', itemBody: 'Electron Microscopes' }
+        { id: 'question_1', item_body: 'Light Microscope' },
+        { id: 'question_2', item_body: 'Electron Microscopes' }
       ]
     end
     let(:expected_scoring_data) do
@@ -73,10 +73,10 @@ describe Qti::V1::Models::Interactions::MatchInteraction do
     let(:expected_answers) { '1,2,,C,D,E,F,3,4,5,6'.split(',') }
     let(:expected_questions) do
       [
-        { id: 'response_6831', itemBody: 'A' },
-        { id: 'response_6259', itemBody: 'B' },
-        { id: 'response_743', itemBody: '' },
-        { id: 'response_1943', itemBody: '' }
+        { id: 'response_6831', item_body: 'A' },
+        { id: 'response_6259', item_body: 'B' },
+        { id: 'response_743', item_body: '' },
+        { id: 'response_1943', item_body: '' }
       ]
     end
     let(:expected_scoring_data) do
