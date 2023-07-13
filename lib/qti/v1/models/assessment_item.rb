@@ -84,6 +84,27 @@ module Qti
           end
         end
 
+        def calculator_type
+          @calculator_type ||= begin
+            if calculator_type_metadata?
+              calculator_type_metadata_label = qti_metadata_children.children.find do |node|
+                node.text == 'calculator_type'
+              end
+              calculator_type_metadata_label.next.text
+            end
+          end
+        end
+
+        def calculator_type_metadata?
+          if @doc.at_xpath('.//xmlns:qtimetadata').present?
+            qti_metadata_children.children.find do |node|
+              node.text == 'calculator_type'
+            end.present?
+          else
+            false
+          end
+        end
+
         def decvar_maxvalue
           @doc.at_xpath('.//xmlns:decvar/@maxvalue')&.value&.to_i ||
             @doc.at_xpath('.//xmlns:decvar/@defaultval')&.value&.to_i || 0

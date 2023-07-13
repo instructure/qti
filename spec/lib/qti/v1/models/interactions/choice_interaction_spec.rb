@@ -10,6 +10,12 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
     end
   end
 
+  shared_examples_for 'locked_choices' do
+    it 'returns locked choices setting' do
+      expect(loaded_class.locked_choices).to eq locked_choices_value
+    end
+  end
+
   shared_examples_for 'answers' do
     it 'returns the answers' do
       expect(loaded_class.answers.count).to eq answer_choices_count
@@ -27,10 +33,12 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
   context 'multiple_choice.xml' do
     let(:file_path) { File.join(fixtures_path, 'multiple_choice.xml') }
     let(:shuffle_value) { false }
+    let(:locked_choices_value) { [] }
     let(:answer_choices_count) { 5 }
     let(:meta_type) { nil }
 
     include_examples 'shuffled?'
+    include_examples 'locked_choices'
     include_examples 'answers'
     include_examples 'meta_type'
   end
@@ -38,10 +46,12 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
   context 'true_false.xml' do
     let(:file_path) { File.join(fixtures_path, 'true_false.xml') }
     let(:shuffle_value) { true }
+    let(:locked_choices_value) { [0] }
     let(:answer_choices_count) { 2 }
     let(:meta_type) { 'true_false_question' }
 
     include_examples 'shuffled?'
+    include_examples 'locked_choices'
     include_examples 'answers'
     include_examples 'meta_type'
   end
@@ -49,17 +59,21 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
   context 'multiple_answer.xml' do
     let(:file_path) { File.join(fixtures_path, 'multiple_answer.xml') }
     let(:shuffle_value) { false }
+    let(:locked_choices_value) { [] }
 
     include_examples 'shuffled?'
+    include_examples 'locked_choices'
   end
 
   context 'multiple_answer_canvas.xml' do
     let(:file_path) { File.join(fixtures_path, 'multiple_answer_canvas.xml') }
     let(:shuffle_value) { false }
+    let(:locked_choices_value) { [] }
     let(:answer_choices_count) { 4 }
     let(:meta_type) { 'multiple_answers_question' }
 
     include_examples 'shuffled?'
+    include_examples 'locked_choices'
     include_examples 'meta_type'
   end
 

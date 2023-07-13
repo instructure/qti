@@ -115,6 +115,26 @@ describe Qti::V1::Models::AssessmentItem do
       end
     end
 
+    describe '#calculator_type' do
+      let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
+      let(:assessment_item_refs) { test_object.assessment_items }
+      let(:loaded_class) { described_class.new(assessment_item_refs) }
+
+      context 'when it does not contain calculator_type metadata' do
+        let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'true_false.xml') }
+        it 'returns nil' do
+          expect(loaded_class.calculator_type).to be_nil
+        end
+      end
+
+      context 'when it contains calculator_type metadata' do
+        let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'true_false_with_calculator.xml') }
+        it 'returns the calculator_type value' do
+          expect(loaded_class.calculator_type).to eq 'basic'
+        end
+      end
+    end
+
     describe '#scoring_data_structs' do
       it 'grabs the rcardinality and scoring data value' do
         struct = loaded_class.send(:scoring_data_structs)

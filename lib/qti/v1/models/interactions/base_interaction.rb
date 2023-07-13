@@ -40,6 +40,16 @@ module Qti
             @node.at_xpath('.//xmlns:render_choice/@shuffle')&.value.try(:downcase) == 'yes'
           end
 
+          def locked_choices
+            return [] unless shuffled?
+
+            @node.xpath('.//xmlns:response_label').filter_map.with_index do |answer_node, index|
+              is_locked = answer_node.attributes['lock']&.value&.downcase == 'yes'
+
+              is_locked ? index : nil
+            end
+          end
+
           def scoring_data_structs
             raise NotImplementedError
           end

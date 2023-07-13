@@ -13,6 +13,10 @@
               <fieldlabel>assessment_question_identifierref</fieldlabel>
               <fieldentry>iff205c7405d3b36bdca9b75b51198932</fieldentry>
             </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>calculator_type</fieldlabel>
+              <fieldentry>basic</fieldentry>
+            </qtimetadatafield>
           </qtimetadata>
         </itemmetadata>
         <presentation>
@@ -21,7 +25,7 @@
           </material>
           <response_lid ident="QUE_1004_RL" rcardinality="Single" rtiming="No">
             <render_choice shuffle="Yes">
-              <response_label ident="QUE_1005_A1" lock="Yes">
+              <response_label ident="QUE_1005_A1">
                 <material>
                   <mattext texttype="text/html"><![CDATA[True]]></mattext>
                 </material>
