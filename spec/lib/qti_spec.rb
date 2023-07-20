@@ -45,6 +45,26 @@ describe Qti::Importer do
       end
     end
 
+    describe '#create_bank_entry_item' do
+      context 'when given a bankentry_item object' do
+        let(:file_path) { File.join(fixtures_path, 'test_qti_1.2_bank_entry_item') }
+
+        it 'creates a bankentry_item instance' do
+          bank_entry_item = importer.create_bank_entry_item(importer.assessment_item_refs.first)
+          expect(bank_entry_item).to be_a(Qti::V1::Models::BankEntryItem)
+        end
+      end
+
+      context 'when given an object other than a bankentry_item' do
+        let(:file_path) { File.join(fixtures_path, 'test_qti_1.2') }
+
+        it 'returns nil' do
+          bank_entry_item = importer.create_bank_entry_item(importer.assessment_item_refs.first)
+          expect(bank_entry_item).to be_nil
+        end
+      end
+    end
+
     context 'canvas generated' do
       let(:file_path) { File.join(fixtures_path, 'test_qti_1.2_canvas') }
 

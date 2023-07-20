@@ -68,6 +68,10 @@ module Qti
     def create_question_group(question_group_ref)
       @import.create_question_group(question_group_ref)
     end
+
+    def create_bank_entry_item(bank_entry_item_ref)
+      @import.create_bank_entry_item(bank_entry_item_ref)
+    end
   end
 
   def self.configuration
@@ -117,6 +121,7 @@ require 'qti/v1/models/object_bank'
 require 'qti/v1/models/scoring_data'
 require 'qti/v1/models/stimulus_item'
 require 'qti/v1/models/question_group'
+require 'qti/v1/models/bank_entry_item'
 
 require 'qti/v1/models/interactions/base_interaction'
 require 'qti/v1/models/interactions/choice_interaction'

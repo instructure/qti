@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <assessment ident="i1211c711ada74a559ee1b6c122358695" title="Question Groups">
+    <qtimetadata>
+      <qtimetadatafield>
+        <fieldlabel>cc_maxattempts</fieldlabel>
+        <fieldentry>1</fieldentry>
+      </qtimetadatafield>
+    </qtimetadata>
+    <section ident="root_section">
+      <bankentry_item sourcebank_ref="gafe7177102bee6759845b002c5de397c" item_ref="ge0c6b84f2afc834ec575718bbc1451ff"/>
+    </section>
+  </assessment>
+</questestinterop>

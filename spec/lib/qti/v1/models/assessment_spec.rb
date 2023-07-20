@@ -228,4 +228,22 @@ describe Qti::V1::Models::Assessment do
       ).to eq(nil)
     end
   end
+
+  describe 'bank entry items' do
+    let(:fixtures_path) { File.join('spec', 'fixtures', 'items_1.2') }
+    let(:test_object) { described_class.from_path!(file_path) }
+    let(:assessment_item_refs) { test_object.assessment_items }
+    let(:assessment_item_ref) { assessment_item_refs.first }
+    let(:file_path) { File.join(fixtures_path, 'bank_entry_item.xml') }
+
+    it 'methods behave as expected' do
+      expect(
+        test_object.create_assessment_item(assessment_item_ref)
+      ).to eq(nil)
+
+      expect(
+        test_object.create_bank_entry_item(assessment_item_ref).class
+      ).to be(Qti::V1::Models::BankEntryItem)
+    end
+  end
 end

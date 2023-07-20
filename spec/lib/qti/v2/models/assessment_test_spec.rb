@@ -77,6 +77,15 @@ describe Qti::V2::Models::AssessmentTest do
     end
   end
 
+  describe '#create_bank_entry_item' do
+    let(:path) { File.join(fixtures_path, 'test_qti_2.2', 'assessment.xml') }
+    let(:loaded_class) { described_class.from_path!(path) }
+
+    it 'returns nil' do
+      expect(loaded_class.create_bank_entry_item).to be_nil
+    end
+  end
+
   # describe '#create_stimulus' do
   #   let(:path) { File.join(fixtures_path, 'test_qti_2.2', 'assessment.xml') }
   #   let(:loaded_class) { described_class.from_path!(path) }

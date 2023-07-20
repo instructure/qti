@@ -44,6 +44,10 @@ module Qti
         def create_stimulus(stimulus_ref)
           Qti::V2::Models::StimulusItem.new(path: stimulus_ref, package_root: @package_root, html: true)
         end
+
+        def create_bank_entry_item(_bank_entry_item_ref = nil)
+          nil # we don't support this in QTI V2 yet
+        end
       end
     end
   end

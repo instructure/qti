@@ -15,11 +15,12 @@ module Qti
         end
 
         def assessment_items
-          @doc.xpath("//*[self::#{GROUP_ID} or self::xmlns:item[not(ancestor::#{GROUP_ID})]]")
+          @doc.xpath("//*[self::#{GROUP_ID} or self::xmlns:item[not(ancestor::#{GROUP_ID})]" \
+            ' or self::xmlns:bankentry_item]')
         end
 
         def create_assessment_item(assessment_item)
-          return nil if sub_section?(assessment_item)
+          return nil if sub_section?(assessment_item) || bank_entry_item?(assessment_item)
           item = Qti::V1::Models::AssessmentItem.new(assessment_item, @package_root, self)
           item.manifest = manifest
           item
@@ -39,6 +40,11 @@ module Qti
           Qti::V1::Models::QuestionGroup.new(group_ref)
         end
 
+        def create_bank_entry_item(bank_entry_item_ref)
+          return nil unless bank_entry_item?(bank_entry_item_ref)
+          Qti::V1::Models::BankEntryItem.new(bank_entry_item_ref)
+        end
+
         private
 
         def sub_section?(ref_node)
@@ -56,6 +62,10 @@ module Qti
 
         def question_group?(ref_node)
           ref_node.xpath("self::#{GROUP_ID}").present?
+        end
+
+        def bank_entry_item?(ref_node)
+          ref_node.xpath('self::xmlns:bankentry_item').present?
         end
       end
     end
