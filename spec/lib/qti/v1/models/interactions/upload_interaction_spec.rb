@@ -26,5 +26,19 @@ describe Qti::V1::Models::Interactions::UploadInteraction do
         )
       end
     end
+
+    it 'returns the correct settings' do
+      expect(loaded_class.allowed_types).to be_nil
+      expect(loaded_class.files_count).to be_nil
+    end
+
+    context 'with custom settings' do
+      let(:file_path) { File.join(fixtures_path, 'upload_with_custom_settings.xml') }
+
+      it 'returns the correct settings' do
+        expect(loaded_class.allowed_types).to eq('png,jpeg')
+        expect(loaded_class.files_count).to eq('2')
+      end
+    end
   end
 end

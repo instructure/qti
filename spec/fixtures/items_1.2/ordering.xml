@@ -24,7 +24,7 @@
 				</material>
 				<response_lid ident = "OB01" rcardinality = "Ordered" rtiming = "No">
 					<render_extension>
-						<ims_render_object shuffle = "No" orientation = "Row">
+						<ims_render_object shuffle = "No">
 							<flow_label>
 								<response_label ident = "A">
 									<material>

@@ -8,8 +8,28 @@ describe Qti::V1::Models::Interactions::StringInteraction do
     let(:file_path) { File.join(fixtures_path, 'essay.xml') }
     let(:cardinality) { 'Single' }
 
-    it 'returns loads the correct cardinality' do
+    it 'returns the correct cardinality' do
       expect(loaded_class.send(:rcardinality)).to eq(cardinality)
+    end
+
+    it 'returns the correct settings' do
+      expect(loaded_class.rce).to eq(true)
+      expect(loaded_class.word_count).to eq(false)
+      expect(loaded_class.spell_check).to eq(false)
+      expect(loaded_class.word_limit_max).to be_nil
+      expect(loaded_class.word_limit_min).to be_nil
+    end
+  end
+
+  context 'essay.xml question with custom settings' do
+    let(:file_path) { File.join(fixtures_path, 'essay_custom_settings.xml') }
+
+    it 'returns the correct settings' do
+      expect(loaded_class.rce).to eq(false)
+      expect(loaded_class.word_count).to eq(true)
+      expect(loaded_class.spell_check).to eq(true)
+      expect(loaded_class.word_limit_max).to eq('500')
+      expect(loaded_class.word_limit_min).to eq('140')
     end
   end
 end

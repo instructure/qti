@@ -27,6 +27,14 @@ module Qti
           def scoring_data_structs
             { value: '' }
           end
+
+          def allowed_types
+            @allowed_types ||= @node.at_xpath('.//xmlns:presentation/@allowed_types')&.value
+          end
+
+          def files_count
+            @files_count ||= @node.at_xpath('.//xmlns:presentation/@files_count')&.value
+          end
         end
       end
     end
