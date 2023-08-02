@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <item ident="97b0baae152f137d14503e2a2125c4d0" title="NQ Fill in Multiple Blanks Scoring Algorithms">
+    <itemmetadata>
+      <qtimetadata>
+        <qtimetadatafield>
+          <fieldlabel>question_type</fieldlabel>
+          <fieldentry>fill_in_multiple_blanks_question</fieldentry>
+        </qtimetadatafield>
+        <qtimetadatafield>
+          <fieldlabel>points_possible</fieldlabel>
+          <fieldentry>1.0</fieldentry>
+        </qtimetadatafield>
+        <qtimetadatafield>
+          <fieldlabel>original_answer_ids</fieldlabel>
+          <fieldentry>["bafd8242-ecdb-4158-a6d3-4ff15e016cb8-0", "d719aee0-6ce0-462c-9c0d-be63ba8d3408-0", "ce47aaf6-c1dd-4db8-9a9f-7f5c131d8a90-0", "41dfd716-8fd9-466a-97fa-33d353e44b42-0", "41dfd716-8fd9-466a-97fa-33d353e44b42-1", "a053119f-6a61-4372-ac79-4b2a7de0232f-0"]</fieldentry>
+        </qtimetadatafield>
+        <qtimetadatafield>
+          <fieldlabel>assessment_question_identifierref</fieldlabel>
+          <fieldentry>eaeec2d07f83998ee7b317ffde86dbc0</fieldentry>
+        </qtimetadatafield>
+      </qtimetadata>
+    </itemmetadata>
+    <presentation>
+      <material>
+        <mattext texttype="text/html">&lt;p&gt;Roses are [bafd8242-ecdb-4158-a6d3-4ff15e016cb8], [d719aee0-6ce0-462c-9c0d-be63ba8d3408], [ce47aaf6-c1dd-4db8-9a9f-7f5c131d8a90], [41dfd716-8fd9-466a-97fa-33d353e44b42], and [a053119f-6a61-4372-ac79-4b2a7de0232f].&lt;/p&gt;</mattext>
+      </material>
+      <response_lid ident="response_bafd8242-ecdb-4158-a6d3-4ff15e016cb8">
+        <material>
+          <mattext>red</mattext>
+        </material>
+        <render_choice>
+          <response_label ident="bafd8242-ecdb-4158-a6d3-4ff15e016cb8-0" scoring_algorithm='TextContainsAnswer' answer_type='openEntry'>
+            <material>
+              <mattext texttype="text/plain">red</mattext>
+            </material>
+          </response_label>
+        </render_choice>
+      </response_lid>
+      <response_lid ident="response_d719aee0-6ce0-462c-9c0d-be63ba8d3408">
+        <material>
+          <mattext>blue</mattext>
+        </material>
+        <render_choice>
+          <response_label ident="d719aee0-6ce0-462c-9c0d-be63ba8d3408-0" scoring_algorithm='TextCloseEnough' answer_type='openEntry' levenshtein_distance='1' ignore_case='true'>
+            <material>
+              <mattext texttype="text/plain">blue</mattext>
+            </material>
+          </response_label>
+        </render_choice>
+      </response_lid>
+      <response_lid ident="response_ce47aaf6-c1dd-4db8-9a9f-7f5c131d8a90">
+        <material>
+          <mattext>green</mattext>
+        </material>
+        <render_choice>
+          <response_label ident="ce47aaf6-c1dd-4db8-9a9f-7f5c131d8a90-0" scoring_algorithm='TextEquivalence' answer_type='openEntry'>
+            <material>
+              <mattext texttype="text/plain">green</mattext>
+            </material>
+          </response_label>
+        </render_choice>
+      </response_lid>
+      <response_lid ident="response_41dfd716-8fd9-466a-97fa-33d353e44b42">
+        <material>
+          <mattext>yellow</mattext>
+        </material>
+        <render_choice>
+          <response_label ident="41dfd716-8fd9-466a-97fa-33d353e44b42-0" scoring_algorithm='TextInChoices' answer_type='openEntry'>
+            <material>
+              <mattext texttype="text/plain">yellow</mattext>
+            </material>
+          </response_label>
+          <response_label ident="41dfd716-8fd9-466a-97fa-33d353e44b42-1" scoring_algorithm='TextInChoices' answer_type='openEntry'>
+            <material>
+              <mattext texttype="text/plain">teal</mattext>
+            </material>
+          </response_label>
+        </render_choice>
+      </response_lid>
+      <response_lid ident="response_a053119f-6a61-4372-ac79-4b2a7de0232f">
+        <material>
+          <mattext>^orange$</mattext>
+        </material>
+        <render_choice>
+          <response_label ident="a053119f-6a61-4372-ac79-4b2a7de0232f-0" scoring_algorithm='TextRegex' answer_type='openEntry'>
+            <material>
+              <mattext texttype="text/plain">^orange$</mattext>
+            </material>
+          </response_label>
+        </render_choice>
+      </response_lid>
+    </presentation>
+    <resprocessing>
+      <outcomes>
+        <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+      </outcomes>
+      <respcondition>
+        <conditionvar>
+          <varequal respident="response_bafd8242-ecdb-4158-a6d3-4ff15e016cb8">bafd8242-ecdb-4158-a6d3-4ff15e016cb8-0</varequal>
+        </conditionvar>
+        <setvar action="Add" varname="SCORE">20.00</setvar>
+      </respcondition>
+      <respcondition>
+        <conditionvar>
+          <varequal respident="response_d719aee0-6ce0-462c-9c0d-be63ba8d3408">d719aee0-6ce0-462c-9c0d-be63ba8d3408-0</varequal>
+        </conditionvar>
+        <setvar action="Add" varname="SCORE">20.00</setvar>
+      </respcondition>
+      <respcondition>
+        <conditionvar>
+          <varequal respident="response_ce47aaf6-c1dd-4db8-9a9f-7f5c131d8a90">ce47aaf6-c1dd-4db8-9a9f-7f5c131d8a90-0</varequal>
+        </conditionvar>
+        <setvar action="Add" varname="SCORE">20.00</setvar>
+      </respcondition>
+      <respcondition>
+        <conditionvar>
+          <varequal respident="response_41dfd716-8fd9-466a-97fa-33d353e44b42">41dfd716-8fd9-466a-97fa-33d353e44b42-0</varequal>
+        </conditionvar>
+        <setvar action="Add" varname="SCORE">20.00</setvar>
+      </respcondition>
+      <respcondition>
+        <conditionvar>
+          <varequal respident="response_a053119f-6a61-4372-ac79-4b2a7de0232f">a053119f-6a61-4372-ac79-4b2a7de0232f-0</varequal>
+        </conditionvar>
+        <setvar action="Add" varname="SCORE">20.00</setvar>
+      </respcondition>
+    </resprocessing>
+  </item>
+</questestinterop>

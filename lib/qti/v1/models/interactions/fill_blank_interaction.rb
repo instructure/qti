@@ -30,6 +30,10 @@ module Qti
             @canvas_multiple_fib ||= BaseInteraction.canvas_multiple_fib?(@node)
           end
 
+          def new_quizzes_fib?
+            @new_quizzes_fib ||= BaseInteraction.new_quizzes_fib?(@node)
+          end
+
           def stem_items
             if canvas_multiple_fib?
               canvas_stem_items(node.at_xpath('.//xmlns:mattext').text)
@@ -76,15 +80,53 @@ module Qti
           end
 
           def scoring_data_structs
-            answer_nodes.map do |value_node|
+            @scoring_data_structs ||= answer_nodes.map do |value_node|
               ScoringData.new(
                 value_node.content,
                 rcardinality,
                 id: scoring_data_id(value_node),
                 case: scoring_data_case(value_node),
-                parent_identifier: value_node.parent.parent.attributes['ident']&.value
+                parent_identifier: value_node.parent.parent.attributes['ident']&.value,
+                scoring_algorithm: scoring_data_algorithm(value_node),
+                answer_type: scoring_data_answer_type(value_node),
+                scoring_options: scoring_data_options(value_node)
               )
             end
+          end
+
+          def wordbank_answer_present?
+            return false unless first_wordbank_answer
+
+            true
+          end
+
+          def wordbank_allow_reuse?
+            return unless wordbank_answer_present?
+
+            wordbank_struct = scoring_data_structs.find { |struct| struct.answer_type == 'wordbank' }
+            return false unless wordbank_struct.scoring_options['allow_reuse'] == 'true'
+
+            true
+          end
+
+          def wordbank_choices
+            return unless wordbank_answer_present?
+
+            choices = []
+
+            wordbank_answers = all_wordbank_answers.map do |node|
+              V1::Models::Choices::FillBlankChoice.new(node, self)
+            end
+
+            wordbank_answers.each do |wordbank_answer|
+              choices.push({ id: wordbank_answer.identifier, item_body: wordbank_answer.item_body })
+            end
+
+            choices
+          end
+
+          def correct_answer_map
+            @correct_answer_map ||= super
           end
 
           private
@@ -108,6 +150,45 @@ module Qti
 
           def scoring_data_case(node)
             node.attributes['case']&.value || 'no'
+          end
+
+          def scoring_data_algorithm(node)
+            node.attributes['scoring_algorithm']&.value || 'TextInChoices'
+          end
+
+          def scoring_data_answer_type(node)
+            node.attributes['answer_type']&.value || 'openEntry'
+          end
+
+          def scoring_data_options(node)
+            options = {}
+            algorithm = scoring_data_algorithm(node)
+            type = scoring_data_answer_type(node)
+
+            if algorithm == 'TextCloseEnough'
+              options['levenshtein_distance'] = levenshtein_distance(node)
+              options['ignore_case'] = ignore_case(node)
+            end
+
+            options['allow_reuse'] = node.attributes['allow_reuse']&.value if type == 'wordbank'
+
+            options
+          end
+
+          def levenshtein_distance(node)
+            node.attributes['levenshtein_distance']&.value || '1'
+          end
+
+          def ignore_case(node)
+            node.attributes['ignore_case']&.value || 'false'
+          end
+
+          def first_wordbank_answer
+            @first_wordbank_answer ||= answer_nodes.find { |node| scoring_data_answer_type(node) == 'wordbank' }
+          end
+
+          def all_wordbank_answers
+            @all_wordbank_answers ||= answer_nodes.find_all { |node| scoring_data_answer_type(node) == 'wordbank' }
           end
 
           def qti_stem_item(index, stem_item)

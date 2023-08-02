@@ -17,6 +17,10 @@ module Qti
             @parent_identifier ||= @node.parent.parent.attributes['ident']&.value
           end
 
+          def position
+            @position ||= @node.attributes['position']&.value
+          end
+
           def item_body
             @item_body ||= begin
               node = @node.dup

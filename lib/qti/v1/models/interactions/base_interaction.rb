@@ -20,6 +20,15 @@ module Qti
             question_type(node) == 'fill_in_multiple_blanks_question'
           end
 
+          def self.new_quizzes_fib?(node)
+            return false unless canvas_multiple_fib?(node)
+
+            first_match = node.at_xpath('.//xmlns:response_label')
+            return false if first_match.blank?
+
+            first_match.attr('scoring_algorithm').present?
+          end
+
           def self.question_type(node)
             path = './/xmlns:qtimetadatafield/xmlns:fieldlabel' \
               '[text()="question_type"]/../xmlns:fieldentry'

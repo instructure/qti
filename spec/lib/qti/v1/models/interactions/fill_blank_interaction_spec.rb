@@ -31,6 +31,14 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     end
   end
 
+  shared_examples_for 'nq_scoring_data_structs' do
+    it 'returns the scoring_data_structs' do
+      expect(loaded_class.scoring_data_structs.map(&:scoring_algorithm)).to eq(scoring_data_algorithm)
+      expect(loaded_class.scoring_data_structs.map(&:answer_type)).to eq(scoring_data_answer_type)
+      expect(loaded_class.scoring_data_structs.map(&:scoring_options)).to eq(scoring_data_options)
+    end
+  end
+
   shared_examples_for 'stem_items' do
     it 'returns the stem_items' do
       expect(loaded_class.stem_items).to eq(expected_stem_items)
@@ -151,6 +159,28 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
       allow(subject).to receive(:answer_nodes).and_return([node])
       expect(subject.scoring_data_structs.first.case).to eq 'no'
     end
+
+    it "returns 'TextInChoices' as scoring algorithm default value" do
+      allow(nodexml).to receive(:at_xpath)
+      node = double(
+        parent: double(parent: double(attributes: 'a')),
+        content: 'content',
+        attributes: { respident: double(value: 'a') }
+      )
+      allow(subject).to receive(:answer_nodes).and_return([node])
+      expect(subject.scoring_data_structs.first.scoring_algorithm).to eq 'TextInChoices'
+    end
+
+    it "returns 'openEntry' as answer type default value" do
+      allow(nodexml).to receive(:at_xpath)
+      node = double(
+        parent: double(parent: double(attributes: 'a')),
+        content: 'content',
+        attributes: { respident: double(value: 'a') }
+      )
+      allow(subject).to receive(:answer_nodes).and_return([node])
+      expect(subject.scoring_data_structs.first.answer_type).to eq 'openEntry'
+    end
   end
 
   context 'fib_str.xml' do
@@ -192,22 +222,152 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
     let(:scoring_data_case) { %w[no] }
     let(:answer_count) { 1 }
     let(:expected_blanks) { [{ id: '3537' }] }
-    let(:expected_stem_items) do
-      [
-        { id: 'stem_0', position: 1, type: 'text', value: '<div><p>Bird, bird, bird, bird is the ' },
-        { id: 'stem_1', position: 2, type: 'blank', blank_id: 'response_blank1', blank_name: 'word' },
-        { id: 'stem_2', position: 3, type: 'text', value: '</p></div>' }
-      ]
-    end
 
     include_examples 'shuffled?'
     include_examples 'answers'
     include_examples 'scoring_data_structs'
     include_examples 'blanks'
-    include_examples 'stem_items'
 
     it 'returns false for #single_fill_in_blank?' do
       expect(loaded_class.single_fill_in_blank?).to eq false
+    end
+  end
+
+  context 'new quizzes multiple fill in the blank questions with all possible scoring algorithms' do
+    let(:file_path) { File.join(fixtures_path, 'nq_multiple_fib_scoring_algorithms.xml') }
+    let(:scoring_data_ids) do
+      %w[bafd8242-ecdb-4158-a6d3-4ff15e016cb8-0
+         d719aee0-6ce0-462c-9c0d-be63ba8d3408-0
+         ce47aaf6-c1dd-4db8-9a9f-7f5c131d8a90-0
+         41dfd716-8fd9-466a-97fa-33d353e44b42-0
+         41dfd716-8fd9-466a-97fa-33d353e44b42-1
+         a053119f-6a61-4372-ac79-4b2a7de0232f-0]
+    end
+    let(:scoring_data_values) { %w[red blue green yellow teal ^orange$] }
+    let(:scoring_data_case) { %w[no no no no no no] }
+    let(:scoring_data_algorithm) do
+      %w[TextContainsAnswer TextCloseEnough TextEquivalence TextInChoices TextInChoices TextRegex]
+    end
+    let(:scoring_data_answer_type) { %w[openEntry openEntry openEntry openEntry openEntry openEntry] }
+    let(:scoring_data_options) { [{}, { 'ignore_case' => 'true', 'levenshtein_distance' => '1' }, {}, {}, {}, {}] }
+    let(:correct_answer_map) do
+      { 'response_bafd8242-ecdb-4158-a6d3-4ff15e016cb8' => 'bafd8242-ecdb-4158-a6d3-4ff15e016cb8-0',
+        'response_d719aee0-6ce0-462c-9c0d-be63ba8d3408' => 'd719aee0-6ce0-462c-9c0d-be63ba8d3408-0',
+        'response_ce47aaf6-c1dd-4db8-9a9f-7f5c131d8a90' => 'ce47aaf6-c1dd-4db8-9a9f-7f5c131d8a90-0',
+        'response_41dfd716-8fd9-466a-97fa-33d353e44b42' => '41dfd716-8fd9-466a-97fa-33d353e44b42-0',
+        'response_a053119f-6a61-4372-ac79-4b2a7de0232f' => 'a053119f-6a61-4372-ac79-4b2a7de0232f-0' }
+    end
+    let(:expected_stem_items) do
+      [{ id: 'stem_0', position: 1, type: 'text', value: '<p>Roses are ' },
+       { blank_id: 'response_bafd8242-ecdb-4158-a6d3-4ff15e016cb8',
+         blank_name: 'red',
+         id: 'stem_1',
+         position: 2,
+         type: 'blank' },
+       { id: 'stem_2', position: 3, type: 'text', value: ', ' },
+       { blank_id: 'response_d719aee0-6ce0-462c-9c0d-be63ba8d3408',
+         blank_name: 'blue',
+         id: 'stem_3',
+         position: 4,
+         type: 'blank' },
+       { id: 'stem_4', position: 5, type: 'text', value: ', ' },
+       { blank_id: 'response_ce47aaf6-c1dd-4db8-9a9f-7f5c131d8a90',
+         blank_name: 'green',
+         id: 'stem_5',
+         position: 6,
+         type: 'blank' },
+       { id: 'stem_6', position: 7, type: 'text', value: ', ' },
+       { blank_id: 'response_41dfd716-8fd9-466a-97fa-33d353e44b42',
+         blank_name: 'yellow',
+         id: 'stem_7',
+         position: 8,
+         type: 'blank' },
+       { id: 'stem_8', position: 9, type: 'text', value: ', and ' },
+       { blank_id: 'response_a053119f-6a61-4372-ac79-4b2a7de0232f',
+         blank_name: '^orange$',
+         id: 'stem_9',
+         position: 10,
+         type: 'blank' },
+       { id: 'stem_10', position: 11, type: 'text', value: '.</p>' }]
+    end
+
+    include_examples 'scoring_data_structs'
+    include_examples 'nq_scoring_data_structs'
+    include_examples 'stem_items'
+
+    it 'returns false for #wordbank_answer_present?' do
+      expect(loaded_class.wordbank_answer_present?).to eq false
+    end
+
+    it 'returns nil for #wordbank_allow_reuse?' do
+      expect(loaded_class.wordbank_allow_reuse?).to eq nil
+    end
+
+    it 'returns nil for #wordbank_choices' do
+      expect(loaded_class.wordbank_choices).to eq nil
+    end
+
+    it 'returns the answer map for #correct_answer_map' do
+      expect(loaded_class.correct_answer_map).to eq(correct_answer_map)
+    end
+  end
+
+  context 'new quizzes multiple fill in the blank questions with all possible answer types' do
+    let(:file_path) { File.join(fixtures_path, 'nq_multiple_fib_answer_types.xml') }
+    let(:scoring_data_ids) do
+      %w[378646a8-b823-4e5b-beb8-19ca63f1f355
+         c9400bfb-78ea-45b6-b5a5-e3311f6d5ed0
+         76350749-49ac-4094-966b-c4e1f12d54bc
+         cd11d826-906d-4dc4-b78d-d66516eb94ce
+         bae0bd4f-2327-4a3e-b29f-199e1e279e91]
+    end
+    let(:scoring_data_values) { %w[black violet grey brown white] }
+    let(:scoring_data_case) { %w[no no no no no] }
+    let(:scoring_data_algorithm) { %w[Equivalence Equivalence Equivalence TextEquivalence TextEquivalence] }
+    let(:scoring_data_answer_type) { %w[dropdown dropdown dropdown wordbank wordbank] }
+    let(:scoring_data_options) { [{}, {}, {}, { 'allow_reuse' => 'true' }, { 'allow_reuse' => 'true' }] }
+    let(:wordbank_choices) do
+      [{ id: 'cd11d826-906d-4dc4-b78d-d66516eb94ce', item_body: 'brown' },
+       { id: 'bae0bd4f-2327-4a3e-b29f-199e1e279e91', item_body: 'white' }]
+    end
+    let(:correct_answer_map) do
+      { 'response_a20629ed-0c0b-4959-b565-a80c0f199602' => '378646a8-b823-4e5b-beb8-19ca63f1f355',
+        'response_ab37a945-ebad-4787-a356-66c3c91efcc6' => 'bae0bd4f-2327-4a3e-b29f-199e1e279e91' }
+    end
+    let(:expected_stem_items) do
+      [{ id: 'stem_0', position: 1, type: 'text', value: '<p>Roses are ' },
+       { blank_id: 'response_a20629ed-0c0b-4959-b565-a80c0f199602',
+         blank_name: 'black',
+         id: 'stem_1',
+         position: 2,
+         type: 'blank' },
+       { id: 'stem_2', position: 3, type: 'text', value: ' and ' },
+       { blank_id: 'response_ab37a945-ebad-4787-a356-66c3c91efcc6',
+         blank_name: 'white',
+         id: 'stem_3',
+         position: 4,
+         type: 'blank' },
+       { id: 'stem_4', position: 5, type: 'text', value: '.</p>' }]
+    end
+
+    include_examples 'scoring_data_structs'
+    include_examples 'nq_scoring_data_structs'
+    include_examples 'stem_items'
+
+    it 'returns true for #wordbank_answer_present?' do
+      expect(loaded_class.wordbank_answer_present?).to eq true
+    end
+
+    it 'returns true for #wordbank_allow_reuse?' do
+      expect(loaded_class.wordbank_allow_reuse?).to eq true
+    end
+
+    it 'returns the correct choices for #wordbank_choices' do
+      expect(loaded_class.wordbank_choices).to eq(wordbank_choices)
+    end
+
+    it 'returns the answer map for #correct_answer_map' do
+      expect(loaded_class.correct_answer_map).to eq(correct_answer_map)
     end
   end
 end

@@ -39,17 +39,31 @@ module Qti
 
           def blank_id(stem_item)
             return stem_item unless canvas_custom_fitb?
-            canvas_blank_id(stem_item)
+            return canvas_blank_id(stem_item) unless new_quizzes_fib?
+            nq_blank_id(stem_item)
           end
 
           def blank_value(blank_id)
+            return nq_blank_value(blank_id) if new_quizzes_fib?
+
             blank = canvas_fib_responses.find { |response| response[:id] == blank_id }
             correct_choice = blank[:choices].find { |c| c[:id] == correct_choice_id(blank) }
             (correct_choice || {})[:item_body] || blank&.dig(:choices, 0, :item_body)
           end
 
+          # The correct answer value is not necessarily the first one in NQ
+          def nq_blank_value(blank_id)
+            blank = canvas_fib_responses.find { |response| response[:id] == blank_id }
+            correct_choice = blank[:choices].find { |choice| choice[:id] == correct_answer_map[blank_id] }
+            correct_choice[:item_body]
+          end
+
           def canvas_custom_fitb?
             @canvas_custom_fitb ||= BaseInteraction.canvas_custom_fitb?(@node)
+          end
+
+          def new_quizzes_fib?
+            @new_quizzes_fib ||= BaseInteraction.new_quizzes_fib?(@node)
           end
 
           def canvas_blank_id(stem_item)
@@ -58,6 +72,14 @@ module Qti
               if stem_item == response_lid_node.text
                 blank_id = response_lid_node.ancestors('response_lid').first.attributes['ident']&.value
               end
+            end
+            blank_id
+          end
+
+          def nq_blank_id(stem_item)
+            blank_id = nil
+            node.xpath('.//xmlns:response_lid').map do |resp|
+              blank_id = resp[:ident] if resp[:ident] == "response_#{stem_item}"
             end
             blank_id
           end
@@ -80,7 +102,22 @@ module Qti
             @canvas_fib_response_ids ||= canvas_fib_responses.map { |b| "[#{b[:id].sub(/^response_/, '')}]" }
           end
 
+          def correct_answer_map
+            @correct_answer_map ||= correct_answers
+          end
+
           private
+
+          # Maps response ids to their correct answer's id
+          def correct_answers
+            correct_answers = {}
+
+            node.xpath('.//xmlns:varequal').each do |correct_answer|
+              correct_answers[correct_answer.attributes['respident']&.value] = correct_answer.text
+            end
+
+            correct_answers
+          end
 
           def correct_choice_id(blank)
             node.xpath('.//xmlns:resprocessing/xmlns:respcondition/xmlns:conditionvar/xmlns:varequal')

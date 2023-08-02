@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <item ident="a7ca973956582afc57a81192b444632c" title="NQ Fill in Multiple Blanks Answer Types">
+    <itemmetadata>
+      <qtimetadata>
+        <qtimetadatafield>
+          <fieldlabel>question_type</fieldlabel>
+          <fieldentry>fill_in_multiple_blanks_question</fieldentry>
+        </qtimetadatafield>
+        <qtimetadatafield>
+          <fieldlabel>points_possible</fieldlabel>
+          <fieldentry>1.0</fieldentry>
+        </qtimetadatafield>
+        <qtimetadatafield>
+          <fieldlabel>original_answer_ids</fieldlabel>
+          <fieldentry>["378646a8-b823-4e5b-beb8-19ca63f1f355", "c9400bfb-78ea-45b6-b5a5-e3311f6d5ed0", "76350749-49ac-4094-966b-c4e1f12d54bc", "cd11d826-906d-4dc4-b78d-d66516eb94ce", "bae0bd4f-2327-4a3e-b29f-199e1e279e91"]</fieldentry>
+        </qtimetadatafield>
+        <qtimetadatafield>
+          <fieldlabel>assessment_question_identifierref</fieldlabel>
+          <fieldentry>1c4b07be8a149dfa8f6a263a548cdd84</fieldentry>
+        </qtimetadatafield>
+      </qtimetadata>
+    </itemmetadata>
+    <presentation>
+      <material>
+        <mattext texttype="text/html">&lt;p&gt;Roses are [a20629ed-0c0b-4959-b565-a80c0f199602] and [ab37a945-ebad-4787-a356-66c3c91efcc6].&lt;/p&gt;</mattext>
+      </material>
+      <response_lid ident="response_a20629ed-0c0b-4959-b565-a80c0f199602">
+        <material>
+          <mattext>black</mattext>
+        </material>
+        <render_choice>
+          <response_label ident="378646a8-b823-4e5b-beb8-19ca63f1f355" position="1" scoring_algorithm='Equivalence' answer_type='dropdown'>
+            <material>
+              <mattext texttype="text/plain">black</mattext>
+            </material>
+          </response_label>
+          <response_label ident="c9400bfb-78ea-45b6-b5a5-e3311f6d5ed0" position="2" scoring_algorithm='Equivalence' answer_type='dropdown'>
+            <material>
+              <mattext texttype="text/plain">violet</mattext>
+            </material>
+          </response_label>
+          <response_label ident="76350749-49ac-4094-966b-c4e1f12d54bc" position="3" scoring_algorithm='Equivalence' answer_type='dropdown'>
+            <material>
+              <mattext texttype="text/plain">grey</mattext>
+            </material>
+          </response_label>
+        </render_choice>
+      </response_lid>
+      <response_lid ident="response_ab37a945-ebad-4787-a356-66c3c91efcc6">
+        <material>
+          <mattext>white</mattext>
+        </material>
+        <render_choice>
+          <response_label ident="cd11d826-906d-4dc4-b78d-d66516eb94ce" scoring_algorithm='TextEquivalence' answer_type='wordbank' allow_reuse='true'>
+            <material>
+              <mattext texttype="text/plain">brown</mattext>
+            </material>
+          </response_label>
+          <response_label ident="bae0bd4f-2327-4a3e-b29f-199e1e279e91" scoring_algorithm='TextEquivalence' answer_type='wordbank' allow_reuse='true'>
+            <material>
+              <mattext texttype="text/plain">white</mattext>
+            </material>
+          </response_label>
+        </render_choice>
+      </response_lid>
+    </presentation>
+    <resprocessing>
+      <outcomes>
+        <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+      </outcomes>
+      <respcondition>
+        <conditionvar>
+          <varequal respident="response_a20629ed-0c0b-4959-b565-a80c0f199602">378646a8-b823-4e5b-beb8-19ca63f1f355</varequal>
+        </conditionvar>
+        <setvar action="Add" varname="SCORE">50.00</setvar>
+      </respcondition>
+      <respcondition>
+        <conditionvar>
+          <varequal respident="response_ab37a945-ebad-4787-a356-66c3c91efcc6">bae0bd4f-2327-4a3e-b29f-199e1e279e91</varequal>
+        </conditionvar>
+        <setvar action="Add" varname="SCORE">50.00</setvar>
+      </respcondition>
+    </resprocessing>
+  </item>
+</questestinterop>

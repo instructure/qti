@@ -94,4 +94,20 @@ describe Qti::V1::Models::Interactions::BaseInteraction do
     include_examples('item_level_feedback')
     include_examples('answer_feedback')
   end
+
+  context 'nq_multiple_fib_scoring_algorithms.xml' do
+    let(:file_path) { File.join(fixtures_path, 'nq_multiple_fib_scoring_algorithms.xml') }
+
+    it 'correctly finds new quizzes QTI' do
+      expect(Qti::V1::Models::Interactions::BaseInteraction.new_quizzes_fib?(assessment_item_refs.first)).to eq true
+    end
+  end
+
+  context 'canvas_multiple_fib.xml' do
+    let(:file_path) { File.join(fixtures_path, 'canvas_multiple_fib.xml') }
+
+    it 'correctly does not find new quizzes QTI' do
+      expect(Qti::V1::Models::Interactions::BaseInteraction.new_quizzes_fib?(assessment_item_refs.first)).to eq false
+    end
+  end
 end
