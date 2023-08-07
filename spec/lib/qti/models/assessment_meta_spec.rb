@@ -20,7 +20,10 @@ context 'Canvas Assessment Meta Data' do
       expect(assessment.canvas_available?).to eq(available)
       expect(assessment.canvas_one_time_results?).to eq(one_time_results)
       expect(assessment.canvas_scoring_policy).to eq(scoring_policy)
+      expect(assessment.canvas_cooling_period_seconds).to eq(cooling_period_seconds)
+      expect(assessment.canvas_shuffle_questions?).to eq(shuffle_questions)
       expect(assessment.canvas_shuffle_answers?).to eq(shuffle_answers)
+      expect(assessment.canvas_calculator_type).to eq(calculator_type)
       expect(assessment.canvas_lock_at).to eq(lock_at)
       expect(assessment.canvas_unlock_at).to eq(unlock_at)
       expect(assessment.canvas_due_at).to eq(due_at)
@@ -30,10 +33,21 @@ context 'Canvas Assessment Meta Data' do
       expect(assessment.canvas_show_correct_answers?).to eq(show_answers)
       expect(assessment.canvas_show_correct_answers_at).to eq(show_answers_at)
       expect(assessment.canvas_hide_correct_answers_at).to eq(hide_answers_at)
+      expect(assessment.canvas_allow_clear_mc_selection?).to eq(allow_clear_mc_selection)
       expect(assessment.canvas_require_lockdown_browser?).to eq(rlb)
       expect(assessment.canvas_require_lockdown_browser_for_results?).to eq(rlb_results)
       expect(assessment.canvas_require_lockdown_browser_monitor?).to eq(rlb_monitor)
       expect(assessment.canvas_lockdown_browser_monitor_data).to eq(lb_monitor_data)
+      expect(assessment.canvas_nq_ip_filters_enabled?).to eq(nq_ip_filters_enabled)
+      expect(assessment.canvas_nq_ip_filters).to eq(nq_ip_filters)
+      expect(assessment.canvas_result_view_restricted?).to eq(result_view_restricted)
+      expect(assessment.canvas_display_items?).to eq(display_items)
+      expect(assessment.canvas_display_item_response?).to eq(display_item_response)
+      expect(assessment.canvas_display_item_feedback?).to eq(display_item_feedback)
+      expect(assessment.canvas_display_points_awarded?).to eq(display_points_awarded)
+      expect(assessment.canvas_display_points_possible?).to eq(display_points_possible)
+      expect(assessment.canvas_display_item_correct_answer?).to eq(display_item_correct_answer)
+      expect(assessment.canvas_display_item_response_correctness?).to eq(display_item_response_correctness)
     end
   end
 
@@ -53,7 +67,10 @@ context 'Canvas Assessment Meta Data' do
     let(:available) { true }
     let(:one_time_results) { false }
     let(:scoring_policy) { 'keep_highest' }
+    let(:cooling_period_seconds) { nil }
+    let(:shuffle_questions) { false }
     let(:shuffle_answers) { false }
+    let(:calculator_type) { nil }
     let(:lock_at) { nil }
     let(:unlock_at) { nil }
     let(:due_at) { nil }
@@ -63,10 +80,21 @@ context 'Canvas Assessment Meta Data' do
     let(:show_answers) { true }
     let(:show_answers_at) { nil }
     let(:hide_answers_at) { nil }
+    let(:allow_clear_mc_selection) { false }
     let(:rlb) { false }
     let(:rlb_results) { false }
     let(:rlb_monitor) { false }
     let(:lb_monitor_data) { nil }
+    let(:nq_ip_filters_enabled) { false }
+    let(:nq_ip_filters) { [] }
+    let(:result_view_restricted) { false }
+    let(:display_items) { false }
+    let(:display_item_response) { false }
+    let(:display_item_feedback) { false }
+    let(:display_points_awarded) { false }
+    let(:display_points_possible) { false }
+    let(:display_item_correct_answer) { false }
+    let(:display_item_response_correctness) { false }
 
     include_examples('loads canvas meta data')
   end
@@ -87,7 +115,10 @@ context 'Canvas Assessment Meta Data' do
     let(:available) { false }
     let(:one_time_results) { false }
     let(:scoring_policy) { 'keep_average' }
+    let(:shuffle_questions) { true }
+    let(:cooling_period_seconds) { 86_400 }
     let(:shuffle_answers) { true }
+    let(:calculator_type) { 'basic' }
     let(:lock_at) { '2020-07-10T04:59:59' }
     let(:unlock_at) { '2020-04-16T05:00:00' }
     let(:due_at) { '2020-05-23T04:59:59' }
@@ -97,10 +128,26 @@ context 'Canvas Assessment Meta Data' do
     let(:show_answers) { true }
     let(:show_answers_at) { '2041-02-17 06:00:00 UTC' }
     let(:hide_answers_at) { '2042-12-26 06:00:00 UTC' }
+    let(:allow_clear_mc_selection) { true }
     let(:rlb) { false }
     let(:rlb_results) { false }
     let(:rlb_monitor) { false }
     let(:lb_monitor_data) { nil }
+    let(:nq_ip_filters_enabled) { true }
+    let(:nq_ip_filters) do
+      [
+        ['255.255.0.0', '255.255.0.255'],
+        ['255.255.0.255', '255.255.255.255']
+      ]
+    end
+    let(:result_view_restricted) { true }
+    let(:display_items) { true }
+    let(:display_item_response) { true }
+    let(:display_item_feedback) { true }
+    let(:display_points_awarded) { true }
+    let(:display_points_possible) { true }
+    let(:display_item_correct_answer) { true }
+    let(:display_item_response_correctness) { true }
 
     include_examples('loads canvas meta data')
   end
@@ -121,7 +168,10 @@ context 'Canvas Assessment Meta Data' do
     let(:available) { false }
     let(:one_time_results) { false }
     let(:scoring_policy) { nil }
+    let(:cooling_period_seconds) { nil }
+    let(:shuffle_questions) { false }
     let(:shuffle_answers) { false }
+    let(:calculator_type) { nil }
     let(:lock_at) { nil }
     let(:unlock_at) { nil }
     let(:due_at) { nil }
@@ -131,10 +181,21 @@ context 'Canvas Assessment Meta Data' do
     let(:show_answers) { false }
     let(:show_answers_at) { nil }
     let(:hide_answers_at) { nil }
+    let(:allow_clear_mc_selection) { false }
     let(:rlb) { false }
     let(:rlb_results) { false }
     let(:rlb_monitor) { false }
     let(:lb_monitor_data) { nil }
+    let(:nq_ip_filters_enabled) { false }
+    let(:nq_ip_filters) { [] }
+    let(:result_view_restricted) { false }
+    let(:display_items) { false }
+    let(:display_item_response) { false }
+    let(:display_item_feedback) { false }
+    let(:display_points_awarded) { false }
+    let(:display_points_possible) { false }
+    let(:display_item_correct_answer) { false }
+    let(:display_item_response_correctness) { false }
 
     include_examples('loads canvas meta data')
   end
@@ -155,7 +216,10 @@ context 'Canvas Assessment Meta Data' do
     let(:available) { true }
     let(:one_time_results) { false }
     let(:scoring_policy) { 'keep_highest' }
+    let(:cooling_period_seconds) { nil }
+    let(:shuffle_questions) { false }
     let(:shuffle_answers) { false }
+    let(:calculator_type) { nil }
     let(:lock_at) { nil }
     let(:unlock_at) { nil }
     let(:due_at) { nil }
@@ -165,10 +229,21 @@ context 'Canvas Assessment Meta Data' do
     let(:show_answers) { true }
     let(:show_answers_at) { nil }
     let(:hide_answers_at) { nil }
+    let(:allow_clear_mc_selection) { false }
     let(:rlb) { false }
     let(:rlb_results) { false }
     let(:rlb_monitor) { false }
     let(:lb_monitor_data) { nil }
+    let(:nq_ip_filters_enabled) { false }
+    let(:nq_ip_filters) { [] }
+    let(:result_view_restricted) { false }
+    let(:display_items) { false }
+    let(:display_item_response) { false }
+    let(:display_item_feedback) { false }
+    let(:display_points_awarded) { false }
+    let(:display_points_possible) { false }
+    let(:display_item_correct_answer) { false }
+    let(:display_item_response_correctness) { false }
 
     include_examples('loads canvas meta data')
   end

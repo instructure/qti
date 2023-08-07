@@ -1,5 +1,6 @@
 module Qti
   module Models
+    # rubocop:disable Metrics/ClassLength
     class AssessmentMeta < Qti::Models::Base
       def title
         sanitize_content!(tag_under_quiz('title'))
@@ -7,6 +8,14 @@ module Qti
 
       def description
         sanitize_content!(tag_under_quiz('description'))
+      end
+
+      def shuffle_questions
+        tag_under_quiz('shuffle_questions')
+      end
+
+      def shuffle_questions?
+        string_true?(shuffle_questions)
       end
 
       def shuffle_answers
@@ -17,12 +26,24 @@ module Qti
         string_true?(shuffle_answers)
       end
 
+      def calculator_type
+        tag_under_quiz('calculator_type')
+      end
+
       def hide_results
         tag_under_quiz('hide_results')
       end
 
       def scoring_policy
         tag_under_quiz('scoring_policy')
+      end
+
+      def cooling_period_seconds_raw
+        tag_under_quiz('cooling_period_seconds')
+      end
+
+      def cooling_period_seconds
+        cooling_period_seconds_raw&.to_i
       end
 
       def quiz_type
@@ -168,6 +189,14 @@ module Qti
         tag_under_quiz('hide_correct_answers_at')
       end
 
+      def allow_clear_mc_selection
+        tag_under_quiz('allow_clear_mc_selection')
+      end
+
+      def allow_clear_mc_selection?
+        string_true?(allow_clear_mc_selection)
+      end
+
       def require_lockdown_browser
         tag_under_quiz('require_lockdown_browser')
       end
@@ -196,6 +225,80 @@ module Qti
         tag_under_quiz('lockdown_browser_monitor_data')
       end
 
+      def nq_ip_filters
+        @doc.xpath('//xmlns:quiz/xmlns:nq_ip_filter').map do |ip_filter|
+          [ip_filter.attributes['from']&.value, ip_filter.attributes['to']&.value]
+        end
+      end
+
+      def nq_ip_filters_enabled?
+        nq_ip_filters.any?
+      end
+
+      def result_view_restricted
+        tag_under_quiz('result_view_restricted')
+      end
+
+      def result_view_restricted?
+        string_true?(result_view_restricted)
+      end
+
+      def display_items
+        tag_under_quiz('display_items')
+      end
+
+      def display_items?
+        string_true?(display_items)
+      end
+
+      def display_item_feedback
+        tag_under_quiz('display_item_feedback')
+      end
+
+      def display_item_feedback?
+        string_true?(display_item_feedback)
+      end
+
+      def display_item_response
+        tag_under_quiz('display_item_response')
+      end
+
+      def display_item_response?
+        string_true?(display_item_response)
+      end
+
+      def display_points_awarded
+        tag_under_quiz('display_points_awarded')
+      end
+
+      def display_points_awarded?
+        string_true?(display_points_awarded)
+      end
+
+      def display_points_possible
+        tag_under_quiz('display_points_possible')
+      end
+
+      def display_points_possible?
+        string_true?(display_points_possible)
+      end
+
+      def display_item_correct_answer
+        tag_under_quiz('display_item_correct_answer')
+      end
+
+      def display_item_correct_answer?
+        string_true?(display_item_correct_answer)
+      end
+
+      def display_item_response_correctness
+        tag_under_quiz('display_item_response_correctness')
+      end
+
+      def display_item_response_correctness?
+        string_true?(display_item_response_correctness)
+      end
+
       private
 
       def tag_under_quiz(tag)
@@ -209,10 +312,12 @@ module Qti
         value&.casecmp('true')&.zero? || false
       end
     end
+    # rubocop:enable Metrics/ClassLength
 
     module AssessmentMetaBase
-      delegate :title, :description,
-        :shuffle_answers?, :scoring_policy, :points_possible,
+      delegate :title, :description, :shuffle_questions?,
+        :shuffle_answers?, :calculator_type, :scoring_policy,
+        :cooling_period_seconds, :points_possible,
         :hide_results, :quiz_type, :anonymous_submissions?,
         :could_be_locked?, :allowed_attempts, :one_question_at_a_time?,
         :cant_go_back?, :available?, :one_time_results?,
@@ -222,7 +327,11 @@ module Qti
         :lock_at, :unlock_at, :due_at, :require_lockdown_browser?,
         :require_lockdown_browser_for_results?,
         :require_lockdown_browser_monitor?, :show_correct_answers?,
-        :lockdown_browser_monitor_data,
+        :allow_clear_mc_selection?, :lockdown_browser_monitor_data,
+        :nq_ip_filters, :nq_ip_filters_enabled?,
+        :result_view_restricted?, :display_items?, :display_item_feedback?,
+        :display_item_response?, :display_points_awarded?, :display_points_possible?,
+        :display_item_correct_answer?, :display_item_response_correctness?,
         to: :@canvas_meta_data, prefix: :canvas, allow_nil: true
 
       alias canvas_instructions canvas_description

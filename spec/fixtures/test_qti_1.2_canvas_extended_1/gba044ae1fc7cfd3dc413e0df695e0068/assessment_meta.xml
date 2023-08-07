@@ -5,8 +5,11 @@
   <lock_at>2020-07-10T04:59:59</lock_at>
   <unlock_at>2020-04-16T05:00:00</unlock_at>
   <due_at>2020-05-23T04:59:59</due_at>
+  <shuffle_questions>true</shuffle_questions>
   <shuffle_answers>true</shuffle_answers>
+  <calculator_type>basic</calculator_type>
   <scoring_policy>keep_average</scoring_policy>
+  <cooling_period_seconds>86400</cooling_period_seconds>
   <hide_results></hide_results>
   <quiz_type>assignment</quiz_type>
   <points_possible/>
@@ -28,8 +31,19 @@
   <available>false</available>
   <one_time_results>false</one_time_results>
   <show_correct_answers_last_attempt>false</show_correct_answers_last_attempt>
+  <allow_clear_mc_selection>true</allow_clear_mc_selection>
   <only_visible_to_overrides>false</only_visible_to_overrides>
   <module_locked>false</module_locked>
+  <nq_ip_filter from="255.255.0.0" to="255.255.0.255"/>
+  <nq_ip_filter from="255.255.0.255" to="255.255.255.255"/>
+  <result_view_restricted>true</result_view_restricted>
+  <display_items>true</display_items>
+  <display_item_feedback>true</display_item_feedback>
+  <display_item_response>true</display_item_response>
+  <display_points_awarded>true</display_points_awarded>
+  <display_points_possible>true</display_points_possible>
+  <display_item_correct_answer>true</display_item_correct_answer>
+  <display_item_response_correctness>true</display_item_response_correctness>
   <assignment identifier="g390e22b33353b658bb23abbce000414f">
     <title>asd09sdfaxsdflj</title>
     <due_at>2020-05-23T04:59:59</due_at>
