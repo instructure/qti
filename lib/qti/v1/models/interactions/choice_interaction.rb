@@ -58,12 +58,25 @@ module Qti
             end
           end
 
+          # rubocop:disable Metrics/AbcSize
           def scoring_data(choice_nodes)
-            set_var_nodes = choice_nodes.select do |choice_node|
-              choice_node.at_xpath('.//xmlns:setvar')&.content&.to_f&.positive?
+            setvar_nodes(choice_nodes).map do |value_node|
+              scoring_options = {}
+              scoring_options['points'] = value_node.at_xpath('.//xmlns:setvar')&.content&.to_f
+
+              if value_node.attributes['correctanswer']&.value&.downcase == 'yes'
+                scoring_options['correct_answer'] = true
+              end
+
+              ScoringData.new(value_node.at_xpath('.//xmlns:varequal').content, rcardinality,
+                scoring_options: scoring_options)
             end
-            set_var_nodes.map do |value_node|
-              ScoringData.new(value_node.at_xpath('.//xmlns:varequal').content, rcardinality)
+          end
+          # rubocop:enable Metrics/AbcSize
+
+          def setvar_nodes(choice_nodes)
+            choice_nodes.select do |choice_node|
+              choice_node.at_xpath('.//xmlns:setvar')&.content&.to_f&.positive?
             end
           end
         end

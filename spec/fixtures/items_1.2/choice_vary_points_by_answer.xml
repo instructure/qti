@@ -1,0 +1,69 @@
+<?xml version="1.0"encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <assessment title="1.2 Import Quiz" ident="A1001">
+    <section title="Main" ident="S1002">
+      <item ident="d74b47a4abeeed159e030bfecbcecea2" title="My question title">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>multiple_choice_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>points_possible</fieldlabel>
+              <fieldentry>10.0</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>original_answer_ids</fieldlabel>
+              <fieldentry>93bbcb84-3281-4d99-b243-79ba4051e654,3cd6d311-07cd-4ec0-b2db-3048e6cf1128</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>9f47365e112840d80a79a960b1b0b6a7</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>calculator_type</fieldlabel>
+              <fieldentry>none</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;p&gt;the correct answer is letter A&lt;/p&gt;</mattext>
+          </material>
+          <response_lid ident="response1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="93bbcb84-3281-4d99-b243-79ba4051e654">
+                <material>
+                  <mattext texttype="text/html">A</mattext>
+                </material>
+              </response_label>
+              <response_label ident="3cd6d311-07cd-4ec0-b2db-3048e6cf1128">
+                <material>
+                  <mattext texttype="text/html">B</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response1">93bbcb84-3281-4d99-b243-79ba4051e654</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">10.0</setvar>
+          </respcondition>
+          <respcondition correctanswer="Yes">
+            <conditionvar>
+              <varequal respident="response1">3cd6d311-07cd-4ec0-b2db-3048e6cf1128</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">5.0</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+    </section>
+  </assessment>
+</questestinterop>
