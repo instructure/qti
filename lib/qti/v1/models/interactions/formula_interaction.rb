@@ -22,9 +22,11 @@ module Qti
 
           def solutions
             node.xpath('.//xmlns:var_set').map do |anode|
+              output = anode.at_xpath('.//xmlns:answer')&.text
+
               {
                 inputs: vars_at_node(anode),
-                output: anode.at_xpath('.//xmlns:answer')&.text&.to_f
+                output: formula_scientific_notation ? output : output&.to_f
               }
             end
           end
@@ -47,6 +49,10 @@ module Qti
 
           def formula_decimal_places
             @node.at_xpath('.//xmlns:formulas/@decimal_places')&.value
+          end
+
+          def formula_scientific_notation
+            @node.at_xpath('.//xmlns:formulas/@scientific_notation')&.value == 'true'
           end
 
           def formulas

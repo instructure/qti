@@ -13,6 +13,7 @@ describe Qti::V1::Models::Interactions::FormulaInteraction do
   shared_examples_for 'reading_formulas' do
     it 'reads formulas correctly' do
       expect(loaded_class.formula_decimal_places).to eq(formula_decimal_places)
+      expect(loaded_class.formula_scientific_notation).to eq(formula_scientific_notation)
       expect(loaded_class.formulas).to eq(formula_formulas)
     end
   end
@@ -41,6 +42,7 @@ describe Qti::V1::Models::Interactions::FormulaInteraction do
     let(:answer_tolerance) { '0' }
     let(:margin_of_error) { { margin: '0', margin_type: 'absolute' } }
     let(:formula_decimal_places) { '0' }
+    let(:formula_scientific_notation) { false }
     let(:formula_formulas) { ['x'] }
 
     let(:item_title) { '<div><p>What number is [x]</p></div>' }
@@ -61,6 +63,7 @@ describe Qti::V1::Models::Interactions::FormulaInteraction do
     let(:answer_tolerance) { '0' }
     let(:margin_of_error) { { margin: '0', margin_type: 'absolute' } }
     let(:formula_decimal_places) { '0' }
+    let(:formula_scientific_notation) { false }
     let(:formula_formulas) { ['x+y'] }
 
     let(:item_title) { '<div><p>[x] + [y]</p></div>' }
@@ -84,6 +87,7 @@ describe Qti::V1::Models::Interactions::FormulaInteraction do
     let(:answer_tolerance) { '10%' }
     let(:margin_of_error) { { margin: '10', margin_type: 'percent' } }
     let(:formula_decimal_places) { '2' }
+    let(:formula_scientific_notation) { false }
     let(:formula_formulas) { ['x=n*x', 'y=m*y', 'x+y'] }
 
     let(:item_title) { '<div><p>[n][x] + [m][y]</p></div>' }
@@ -98,6 +102,28 @@ describe Qti::V1::Models::Interactions::FormulaInteraction do
     include_examples 'scoring_data_structs'
     include_examples 'answer_tolerance'
     include_examples 'reading_formulas'
+    include_examples 'variables'
+  end
+
+  context 'Formula with scientific notation' do
+    let(:file_path) { File.join(fixtures_path, 'formula_scientific.xml') }
+
+    let(:scoring_data_values) { ['1*10^1', '7*10^0'] }
+
+    let(:answer_tolerance) { '0' }
+    let(:formula_decimal_places) { '0' }
+    let(:formula_scientific_notation) { true }
+    let(:formula_formulas) { ['x'] }
+    let(:margin_of_error) { { margin: '0', margin_type: 'absolute' } }
+    let(:formula_formulas) { ['5+x'] }
+
+    let(:item_title) { '<div><p>What number is [x]</p></div>' }
+
+    let(:variables) { [{ max: 10.0, min: 0.0, name: 'x', precision: 0 }] }
+
+    include_examples 'scoring_data_structs'
+    include_examples 'reading_formulas'
+    include_examples 'answer_tolerance'
     include_examples 'variables'
   end
 end
