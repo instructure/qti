@@ -44,6 +44,13 @@ module Qti
             end
           end
 
+          def scoring_algorithm
+            scoring_algorithm_path = './/xmlns:qtimetadatafield/xmlns:fieldlabel' \
+            '[text()="scoring_algorithm"]/../xmlns:fieldentry'
+
+            node.at_xpath(scoring_algorithm_path)&.text
+          end
+
           private
 
           def answer_nodes
@@ -72,8 +79,8 @@ module Qti
                 scoring_options: scoring_options)
             end
           end
-          # rubocop:enable Metrics/AbcSize
 
+          # rubocop:enable Metrics/AbcSize
           def setvar_nodes(choice_nodes)
             choice_nodes.select do |choice_node|
               choice_node.at_xpath('.//xmlns:setvar')&.content&.to_f&.positive?

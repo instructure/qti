@@ -220,6 +220,10 @@
               <fieldentry>i50a52b1e8b3e61e8e4f56b30182a3f6f</fieldentry>
             </qtimetadatafield>
           </qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>scoring_algorithm</fieldlabel>
+            <fieldentry>AllOrNothing</fieldentry>
+          </qtimetadatafield>
         </itemmetadata>
         <presentation>
           <material>

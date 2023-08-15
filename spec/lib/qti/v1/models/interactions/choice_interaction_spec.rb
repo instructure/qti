@@ -41,6 +41,10 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
     include_examples 'locked_choices'
     include_examples 'answers'
     include_examples 'meta_type'
+
+    it 'does not have any scoring algorithm' do
+      expect(loaded_class.scoring_algorithm).to eq nil
+    end
   end
 
   context 'true_false.xml' do
@@ -61,6 +65,10 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
     let(:shuffle_value) { false }
     let(:locked_choices_value) { [] }
 
+    it 'has the correct scoring algorithm' do
+      expect(loaded_class.scoring_algorithm).to eq 'AllOrNothing'
+    end
+
     include_examples 'shuffled?'
     include_examples 'locked_choices'
   end
@@ -75,6 +83,10 @@ describe Qti::V1::Models::Interactions::ChoiceInteraction do
     include_examples 'shuffled?'
     include_examples 'locked_choices'
     include_examples 'meta_type'
+
+    it 'does not have any scoring algorithm' do
+      expect(loaded_class.scoring_algorithm).to eq nil
+    end
   end
 
   context 'multiple respconditions with empty setvars' do

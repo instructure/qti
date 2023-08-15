@@ -94,6 +94,26 @@
             <setvar varname="que_score" action="Add">25.00</setvar>
           </respcondition>
         </resprocessing>
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>multiple_answers_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>points_possible</fieldlabel>
+              <fieldentry>1.0</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>i50a52b1e8b3e61e8e4f56b30182a3f6f</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>scoring_algorithm</fieldlabel>
+            <fieldentry>AllOrNothing</fieldentry>
+          </qtimetadatafield>
+        </itemmetadata>
       </item>
     </section>
   </assessment>

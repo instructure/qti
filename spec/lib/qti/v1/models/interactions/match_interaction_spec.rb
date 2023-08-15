@@ -59,6 +59,10 @@ describe Qti::V1::Models::Interactions::MatchInteraction do
     end
     let(:expected_distractors) { ['A distractor answer.'] }
 
+    it 'has the correct scoring algorithm' do
+      expect(subject.scoring_algorithm).to eq 'AllOrNothing'
+    end
+
     include_examples('common features')
     include_examples('questions and answers')
     include_examples('#scoring_data_structs')
@@ -88,5 +92,9 @@ describe Qti::V1::Models::Interactions::MatchInteraction do
     include_examples('common features')
     include_examples('questions and answers')
     include_examples('#scoring_data_structs')
+
+    it 'does not have any scoring algorithm' do
+      expect(subject.scoring_algorithm).to eq nil
+    end
   end
 end

@@ -35,6 +35,13 @@ module Qti
             all.reject { |v| correct.include? v }
           end
 
+          def scoring_algorithm
+            scoring_algorithm_path = './/xmlns:qtimetadatafield/xmlns:fieldlabel' \
+            '[text()="scoring_algorithm"]/../xmlns:fieldentry'
+
+            node.at_xpath(scoring_algorithm_path)&.text
+          end
+
           private
 
           def parse_scoring_data
@@ -43,6 +50,7 @@ module Qti
             matches = node.xpath(path).map do |node|
               [node.attributes['respident'].value, answers_map[node.content]]
             end
+
             [Models::ScoringData.new(Hash[matches], rcardinality)]
           end
 
