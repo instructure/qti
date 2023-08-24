@@ -319,20 +319,43 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
          c9400bfb-78ea-45b6-b5a5-e3311f6d5ed0
          76350749-49ac-4094-966b-c4e1f12d54bc
          cd11d826-906d-4dc4-b78d-d66516eb94ce
+         bae0bd4f-2327-4a3e-b29f-199e1e279e91
+         cd11d826-906d-4dc4-b78d-d66516eb94ce
          bae0bd4f-2327-4a3e-b29f-199e1e279e91]
     end
-    let(:scoring_data_values) { %w[black violet grey brown white] }
-    let(:scoring_data_case) { %w[no no no no no] }
-    let(:scoring_data_algorithm) { %w[Equivalence Equivalence Equivalence TextEquivalence TextEquivalence] }
-    let(:scoring_data_answer_type) { %w[dropdown dropdown dropdown wordbank wordbank] }
-    let(:scoring_data_options) { [{}, {}, {}, { 'allow_reuse' => 'true' }, { 'allow_reuse' => 'true' }] }
+    let(:scoring_data_values) { %w[black violet grey brown white brown white] }
+    let(:scoring_data_case) { %w[no no no no no no no] }
+    let(:scoring_data_algorithm) do
+      %w[
+        Equivalence
+        Equivalence
+        Equivalence
+        TextEquivalence
+        TextEquivalence
+        TextEquivalence
+        TextEquivalence
+      ]
+    end
+    let(:scoring_data_answer_type) { %w[dropdown dropdown dropdown wordbank wordbank wordbank wordbank] }
+    let(:scoring_data_options) do
+      [
+        {},
+        {},
+        {},
+        { 'allow_reuse' => 'true' },
+        { 'allow_reuse' => 'true' },
+        { 'allow_reuse' => 'true' },
+        { 'allow_reuse' => 'true' }
+      ]
+    end
     let(:wordbank_choices) do
       [{ id: 'cd11d826-906d-4dc4-b78d-d66516eb94ce', item_body: 'brown' },
        { id: 'bae0bd4f-2327-4a3e-b29f-199e1e279e91', item_body: 'white' }]
     end
     let(:correct_answer_map) do
       { 'response_a20629ed-0c0b-4959-b565-a80c0f199602' => '378646a8-b823-4e5b-beb8-19ca63f1f355',
-        'response_ab37a945-ebad-4787-a356-66c3c91efcc6' => 'bae0bd4f-2327-4a3e-b29f-199e1e279e91' }
+        'response_ab37a945-ebad-4787-a356-66c3c91efcc6' => 'bae0bd4f-2327-4a3e-b29f-199e1e279e91',
+        'response_ab37a945-ebad-4787-a356-66c3c91efcc7' => 'cd11d826-906d-4dc4-b78d-d66516eb94ce' }
     end
     let(:expected_stem_items) do
       [{ id: 'stem_0', position: 1, type: 'text', value: '<p>Roses are ' },
@@ -341,13 +364,19 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
          id: 'stem_1',
          position: 2,
          type: 'blank' },
-       { id: 'stem_2', position: 3, type: 'text', value: ' and ' },
+       { id: 'stem_2', position: 3, type: 'text', value: ', ' },
        { blank_id: 'response_ab37a945-ebad-4787-a356-66c3c91efcc6',
          blank_name: 'white',
          id: 'stem_3',
          position: 4,
          type: 'blank' },
-       { id: 'stem_4', position: 5, type: 'text', value: '.</p>' }]
+       { id: 'stem_4', position: 5, type: 'text', value: ', and ' },
+       { blank_id: 'response_ab37a945-ebad-4787-a356-66c3c91efcc7',
+         blank_name: 'brown',
+         id: 'stem_5',
+         position: 6,
+         type: 'blank' },
+       { id: 'stem_6', position: 7, type: 'text', value: '.</p>' }]
     end
 
     include_examples 'scoring_data_structs'

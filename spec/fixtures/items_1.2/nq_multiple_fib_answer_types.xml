@@ -23,7 +23,7 @@
     </itemmetadata>
     <presentation>
       <material>
-        <mattext texttype="text/html">&lt;p&gt;Roses are [a20629ed-0c0b-4959-b565-a80c0f199602] and [ab37a945-ebad-4787-a356-66c3c91efcc6].&lt;/p&gt;</mattext>
+        <mattext texttype="text/html">&lt;p&gt;Roses are [a20629ed-0c0b-4959-b565-a80c0f199602], [ab37a945-ebad-4787-a356-66c3c91efcc6], and [ab37a945-ebad-4787-a356-66c3c91efcc7].&lt;/p&gt;</mattext>
       </material>
       <response_lid ident="response_a20629ed-0c0b-4959-b565-a80c0f199602">
         <material>
@@ -64,6 +64,23 @@
           </response_label>
         </render_choice>
       </response_lid>
+      <response_lid ident="response_ab37a945-ebad-4787-a356-66c3c91efcc7">
+        <material>
+          <mattext>brown</mattext>
+        </material>
+        <render_choice>
+          <response_label ident="cd11d826-906d-4dc4-b78d-d66516eb94ce" scoring_algorithm='TextEquivalence' answer_type='wordbank' allow_reuse='true'>
+            <material>
+              <mattext texttype="text/plain">brown</mattext>
+            </material>
+          </response_label>
+          <response_label ident="bae0bd4f-2327-4a3e-b29f-199e1e279e91" scoring_algorithm='TextEquivalence' answer_type='wordbank' allow_reuse='true'>
+            <material>
+              <mattext texttype="text/plain">white</mattext>
+            </material>
+          </response_label>
+        </render_choice>
+      </response_lid>
     </presentation>
     <resprocessing>
       <outcomes>
@@ -73,13 +90,19 @@
         <conditionvar>
           <varequal respident="response_a20629ed-0c0b-4959-b565-a80c0f199602">378646a8-b823-4e5b-beb8-19ca63f1f355</varequal>
         </conditionvar>
-        <setvar action="Add" varname="SCORE">50.00</setvar>
+        <setvar action="Add" varname="SCORE">33.33</setvar>
       </respcondition>
       <respcondition>
         <conditionvar>
           <varequal respident="response_ab37a945-ebad-4787-a356-66c3c91efcc6">bae0bd4f-2327-4a3e-b29f-199e1e279e91</varequal>
         </conditionvar>
-        <setvar action="Add" varname="SCORE">50.00</setvar>
+        <setvar action="Add" varname="SCORE">33.33</setvar>
+      </respcondition>
+      <respcondition>
+        <conditionvar>
+          <varequal respident="response_ab37a945-ebad-4787-a356-66c3c91efcc7">cd11d826-906d-4dc4-b78d-d66516eb94ce</varequal>
+        </conditionvar>
+        <setvar action="Add" varname="SCORE">33.33</setvar>
       </respcondition>
     </resprocessing>
   </item>

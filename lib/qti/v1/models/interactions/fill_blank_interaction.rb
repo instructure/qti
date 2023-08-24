@@ -112,17 +112,17 @@ module Qti
           def wordbank_choices
             return unless wordbank_answer_present?
 
-            choices = []
+            choices = Set.new
 
             wordbank_answers = all_wordbank_answers.map do |node|
               V1::Models::Choices::FillBlankChoice.new(node, self)
             end
 
             wordbank_answers.each do |wordbank_answer|
-              choices.push({ id: wordbank_answer.identifier, item_body: wordbank_answer.item_body })
+              choices.add({ id: wordbank_answer.identifier, item_body: wordbank_answer.item_body })
             end
 
-            choices
+            choices.to_a
           end
 
           def correct_answer_map
