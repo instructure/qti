@@ -12,5 +12,6 @@ describe Qti::V1::Models::QuestionGroup do
     expect(loaded_class.items.count).to eq(4)
     expect(loaded_class.selection_number).to eq(1)
     expect(loaded_class.points_per_item).to eq(1)
+    expect(loaded_class.parent_stimulus_item_ident).to eq('020d8745b74093feb3365745dc18aa0a')
   end
 end

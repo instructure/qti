@@ -7,6 +7,7 @@ describe Qti::V1::Models::BankEntryItem do
   it 'configures a bank entry item correctly' do
     expect(loaded_class.sourcebank_ref).to eq('gafe7177102bee6759845b002c5de397c')
     expect(loaded_class.item_ref).to eq('ge0c6b84f2afc834ec575718bbc1451ff')
+    expect(loaded_class.parent_stimulus_item_ident).to eq('020d8745b74093feb3365745dc18aa0a')
     expect(loaded_class.points_possible).to eq('2.0')
   end
 end

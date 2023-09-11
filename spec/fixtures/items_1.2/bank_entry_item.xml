@@ -8,7 +8,7 @@
       </qtimetadatafield>
     </qtimetadata>
     <section ident="root_section">
-      <bankentry_item sourcebank_ref="gafe7177102bee6759845b002c5de397c" item_ref="ge0c6b84f2afc834ec575718bbc1451ff" points_possible="2.0"/>
+      <bankentry_item sourcebank_ref="gafe7177102bee6759845b002c5de397c" item_ref="ge0c6b84f2afc834ec575718bbc1451ff" parent_stimulus_item_ident="020d8745b74093feb3365745dc18aa0a" points_possible="2.0"/>
     </section>
   </assessment>
 </questestinterop>

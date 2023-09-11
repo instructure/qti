@@ -18,6 +18,10 @@ module Qti
           @item_ref ||= @doc.attribute('item_ref').value
         end
 
+        def parent_stimulus_item_ident
+          @parent_stimulus_item_ident ||= @doc.attribute('parent_stimulus_item_ident')&.value
+        end
+
         def points_possible
           @points_possible ||= @doc.attribute('points_possible')&.value || 1
         end

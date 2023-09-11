@@ -42,6 +42,10 @@ module Qti
           selection&.xpath('xmlns:sourcebank_export_id')&.text
         end
 
+        def parent_stimulus_item_ident
+          @parent_stimulus_item_ident ||= @doc.attribute('parent_stimulus_item_ident')&.value
+        end
+
         def points_per_item
           selection.xpath('xmlns:selection_extension/xmlns:points_per_item')&.text&.to_f
         end
