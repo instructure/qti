@@ -25,6 +25,10 @@ module Qti
         def points_possible
           @points_possible ||= @doc.attribute('points_possible')&.value || 1
         end
+
+        def entry_type
+          @entry_type ||= @doc.attribute('entry_type')&.value
+        end
       end
     end
   end
