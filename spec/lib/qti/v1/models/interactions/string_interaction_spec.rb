@@ -19,6 +19,10 @@ describe Qti::V1::Models::Interactions::StringInteraction do
       expect(loaded_class.word_limit_max).to be_nil
       expect(loaded_class.word_limit_min).to be_nil
     end
+
+    it 'does not return any grading notes' do
+      expect(loaded_class.scoring_data_structs).to eq({ value: '' })
+    end
   end
 
   context 'essay.xml question with custom settings' do
@@ -30,6 +34,10 @@ describe Qti::V1::Models::Interactions::StringInteraction do
       expect(loaded_class.spell_check).to eq(true)
       expect(loaded_class.word_limit_max).to eq('500')
       expect(loaded_class.word_limit_min).to eq('140')
+    end
+
+    it 'has grading notes' do
+      expect(loaded_class.scoring_data_structs).to eq({ value: 'this is the remix' })
     end
   end
 end

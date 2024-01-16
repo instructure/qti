@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
   <item ident="if15fb877c2cde9a14437aa7429360ac6" title="First Essay">
+    <itemmetadata>
+      <qtimetadata>
+        <qtimetadatafield>
+          <fieldlabel>grading_notes</fieldlabel>
+          <fieldentry>this is the remix</fieldentry>
+        </qtimetadatafield>
+      </qtimetadata>
+    </itemmetadata>
     <presentation>
       <material>
          <mattext texttype="text/html">

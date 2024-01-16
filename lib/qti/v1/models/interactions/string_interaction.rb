@@ -2,6 +2,7 @@ module Qti
   module V1
     module Models
       module Interactions
+        # This is the Interaction for Essay question type
         class StringInteraction < BaseInteraction
           # This will know if a class matches
           def self.matches(node, parent)
@@ -35,6 +36,10 @@ module Qti
             @word_limit_min ||= @node.at_xpath('.//xmlns:response_str/@word_limit_min')&.value
           end
 
+          def scoring_data_structs
+            { value: grading_notes }
+          end
+
           private
 
           def rcardinality
@@ -43,6 +48,12 @@ module Qti
 
           def rce_raw
             @rce_raw ||= @node.at_xpath('.//xmlns:response_str/@rce')&.value
+          end
+
+          def grading_notes
+            path = './/xmlns:qtimetadatafield/xmlns:fieldlabel' \
+            '[text()="grading_notes"]/../xmlns:fieldentry'
+            @grading_notes ||= @node.at_xpath(path)&.text || ''
           end
         end
       end
