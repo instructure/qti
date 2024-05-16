@@ -3,7 +3,7 @@ describe Qti::V1::Models::ObjectBank do
     <<~XML
       <?xml version="1.0" encoding="UTF-8"?>
       <questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
-        <objectbank ident="gooblegobble12345">
+        <objectbank ident="gooblegobble12345" canvas_item_bank="true">
           <qtimetadata>
             <qtimetadatafield>
               <fieldlabel>not_a_bank_title</fieldlabel>
@@ -54,6 +54,14 @@ describe Qti::V1::Models::ObjectBank do
       allow(File).to receive(:read).and_return(doc)
       objectbank = described_class.new path: '/etc/FakeBank008.xml'
       expect(objectbank.identifier).to eq 'gooblegobble12345'
+    end
+  end
+
+  describe '#canvas_item_bank' do
+    it 'returns the canvas_item_bank' do
+      allow(File).to receive(:read).and_return(doc)
+      objectbank = described_class.new path: '/etc/FakeBank008.xml'
+      expect(objectbank.canvas_item_bank).to eq 'true'
     end
   end
 

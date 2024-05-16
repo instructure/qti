@@ -13,6 +13,10 @@ module Qti
           @identifier ||= xpath_with_single_check('.//xmlns:objectbank/@ident')&.content
         end
 
+        def canvas_item_bank
+          @canvas_item_bank ||= xpath_with_single_check('.//xmlns:objectbank/@canvas_item_bank')&.content
+        end
+
         # tells us whether the bank was an account or course bank
         def bank_type
           @bank_type ||= xpath_with_single_check(

@@ -25,6 +25,12 @@ describe Qti::V1::Models::Assessment do
           expect(loaded_class.identifier).to eq(expected_identifier)
         end
       end
+
+      describe '#external_assignment_id' do
+        it 'retruns the external_assignment_id' do
+          expect(loaded_class.external_assignment_id).to eq(expected_external_assignment_id)
+        end
+      end
     end
 
     shared_examples_for 'verify quiz items' do
@@ -43,6 +49,7 @@ describe Qti::V1::Models::Assessment do
       let(:loaded_class) { described_class.from_path!(path) }
       let(:expected_title) { '1.2 Import Quiz' }
       let(:expected_identifier) { 'A1001' }
+      let(:expected_external_assignment_id) { '801785' }
       let(:expected_item_count) { 5 }
 
       include_examples('basic quiz fields')
@@ -52,6 +59,7 @@ describe Qti::V1::Models::Assessment do
       let(:path) { File.join(fixtures_path, 'feedback_quiz_1.2.xml') }
       let(:loaded_class) { described_class.from_path!(path) }
       let(:expected_title) { 'I Can Haz Feedback' }
+      let(:expected_external_assignment_id) { nil }
       let(:expected_identifier) { 'i618e88580f76f70a1ed28804f497df9c' }
       let(:expected_item_count) { 3 }
       let(:expected_item_data) do
@@ -82,6 +90,7 @@ describe Qti::V1::Models::Assessment do
       let(:path) { File.join(fixtures_path, 'all_canvas_simple_1.2.xml') }
       let(:loaded_class) { described_class.from_path!(path) }
       let(:expected_title) { 'Every Canvas Interaction' }
+      let(:expected_external_assignment_id) { nil }
       let(:expected_identifier) { 'ie09bc528e6ecd1cb9ebfafd940c20215' }
       let(:expected_item_count) { 10 }
       let(:expected_item_data) do

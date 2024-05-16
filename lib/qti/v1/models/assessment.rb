@@ -14,6 +14,10 @@ module Qti
           @title ||= xpath_with_single_check('.//xmlns:assessment/@title')&.content || File.basename(@path, '.xml')
         end
 
+        def external_assignment_id
+          @external_assignment_id ||= xpath_with_single_check('.//xmlns:assessment/@external_assignment_id')&.content
+        end
+
         def assessment_items
           @doc.xpath("//*[self::#{GROUP_ID} or self::xmlns:item[not(ancestor::#{GROUP_ID})]" \
             ' or self::xmlns:bankentry_item]')

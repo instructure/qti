@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
-  <assessment title="1.2 Import Quiz" ident="A1001">
+  <assessment title="1.2 Import Quiz" ident="A1001" external_assignment_id="801785">
     <section title="Main" ident="S1002">
       <item title="Grading - specific - 3 pt score" ident="QUE_1003">
         <presentation>

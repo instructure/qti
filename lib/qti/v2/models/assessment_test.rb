@@ -13,6 +13,10 @@ module Qti
           @title ||= xpath_with_single_check('//xmlns:assessmentTest/@title')&.content || File.basename(@path, '.xml')
         end
 
+        def external_assignment_id
+          nil
+        end
+
         def assessment_items
           # Return the xml files we should be parsing
           @assessment_items ||= begin
