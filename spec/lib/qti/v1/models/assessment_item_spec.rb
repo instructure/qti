@@ -138,7 +138,7 @@ describe Qti::V1::Models::AssessmentItem do
     describe '#scoring_data_structs' do
       it 'grabs the rcardinality and scoring data value' do
         struct = loaded_class.send(:scoring_data_structs)
-        expect(struct.first.values).to eq 'QUE_1006_A2'
+        expect(struct.first.values).to eq 'QUE_1005_A1'
         expect(struct.first.rcardinality).to eq 'Single'
       end
     end
@@ -263,6 +263,28 @@ describe Qti::V1::Models::AssessmentItem do
         expect(struct.size).to eq 2
         expect(struct.map(&:scoring_options)).to eq([{ 'points' => 10.0 },
                                                      { 'points' => 5.0, 'correct_answer' => true }])
+      end
+    end
+  end
+
+  context 'multiple choice with "vary points by answer" and answers with zero points' do
+    let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'choice_vary_points_by_answer_zero_points.xml') }
+    let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
+    let(:assessment_item_refs) { test_object.assessment_items }
+    let(:loaded_class) { described_class.new(assessment_item_refs.first) }
+
+    describe '#scoring_data_structs' do
+      it 'collects all the correct answers' do
+        struct = loaded_class.scoring_data_structs
+        expect(struct.size).to eq 2
+        expect(struct.map(&:values)).to eq %w[93bbcb84-3281-4d99-b243-79ba4051e654 3cd6d311-07cd-4ec0-b2db-3048e6cf1128]
+      end
+
+      it 'collect all the points answer points' do
+        struct = loaded_class.scoring_data_structs
+        expect(struct.size).to eq 2
+        expect(struct.map(&:scoring_options)).to eq([{ 'points' => 0.0 },
+                                                     { 'points' => 0.0, 'correct_answer' => true }])
       end
     end
   end

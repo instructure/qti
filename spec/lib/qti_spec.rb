@@ -35,7 +35,7 @@ describe Qti::Importer do
         assessment_items = importer.assessment_item_refs.map { |item| importer.create_assessment_item(item) }
         expect(assessment_items.count).to eq 5
         answer_arity = assessment_items.map { |item| item.scoring_data_structs.count }
-        expect(answer_arity).to eq [1, 1, 4, 1, 1]
+        expect(answer_arity).to eq [2, 5, 7, 1, 1]
       end
 
       it 'sets the path and package root properly' do

@@ -83,7 +83,7 @@ module Qti
           # rubocop:enable Metrics/AbcSize
           def setvar_nodes(choice_nodes)
             choice_nodes.select do |choice_node|
-              choice_node.at_xpath('.//xmlns:setvar')&.content&.to_f&.positive?
+              choice_node.at_xpath('.//xmlns:setvar')&.content&.present?
             end
           end
         end
