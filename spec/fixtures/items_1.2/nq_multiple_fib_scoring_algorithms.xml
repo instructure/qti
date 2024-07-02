@@ -80,12 +80,12 @@
       </response_lid>
       <response_lid ident="response_a053119f-6a61-4372-ac79-4b2a7de0232f">
         <material>
-          <mattext>^orange$</mattext>
+          <mattext>^orange&lt;s&gt;$</mattext>
         </material>
         <render_choice>
           <response_label ident="a053119f-6a61-4372-ac79-4b2a7de0232f-0" scoring_algorithm='TextRegex' answer_type='openEntry'>
             <material>
-              <mattext texttype="text/plain">^orange$</mattext>
+              <mattext texttype="text/plain">^orange&lt;s&gt;$</mattext>
             </material>
           </response_label>
         </render_choice>

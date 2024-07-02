@@ -243,7 +243,7 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
          41dfd716-8fd9-466a-97fa-33d353e44b42-1
          a053119f-6a61-4372-ac79-4b2a7de0232f-0]
     end
-    let(:scoring_data_values) { %w[red blue green yellow teal ^orange$] }
+    let(:scoring_data_values) { %w[red blue green yellow teal ^orange<s>$] }
     let(:scoring_data_case) { %w[no no no no no no] }
     let(:scoring_data_algorithm) do
       %w[TextContainsAnswer TextCloseEnough TextEquivalence TextInChoices TextInChoices TextRegex]
@@ -284,7 +284,7 @@ describe Qti::V1::Models::Interactions::FillBlankInteraction do
          type: 'blank' },
        { id: 'stem_8', position: 9, type: 'text', value: ', and ' },
        { blank_id: 'response_a053119f-6a61-4372-ac79-4b2a7de0232f',
-         blank_name: '^orange$',
+         blank_name: '^orange&lt;s&gt;$',
          id: 'stem_9',
          position: 10,
          type: 'blank' },

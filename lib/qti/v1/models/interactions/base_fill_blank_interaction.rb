@@ -129,7 +129,7 @@ module Qti
             choice = {
               id: bnode_id,
               position: index + 1,
-              item_body: bnode.at_xpath('.//xmlns:mattext').text
+              item_body: bnode.at_xpath('.//xmlns:mattext').inner_html
             }
             @blank_choices ||= {}
             @blank_choices[bnode_id] = choice
