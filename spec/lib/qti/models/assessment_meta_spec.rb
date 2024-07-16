@@ -12,6 +12,7 @@ context 'Canvas Assessment Meta Data' do
       expect(assessment.canvas_points_possible).to eq(points_possible)
       expect(assessment.canvas_one_question_at_a_time?).to eq(oqaat)
       expect(assessment.canvas_allowed_attempts).to eq(allowed_attempts)
+      expect(assessment.canvas_build_on_last_attempt?).to eq(build_on_last_attempt)
       expect(assessment.canvas_hide_results).to eq(hide_results)
       expect(assessment.canvas_quiz_type).to eq(quiz_type)
       expect(assessment.canvas_anonymous_submissions?).to eq(anon_submissions)
@@ -67,6 +68,7 @@ context 'Canvas Assessment Meta Data' do
     let(:points_possible) { 4.0 }
     let(:oqaat) { false }
     let(:allowed_attempts) { 1 }
+    let(:build_on_last_attempt) { true }
     let(:hide_results) { nil }
     let(:quiz_type) { 'assignment' }
     let('anon_submissions') { false }
@@ -122,6 +124,7 @@ context 'Canvas Assessment Meta Data' do
     let(:points_possible) { 0.0 }
     let(:oqaat) { true }
     let(:allowed_attempts) { 52 }
+    let(:build_on_last_attempt) { false }
     let(:hide_results) { nil }
     let(:quiz_type) { 'assignment' }
     let('anon_submissions') { false }
@@ -182,6 +185,7 @@ context 'Canvas Assessment Meta Data' do
     let(:points_possible) { 0.0 }
     let(:oqaat) { false }
     let(:allowed_attempts) { 0 }
+    let(:build_on_last_attempt) { false }
     let(:hide_results) { nil }
     let(:quiz_type) { nil }
     let('anon_submissions') { false }
@@ -237,6 +241,7 @@ context 'Canvas Assessment Meta Data' do
     let(:points_possible) { 1.0 }
     let(:oqaat) { false }
     let(:allowed_attempts) { 1 }
+    let(:build_on_last_attempt) { true }
     let(:hide_results) { nil }
     let(:quiz_type) { 'assignment' }
     let('anon_submissions') { false }

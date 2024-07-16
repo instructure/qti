@@ -26,6 +26,7 @@
   <could_be_locked>false</could_be_locked>
   <time_limit>187</time_limit>
   <allowed_attempts>52</allowed_attempts>
+  <build_on_last_attempt>false</build_on_last_attempt>
   <one_question_at_a_time>true</one_question_at_a_time>
   <cant_go_back>true</cant_go_back>
   <available>false</available>

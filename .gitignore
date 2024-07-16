@@ -9,3 +9,4 @@
 /spec/gemfiles/.bundle/
 /spec/gemfiles/*.gemfile.lock
 /**/*.gem
+.idea

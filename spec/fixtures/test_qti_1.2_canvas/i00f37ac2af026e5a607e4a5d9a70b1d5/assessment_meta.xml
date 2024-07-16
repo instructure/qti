@@ -14,6 +14,7 @@
   <anonymous_submissions>false</anonymous_submissions>
   <could_be_locked>false</could_be_locked>
   <allowed_attempts>1</allowed_attempts>
+  <build_on_last_attempt>true</build_on_last_attempt>
   <one_question_at_a_time>false</one_question_at_a_time>
   <cant_go_back>false</cant_go_back>
   <available>true</available>

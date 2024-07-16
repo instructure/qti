@@ -23,6 +23,7 @@
   <could_be_locked></could_be_locked>
   <time_limit></time_limit>
   <allowed_attempts></allowed_attempts>
+  <build_on_last_attempt></build_on_last_attempt>
   <one_question_at_a_time></one_question_at_a_time>
   <cant_go_back></cant_go_back>
   <available></available>

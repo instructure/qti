@@ -90,6 +90,14 @@ module Qti
         allowed_attempts_raw.to_i
       end
 
+      def build_on_last_attempt
+        tag_under_quiz('build_on_last_attempt')
+      end
+
+      def build_on_last_attempt?
+        string_true?(build_on_last_attempt)
+      end
+
       def one_question_at_a_time
         tag_under_quiz('one_question_at_a_time')
       end
@@ -343,7 +351,7 @@ module Qti
         :shuffle_answers?, :calculator_type, :scoring_policy,
         :cooling_period_seconds, :points_possible,
         :hide_results, :quiz_type, :anonymous_submissions?,
-        :could_be_locked?, :allowed_attempts, :one_question_at_a_time?,
+        :could_be_locked?, :allowed_attempts, :build_on_last_attempt?, :one_question_at_a_time?,
         :cant_go_back?, :available?, :one_time_results?,
         :show_correct_answers_last_attempt?, :only_visible_to_overrides?,
         :module_locked?, :access_code, :ip_filter, :time_limit,
