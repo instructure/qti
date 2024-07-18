@@ -130,7 +130,7 @@ module Qti
         string_true?(show_correct_answers_last_attempt)
       end
 
-      def only_visible_to_overreides
+      def only_visible_to_overrides
         tag_under_quiz('only_visible_to_overrides')
       end
 
@@ -240,7 +240,7 @@ module Qti
       end
 
       def result_view_restricted?
-        string_true?(result_view_restricted)
+        string_true?(result_view_restricted) || false if result_view_restricted
       end
 
       def display_items
@@ -299,6 +299,30 @@ module Qti
         string_true?(display_item_response_correctness)
       end
 
+      def display_item_response_qualifier
+        tag_under_quiz('display_item_response_qualifier')
+      end
+
+      def show_item_responses_at
+        tag_under_quiz('show_item_responses_at')
+      end
+
+      def hide_item_responses_at
+        tag_under_quiz('hide_item_responses_at')
+      end
+
+      def display_item_response_correctness_qualifier
+        tag_under_quiz('display_item_response_correctness_qualifier')
+      end
+
+      def show_item_response_correctness_at
+        tag_under_quiz('show_item_response_correctness_at')
+      end
+
+      def hide_item_response_correctness_at
+        tag_under_quiz('hide_item_response_correctness_at')
+      end
+
       private
 
       def tag_under_quiz(tag)
@@ -321,7 +345,7 @@ module Qti
         :hide_results, :quiz_type, :anonymous_submissions?,
         :could_be_locked?, :allowed_attempts, :one_question_at_a_time?,
         :cant_go_back?, :available?, :one_time_results?,
-        :show_correct_answers_attempt?, :only_visible_to_overrides?,
+        :show_correct_answers_last_attempt?, :only_visible_to_overrides?,
         :module_locked?, :access_code, :ip_filter, :time_limit,
         :show_correct_answers_at, :hide_correct_answers_at,
         :lock_at, :unlock_at, :due_at, :require_lockdown_browser?,
@@ -332,6 +356,9 @@ module Qti
         :result_view_restricted?, :display_items?, :display_item_feedback?,
         :display_item_response?, :display_points_awarded?, :display_points_possible?,
         :display_item_correct_answer?, :display_item_response_correctness?,
+        :display_item_response_qualifier, :show_item_responses_at,
+        :hide_item_responses_at, :display_item_response_correctness_qualifier,
+        :show_item_response_correctness_at, :hide_item_response_correctness_at,
         to: :@canvas_meta_data, prefix: :canvas, allow_nil: true
 
       alias canvas_instructions canvas_description

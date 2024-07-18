@@ -44,6 +44,12 @@
   <display_points_possible>true</display_points_possible>
   <display_item_correct_answer>true</display_item_correct_answer>
   <display_item_response_correctness>true</display_item_response_correctness>
+  <display_item_response_qualifier>once_per_attempt</display_item_response_qualifier>
+  <show_item_responses_at>2024-07-18 06:00:00 UTC</show_item_responses_at>
+  <hide_item_responses_at>2024-07-21 11:59:00 UTC</hide_item_responses_at>
+  <display_item_response_correctness_qualifier>after_last_attempt</display_item_response_correctness_qualifier>
+  <show_item_response_correctness_at>2024-07-19 06:00:00 UTC</show_item_response_correctness_at>
+  <hide_item_response_correctness_at>2024-07-22 11:59:00 UTC</hide_item_response_correctness_at>
   <assignment identifier="g390e22b33353b658bb23abbce000414f">
     <title>asd09sdfaxsdflj</title>
     <due_at>2020-05-23T04:59:59</due_at>

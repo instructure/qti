@@ -31,6 +31,7 @@ context 'Canvas Assessment Meta Data' do
       expect(assessment.canvas_ip_filter).to eq(ip_filter)
       expect(assessment.canvas_time_limit).to eq(time_limit)
       expect(assessment.canvas_show_correct_answers?).to eq(show_answers)
+      expect(assessment.canvas_show_correct_answers_last_attempt?).to eq(show_correct_answers_last_attempt)
       expect(assessment.canvas_show_correct_answers_at).to eq(show_answers_at)
       expect(assessment.canvas_hide_correct_answers_at).to eq(hide_answers_at)
       expect(assessment.canvas_allow_clear_mc_selection?).to eq(allow_clear_mc_selection)
@@ -48,6 +49,13 @@ context 'Canvas Assessment Meta Data' do
       expect(assessment.canvas_display_points_possible?).to eq(display_points_possible)
       expect(assessment.canvas_display_item_correct_answer?).to eq(display_item_correct_answer)
       expect(assessment.canvas_display_item_response_correctness?).to eq(display_item_response_correctness)
+      expect(assessment.canvas_display_item_response_qualifier).to eq(display_item_response_qualifier)
+      expect(assessment.canvas_show_item_responses_at).to eq(show_item_responses_at)
+      expect(assessment.canvas_hide_item_responses_at).to eq(hide_item_responses_at)
+      expect(assessment.canvas_display_item_response_correctness_qualifier)
+        .to eq(display_item_response_correctness_qualifier)
+      expect(assessment.canvas_show_item_response_correctness_at).to eq(show_item_response_correctness_at)
+      expect(assessment.canvas_hide_item_response_correctness_at).to eq(hide_item_response_correctness_at)
     end
   end
 
@@ -78,6 +86,7 @@ context 'Canvas Assessment Meta Data' do
     let(:ip_filter) { nil }
     let(:time_limit) { nil }
     let(:show_answers) { true }
+    let(:show_correct_answers_last_attempt) { false }
     let(:show_answers_at) { nil }
     let(:hide_answers_at) { nil }
     let(:allow_clear_mc_selection) { false }
@@ -87,7 +96,7 @@ context 'Canvas Assessment Meta Data' do
     let(:lb_monitor_data) { nil }
     let(:nq_ip_filters_enabled) { false }
     let(:nq_ip_filters) { [] }
-    let(:result_view_restricted) { false }
+    let(:result_view_restricted) { nil }
     let(:display_items) { false }
     let(:display_item_response) { false }
     let(:display_item_feedback) { false }
@@ -95,6 +104,12 @@ context 'Canvas Assessment Meta Data' do
     let(:display_points_possible) { false }
     let(:display_item_correct_answer) { false }
     let(:display_item_response_correctness) { false }
+    let(:display_item_response_qualifier) { nil }
+    let(:display_item_response_correctness_qualifier) { nil }
+    let(:show_item_responses_at) { nil }
+    let(:hide_item_responses_at) { nil }
+    let(:show_item_response_correctness_at) { nil }
+    let(:hide_item_response_correctness_at) { nil }
 
     include_examples('loads canvas meta data')
   end
@@ -126,6 +141,7 @@ context 'Canvas Assessment Meta Data' do
     let(:ip_filter) { '192.168.217.1/24' }
     let(:time_limit) { 187 }
     let(:show_answers) { true }
+    let(:show_correct_answers_last_attempt) { false }
     let(:show_answers_at) { '2041-02-17 06:00:00 UTC' }
     let(:hide_answers_at) { '2042-12-26 06:00:00 UTC' }
     let(:allow_clear_mc_selection) { true }
@@ -148,6 +164,12 @@ context 'Canvas Assessment Meta Data' do
     let(:display_points_possible) { true }
     let(:display_item_correct_answer) { true }
     let(:display_item_response_correctness) { true }
+    let(:display_item_response_qualifier) { 'once_per_attempt' }
+    let(:display_item_response_correctness_qualifier) { 'after_last_attempt' }
+    let(:show_item_responses_at) { '2024-07-18 06:00:00 UTC' }
+    let(:hide_item_responses_at) { '2024-07-21 11:59:00 UTC' }
+    let(:show_item_response_correctness_at) { '2024-07-19 06:00:00 UTC' }
+    let(:hide_item_response_correctness_at) { '2024-07-22 11:59:00 UTC' }
 
     include_examples('loads canvas meta data')
   end
@@ -179,6 +201,7 @@ context 'Canvas Assessment Meta Data' do
     let(:ip_filter) { nil }
     let(:time_limit) { nil }
     let(:show_answers) { false }
+    let(:show_correct_answers_last_attempt) { false }
     let(:show_answers_at) { nil }
     let(:hide_answers_at) { nil }
     let(:allow_clear_mc_selection) { false }
@@ -188,7 +211,7 @@ context 'Canvas Assessment Meta Data' do
     let(:lb_monitor_data) { nil }
     let(:nq_ip_filters_enabled) { false }
     let(:nq_ip_filters) { [] }
-    let(:result_view_restricted) { false }
+    let(:result_view_restricted) { nil }
     let(:display_items) { false }
     let(:display_item_response) { false }
     let(:display_item_feedback) { false }
@@ -196,6 +219,12 @@ context 'Canvas Assessment Meta Data' do
     let(:display_points_possible) { false }
     let(:display_item_correct_answer) { false }
     let(:display_item_response_correctness) { false }
+    let(:display_item_response_qualifier) { nil }
+    let(:display_item_response_correctness_qualifier) { nil }
+    let(:show_item_responses_at) { nil }
+    let(:hide_item_responses_at) { nil }
+    let(:show_item_response_correctness_at) { nil }
+    let(:hide_item_response_correctness_at) { nil }
 
     include_examples('loads canvas meta data')
   end
@@ -227,6 +256,7 @@ context 'Canvas Assessment Meta Data' do
     let(:ip_filter) { nil }
     let(:time_limit) { nil }
     let(:show_answers) { true }
+    let(:show_correct_answers_last_attempt) { false }
     let(:show_answers_at) { nil }
     let(:hide_answers_at) { nil }
     let(:allow_clear_mc_selection) { false }
@@ -236,7 +266,7 @@ context 'Canvas Assessment Meta Data' do
     let(:lb_monitor_data) { nil }
     let(:nq_ip_filters_enabled) { false }
     let(:nq_ip_filters) { [] }
-    let(:result_view_restricted) { false }
+    let(:result_view_restricted) { nil }
     let(:display_items) { false }
     let(:display_item_response) { false }
     let(:display_item_feedback) { false }
@@ -244,6 +274,12 @@ context 'Canvas Assessment Meta Data' do
     let(:display_points_possible) { false }
     let(:display_item_correct_answer) { false }
     let(:display_item_response_correctness) { false }
+    let(:display_item_response_qualifier) { nil }
+    let(:display_item_response_correctness_qualifier) { nil }
+    let(:show_item_responses_at) { nil }
+    let(:hide_item_responses_at) { nil }
+    let(:show_item_response_correctness_at) { nil }
+    let(:hide_item_response_correctness_at) { nil }
 
     include_examples('loads canvas meta data')
   end
