@@ -4,7 +4,7 @@ ENV LANG C.UTF-8
 WORKDIR /app
 
 USER root
-RUN apt-get update && apt-get install -y unzip \
+RUN apt-get update && apt-get install -y git unzip \
  && apt-get clean && rm -rf /var/lib/apt/lists/* \
  && chown -R docker:docker /app
 USER docker

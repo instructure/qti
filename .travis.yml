@@ -4,20 +4,13 @@ language: ruby
 cache: bundler
 
 rvm:
-  - 2.6
   - 2.7
-  #- 3.0
+  - 3.0
 
 gemfile:
-  - spec/gemfiles/rails-5.2.gemfile
   - spec/gemfiles/rails-6.0.gemfile
   - spec/gemfiles/rails-6.1.gemfile
-
-# Rails 5.2 doesn't support Ruby 3.0, so don't try
-matrix:
-  exclude:
-    - rvm: 3.0
-      gemfile: spec/gemfiles/rails-5.2.gemfile
+  - spec/gemfiles/rails-7.0.gemfile
 
 before_install: gem update bundler
 bundler_args: --jobs 3

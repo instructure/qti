@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 
 def gemfiles = [
-    'rails-5.2.gemfile',
     'rails-6.0.gemfile',
     'rails-6.1.gemfile',
+    'rails-7.0.gemfile'
 ]
 def buildMatrix = gemfiles.collectEntries { gemfile ->
     ['2.7', '3.0', '3.1'].collectEntries { ruby ->
