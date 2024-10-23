@@ -19,8 +19,8 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.7'
 
-  s.add_dependency 'actionview', '>= 6.0', '< 7.2'
-  s.add_dependency 'activesupport', '>= 6.0', '< 7.2'
+  s.add_dependency 'actionview', '>= 6.0'
+  s.add_dependency 'activesupport', '>= 6.0'
   s.add_dependency 'dry-logic', '~> 1.2.0', '< 1.3'
   s.add_dependency 'dry-struct', '~> 1.4.0'
   s.add_dependency 'dry-types', '~> 1.5.1'
