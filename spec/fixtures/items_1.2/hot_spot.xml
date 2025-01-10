@@ -39,7 +39,7 @@
                 <material>
                   <matimage uri="$IMS-CC-FILEBASE$/Uploaded Media/someuuid"/>
                 </material>
-                <response_label ident="response1" rarea="square">0.372,0.1376,0.616,0.4256</response_label>
+                <response_label ident="response1" rarea="rectangle">0.372,0.1376,0.616,0.4256</response_label>
               </render_hotspot>
             </response_xy>
           </flow>
@@ -76,7 +76,7 @@
                 <material>
                   <matimage uri="$IMS-CC-FILEBASE$/Uploaded Media/someuuid"/>
                 </material>
-                <response_label ident="response1" rarea="square">0.372</response_label>
+                <response_label ident="response1" rarea="rectangle">0.372</response_label>
               </render_hotspot>
             </response_xy>
           </flow>
@@ -113,7 +113,46 @@
                 <material>
                   <matimage uri="$IMS-CC-FILEBASE$/Uploaded Media/someuuid"/>
                 </material>
-                <response_label ident="response1" rarea="square"></response_label>
+                <response_label ident="response1" rarea="rectangle"></response_label>
+              </render_hotspot>
+            </response_xy>
+          </flow>
+        </presentation>
+      </item>
+      <item ident="g515255148f5a3cae1832584071aa8529" title="hot-spot with multiple selections">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>hot_spot_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>points_possible</fieldlabel>
+              <fieldentry>1.0</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>original_answer_ids</fieldlabel>
+              <fieldentry/>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>gd6ff15355f3dd3f532816fa268230130</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <flow>
+            <response_xy ident="response1" rcardinality="Multiple" rtiming="No">
+              <material>
+                <mattext texttype="text/html">&lt;p&gt;point something on the image&lt;/p&gt;</mattext>
+              </material>
+              <render_hotspot>
+                <material>
+                  <matimage uri="$IMS-CC-FILEBASE$/Uploaded Media/someuuid"/>
+                </material>
+                <response_label ident="response1" rarea="rectangle">0.1,0.2,0.3,0.4</response_label>
+                <response_label ident="response2" rarea="ellipse">0.5,0.6,0.7,0.8</response_label>
+                <response_label ident="response3" rarea="bounded">0.9,0.1,0.2,0.3</response_label>
               </render_hotspot>
             </response_xy>
           </flow>

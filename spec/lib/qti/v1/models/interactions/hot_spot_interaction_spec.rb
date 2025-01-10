@@ -28,7 +28,7 @@ describe Qti::V1::Models::Interactions::HotSpotInteraction do
   describe '#shape_type' do
     let(:loaded_class) { described_class.new(assessment_item_refs.first, test_object) }
     it 'returns correct shape type' do
-      expect(loaded_class.shape_type).to eq 'square'
+      expect(loaded_class.shape_type).to eq 'rectangle'
     end
   end
 
@@ -51,6 +51,37 @@ describe Qti::V1::Models::Interactions::HotSpotInteraction do
 
       it 'returns an empty array' do
         expect(loaded_class.coordinates).to eq []
+      end
+    end
+  end
+
+  describe '#scoring_data_structs' do
+    context 'with a single hotspot' do
+      let(:loaded_class) { described_class.new(assessment_item_refs.first, test_object) }
+
+      it 'returns scoring data with a single hotspot' do
+        scoring_data = loaded_class.scoring_data_structs
+        expect(scoring_data.size).to eq(1)
+        expect(scoring_data.first.values[:type]).to eq('rectangle')
+        expect(scoring_data.first.values[:coordinates]).to eq([{ x: 0.372, y: 0.1376 }, { x: 0.616, y: 0.4256 }])
+      end
+    end
+
+    context 'with multiple hotspots' do
+      let(:loaded_class) { described_class.new(assessment_item_refs[3], test_object) }
+
+      it 'returns scoring data with multiple hotspots' do
+        scoring_data = loaded_class.scoring_data_structs
+        expect(scoring_data.size).to eq(3)
+
+        expect(scoring_data[0].values[:type]).to eq('rectangle')
+        expect(scoring_data[0].values[:coordinates]).to eq([{ x: 0.1, y: 0.2 }, { x: 0.3, y: 0.4 }])
+
+        expect(scoring_data[1].values[:type]).to eq('ellipse')
+        expect(scoring_data[1].values[:coordinates]).to eq([{ x: 0.5, y: 0.6 }, { x: 0.7, y: 0.8 }])
+
+        expect(scoring_data[2].values[:type]).to eq('bounded')
+        expect(scoring_data[2].values[:coordinates]).to eq([{ x: 0.9, y: 0.1 }, { x: 0.2, y: 0.3 }])
       end
     end
   end
