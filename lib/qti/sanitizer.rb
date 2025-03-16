@@ -20,9 +20,58 @@ module Qti
       Sanitize::Config::RELAXED[:attributes][element] + overrides
     end
 
+    # Copied from Canvas (Classic Quizzes)
+    # canvas_sanitize/lib/canvas_sanitize/canvas_sanitize.rb:142
+    MATHML_TAGS =
+      %w[annotation
+         annotationml
+         maction
+         maligngroup
+         malignmark
+         mark
+         math
+         menclose
+         merror
+         mfenced
+         mfrac
+         mglyph
+         mi
+         mlabeledtr
+         mlongdiv
+         mmultiscripts
+         mn
+         mo
+         mover
+         mpadded
+         mphantom
+         mprescripts
+         mroot
+         mrow
+         ms
+         mscarries
+         mscarry
+         msgroup
+         msline
+         mspace
+         msqrt
+         msrow
+         mstack
+         mstyle
+         msub
+         msubsup
+         msup
+         mtable
+         mtd
+         mtext
+         mtr
+         munder
+         munderover
+         none
+         semantics].freeze
+
     CONFIG =
       {
-        elements: Sanitize::Config::RELAXED[:elements] + FILTER_TAGS,
+        elements: Sanitize::Config::RELAXED[:elements] + MATHML_TAGS + FILTER_TAGS,
         protocols:
           {
             'iframe' => { 'src' => PROTOCOLS },

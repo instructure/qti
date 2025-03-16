@@ -63,5 +63,11 @@ describe Qti::Sanitizer do
       expect(sanitizer.clean(html)).to include 'height: 294px;'
       expect(sanitizer.clean(html)).to include 'display: inline-block;'
     end
+
+    Qti::Sanitizer::MATHML_TAGS.each do |tag|
+      it "allows MathML tag: #{tag}" do
+        expect(sanitizer.clean("<#{tag}>")).to eq("<#{tag}></#{tag}>")
+      end
+    end
   end
 end
