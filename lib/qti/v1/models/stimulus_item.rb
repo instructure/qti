@@ -54,12 +54,29 @@ module Qti
           end
         end
 
+        def default_orientation
+          passage == 'true' ? 'top' : 'left'
+        end
+
         def orientation
           @orientation ||= begin
             presentation = @node.at_xpath('.//xmlns:presentation')
-            return 'left' if presentation.blank?
-            presentation.at_xpath('.//xmlns:material')&.attributes&.[]('orientation')&.value || 'left'
+            return default_orientation if presentation.blank?
+
+            orientation_value = presentation.at_xpath('.//xmlns:material')&.attributes&.[]('orientation')&.value
+            orientation_value.presence || default_orientation
           end
+        end
+
+        def passage_qti_metadata?
+          qti_metadata_children.children.any? { |node| node.text == 'passage' }
+        end
+
+        def passage
+          return false unless passage_qti_metadata?
+
+          passage_label = qti_metadata_children.children.find { |node| node.text == 'passage' }
+          passage_label&.next&.text.presence || false
         end
       end
     end

@@ -37,6 +37,10 @@ module Qti
         def orientation
           'left'
         end
+
+        def passage
+          false
+        end
       end
     end
   end

@@ -33,13 +33,13 @@
             </qtimetadatafield>
             <qtimetadatafield>
               <fieldlabel>passage</fieldlabel>
-              <fieldentry>false</fieldentry>
+              <fieldentry>true</fieldentry>
             </qtimetadatafield>
           </qtimetadata>
         </itemmetadata>
         <presentation>
           <material orientation="top">
-            <mattext texttype="text/html">&lt;p&gt;stimulus content&lt;/p&gt;</mattext>
+            <mattext texttype="text/html">&lt;p&gt;passage content&lt;/p&gt;</mattext>
           </material>
         </presentation>
       </item>

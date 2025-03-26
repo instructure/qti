@@ -1,3 +1,3 @@
 module Qti
-  VERSION = '2.26.1'.freeze
+  VERSION = '2.27.0'.freeze
 end
