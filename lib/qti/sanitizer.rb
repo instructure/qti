@@ -1,4 +1,5 @@
 module Qti
+  # rubocop:disable Metrics/ClassLength
   class Sanitizer
     ELEMENTS_REMAP = {
       'prompt' => 'div',
@@ -93,7 +94,347 @@ module Qti
                            allowfullscreen webkitallowfullscreen mozallowfullscreen
                            allow] + ALL_DATA_ATTR, # TODO: remove explicit allow with domain whitelist account setting
             'a' => relaxed_config('a', ['target'] + ALL_DATA_ATTR),
-            'img' => relaxed_config('img', ALL_DATA_ATTR)
+            'img' => relaxed_config('img', ALL_DATA_ATTR),
+            # MathML
+            'annotation' => %w[href xref definitionURL encoding cd name src].freeze,
+            'annotation-xml' => %w[href xref definitionURL encoding cd name src].freeze,
+            'maction' => %w[href xref mathcolor mathbackground actiontype selection].freeze,
+            'maligngroup' => %w[href xref mathcolor mathbackground groupalign].freeze,
+            'malignmark' => %w[href xref mathcolor mathbackground edge].freeze,
+            'map' => ['name'].freeze,
+            'math' => %w[href
+                         xref
+                         display
+                         maxwidth
+                         overflow
+                         altimg
+                         altimg-width
+                         altimg-height
+                         altimg-valign
+                         alttext
+                         cdgroup
+                         mathcolor
+                         mathbackground
+                         scriptlevel
+                         displaystyle
+                         scriptsizemultiplier
+                         scriptminsize
+                         infixlinebreakstyle
+                         decimalpoint
+                         mathvariant
+                         mathsize
+                         width
+                         height
+                         valign
+                         form
+                         fence
+                         separator
+                         lspace
+                         rspace
+                         stretchy
+                         symmetric
+                         maxsize
+                         minsize
+                         largeop
+                         movablelimits
+                         accent
+                         linebreak
+                         lineleading
+                         linebreakstyle
+                         linebreakmultchar
+                         indentalign
+                         indentshift
+                         indenttarget
+                         indentalignfirst
+                         indentshiftfirst
+                         indentalignlast
+                         indentshiftlast
+                         depth
+                         lquote
+                         rquote
+                         linethickness
+                         munalign
+                         denomalign
+                         bevelled
+                         voffset
+                         open
+                         close
+                         separators
+                         notation
+                         subscriptshift
+                         superscriptshift
+                         accentunder
+                         align
+                         rowalign
+                         columnalign
+                         groupalign
+                         alignmentscope
+                         columnwidth
+                         rowspacing
+                         columnspacing
+                         rowlines
+                         columnlines
+                         frame
+                         framespacing
+                         equalrows
+                         equalcolumns
+                         side
+                         minlabelspacing
+                         rowspan
+                         columnspan
+                         edge
+                         stackalign
+                         charalign
+                         charspacing
+                         longdivstyle
+                         position
+                         shift
+                         location
+                         crossout
+                         length
+                         leftoverhang
+                         rightoverhang
+                         mslinethickness
+                         selection
+                         xmlns].freeze,
+            'menclose' => %w[href xref mathcolor mathbackground notation].freeze,
+            'merror' => %w[href xref mathcolor mathbackground].freeze,
+            'mfenced' => %w[href xref mathcolor mathbackground open close separators].freeze,
+            'mfrac' => %w[href
+                          xref
+                          mathcolor
+                          mathbackground
+                          linethickness
+                          munalign
+                          denomalign
+                          bevelled].freeze,
+            'mglyph' => %w[href xref mathcolor mathbackground src alt width height valign].freeze,
+            'mi' => %w[href xref mathcolor mathbackground mathvariant mathsize].freeze,
+            'mlabeledtr' => %w[href xref mathcolor mathbackground].freeze,
+            'mlongdiv' => %w[href
+                             xref
+                             mathcolor
+                             mathbackground
+                             longdivstyle
+                             align
+                             stackalign
+                             charalign
+                             charspacing].freeze,
+            'mmultiscripts' => %w[href
+                                  xref
+                                  mathcolor
+                                  mathbackground
+                                  subscriptshift
+                                  superscriptshift].freeze,
+            'mn' => %w[href xref mathcolor mathbackground mathvariant mathsize].freeze,
+            'mo' => %w[href
+                       xref
+                       mathcolor
+                       mathbackground
+                       mathvariant
+                       mathsize
+                       form
+                       fence
+                       separator
+                       lspace
+                       rspace
+                       stretchy
+                       symmetric
+                       maxsize
+                       minsize
+                       largeop
+                       movablelimits
+                       accent
+                       linebreak
+                       lineleading
+                       linebreakstyle
+                       linebreakmultchar
+                       indentalign
+                       indentshift
+                       indenttarget
+                       indentalignfirst
+                       indentshiftfirst
+                       indentalignlast
+                       indentshiftlast].freeze,
+            'mover' => %w[href xref mathcolor mathbackground accent align].freeze,
+            'mpadded' => %w[href
+                            xref
+                            mathcolor
+                            mathbackground
+                            height
+                            depth
+                            width
+                            lspace
+                            voffset].freeze,
+            'mphantom' => %w[href xref mathcolor mathbackground].freeze,
+            'mprescripts' => %w[href xref mathcolor mathbackground].freeze,
+            'mroot' => %w[href xref mathcolor mathbackground].freeze,
+            'mrow' => %w[href xref mathcolor mathbackground].freeze,
+            'ms' => %w[href xref mathcolor mathbackground mathvariant mathsize lquote rquote].freeze,
+            'mscarries' => %w[href
+                              xref
+                              mathcolor
+                              mathbackground
+                              position
+                              location
+                              crossout
+                              scriptsizemultiplier].freeze,
+            'mscarry' => %w[href xref mathcolor mathbackground location crossout].freeze,
+            'msgroup' => %w[href xref mathcolor mathbackground position shift].freeze,
+            'msline' => %w[href
+                           xref
+                           mathcolor
+                           mathbackground
+                           position
+                           length
+                           leftoverhang
+                           rightoverhang
+                           mslinethickness].freeze,
+            'mspace' => %w[href xref mathcolor mathbackground mathvariant mathsize].freeze,
+            'msqrt' => %w[href xref mathcolor mathbackground].freeze,
+            'msrow' => %w[href xref mathcolor mathbackground position].freeze,
+            'mstack' => %w[href
+                           xref
+                           mathcolor
+                           mathbackground
+                           align
+                           stackalign
+                           charalign
+                           charspacing].freeze,
+            'mstyle' => %w[href
+                           xref
+                           mathcolor
+                           mathbackground
+                           scriptlevel
+                           displaystyle
+                           scriptsizemultiplier
+                           scriptminsize
+                           infixlinebreakstyle
+                           decimalpoint
+                           mathvariant
+                           mathsize
+                           width
+                           height
+                           valign
+                           form
+                           fence
+                           separator
+                           lspace
+                           rspace
+                           stretchy
+                           symmetric
+                           maxsize
+                           minsize
+                           largeop
+                           movablelimits
+                           accent
+                           linebreak
+                           lineleading
+                           linebreakstyle
+                           linebreakmultchar
+                           indentalign
+                           indentshift
+                           indenttarget
+                           indentalignfirst
+                           indentshiftfirst
+                           indentalignlast
+                           indentshiftlast
+                           depth
+                           lquote
+                           rquote
+                           linethickness
+                           munalign
+                           denomalign
+                           bevelled
+                           voffset
+                           open
+                           close
+                           separators
+                           notation
+                           subscriptshift
+                           superscriptshift
+                           accentunder
+                           align
+                           rowalign
+                           columnalign
+                           groupalign
+                           alignmentscope
+                           columnwidth
+                           rowspacing
+                           columnspacing
+                           rowlines
+                           columnlines
+                           frame
+                           framespacing
+                           equalrows
+                           equalcolumns
+                           side
+                           minlabelspacing
+                           rowspan
+                           columnspan
+                           edge
+                           stackalign
+                           charalign
+                           charspacing
+                           longdivstyle
+                           position
+                           shift
+                           location
+                           crossout
+                           length
+                           leftoverhang
+                           rightoverhang
+                           mslinethickness
+                           selection].freeze,
+            'msub' => %w[href xref mathcolor mathbackground subscriptshift].freeze,
+            'msubsup' => %w[href xref mathcolor mathbackground subscriptshift superscriptshift].freeze,
+            'msup' => %w[href xref mathcolor mathbackground superscriptshift].freeze,
+            'mtable' => %w[href
+                           xref
+                           mathcolor
+                           mathbackground
+                           align
+                           rowalign
+                           columnalign
+                           groupalign
+                           alignmentscope
+                           columnwidth
+                           width
+                           rowspacing
+                           columnspacing
+                           rowlines
+                           columnlines
+                           frame
+                           framespacing
+                           equalrows
+                           equalcolumns
+                           displaystyle
+                           side
+                           minlabelspacing].freeze,
+            'mtd' => %w[href
+                        xref
+                        mathcolor
+                        mathbackground
+                        rowspan
+                        columnspan
+                        rowalign
+                        columnalign
+                        groupalign].freeze,
+            'mtext' => %w[href
+                          xref
+                          mathcolor
+                          mathbackground
+                          mathvariant
+                          mathsize
+                          width
+                          height
+                          depth
+                          linebreak].freeze,
+            'mtr' => %w[href xref mathcolor mathbackground rowalign columnalign groupalign].freeze,
+            'munder' => %w[href xref mathcolor mathbackground accentunder align].freeze,
+            'munderover' => %w[href xref mathcolor mathbackground accent accentunder align].freeze,
+            'none' => %w[href xref mathcolor mathbackground].freeze,
+            'semantics' => %w[href xref definitionURL encoding].freeze
           }
       }.freeze
 
@@ -200,4 +541,5 @@ module Qti
       node.unlink
     end
   end
+  # rubocop:enable Metrics/ClassLength
 end
