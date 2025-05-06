@@ -33,6 +33,7 @@
   <one_time_results>false</one_time_results>
   <show_correct_answers_last_attempt>false</show_correct_answers_last_attempt>
   <allow_clear_mc_selection>true</allow_clear_mc_selection>
+  <disable_document_access>true</disable_document_access>
   <only_visible_to_overrides>false</only_visible_to_overrides>
   <module_locked>false</module_locked>
   <nq_ip_filter from="255.255.0.0" to="255.255.0.255"/>

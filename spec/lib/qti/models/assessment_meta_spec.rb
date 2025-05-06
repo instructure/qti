@@ -57,6 +57,7 @@ context 'Canvas Assessment Meta Data' do
         .to eq(display_item_response_correctness_qualifier)
       expect(assessment.canvas_show_item_response_correctness_at).to eq(show_item_response_correctness_at)
       expect(assessment.canvas_hide_item_response_correctness_at).to eq(hide_item_response_correctness_at)
+      expect(assessment.canvas_disable_document_access?).to eq(disable_document_access)
     end
   end
 
@@ -112,6 +113,7 @@ context 'Canvas Assessment Meta Data' do
     let(:hide_item_responses_at) { nil }
     let(:show_item_response_correctness_at) { nil }
     let(:hide_item_response_correctness_at) { nil }
+    let(:disable_document_access) { false }
 
     include_examples('loads canvas meta data')
   end
@@ -173,6 +175,7 @@ context 'Canvas Assessment Meta Data' do
     let(:hide_item_responses_at) { '2024-07-21 11:59:00 UTC' }
     let(:show_item_response_correctness_at) { '2024-07-19 06:00:00 UTC' }
     let(:hide_item_response_correctness_at) { '2024-07-22 11:59:00 UTC' }
+    let(:disable_document_access) { true }
 
     include_examples('loads canvas meta data')
   end
@@ -229,6 +232,7 @@ context 'Canvas Assessment Meta Data' do
     let(:hide_item_responses_at) { nil }
     let(:show_item_response_correctness_at) { nil }
     let(:hide_item_response_correctness_at) { nil }
+    let(:disable_document_access) { false }
 
     include_examples('loads canvas meta data')
   end
@@ -285,6 +289,7 @@ context 'Canvas Assessment Meta Data' do
     let(:hide_item_responses_at) { nil }
     let(:show_item_response_correctness_at) { nil }
     let(:hide_item_response_correctness_at) { nil }
+    let(:disable_document_access) { false }
 
     include_examples('loads canvas meta data')
   end

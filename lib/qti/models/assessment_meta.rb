@@ -331,6 +331,14 @@ module Qti
         tag_under_quiz('hide_item_response_correctness_at')
       end
 
+      def disable_document_access
+        tag_under_quiz('disable_document_access')
+      end
+
+      def disable_document_access?
+        string_true?(disable_document_access)
+      end
+
       private
 
       def tag_under_quiz(tag)
@@ -367,6 +375,7 @@ module Qti
         :display_item_response_qualifier, :show_item_responses_at,
         :hide_item_responses_at, :display_item_response_correctness_qualifier,
         :show_item_response_correctness_at, :hide_item_response_correctness_at,
+        :disable_document_access?,
         to: :@canvas_meta_data, prefix: :canvas, allow_nil: true
 
       alias canvas_instructions canvas_description
