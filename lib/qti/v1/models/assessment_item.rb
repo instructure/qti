@@ -105,6 +105,27 @@ module Qti
           end
         end
 
+        def case_sensitive
+          @case_sensitive ||= begin
+            if case_sensitive_metadata?
+              case_sensitive_metadata_label = qti_metadata_children.children.find do |node|
+                node.text == 'case_sensitive'
+              end
+              case_sensitive_metadata_label.next.text
+            end
+          end
+        end
+
+        def case_sensitive_metadata?
+          if @doc.at_xpath('.//xmlns:qtimetadata').present?
+            qti_metadata_children.children.find do |node|
+              node.text == 'case_sensitive'
+            end.present?
+          else
+            false
+          end
+        end
+
         def decvar_maxvalue
           @doc.at_xpath('.//xmlns:decvar/@maxvalue')&.value&.to_i ||
             @doc.at_xpath('.//xmlns:decvar/@defaultval')&.value&.to_i || 0

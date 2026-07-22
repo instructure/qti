@@ -135,6 +135,26 @@ describe Qti::V1::Models::AssessmentItem do
       end
     end
 
+    describe '#case_sensitive' do
+      let(:test_object) { Qti::V1::Models::Assessment.from_path!(file_path) }
+      let(:assessment_item_refs) { test_object.assessment_items }
+      let(:loaded_class) { described_class.new(assessment_item_refs) }
+
+      context 'when it does not contain case_sensitive metadata' do
+        let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'nq_multiple_fib_scoring_algorithms.xml') }
+        it 'returns nil' do
+          expect(loaded_class.case_sensitive).to be_nil
+        end
+      end
+
+      context 'when it contains case_sensitive metadata' do
+        let(:file_path) { File.join('spec', 'fixtures', 'items_1.2', 'nq_multiple_fib_case_sensitive.xml') }
+        it 'returns the case_sensitive value' do
+          expect(loaded_class.case_sensitive).to eq 'true'
+        end
+      end
+    end
+
     describe '#scoring_data_structs' do
       it 'grabs the rcardinality and scoring data value' do
         struct = loaded_class.send(:scoring_data_structs)
