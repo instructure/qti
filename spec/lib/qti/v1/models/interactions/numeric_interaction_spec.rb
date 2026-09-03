@@ -140,4 +140,62 @@ describe Qti::V1::Models::Interactions::NumericInteraction do
       end
     end
   end
+
+  context 'answer feedback' do
+    let(:xml_file_name) { 'numeric_answer_feedback.xml' }
+
+    context 'a question with a comment on every answer type' do
+      let(:loaded_class) { described_class.new(assessment_item_refs.first, test_object) }
+
+      it 'returns a comment for the exact, precision, margin of error and range answers' do
+        expect(loaded_class.answer_feedback).to eq(
+          [
+            { response_index: 0, texttype: 'text/html', feedback: '<p>Exact answer comment</p>' },
+            { response_index: 1, texttype: 'text/html', feedback: '<p>Precision answer comment</p>' },
+            { response_index: 2, texttype: 'text/html', feedback: '<p>Margin of error answer comment</p>' },
+            { response_index: 3, texttype: 'text/html', feedback: '<p>Range answer comment</p>' }
+          ]
+        )
+      end
+
+      it 'aligns every response_index with the matching scoring_data_struct' do
+        structs = loaded_class.scoring_data_structs
+        expect(structs.map(&:type)).to eq(
+          %w[exactResponse preciseResponse marginOfError withinARange]
+        )
+        expect(loaded_class.answer_feedback.map { |fb| structs[fb[:response_index]].type }).to eq(
+          %w[exactResponse preciseResponse marginOfError withinARange]
+        )
+      end
+
+      it 'ignores the item level feedback' do
+        expect(loaded_class.answer_feedback.map { |fb| fb[:feedback] }).not_to include(
+          '<p>General Correct Feedback</p>', '<p>General Feedback</p>'
+        )
+      end
+    end
+
+    context 'a question where only some answers have a comment' do
+      let(:loaded_class) { described_class.new(assessment_item_refs[1], test_object) }
+
+      it 'keeps the index of the commented answers aligned with scoring_data_structs' do
+        expect(loaded_class.answer_feedback).to eq(
+          [
+            { response_index: 0, texttype: 'text/html', feedback: '<p>First answer comment</p>' },
+            { response_index: 2, texttype: 'text/html', feedback: '<p>Third answer comment</p>' }
+          ]
+        )
+        expect(loaded_class.scoring_data_structs.map(&:value)).to eq(%w[10.0 20.0 30.0])
+      end
+    end
+  end
+
+  context 'without answer feedback' do
+    let(:xml_file_name) { 'numeric_exact_match.xml' }
+    let(:loaded_class) { described_class.new(assessment_item_refs[1], test_object) }
+
+    it 'returns nil' do
+      expect(loaded_class.answer_feedback).to be_nil
+    end
+  end
 end

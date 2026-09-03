@@ -29,7 +29,34 @@ module Qti
             end
           end
 
+          # Numeric answers cannot be paired with their comment through a
+          # `varequal`, the way the base implementation does it: exact and
+          # precision answers nest it inside an `or`, and range answers have no
+          # single value to emit one for. Canvas instead puts each answer's
+          # `displayfeedback` in the same `respcondition` that carries its
+          # `setvar SCORE`, so pair them by that node and key the result on the
+          # position within `answer_nodes` -- the same list, in the same order,
+          # that `scoring_data_structs` is built from.
+          def answer_feedback
+            answers = answer_nodes.filter_map.with_index do |answer_node, index|
+              numeric_answer_feedback_entry(answer_node, index)
+            end
+            answers unless answers.empty?
+          end
+
           private
+
+          def numeric_answer_feedback_entry(answer_node, index)
+            refid = answer_node.xpath('./xmlns:displayfeedback[not (@linkrefid="correct_fb" or ' \
+              '@linkrefid="general_incorrect_fb" or @linkrefid="general_fb")]').first&.[](:linkrefid)
+            feedback = get_feedback(refid)
+            return nil unless feedback
+            {
+              response_index: index,
+              texttype: feedback[:texttype],
+              feedback: feedback.text
+            }
+          end
 
           def answer_nodes
             @node.xpath('.//xmlns:respcondition/xmlns:setvar[@varname="SCORE"]/..')
