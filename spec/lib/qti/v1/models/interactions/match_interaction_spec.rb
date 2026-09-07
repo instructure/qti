@@ -96,5 +96,45 @@ describe Qti::V1::Models::Interactions::MatchInteraction do
     it 'does not have any scoring algorithm' do
       expect(subject.scoring_algorithm).to eq nil
     end
+
+    describe '#answer_feedback' do
+      it 'returns one entry per commented left hand item, keyed on its response id' do
+        expect(subject.answer_feedback).to eq(
+          [
+            { response_id: 'response_6831', response_value: '6753', negated: true,
+              texttype: 'text/html', feedback: '<p>A:1</p>' },
+            { response_id: 'response_6259', response_value: '7138', negated: true,
+              texttype: 'text/html', feedback: '<p>B:2</p>' }
+          ]
+        )
+      end
+
+      it 'marks the entries as negated, since Classic shows them on a wrong pairing' do
+        expect(subject.answer_feedback.map { |fb| fb[:negated] }).to all(be true)
+      end
+
+      it 'keys every entry on a question that exists' do
+        expect(subject.answer_feedback.map { |fb| fb[:response_id] })
+          .to all(be_in(subject.questions.map { |q| q[:id] }))
+      end
+
+      it 'skips the left hand items without a comment' do
+        expect(subject.answer_feedback.map { |fb| fb[:response_id] })
+          .not_to include('response_743', 'response_1943')
+      end
+
+      it 'ignores the item level feedback' do
+        expect(subject.answer_feedback.map { |fb| fb[:feedback] })
+          .not_to include('<p>Neutral</p>', '<p>Correct</p>', '<p>Incorrect</p>')
+      end
+    end
+  end
+
+  context 'matching.xml without answer feedback' do
+    let(:file) { File.join(path, 'matching.xml') }
+
+    it 'returns nil' do
+      expect(subject.answer_feedback).to be_nil
+    end
   end
 end

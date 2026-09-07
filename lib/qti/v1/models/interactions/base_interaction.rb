@@ -76,9 +76,7 @@ module Qti
           end
 
           def answer_feedback
-            path = './/xmlns:respcondition//xmlns:displayfeedback/../' \
-              'xmlns:conditionvar/xmlns:varequal[@respident]/../../' \
-              'xmlns:displayfeedback/..'
+            path = './/xmlns:respcondition[xmlns:displayfeedback][.//xmlns:varequal[@respident]]'
             answers = node.xpath(path).map do |entry|
               answer_feedback_entry(entry)
             end.compact
@@ -88,17 +86,30 @@ module Qti
           private
 
           def answer_feedback_entry(entry)
-            ve = entry.xpath('.//xmlns:varequal').first
+            ve = entry.xpath('.//xmlns:varequal[@respident]').first
+            return nil unless ve
             refid = entry.xpath('./xmlns:displayfeedback[not (@linkrefid="correct_fb" or ' \
               '@linkrefid="general_incorrect_fb" or @linkrefid="general_fb")]').first&.[](:linkrefid)
             feedback = get_feedback(refid)
             return nil unless feedback
-            {
+            answer = {
               response_id: ve[:respident],
               response_value: ve.text,
               texttype: feedback&.[](:texttype),
               feedback: feedback&.text
             }
+            answer[:negated] = true if negated_condition?(ve)
+            answer
+          end
+
+          # Matching is the one Canvas type whose comment is shown when the
+          # student did *not* pick that match, so its `varequal` sits inside a
+          # `not`. Report that, rather than making the consumer infer it from
+          # the question type -- third party QTI may emit either form for any
+          # type. Only set when true, so every other type keeps its old shape.
+          def negated_condition?(varequal)
+            varequal.ancestors.take_while { |a| a.name != 'respcondition' }
+                    .count { |a| a.name == 'not' }.odd?
           end
 
           def get_feedback(ident)
