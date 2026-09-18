@@ -59,6 +59,33 @@ describe Qti::V1::Models::Interactions::BaseFillBlankInteraction do
     end
 
     include_examples 'canvas_fib_responses'
+
+    # The item comments a wrong choice before the correct one, and canvas emits
+    # those comments ahead of the scoring conditions.
+    it 'names each blank after its correct choice, not a commented one' do
+      expect(loaded_class.blank_value('response_color1')).to eq('red')
+      expect(loaded_class.blank_value('response_color2')).to eq('blue')
+    end
+  end
+
+  context 'nq_multiple_dropdowns_answer_feedback.xml' do
+    let(:file_path) { File.join(fixtures_path, 'nq_multiple_dropdowns_answer_feedback.xml') }
+
+    # The item comments a wrong choice in the second and third blank after the
+    # correct one, and new quizzes emits those comments after the scoring
+    # conditions.
+    it 'maps each blank to its correct choice, not to a commented one' do
+      expect(loaded_class.correct_answer_map).to eq(
+        'response_68857282-90bc-4881-83b0-e811ab0502a6' => '7c011c63-8e76-42eb-86ab-531cd03f98a4',
+        'response_6702826b-84db-422a-bdd5-f14e759fcb5e' => 'f1046a5d-c476-450f-98bb-33997446d0b0',
+        'response_4fc61c7b-83f8-4eba-ae21-747fb76f6ae9' => 'ac8c8556-2eb3-45ac-8994-9a04eff74614'
+      )
+    end
+
+    it 'names each blank after its correct choice' do
+      expect(loaded_class.blank_value('response_6702826b-84db-422a-bdd5-f14e759fcb5e')).to eq('aaa2')
+      expect(loaded_class.blank_value('response_4fc61c7b-83f8-4eba-ae21-747fb76f6ae9')).to eq('aaa3')
+    end
   end
 
   context 'canvas_multiple_fib.xml' do

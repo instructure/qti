@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <item ident="267f458a6d7d3f8aad007d415587ec4f" title="NQ Multiple Dropdowns Answer Feedback">
+    <itemmetadata>
+      <qtimetadata>
+        <qtimetadatafield>
+          <fieldlabel>question_type</fieldlabel>
+          <fieldentry>fill_in_multiple_blanks_question</fieldentry>
+        </qtimetadatafield>
+        <qtimetadatafield>
+          <fieldlabel>points_possible</fieldlabel>
+          <fieldentry>1.0</fieldentry>
+        </qtimetadatafield>
+        <qtimetadatafield>
+          <fieldlabel>original_answer_ids</fieldlabel>
+          <fieldentry>["7c011c63-8e76-42eb-86ab-531cd03f98a4", "087e23e8-e032-43b2-958b-3eae421c3e49", "f1046a5d-c476-450f-98bb-33997446d0b0", "18cebc2e-c102-4b51-ac52-72412ecf4619", "ac8c8556-2eb3-45ac-8994-9a04eff74614", "625d984e-d1c3-45f1-bcab-f3f8a847d1f0"]</fieldentry>
+        </qtimetadatafield>
+        <qtimetadatafield>
+          <fieldlabel>assessment_question_identifierref</fieldlabel>
+          <fieldentry>cd0dd757adb72497669129244b26ae71</fieldentry>
+        </qtimetadatafield>
+      </qtimetadata>
+    </itemmetadata>
+    <presentation>
+      <material>
+        <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;&lt;span&gt;Roses are [68857282-90bc-4881-83b0-e811ab0502a6], violets are [6702826b-84db-422a-bdd5-f14e759fcb5e] mega [4fc61c7b-83f8-4eba-ae21-747fb76f6ae9]&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</mattext>
+      </material>
+      <response_lid ident="response_68857282-90bc-4881-83b0-e811ab0502a6">
+        <material>
+          <mattext>aaa1</mattext>
+        </material>
+        <render_choice>
+          <response_label scoring_algorithm="Equivalence" answer_type="dropdown" ident="7c011c63-8e76-42eb-86ab-531cd03f98a4" position="1">
+            <material>
+              <mattext texttype="text/plain">aaa1</mattext>
+            </material>
+          </response_label>
+          <response_label scoring_algorithm="Equivalence" answer_type="dropdown" ident="087e23e8-e032-43b2-958b-3eae421c3e49" position="2">
+            <material>
+              <mattext texttype="text/plain">bbb1</mattext>
+            </material>
+          </response_label>
+        </render_choice>
+      </response_lid>
+      <response_lid ident="response_6702826b-84db-422a-bdd5-f14e759fcb5e">
+        <material>
+          <mattext>aaa2</mattext>
+        </material>
+        <render_choice>
+          <response_label scoring_algorithm="Equivalence" answer_type="dropdown" ident="f1046a5d-c476-450f-98bb-33997446d0b0" position="1">
+            <material>
+              <mattext texttype="text/plain">aaa2</mattext>
+            </material>
+          </response_label>
+          <response_label scoring_algorithm="Equivalence" answer_type="dropdown" ident="18cebc2e-c102-4b51-ac52-72412ecf4619" position="2">
+            <material>
+              <mattext texttype="text/plain">bbb2</mattext>
+            </material>
+          </response_label>
+        </render_choice>
+      </response_lid>
+      <response_lid ident="response_4fc61c7b-83f8-4eba-ae21-747fb76f6ae9">
+        <material>
+          <mattext>aaa3</mattext>
+        </material>
+        <render_choice>
+          <response_label scoring_algorithm="Equivalence" answer_type="dropdown" ident="ac8c8556-2eb3-45ac-8994-9a04eff74614" position="1">
+            <material>
+              <mattext texttype="text/plain">aaa3</mattext>
+            </material>
+          </response_label>
+          <response_label scoring_algorithm="Equivalence" answer_type="dropdown" ident="625d984e-d1c3-45f1-bcab-f3f8a847d1f0" position="2">
+            <material>
+              <mattext texttype="text/plain">bbb3</mattext>
+            </material>
+          </response_label>
+        </render_choice>
+      </response_lid>
+    </presentation>
+    <resprocessing>
+      <outcomes>
+        <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+      </outcomes>
+      <respcondition>
+        <conditionvar>
+          <varequal respident="response_68857282-90bc-4881-83b0-e811ab0502a6">7c011c63-8e76-42eb-86ab-531cd03f98a4</varequal>
+        </conditionvar>
+        <setvar action="Add" varname="SCORE">33.33</setvar>
+      </respcondition>
+      <respcondition>
+        <conditionvar>
+          <varequal respident="response_6702826b-84db-422a-bdd5-f14e759fcb5e">f1046a5d-c476-450f-98bb-33997446d0b0</varequal>
+        </conditionvar>
+        <setvar action="Add" varname="SCORE">33.33</setvar>
+      </respcondition>
+      <respcondition>
+        <conditionvar>
+          <varequal respident="response_4fc61c7b-83f8-4eba-ae21-747fb76f6ae9">ac8c8556-2eb3-45ac-8994-9a04eff74614</varequal>
+        </conditionvar>
+        <setvar action="Add" varname="SCORE">33.33</setvar>
+      </respcondition>
+      <respcondition continue="Yes">
+        <conditionvar>
+          <varequal respident="response_6702826b-84db-422a-bdd5-f14e759fcb5e">f1046a5d-c476-450f-98bb-33997446d0b0</varequal>
+        </conditionvar>
+        <displayfeedback feedbacktype="Response" linkrefid="f1046a5d-c476-450f-98bb-33997446d0b0_fb"/>
+      </respcondition>
+      <respcondition continue="Yes">
+        <conditionvar>
+          <varequal respident="response_4fc61c7b-83f8-4eba-ae21-747fb76f6ae9">ac8c8556-2eb3-45ac-8994-9a04eff74614</varequal>
+        </conditionvar>
+        <displayfeedback feedbacktype="Response" linkrefid="ac8c8556-2eb3-45ac-8994-9a04eff74614_fb"/>
+      </respcondition>
+      <respcondition continue="Yes">
+        <conditionvar>
+          <varequal respident="response_6702826b-84db-422a-bdd5-f14e759fcb5e">18cebc2e-c102-4b51-ac52-72412ecf4619</varequal>
+        </conditionvar>
+        <displayfeedback feedbacktype="Response" linkrefid="18cebc2e-c102-4b51-ac52-72412ecf4619_fb"/>
+      </respcondition>
+      <respcondition continue="Yes">
+        <conditionvar>
+          <varequal respident="response_4fc61c7b-83f8-4eba-ae21-747fb76f6ae9">625d984e-d1c3-45f1-bcab-f3f8a847d1f0</varequal>
+        </conditionvar>
+        <displayfeedback feedbacktype="Response" linkrefid="625d984e-d1c3-45f1-bcab-f3f8a847d1f0_fb"/>
+      </respcondition>
+    </resprocessing>
+    <itemfeedback ident="f1046a5d-c476-450f-98bb-33997446d0b0_fb">
+      <flow_mat>
+        <material>
+          <mattext texttype="text/html">&lt;p&gt;feedback for aaa2&lt;/p&gt;</mattext>
+        </material>
+      </flow_mat>
+    </itemfeedback>
+    <itemfeedback ident="ac8c8556-2eb3-45ac-8994-9a04eff74614_fb">
+      <flow_mat>
+        <material>
+          <mattext texttype="text/html">&lt;p&gt;feedback for blank3 aaa&lt;/p&gt;</mattext>
+        </material>
+      </flow_mat>
+    </itemfeedback>
+    <itemfeedback ident="18cebc2e-c102-4b51-ac52-72412ecf4619_fb">
+      <flow_mat>
+        <material>
+          <mattext texttype="text/html">&lt;p&gt;feedback for bbb2&lt;/p&gt;</mattext>
+        </material>
+      </flow_mat>
+    </itemfeedback>
+    <itemfeedback ident="625d984e-d1c3-45f1-bcab-f3f8a847d1f0_fb">
+      <flow_mat>
+        <material>
+          <mattext texttype="text/html">&lt;p&gt;feedback for blank3 bbb&lt;/p&gt;</mattext>
+        </material>
+      </flow_mat>
+    </itemfeedback>
+  </item>
+</questestinterop>

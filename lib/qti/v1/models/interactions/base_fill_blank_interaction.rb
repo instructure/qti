@@ -3,6 +3,13 @@ module Qti
     module Models
       module Interactions
         class BaseFillBlankInteraction < BaseInteraction
+          # A per-answer comment is carried by a respcondition of the same shape
+          # as a scoring one, so only the conditions that award points can be
+          # read as correct answers.
+          SCORING_VAREQUAL_XPATH =
+            './/xmlns:resprocessing/xmlns:respcondition[xmlns:setvar]' \
+            '/xmlns:conditionvar/xmlns:varequal'.freeze
+
           def canvas_stem_items(item_prompt)
             item_prompt = sanitize_attributes(item_prompt)
             item_prompt.split(CANVAS_BLANK_REGEX).map.with_index do |stem_item, index|
@@ -112,7 +119,7 @@ module Qti
           def correct_answers
             correct_answers = {}
 
-            node.xpath('.//xmlns:varequal').each do |correct_answer|
+            node.xpath(SCORING_VAREQUAL_XPATH).each do |correct_answer|
               correct_answers[correct_answer.attributes['respident']&.value] = correct_answer.text
             end
 
@@ -120,7 +127,7 @@ module Qti
           end
 
           def correct_choice_id(blank)
-            node.xpath('.//xmlns:resprocessing/xmlns:respcondition/xmlns:conditionvar/xmlns:varequal')
+            node.xpath(SCORING_VAREQUAL_XPATH)
                 .find { |varequal| varequal.attribute('respident').value == blank[:id] }&.text
           end
 

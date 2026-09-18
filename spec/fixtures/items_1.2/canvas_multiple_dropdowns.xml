@@ -76,27 +76,27 @@
           </respcondition>
           <respcondition continue="Yes">
             <conditionvar>
-              <varequal respident="response_color1">6548</varequal>
-            </conditionvar>
-            <displayfeedback feedbacktype="Response" linkrefid="6548_fb"/>
-          </respcondition>
-          <respcondition continue="Yes">
-            <conditionvar>
               <varequal respident="response_color1">5550</varequal>
             </conditionvar>
             <displayfeedback feedbacktype="Response" linkrefid="5550_fb"/>
           </respcondition>
           <respcondition continue="Yes">
             <conditionvar>
-              <varequal respident="response_color2">6951</varequal>
+              <varequal respident="response_color1">6548</varequal>
             </conditionvar>
-            <displayfeedback feedbacktype="Response" linkrefid="6951_fb"/>
+            <displayfeedback feedbacktype="Response" linkrefid="6548_fb"/>
           </respcondition>
           <respcondition continue="Yes">
             <conditionvar>
               <varequal respident="response_color2">4500</varequal>
             </conditionvar>
             <displayfeedback feedbacktype="Response" linkrefid="4500_fb"/>
+          </respcondition>
+          <respcondition continue="Yes">
+            <conditionvar>
+              <varequal respident="response_color2">6951</varequal>
+            </conditionvar>
+            <displayfeedback feedbacktype="Response" linkrefid="6951_fb"/>
           </respcondition>
           <respcondition>
             <conditionvar>
